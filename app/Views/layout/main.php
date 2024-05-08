@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CMS</title>
   <link rel="stylesheet" href="../assets/css/styles.min.css" />
+  <link rel="stylesheet" href="../assets/style-boostrap/css/boostrap.min.css">
 </head>
 
 <body id="style-3"> 
@@ -62,7 +63,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-card.html" aria-expanded="false">
+              <a class="sidebar-link" href="/fitur" aria-expanded="false">
                 <span>
                   <i class="ti ti-cards"></i>
                 </span>
