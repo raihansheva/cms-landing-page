@@ -25,4 +25,9 @@ class Home extends BaseController
     {
         return view('content/solusi');
     }
+
+    public function fitur(): string
+    {
+        return view('content/fitur');
+    }
 }
