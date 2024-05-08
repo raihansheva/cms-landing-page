@@ -2387,7 +2387,7 @@ progress {
   border-color: var(--bs-table-border-color);
 }
 .table-dark {
-  --bs-table-color: #fff;
+  /* --bs-table-color: #fff; */
   --bs-table-bg: #2a3547;
   --bs-table-border-color: #3f4959;
   --bs-table-striped-bg: #353f50;
