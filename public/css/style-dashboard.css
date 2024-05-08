@@ -1,0 +1,28 @@
+.bungkus{
+    width: 100%;
+    height: 300px;
+    /* border: 1px black solid; */
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.bungkus-dalem{
+    width: 100%;
+    height: 100%;
+    /* border: 1px black solid; */
+    display: flex;
+    flex-wrap: wrap;
+    gap: 17px;
+}
+
+.atas{
+    width: 100%;
+    height: 50%;
+    /* border: 1px black solid; */
+}
+
+.bawah{
+    width: 100%;
+    /* height: 50%;
+    border: 1px black solid; */
+}
