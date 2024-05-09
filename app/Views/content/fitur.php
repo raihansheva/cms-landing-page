@@ -4,6 +4,10 @@
 <link rel="stylesheet" href="../assets/css/styles.min.css" />
 <link href="https://cdn.datatables.net/v/ju/dt-2.0.7/datatables.min.css" rel="stylesheet">
 <link href="assets/bootsrap/css/bootstrap.min.css" rel="stylesheet">
+<link
+    href="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-2.0.6/b-3.0.2/b-colvis-3.0.2/b-html5-3.0.2/b-print-3.0.2/r-3.0.2/datatables.min.css"
+    rel="stylesheet">
+    
 
 <div class="bungkus">
     <div class="konten-banner">
@@ -118,10 +122,19 @@
         </div>
     </div>
 </div>
+<!-- Skrip jQuery -->
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+<script src="../node_modules/jquery/dist/jquery.min.js"></script>
+<!-- Skrip DataTables -->
+<script src="../node_modules/datatables.net.jqui/js/dataTables.jqueryui.min.js"></script>
+<script src="../node_modules/datatables.net/js/dataTables.min.js"></script>
+
 <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#tabelfitur').DataTable();
+        // new DataTable('#tabelfitur');
+        // alert('heloo');
     });
 </script>
 <?php $this->endsection() ?>
