@@ -1,3 +1,2 @@
-$(document).ready(function () {
-    $('#tabel-fitur').DataTable();
-})
+// new DataTable('#tabel-fitur');
+// $('#tabel-fitur').DataTable();
