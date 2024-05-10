@@ -50,12 +50,19 @@
                             <div class="col-12 d-flex">
                                 <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                     <label for="exampleFormControlTextarea1" class="form-label">Deskripsi:</label>
-                                    <textarea class="form-control" rows="7.5" name="editor1" id="editor1" cols="80"></textarea>
+                                    <textarea class="form-control" rows="7.5" name="editor1" id="editor1"
+                                        cols="80"></textarea>
                                 </div>
                                 <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                     <label for="exampleFormControlInput1" class="form-label">Icon :</label>
-                                    <input type="file" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="Pilih Gambar">
+                                    <input type="file" class="form-control"
+                                        placeholder="Pilih Gambar" id="gambar">
+                                    <div class="col-12 mt-2 text-end">
+                                        <i class="ti ti-x d-none" type="button" id="hapusGambar"
+                                            style="font-size: 24px"></i>
+                                        <img src="#" alt="Pratinjau Gambar" id="preview"
+                                            class="preview-image d-none image-fluid col-12" width="100%">
+                                    </div>
                                 </div>
                             </div>
                             <div class="mb-3 p-2 pt-0" style="text-align: left;">
@@ -136,10 +143,11 @@
 <script src="../node_modules/datatables.net/js/dataTables.min.js"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
 <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/fitur.js"></script>
 <script>
     $(document).ready(function () {
         $('#tabelfitur').DataTable();
-        CKEDITOR.replace('editor1');
+        // CKEDITOR.replace('editor1');
     });
 </script>
 <?php $this->endsection() ?>
