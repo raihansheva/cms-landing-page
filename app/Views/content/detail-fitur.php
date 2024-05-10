@@ -138,30 +138,10 @@
 <script src="../node_modules/datatables.net/js/dataTables.min.js"></script>
 
 <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/detail-fitur.js"></script>
 <script>
     $(document).ready(function () {
         $('#tabelfitur').DataTable();
-    });
-    // image preview
-    const inputGambar = document.getElementById('gambar');
-    const pratinjauGambar = document.getElementById('preview');
-
-    inputGambar.addEventListener('change', function () {
-        const file = this.files[0];
-
-        if (file) {
-            const reader = new FileReader();
-
-            reader.addEventListener('load', function () {
-                pratinjauGambar.src = this.result;
-                pratinjauGambar.classList.remove('d-none');
-            });
-
-            reader.readAsDataURL(file);
-        } else {
-            pratinjauGambar.src = "#";
-            pratinjauGambar.classList.add('d-none');
-        }
     });
 </script>
 <?php $this->endsection() ?>
