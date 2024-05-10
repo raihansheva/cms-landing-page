@@ -47,15 +47,20 @@
                             <div class="col-12 d-flex">
                                 <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                     <label for="exampleFormControlTextarea1" class="form-label">Deskripsi:</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="10"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"
+                                        rows="7.5"></textarea>
                                 </div>
                                 <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                     <label for="exampleFormControlInput1" class="form-label">Gambar :</label>
-                                    <input type="file" class="form-control" id="gambar"
-                                        placeholder="Pilih Gambar">
-                                        <div class="col-12 mt-2">
-                                            <img src="#" alt="Pratinjau Gambar" id="preview" class="preview-image d-none image-fluid col-12" width="100%">
-                                        </div>
+                                    <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar">
+                                    <div class="col-12 mt-2 text-end">
+                                        <!-- <button type="button" id="hapusGambar" class="btn btn-danger d-none">Hapus
+                                                Gambar</button> -->
+                                        <i class="ti ti-x d-none" type="button" id="hapusGambar"
+                                            style="font-size: 24px"></i>
+                                        <img src="#" alt="Pratinjau Gambar" id="preview"
+                                            class="preview-image d-none image-fluid col-12" width="100%">
+                                    </div>
                                 </div>
                             </div>
                             <div class="mb-3 p-2 pt-0" style="text-align: left;">
@@ -139,24 +144,24 @@
     });
     // image preview
     const inputGambar = document.getElementById('gambar');
-        const pratinjauGambar = document.getElementById('preview');
+    const pratinjauGambar = document.getElementById('preview');
 
-        inputGambar.addEventListener('change', function () {
-            const file = this.files[0];
+    inputGambar.addEventListener('change', function () {
+        const file = this.files[0];
 
-            if (file) {
-                const reader = new FileReader();
+        if (file) {
+            const reader = new FileReader();
 
-                reader.addEventListener('load', function () {
-                    pratinjauGambar.src = this.result;
-                    pratinjauGambar.classList.remove('d-none');
-                });
+            reader.addEventListener('load', function () {
+                pratinjauGambar.src = this.result;
+                pratinjauGambar.classList.remove('d-none');
+            });
 
-                reader.readAsDataURL(file);
-            } else {
-                pratinjauGambar.src = "#";
-                pratinjauGambar.classList.add('d-none');
-            }
-        });
+            reader.readAsDataURL(file);
+        } else {
+            pratinjauGambar.src = "#";
+            pratinjauGambar.classList.add('d-none');
+        }
+    });
 </script>
 <?php $this->endsection() ?>
