@@ -45,8 +45,6 @@
                                         <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar">
 
                                         <div class="col-12 mt-2 text-end">
-                                            <!-- <button type="button" id="hapusGambar" class="btn btn-danger d-none">Hapus
-                                                Gambar</button> -->
                                             <i class="ti ti-x d-none" type="button" id="hapusGambar"
                                                 style="font-size: 24px"></i>
                                             <img src="#" alt="Pratinjau Gambar" id="preview"
