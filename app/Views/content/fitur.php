@@ -7,20 +7,23 @@
 <link
     href="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-2.0.6/b-3.0.2/b-colvis-3.0.2/b-html5-3.0.2/b-print-3.0.2/r-3.0.2/datatables.min.css"
     rel="stylesheet">
-    
+
 
 <div class="bungkus">
     <div class="konten-banner">
         <!-- <div class="area-banner">
     </div> -->
         <div class="col-12 d-flex justify-content-between">
+
             <h2>Fitur</h2>
             <div class="col-4 d-flex gap-2 justify-content-end">
-                <button class="btn d-flex" type="button" data-bs-toggle="modal"
-                    data-bs-target="#exampleModaltambahsolusi" style="background-color: #03C988; color:white;"><i
-                        class="ti ti-list-details pe-2 fs-6 align-middle p-1 "></i>
-                    <p class="m-0 p-1 align-middle">Detail fitur</p>
-                </button>
+                <a href="/detail-fitur">
+                    <button class="btn d-flex" type="button" data-bs-toggle="modal"
+                        data-bs-target="#exampleModaltambahsolusi" style="background-color: #03C988; color:white;"><i
+                            class="ti ti-list-details pe-2 fs-6 align-middle p-1 "></i>
+                        <p class="m-0 p-1 align-middle">Detail fitur</p>
+                    </button>
+                </a>
                 <button class="btn d-flex" type="button" data-bs-toggle="modal"
                     data-bs-target="#exampleModaltambahfitur" style="background-color: #03C988; color:white;"><i
                         class="ti ti-plus pe-2 fs-6 align-middle p-1 "></i>
@@ -32,7 +35,7 @@
             <!-- Modal Tambah fitur -->
             <div class="modal fade" id="exampleModaltambahfitur" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
-                <div class="modal-dialog modal-lg">
+                <div class="modal-dialog modal-lg modal-dialog-scrollable">
                     <div class="modal-content">
                         <div class="modal-header border-bottom">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Fitur</h1>
@@ -44,9 +47,16 @@
                                 <input type="text" class="form-control" id="exampleFormControlInput1"
                                     placeholder="Masukan Nama Solusi">
                             </div>
-                            <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                <label for="exampleFormControlTextarea1" class="form-label">Deskripsi:</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                            <div class="col-12 d-flex">
+                                <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Deskripsi:</label>
+                                    <textarea class="form-control" rows="7.5" name="editor1" id="editor1" cols="80"></textarea>
+                                </div>
+                                <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                    <label for="exampleFormControlInput1" class="form-label">Icon :</label>
+                                    <input type="file" class="form-control" id="exampleFormControlInput1"
+                                        placeholder="Pilih Gambar">
+                                </div>
                             </div>
                             <div class="mb-3 p-2 pt-0" style="text-align: left;">
                                 <label for="exampleFormControlInput1" class="form-label">Nama Solusi :</label>
@@ -58,11 +68,7 @@
                                     <option value="">nama solusi</option>
                                 </select>
                             </div>
-                            <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                <label for="exampleFormControlInput1" class="form-label">Icon :</label>
-                                <input type="file" class="form-control" id="exampleFormControlInput1"
-                                    placeholder="Pilih Gambar">
-                            </div>
+
                         </div>
                         <div class="modal-footer border-top pe-4">
                             <button class="btn d-flex" type="button" style="background-color: #03C988; color:white;"><i
@@ -91,7 +97,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    <!-- <tr>
                         <th scope="row">1</th>
                         <td>Mark</td>
                         <td>Otto</td>
@@ -116,7 +122,7 @@
                         <td>Yaho</td>
                         <td></td>
                         <td></td>
-                    </tr>
+                    </tr> -->
                 </tbody>
             </table>
         </div>
@@ -128,13 +134,12 @@
 <!-- Skrip DataTables -->
 <script src="../node_modules/datatables.net.jqui/js/dataTables.jqueryui.min.js"></script>
 <script src="../node_modules/datatables.net/js/dataTables.min.js"></script>
-
+<script src="https://cdn.ckeditor.com/ckeditor5/41.3.1/classic/ckeditor.js"></script>
 <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script>
     $(document).ready(function () {
         $('#tabelfitur').DataTable();
-        // new DataTable('#tabelfitur');
-        // alert('heloo');
+        CKEDITOR.replace('editor1');
     });
 </script>
 <?php $this->endsection() ?>

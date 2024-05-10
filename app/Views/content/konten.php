@@ -1,7 +1,7 @@
 <?php $this->extend('layout/main') ?>
 <?php $this->section('content') ?>
 <link rel="stylesheet" href="css/style-konten.css">
-
+<link href="assets/bootsrap/css/bootstrap.min.css" rel="stylesheet">
 <div class="bungkus">
     <div class="konten-banner">
         <!-- <div class="area-banner">
@@ -17,13 +17,14 @@
             <!-- Modal Tambah Banner -->
             <div class="modal fade" id="exampleModaltambahbanner" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
-                <div class="modal-dialog modal-lg ">
-                    <div class="modal-content">
-                        <div class="modal-header  border-bottom">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Banner</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <form action="/tambahbanner" method="post" id="form-data">
+                <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                    <form action="/tambahbanner" method="post" id="form-data" class="modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header  border-bottom">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Banner</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
                             <div class="modal-body">
                                 <?= csrf_field(); ?>
                                 <div class="mb-3 p-2" style="text-align: left;">
@@ -33,15 +34,25 @@
                                     <input type="text" class="form-control m-0" id="inputjudul"
                                         placeholder="Masukan Judul" name="judul">
                                 </div>
-                                <div class="mb-3 p-2" style="text-align: left;">
-                                    <label for="exampleFormControlTextarea1" class="form-label">Deskripsi :</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"
-                                        name="deskripsi"></textarea>
-                                </div>
-                                <div class="mb-3 p-2" style="text-align: left;">
-                                    <label for="exampleFormControlInput1" class="form-label">Gambar :</label>
-                                    <input type="file" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="Pilih Gambar">
+                                <div class="col-12 d-flex">
+                                    <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                        <label for="exampleFormControlTextarea1" class="form-label">Deskripsi:</label>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1"
+                                            rows="8.5"></textarea>
+                                    </div>
+                                    <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                        <label for="exampleFormControlInput1" class="form-label">Gambar :</label>
+                                        <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar">
+
+                                        <div class="col-12 mt-2 text-end">
+                                            <!-- <button type="button" id="hapusGambar" class="btn btn-danger d-none">Hapus
+                                                Gambar</button> -->
+                                            <i class="ti ti-x d-none" type="button" id="hapusGambar"
+                                                style="font-size: 24px"></i>
+                                            <img src="#" alt="Pratinjau Gambar" id="preview"
+                                                class="preview-image d-none image-fluid col-12" width="100%">
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="modal-footer m-2 border-top">
@@ -52,8 +63,8 @@
                                 </button>
                                 <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
                             </div>
-                        </form>
-                    </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -67,40 +78,55 @@
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModaleditbanner" tabindex="-1"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
-                            <div class="modal-content">
-                                <div class="modal-header border-bottom">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Ubah banner</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <div class="mb-3 p-2 pt-0" style="text-align: left; p-2">
-                                        <label for="exampleFormControlInput1"
-                                            class="form-label d-flex justify-content-between">
-                                            Judul : <p class="p-0 m-0" id="limit2"></p></label>
-                                        <input type="text" class="form-control" id="inputjudul2"
-                                            placeholder="Masukan Judul">
+                        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                            <form action="/tambahbanner" method="post" id="form-data" class="modal-dialog-scrollable">
+                                <div class="modal-content">
+                                    <div class="modal-header border-bottom">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Ubah banner</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
                                     </div>
-                                    <div class="mb-3 p-2 pt-0" style="text-align: left; p-2">
-                                        <label for="exampleFormControlTextarea1" class="form-label">Deskripsi :</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="3"></textarea>
+
+                                    <div class="modal-body">
+                                        <div class="mb-3 p-2 pt-0" style="text-align: left; p-2">
+                                            <label for="exampleFormControlInput1"
+                                                class="form-label d-flex justify-content-between">
+                                                Judul : <p class="p-0 m-0" id="limit2"></p></label>
+                                            <input type="text" class="form-control" id="inputjudul2"
+                                                placeholder="Masukan Judul">
+                                        </div>
+                                        <div class="col-12 d-flex">
+                                            <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                                <label for="exampleFormControlTextarea1"
+                                                    class="form-label">Deskripsi:</label>
+                                                <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                    rows="8.5"></textarea>
+                                            </div>
+                                            <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                                <label for="exampleFormControlInput1" class="form-label">Gambar
+                                                    :</label>
+                                                <input type="file" class="form-control" id="gambar"
+                                                    placeholder="Pilih Gambar">
+
+                                                <div class="col-12 mt-2">
+                                                    <img src="#" alt="Pratinjau Gambar" id="preview"
+                                                        class="preview-image d-none image-fluid col-12" width="100%">
+                                                    <button type="button" id="hapusGambar"
+                                                        class="btn btn-danger d-none">Hapus
+                                                        Gambar</button>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="mb-3 p-2 pt-0" style="text-align: left; p-2">
-                                        <label for="exampleFormControlInput1" class="form-label">Gambar :</label>
-                                        <input type="file" class="form-control" id="exampleFormControlInput1"
-                                            placeholder="Pilih Gambar">
+                                    <div class="modal-footer pe-4 border-top">
+                                        <button class="btn d-flex" type="button"
+                                            style="background-color: #03C988; color:white;"><i
+                                                class="ti ti-edit pe-2 fs-6 align-middle p-1 "></i>
+                                            <p class="m-0 p-1 align-middle">Simpan perubahan</p>
+                                        </button>
                                     </div>
                                 </div>
-                                <div class="modal-footer pe-4 border-top">
-                                    <button class="btn d-flex" type="button"
-                                        style="background-color: #03C988; color:white;"><i
-                                            class="ti ti-edit pe-2 fs-6 align-middle p-1 "></i>
-                                        <p class="m-0 p-1 align-middle">Simpan perubahan</p>
-                                    </button>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                     <!-- ikon hapus -->
@@ -169,30 +195,41 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body ">
-                            <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                <label for="exampleFormControlInput1" class="form-label">Nama :</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1"
-                                    placeholder="nama company">
+                            <div class="col-12 d-flex ">
+                                <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                    <label for="exampleFormControlInput1" class="form-label">Nama :</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1"
+                                        placeholder="nama company">
+                                </div>
+                                <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                    <label for="exampleFormControlInput1" class="form-label">Email :</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1"
+                                        placeholder="example@gmail.com">
+                                </div>
                             </div>
-                            <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                <label for="exampleFormControlInput1" class="form-label">Email :</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1"
-                                    placeholder="example@gmail.com">
+                            <div class="col-12 d-flex">
+                                <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                    <label for="exampleFormControlInput1" class="form-label">Alamat :</label>
+                                    <textarea type="text" class="form-control" id="exampleFormControlInput1"
+                                        placeholder="Alamat" rows="4"></textarea>
+                                </div>
+                                <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                    <label for="exampleFormControlInput1" class="form-label">Nomer Telepon :</label>
+                                    <input type="number" class="form-control" id="exampleFormControlInput1"
+                                        placeholder="Masukan nomer telepon">
+                                </div>
                             </div>
-                            <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                <label for="exampleFormControlInput1" class="form-label">Alamat :</label>
-                                <textarea type="text" class="form-control" id="exampleFormControlInput1"
-                                    placeholder="Alamat" rows="4"></textarea>
-                            </div>
-                            <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                <label for="exampleFormControlInput1" class="form-label">Link WhatsApp :</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1"
-                                    placeholder="Link WhatsApp">
-                            </div>
-                            <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                <label for="exampleFormControlInput1" class="form-label">Link Instagram :</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1"
-                                    placeholder="Link Instagram">
+                            <div class="col-12 d-flex">
+                                <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                    <label for="exampleFormControlInput1" class="form-label">Link WhatsApp :</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1"
+                                        placeholder="Link WhatsApp">
+                                </div>
+                                <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                    <label for="exampleFormControlInput1" class="form-label">Link Instagram :</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1"
+                                        placeholder="Link Instagram">
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer pe-4 border-top ">
@@ -268,37 +305,7 @@
         </div>
     </div>
 </div>
-<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
-<script>
-    const InputText = document.getElementById('inputjudul');
-    const Limit = document.getElementById('limit');
-    const limit = 255;
-
-    Limit.textContent = 0 + "/" + limit;
-
-    InputText.addEventListener('input', function () {
-        const textlength = InputText.value.length;
-        Limit.textContent = textlength + "/" + limit;
-    })
-
-    const InputText2 = document.getElementById('inputjudul2');
-    const Limit2 = document.getElementById('limit2');
-    const limit2 = 255;
-
-    Limit2.textContent = 0 + "/" + limit2;
-
-    InputText2.addEventListener('input', function () {
-        const textlength2 = InputText2.value.length;
-        Limit2.textContent = textlength2 + "/" + limit2;
-    })
-    // $(document).ready(function () {
-    //     $(document).on('submit', '#form-data', function (e) {
-    //         e.preventDefault();
-    //         alert('oke');
-    //     })
-    // })
-
-</script>
+<script src="js/banner.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
     integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>

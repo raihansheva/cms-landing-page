@@ -9,25 +9,34 @@ class Home extends BaseController
         return view('content/home');
     }
 
-    public function login(): string
-    {
-        return view('login');
-    }
 
+    // banner
     public function content(): string
     {
         helper(['form']);
         return view('content/konten');
 
     }
+    // ------------------------
 
+
+    // solusi
     public function solusi(): string
     {
         return view('content/solusi');
     }
+    // ------------------------
 
+
+    // fitur dan detail fitur 
     public function fitur(): string
     {
         return view('content/fitur');
     }
+
+    public function detailfitur(): string
+    {
+        return view('content/detail-fitur');
+    }
+    // ------------------------
 }
