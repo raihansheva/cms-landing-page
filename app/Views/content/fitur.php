@@ -95,9 +95,9 @@
                 <thead class="">
                     <tr class="p-2">
                         <th scope="col">No</th>
-                        <th scope="col">Judul</th>
                         <th scope="col">Nama Fitur</th>
                         <th scope="col">Deskripsi</th>
+                        <th scope="col">Nama Solusi</th>
                         <th scope="col">Icon</th>
                         <th scope="col"></th>
                         <th scope="col"></th>
