@@ -1,6 +1,8 @@
 <?php $this->extend('layout/main') ?>
 <?php $this->section('content') ?>
 <link rel="stylesheet" href="css/style-konten.css">
+<link href="assets/bootsrap/css/bootstrap.min.css" rel="stylesheet">
+
 <div class="bungkus">
     <div class="konten-banner">
         <!-- <div class="area-banner">
@@ -15,7 +17,7 @@
             <!-- Modal Tambah Banner -->
             <div class="modal fade" id="exampleModaltambahsolusi" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
-                <div class="modal-dialog modal-lg">
+                <div class="modal-dialog modal-lg modal-dialog-scrollable">
                     <div class="modal-content">
                         <div class="modal-header border-bottom">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Solusi</h1>
@@ -27,14 +29,25 @@
                                 <input type="text" class="form-control" id="exampleFormControlInput1"
                                     placeholder="Masukan Nama Solusi">
                             </div>
-                            <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                <label for="exampleFormControlTextarea1" class="form-label">Deskripsi Solusi :</label>
-                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                            </div>
-                            <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                <label for="exampleFormControlInput1" class="form-label">Gambar / Icon :</label>
-                                <input type="file" class="form-control" id="exampleFormControlInput1"
-                                    placeholder="Pilih Gambar">
+                            <div class="col-12 d-flex">
+                                <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Deskripsi
+                                        Solusi:</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1"
+                                        rows="8.5"></textarea>
+                                </div>
+                                <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                    <label for="exampleFormControlInput1" class="form-label">Gambar / Icon
+                                        :</label>
+                                    <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar">
+
+                                    <div class="col-12 mt-2">
+                                        <img src="#" alt="Pratinjau Gambar" id="preview"
+                                            class="preview-image d-none image-fluid col-12" width="100%">
+                                        <button type="button" id="hapusGambar" class="btn btn-danger d-none">Hapus
+                                            Gambar</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="modal-footer border-top pe-4">
@@ -57,7 +70,7 @@
                     <!-- Modal -->
                     <div class="modal fade" id="exampleModaleditbanner" tabindex="-1"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog modal-lg">
+                        <div class="modal-dialog modal-lg modal-dialog-scrollable">
                             <div class="modal-content">
                                 <div class="modal-header border-bottom">
                                     <h1 class="modal-title fs-5" id="exampleModalLabel">Ubah Solusi</h1>
@@ -70,16 +83,27 @@
                                         <input type="text" class="form-control" id="exampleFormControlInput1"
                                             placeholder="Masukan Nama Solusi">
                                     </div>
-                                    <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                        <label for="exampleFormControlTextarea1" class="form-label">Deskripsi Solusi
-                                            :</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="4"></textarea>
-                                    </div>
-                                    <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                        <label for="exampleFormControlInput1" class="form-label">Gambar / Icon :</label>
-                                        <input type="file" class="form-control" id="exampleFormControlInput1"
-                                            placeholder="Pilih Gambar">
+                                    <div class="col-12 d-flex">
+                                        <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                            <label for="exampleFormControlTextarea1" class="form-label">Deskripsi
+                                                Solusi:</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                rows="8.5"></textarea>
+                                        </div>
+                                        <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                            <label for="exampleFormControlInput1" class="form-label">Gambar / Icon
+                                                :</label>
+                                            <input type="file" class="form-control" id="gambar"
+                                                placeholder="Pilih Gambar">
+
+                                            <div class="col-12 mt-2">
+                                                <img src="#" alt="Pratinjau Gambar" id="preview"
+                                                    class="preview-image d-none image-fluid col-12" width="100%">
+                                                <button type="button" id="hapusGambar"
+                                                    class="btn btn-danger d-none">Hapus
+                                                    Gambar</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="modal-footer border-top pe-4">
@@ -290,4 +314,9 @@
         </div>
     </div>
 </div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/sidebarmenu.js"></script>
 <?php $this->endsection() ?>
