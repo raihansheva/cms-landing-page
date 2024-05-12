@@ -27,12 +27,59 @@
                             </div>
                             <div class="modal-body">
                                 <?= csrf_field(); ?>
+                                <div class="col-12 ">
+                                    <div class="ps-2" style="text-align: left;">
+                                        <label for="exampleFormControlInput1"
+                                            class="form-label d-flex justify-content-between">
+                                            Layout : </label>
+                                    </div>
+                                    <div class="col-12 d-flex gap-2">
+                                        <div class="mb-3 p-2 col" style="text-align: left;">
+                                            <div class="col-12 border border-2 d-flex justify-content-center align-items-center"
+                                                style="height: 150px;">
+                                                <h4 class="text-middle">Layout A</h4>
+                                            </div>
+                                            <br>
+                                            <div class="form-check  col-12 d-flex justify-content-center">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                    id="flexRadioDefault1">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 p-2 col " style="text-align: left;">
+                                            <div class="col-12 border border-2 d-flex justify-content-center align-items-center"
+                                                style="height: 150px;">
+                                                <h4 class="text-middle">Layout B</h4>
+                                            </div>
+                                            <br>
+                                            <div class="form-check col-12 d-flex justify-content-center">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                    id="flexRadioDefault1">
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 p-2 col" style="text-align: left;">
+                                            <div class="col-12 border border-2 d-flex justify-content-center align-items-center"
+                                                style="height: 150px;">
+                                                <h4 class="text-middle">Layout C</h4>
+                                            </div>
+                                            <br>
+                                            <div class="form-check col-12 d-flex justify-content-center">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                    id="flexRadioDefault1">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <div class="mb-3 p-2" style="text-align: left;">
-                                    <label for="exampleFormControlInput1"
+                                    <!-- <label for="exampleFormControlInput1"
                                         class="form-label d-flex justify-content-between">
                                         Judul : <p class="p-0 m-0" id="limit"></p></label>
                                     <input type="text" class="form-control m-0" id="inputjudul"
-                                        placeholder="Masukan Judul" name="judul">
+                                        placeholder="Masukan Judul" name="judul"> -->
+                                    <label for="exampleFormControlInput1"
+                                        class="form-label d-flex justify-content-between">
+                                        Judul : </label>
+                                    <input type="text" class="form-control" id="inputjudul2"
+                                        placeholder="Masukan Judul">
                                 </div>
                                 <div class="col-12 d-flex">
                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
@@ -59,7 +106,6 @@
                                         class="ti ti-download pe-2 fs-6 align-middle p-1 "></i>
                                     <p class="m-0 p-1 align-middle">Simpan</p>
                                 </button>
-                                <!-- <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button> -->
                             </div>
                         </div>
                     </form>
@@ -84,12 +130,58 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
-
                                     <div class="modal-body">
+                                        <div class="col-12 ">
+                                            <div class="ps-2" style="text-align: left;">
+                                                <label for="exampleFormControlInput1"
+                                                    class="form-label d-flex justify-content-between">
+                                                    Layout : </label>
+                                            </div>
+                                            <div class="col-12 d-flex gap-2">
+                                                <div class="mb-3 p-2 col" style="text-align: left;">
+                                                    <div class="col-12 border border-2 d-flex justify-content-center align-items-center"
+                                                        style="height: 150px;">
+                                                        <h4 class="text-middle">Layout A</h4>
+                                                    </div>
+                                                    <br>
+                                                    <div class="form-check  col-12 d-flex justify-content-center">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="flexRadioDefault" id="flexRadioDefault1">
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 p-2 col " style="text-align: left;">
+                                                    <div class="col-12 border border-2 d-flex justify-content-center align-items-center"
+                                                        style="height: 150px;">
+                                                        <h4 class="text-middle">Layout B</h4>
+                                                    </div>
+                                                    <br>
+                                                    <div class="form-check col-12 d-flex justify-content-center">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="flexRadioDefault" id="flexRadioDefault1">
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 p-2 col" style="text-align: left;">
+                                                    <div class="col-12 border border-2 d-flex justify-content-center align-items-center"
+                                                        style="height: 150px;">
+                                                        <h4 class="text-middle">Layout C</h4>
+                                                    </div>
+                                                    <br>
+                                                    <div class="form-check col-12 d-flex justify-content-center">
+                                                        <input class="form-check-input" type="radio"
+                                                            name="flexRadioDefault" id="flexRadioDefault1">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                         <div class="mb-3 p-2 pt-0" style="text-align: left; p-2">
-                                            <label for="exampleFormControlInput1"
+                                            <!-- <label for="exampleFormControlInput1"
                                                 class="form-label d-flex justify-content-between">
                                                 Judul : <p class="p-0 m-0" id="limit2"></p></label>
+                                            <input type="text" class="form-control" id="inputjudul2"
+                                                placeholder="Masukan Judul"> -->
+                                            <label for="exampleFormControlInput1"
+                                                class="form-label d-flex justify-content-between">
+                                                Judul : </label>
                                             <input type="text" class="form-control" id="inputjudul2"
                                                 placeholder="Masukan Judul">
                                         </div>
@@ -279,8 +371,6 @@
                                 <a href="">
                                     <p class="txt p-0 m-0 fs-3 text-decoration-underline">Terms & Conditions</p>
                                 </a>
-
-
                             </div>
                         </div>
                     </div>
