@@ -82,17 +82,17 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
                 <span>
-                  <i class="ti ti-menu-2"></i>
+                  <i class="ti ti-alert-circle"></i>
                 </span>
-                <span class="hide-menu">Menu</span>
+                <span class="hide-menu">About Us</span>
               </a>
             </li>
             <li class="sidebar-item">
               <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
                 <span>
-                  <i class="ti ti-alert-circle"></i>
+                  <i class="ti ti-menu-2"></i>
                 </span>
-                <span class="hide-menu">About Us</span>
+                <span class="hide-menu">Menu</span>
               </a>
             </li>
             <!--  -->
