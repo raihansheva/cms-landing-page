@@ -39,6 +39,48 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
+                            <div class="col-12 ">
+                                <div class="ps-2" style="text-align: left;">
+                                    <label for="exampleFormControlInput1"
+                                        class="form-label d-flex justify-content-between">
+                                        Layout : </label>
+                                </div>
+                                <div class="col-12 d-flex gap-2">
+                                    <div class="mb-3 p-2 col" style="text-align: left;">
+                                        <div class="col-12 border border-2 d-flex justify-content-center align-items-center"
+                                            style="height: 150px;">
+                                            <h4 class="text-middle">Layout A</h4>
+                                        </div>
+                                        <br>
+                                        <div class="form-check  col-12 d-flex justify-content-center">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                id="flexRadioDefault1">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 p-2 col " style="text-align: left;">
+                                        <div class="col-12 border border-2 d-flex justify-content-center align-items-center"
+                                            style="height: 150px;">
+                                            <h4 class="text-middle">Layout B</h4>
+                                        </div>
+                                        <br>
+                                        <div class="form-check col-12 d-flex justify-content-center">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                id="flexRadioDefault1">
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 p-2 col" style="text-align: left;">
+                                        <div class="col-12 border border-2 d-flex justify-content-center align-items-center"
+                                            style="height: 150px;">
+                                            <h4 class="text-middle">Layout C</h4>
+                                        </div>
+                                        <br>
+                                        <div class="form-check col-12 d-flex justify-content-center">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                id="flexRadioDefault1">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="mb-3 p-2 pt-0" style="text-align: left;">
                                 <label for="exampleFormControlInput1" class="form-label">Judul Detail :</label>
                                 <input type="text" class="form-control" id="exampleFormControlInput1"
@@ -91,10 +133,11 @@
                 <thead class="">
                     <tr class="p-2">
                         <th scope="col">No</th>
-                        <th scope="col">Judul</th>
+                        <th scope="col">Judul Detail</th>
                         <th scope="col">Nama Fitur</th>
                         <th scope="col">Deskripsi</th>
                         <th scope="col">Icon</th>
+                        <th scope="col">Layout</th>
                         <th scope="col"></th>
                         <th scope="col"></th>
                     </tr>
