@@ -18,7 +18,7 @@
             <div class="modal fade" id="exampleModaltambahsolusi" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-lg modal-dialog-scrollable">
-                    <form action="/tambahsolusi" method="post" id="form-data" class="modal-dialog-scrollable"
+                    <form action="/tambahsolusi" method="post" id="form-data-solusi" class="modal-dialog-scrollable"
                         enctype="multipart/form-data">
                         <?= csrf_field(); ?>
                         <div class="modal-content">
@@ -80,6 +80,8 @@
                         <div class="modal fade" id="exampleModaleditbanner" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                            <form action="/ubahsolusi" method="post" id="form-data-ubah" class="modal-dialog-scrollable" enctype="multipart/form-data">
+                                <?= csrf_field(); ?>
                                 <div class="modal-content">
                                     <div class="modal-header border-bottom">
                                         <h1 class="modal-title fs-5" id="exampleModalLabel">Ubah Solusi</h1>
@@ -90,20 +92,20 @@
                                         <div class="mb-3 p-2 pt-0" style="text-align: left;">
                                             <label for="exampleFormControlInput1" class="form-label">Nama Solusi :</label>
                                             <input type="text" class="form-control" id="exampleFormControlInput1"
-                                                placeholder="Masukan Nama Solusi">
+                                                placeholder="Masukan Nama Solusi" value="<?= $value['nama_solusi'] ?>" name="nama_solusi" id="deskripsi">
                                         </div>
                                         <div class="col-12 d-flex">
                                             <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                                 <label for="exampleFormControlTextarea1" class="form-label">Deskripsi
                                                     Solusi:</label>
-                                                <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                    rows="8.5"></textarea>
+                                                <textarea class="form-control" id="deskripsi"
+                                                    rows="8.5" name="deskripsi" ><?= $value['deskripsi'] ?></textarea>
                                             </div>
                                             <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                                 <label for="exampleFormControlInput1" class="form-label">Gambar / Icon
                                                     :</label>
                                                 <input type="file" class="form-control" id="gambar"
-                                                    placeholder="Pilih Gambar">
+                                                    placeholder="Pilih Gambar" name="gambar">
 
                                                 <div class="col-12 mt-2">
                                                     <img src="#" alt="Pratinjau Gambar" id="preview"
@@ -116,13 +118,14 @@
                                         </div>
                                     </div>
                                     <div class="modal-footer border-top pe-4">
-                                        <button class="btn d-flex" type="button"
+                                        <button class="btn d-flex" type="submit"
                                             style="background-color: #03C988; color:white;"><i
                                                 class="ti ti-edit pe-2 fs-6 align-middle p-1 "></i>
                                             <p class="m-0 p-1 align-middle">Simpan perubahan</p>
                                         </button>
                                     </div>
                                 </div>
+                            </form>
                             </div>
                         </div>
                         <!-- ikon hapus -->
@@ -138,17 +141,19 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
+                                    <form action="/hapussolusi" method="post" id="form-data-hapus">
+                                        <?= csrf_field(); ?>
                                     <div class="modal-body">
                                         <p class="text-center">Yakin ingin hapus solusi ini?</p>
-                                        <input type="text" value="<?= $value['id'] ?>" name="id" hidden>
+                                        <input type="text" value="<?= $value['id'] ?>" name="id" id="id_solusi" >
                                     </div>
                                     <div class="modal-footer d-flex justify-content-center">
-                                        <button class="btn btn-danger d-flex" type="button" data-bs-toggle="modal"
-                                            data-bs-target="#exampleModaltambahsolusi"><i
-                                                class="ti ti-trash pe-2 fs-6 align-middle p-1 "></i>
+                                        <button class="btn btn-danger d-flex btn-delete" type="submit"><i
+                                                class="ti ti-trash pe-2 fs-6 align-middle p-1" id="btn-delete"></i>
                                             <p class="m-0 p-1 align-middle">Hapus</p>
                                         </button>
                                     </div>
+                                    </form>
                                 </div>
                             </div>
                         </div>
