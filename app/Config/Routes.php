@@ -33,6 +33,13 @@ $routes->post('/hapusfitur', 'FiturController::hapusfitur');
 $routes->get('/detail-fitur', 'Home::detailfitur');
 // -----------
 
+// paket harga
+$routes->get('/paketharga', 'Home::paketharga');
+$routes->post('/tambahharga', 'HargaController::tambahharga');
+$routes->post('/ubahharga', 'HargaController::ubahharga');
+$routes->post('/hapusharga', 'HargaController::hapusharga');
+
+
 // crud banner
 $routes->post('/tambahbanner', 'BannerController::add');
 // -----------

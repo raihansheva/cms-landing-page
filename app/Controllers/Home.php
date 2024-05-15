@@ -3,6 +3,7 @@
 namespace App\Controllers;
 use App\Models\Fitur;
 use App\Models\Banner;
+use App\Models\Harga;
 use App\Models\Solusi;
 use App\Controllers\BaseController;
 
@@ -68,4 +69,14 @@ class Home extends BaseController
         return view('content/detail-fitur');
     }
     // ------------------------
+
+    public function paketharga(): string
+    {
+        helper(['form']);
+        $harga = new Harga();
+        $data = [
+            'paket_harga' => $harga->findAll()
+        ];
+        return view('content/paket-harga' , $data);
+    }
 }

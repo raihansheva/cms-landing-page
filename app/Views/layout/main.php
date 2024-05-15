@@ -72,7 +72,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-forms.html" aria-expanded="false">
+              <a class="sidebar-link" href="/paketharga" aria-expanded="false">
                 <span>
                   <i class="ti ti-receipt-2"></i>
                 </span>
@@ -85,14 +85,6 @@
                   <i class="ti ti-alert-circle"></i>
                 </span>
                 <span class="hide-menu">About Us</span>
-              </a>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
-                <span>
-                  <i class="ti ti-menu-2"></i>
-                </span>
-                <span class="hide-menu">Menu</span>
               </a>
             </li>
             <!--  -->
