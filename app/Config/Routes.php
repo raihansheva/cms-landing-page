@@ -14,14 +14,22 @@ $routes->get('/dashboard', 'Home::index');
 
 // banner
 $routes->get('/konten', 'Home::content');
+$routes->get('/tampilkonten', 'Home::tampilcontent');
 // -----------
 
 // solusi
 $routes->get('/solusi', 'Home::solusi');
+$routes->post('/tambahsolusi', 'SolusiController::addsolusi');
+$routes->post('/ubahsolusi', 'SolusiController::ubahsolusi');
+$routes->post('/hapussolusi', 'SolusiController::hapussolusi');
 // -----------
 
 // fitur
 $routes->get('/fitur', 'Home::fitur');
+$routes->post('/tambahfitur', 'FiturController::tambahfitur');
+$routes->post('/ubahfitur', 'FiturController::ubahfitur');
+$routes->post('/hapusfitur', 'FiturController::hapusfitur');
+
 $routes->get('/detail-fitur', 'Home::detailfitur');
 // -----------
 

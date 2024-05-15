@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Banner extends Model
+class Fitur extends Model
 {
-    protected $table            = 'banner';
+    protected $table            = 'fitur';
     protected $primaryKey       = 'id';
-    protected $allowedFields = ['id','judul', 'deskripsi','gambar'];
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
+    protected $allowedFields    = ['id','nama_fitur','deskripsi','id_solusi','icon'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
@@ -43,9 +43,4 @@ class Banner extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
-
-    public function addbanner($data)
-    {
-        return $this->insert($data);
-    }
 }

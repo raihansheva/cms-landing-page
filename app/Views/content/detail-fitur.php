@@ -46,39 +46,48 @@
                                         Layout : </label>
                                 </div>
                                 <div class="col-12 d-flex gap-2">
-                                    <div class="mb-3 p-2 col" style="text-align: left;">
-                                        <div class="col-12 border border-2 d-flex justify-content-center align-items-center"
-                                            style="height: 150px;">
-                                            <h4 class="text-middle">Layout A</h4>
+                                <div class="mb-3 p-2 col" style="text-align: left;">
+                                            <div class="col-12 border border-2 d-flex justify-content-center align-items-center"
+                                                style="height: 150px;">
+                                                <h4 class="text-middle">Layout A</h4>
+                                            </div>
+                                            <br>
+                                            <div class="form-check  col-12 d-flex justify-content-center gap-1">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                    id="flexRadioDefault1">
+                                                    <label for="exampleFormControlInput1"
+                                                    class="form-label d-flex justify-content-between">
+                                                    A </label>
+                                            </div>
                                         </div>
-                                        <br>
-                                        <div class="form-check  col-12 d-flex justify-content-center">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        <div class="mb-3 p-2 col " style="text-align: left;">
+                                            <div class="col-12 border border-2 d-flex justify-content-center align-items-center"
+                                                style="height: 150px;">
+                                                <h4 class="text-middle">Layout B</h4>
+                                            </div>
+                                            <br>
+                                            <div class="form-check col-12 d-flex justify-content-center gap-1">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                    id="flexRadioDefault1">
+                                                    <label for="exampleFormControlInput1"
+                                                    class="form-label d-flex justify-content-between">
+                                                    B </label>
+                                            </div>
+                                        </div>
+                                        <div class="mb-3 p-2 col" style="text-align: left;">
+                                            <div class="col-12 border border-2 d-flex justify-content-center align-items-center"
+                                                style="height: 150px;">
+                                                <h4 class="text-middle">Layout C</h4>
+                                            </div>
+                                            <br>
+                                            <div class="form-check col-12 d-flex justify-content-center gap-1">
+                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
                                                 id="flexRadioDefault1">
+                                                <label for="exampleFormControlInput1"
+                                                    class="form-label d-flex justify-content-between">
+                                                    C </label>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="mb-3 p-2 col " style="text-align: left;">
-                                        <div class="col-12 border border-2 d-flex justify-content-center align-items-center"
-                                            style="height: 150px;">
-                                            <h4 class="text-middle">Layout B</h4>
-                                        </div>
-                                        <br>
-                                        <div class="form-check col-12 d-flex justify-content-center">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                id="flexRadioDefault1">
-                                        </div>
-                                    </div>
-                                    <div class="mb-3 p-2 col" style="text-align: left;">
-                                        <div class="col-12 border border-2 d-flex justify-content-center align-items-center"
-                                            style="height: 150px;">
-                                            <h4 class="text-middle">Layout C</h4>
-                                        </div>
-                                        <br>
-                                        <div class="form-check col-12 d-flex justify-content-center">
-                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                id="flexRadioDefault1">
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <div class="mb-3 p-2 pt-0" style="text-align: left;">

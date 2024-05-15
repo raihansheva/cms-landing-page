@@ -1,32 +1,50 @@
 
 $(document).ready(function () {
-    $(document).on('submit', '#form-data-banner', function (e) {
+    $('#tabelfitur').DataTable();
+    // UNTUK TAMBAH SOLUSI
+    $(document).on('submit', '#form-data-fitur', function (e) {
         e.preventDefault();
         // alert('oke');
         $.ajax({
-            url: "/tambahbanner",
-            type: 'post',
-            data: $(this).serialize(),
-            dataType: "json",
-            success: function (res) {
-                if (res.status) {
-                    alert('anda berhasil menyimpan data'); 
-                }
-            }
-        })
-    })
-
-    $(document).on('submit', '#form-data-solusi', function (e) {
-        e.preventDefault();
-        // alert('oke');
-        $.ajax({
-            url: "/tambahsolusi",
+            url: "/tambahfitur",
             type: 'post',
             data: $(this).serialize(),
             dataType: "json",
             success: function (res) {
                 if (res.status) {
                     alert('anda berhasil menyimpan data solusi'); 
+                }
+            }
+        })
+    })
+    // UNTUK UBAH SOLUSI
+    $(document).on('submit', '#form-data-ubah', function (e) {
+        e.preventDefault();
+        // alert('oke');
+        $.ajax({
+            url: "/ubahfitur",
+            type: 'post',
+            data: $(this).serialize(),
+            dataType: "json",
+            success: function (res) {
+                if (res.status) {
+                    alert('anda berhasil mengahapus data solusi'); 
+                }
+            }
+        })
+    })
+    // UNTUK HAPUS SOLUSi
+    $(document).on('submit', '#form-data-hapus', function (e) {
+        e.preventDefault();
+        // alert('oke');
+        $.ajax({
+            url: "/hapusfitur",
+            type: 'post',
+            data: $(this).serialize(),
+            dataType: "json",
+            success: function (res) {
+                if (res.status) {
+                    alert('anda berhasil mengahapus data solusi'); 
                 }
             }
         })

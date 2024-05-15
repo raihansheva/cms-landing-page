@@ -20,7 +20,7 @@
                 <div class="modal-dialog modal-lg modal-dialog-scrollable">
                     <form action="/tambahsolusi" method="post" id="form-data-solusi" class="modal-dialog-scrollable"
                         enctype="multipart/form-data">
-                        <?= csrf_field(); ?>
+                        <!--  -->
                         <div class="modal-content">
                             <div class="modal-header border-bottom">
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Solusi</h1>
@@ -57,7 +57,7 @@
                             </div>
                             <div class="modal-footer border-top pe-4">
                                 <button class="btn d-flex" type="submit"
-                                    style="background-color: #03C988; color:white;"><i
+                                    style="background-color: #03C988; color:white;" id="btn-simpan"><i
                                         class="ti ti-download pe-2 fs-6 align-middle p-1 "></i>
                                     <p class="m-0 p-1 align-middle">Simpan</p>
                                 </button>
@@ -75,9 +75,9 @@
                 <div class="card" style="padding: 24px; height: 310px; width: 354px;">
                     <div class="card-kanan-atas">
                         <i class="ti ti-pencil" style="font-size: 30px;" type="button" data-bs-toggle="modal"
-                            data-bs-target="#exampleModaleditbanner"></i>
+                            data-bs-target="#exampleModaleditsolusi<?= $value['id'] ?>"></i>
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModaleditbanner" tabindex="-1"
+                        <div class="modal fade" id="exampleModaleditsolusi<?= $value['id'] ?>" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg modal-dialog-scrollable">
                             <form action="/ubahsolusi" method="post" id="form-data-ubah" class="modal-dialog-scrollable" enctype="multipart/form-data">
@@ -89,6 +89,7 @@
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
+                                        <input type="text" value="<?= $value['id'] ?>" name="id" id="id" hidden>
                                         <div class="mb-3 p-2 pt-0" style="text-align: left;">
                                             <label for="exampleFormControlInput1" class="form-label">Nama Solusi :</label>
                                             <input type="text" class="form-control" id="exampleFormControlInput1"
@@ -130,9 +131,9 @@
                         </div>
                         <!-- ikon hapus -->
                         <i class="ti ti-x" style="font-size: 30px;" type="button" data-bs-toggle="modal"
-                            data-bs-target="#exampleModalhapusbanner"></i>
+                            data-bs-target="#exampleModalhapussolusi<?php echo $value['id'] ?>"></i>
                         <!-- Modal -->
-                        <div class="modal fade" id="exampleModalhapusbanner" tabindex="-1"
+                        <div class="modal fade" id="exampleModalhapussolusi<?php echo $value['id'] ?>" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" style="width: 250px;">
                                 <div class="modal-content">
@@ -145,7 +146,7 @@
                                         <?= csrf_field(); ?>
                                     <div class="modal-body">
                                         <p class="text-center">Yakin ingin hapus solusi ini?</p>
-                                        <input type="text" value="<?= $value['id'] ?>" name="id" id="id_solusi" >
+                                        <input type="text" value="<?= $value['id'] ?>" name="id" id="id_solusi" hidden>
                                     </div>
                                     <div class="modal-footer d-flex justify-content-center">
                                         <button class="btn btn-danger d-flex btn-delete" type="submit"><i
@@ -177,5 +178,26 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <script src="../assets/js/sidebarmenu.js"></script>
-<script src="js/ajax_solusi.php"></script>
+<!-- <script src="js/ajax_solusi.php"></script> -->
+<!-- <script>
+    $(document).ready(function () {
+        $('#btn-simpan').click(function () {
+            // alert('haiii')
+            const formdata = new FormData($("#form-data-solusi")[0]);
+            $.ajax({
+                type: 'post',
+                headers:{'X-Requested-With': 'XMLHttpRequest'},
+                url: '/tambahbanner' ,
+                data: formdata,
+                dataType: "json",
+                success: function (res) {
+                    if (res.status) {
+                        alert('anda berhasil menyimpan data');
+                    }
+                }
+            })
+        });
+    })
+    
+</script> -->
 <?php $this->endsection() ?>

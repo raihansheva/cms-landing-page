@@ -18,7 +18,9 @@
             <div class="modal fade" id="exampleModaltambahbanner" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-lg modal-dialog-scrollable">
-                    <form action="/tambahbanner" method="post" id="form-data" class="modal-dialog-scrollable">
+                    <form action="/tambahbanner" method="post" id="form-data" class="modal-dialog-scrollable"
+                        enctype="multipart/form-data">
+                        <?= csrf_field(); ?>
                         <div class="modal-content">
                             <div class="modal-header  border-bottom">
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Banner</h1>
@@ -26,8 +28,7 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <?= csrf_field(); ?>
-                                <div class="col-12 ">
+                                <!-- <div class="col-12 ">
                                     <div class="ps-2" style="text-align: left;">
                                         <label for="exampleFormControlInput1"
                                             class="form-label d-flex justify-content-between">
@@ -40,9 +41,12 @@
                                                 <h4 class="text-middle">Layout A</h4>
                                             </div>
                                             <br>
-                                            <div class="form-check  col-12 d-flex justify-content-center">
+                                            <div class="form-check  col-12 d-flex justify-content-center gap-1">
                                                 <input class="form-check-input" type="radio" name="flexRadioDefault"
                                                     id="flexRadioDefault1">
+                                                <label for="exampleFormControlInput1"
+                                                    class="form-label d-flex justify-content-between">
+                                                    A </label>
                                             </div>
                                         </div>
                                         <div class="mb-3 p-2 col " style="text-align: left;">
@@ -51,9 +55,12 @@
                                                 <h4 class="text-middle">Layout B</h4>
                                             </div>
                                             <br>
-                                            <div class="form-check col-12 d-flex justify-content-center">
+                                            <div class="form-check col-12 d-flex justify-content-center gap-1">
                                                 <input class="form-check-input" type="radio" name="flexRadioDefault"
                                                     id="flexRadioDefault1">
+                                                <label for="exampleFormControlInput1"
+                                                    class="form-label d-flex justify-content-between">
+                                                    B </label>
                                             </div>
                                         </div>
                                         <div class="mb-3 p-2 col" style="text-align: left;">
@@ -62,13 +69,16 @@
                                                 <h4 class="text-middle">Layout C</h4>
                                             </div>
                                             <br>
-                                            <div class="form-check col-12 d-flex justify-content-center">
+                                            <div class="form-check col-12 d-flex justify-content-center gap-1">
                                                 <input class="form-check-input" type="radio" name="flexRadioDefault"
                                                     id="flexRadioDefault1">
+                                                <label for="exampleFormControlInput1"
+                                                    class="form-label d-flex justify-content-between">
+                                                    C </label>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="mb-3 p-2" style="text-align: left;">
                                     <!-- <label for="exampleFormControlInput1"
                                         class="form-label d-flex justify-content-between">
@@ -79,17 +89,17 @@
                                         class="form-label d-flex justify-content-between">
                                         Judul : </label>
                                     <input type="text" class="form-control" id="inputjudul2"
-                                        placeholder="Masukan Judul">
+                                        placeholder="Masukan Judul" name="judul">
                                 </div>
                                 <div class="col-12 d-flex">
                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                         <label for="exampleFormControlTextarea1" class="form-label">Deskripsi:</label>
                                         <textarea class="form-control" id="exampleFormControlTextarea1"
-                                            rows="8.5"></textarea>
+                                            rows="8.5" name="deskripsi"></textarea>
                                     </div>
                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                         <label for="exampleFormControlInput1" class="form-label">Gambar :</label>
-                                        <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar">
+                                        <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar" name="gambar">
 
                                         <div class="col-12 mt-2 text-end">
                                             <i class="ti ti-x d-none" type="button" id="hapusGambar"
@@ -101,9 +111,8 @@
                                 </div>
                             </div>
                             <div class="modal-footer m-2 border-top">
-                                <button class="btn d-flex" type="submit"
-                                    style="background-color: #03C988; color:white;"><i
-                                        class="ti ti-download pe-2 fs-6 align-middle p-1 "></i>
+                                <button class="btn d-flex" type="submit" style="background-color: #03C988; color:white;"
+                                    id="btn-simpan"><i class="ti ti-device-floppy pe-1 fs-6 align-middle p-1 "></i>
                                     <p class="m-0 p-1 align-middle">Simpan</p>
                                 </button>
                             </div>
@@ -123,7 +132,7 @@
                     <div class="modal fade" id="exampleModaleditbanner" tabindex="-1"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-dialog-scrollable">
-                            <form action="/tambahbanner" method="post" id="form-data" class="modal-dialog-scrollable">
+                            <form action="" method="post" id="" class="modal-dialog-scrollable">
                                 <div class="modal-content">
                                     <div class="modal-header border-bottom">
                                         <h1 class="modal-title fs-5" id="exampleModalLabel">Ubah banner</h1>
@@ -144,9 +153,12 @@
                                                         <h4 class="text-middle">Layout A</h4>
                                                     </div>
                                                     <br>
-                                                    <div class="form-check  col-12 d-flex justify-content-center">
+                                                    <div class="form-check  col-12 d-flex justify-content-center gap-1">
                                                         <input class="form-check-input" type="radio"
                                                             name="flexRadioDefault" id="flexRadioDefault1">
+                                                        <label for="exampleFormControlInput1"
+                                                            class="form-label d-flex justify-content-between">
+                                                            A </label>
                                                     </div>
                                                 </div>
                                                 <div class="mb-3 p-2 col " style="text-align: left;">
@@ -155,9 +167,12 @@
                                                         <h4 class="text-middle">Layout B</h4>
                                                     </div>
                                                     <br>
-                                                    <div class="form-check col-12 d-flex justify-content-center">
+                                                    <div class="form-check col-12 d-flex justify-content-center gap-1">
                                                         <input class="form-check-input" type="radio"
                                                             name="flexRadioDefault" id="flexRadioDefault1">
+                                                        <label for="exampleFormControlInput1"
+                                                            class="form-label d-flex justify-content-between">
+                                                            B </label>
                                                     </div>
                                                 </div>
                                                 <div class="mb-3 p-2 col" style="text-align: left;">
@@ -166,9 +181,12 @@
                                                         <h4 class="text-middle">Layout C</h4>
                                                     </div>
                                                     <br>
-                                                    <div class="form-check col-12 d-flex justify-content-center">
+                                                    <div class="form-check col-12 d-flex justify-content-center gap-1">
                                                         <input class="form-check-input" type="radio"
                                                             name="flexRadioDefault" id="flexRadioDefault1">
+                                                        <label for="exampleFormControlInput1"
+                                                            class="form-label d-flex justify-content-between">
+                                                            C </label>
                                                     </div>
                                                 </div>
                                             </div>
@@ -196,7 +214,7 @@
                                                 <label for="exampleFormControlInput1" class="form-label">Gambar
                                                     :</label>
                                                 <input type="file" class="form-control" id="gambar"
-                                                    placeholder="Pilih Gambar">
+                                                    placeholder="Pilih Gambar" name="gambar">
 
                                                 <div class="col-12 mt-2">
                                                     <img src="#" alt="Pratinjau Gambar" id="preview"
@@ -393,9 +411,10 @@
         </div>
     </div>
 </div>
-<script src="js/banner.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
     integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+<script src="assets/libs/jquery/dist/jquery.min.js"></script>
+<script src="js/banner.js"></script>
 <script src="js/ajax.js"></script>
 <?php $this->endsection() ?>
