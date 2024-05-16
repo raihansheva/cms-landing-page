@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\Headersolusi;
 use App\Models\Solusi;
 use CodeIgniter\HTTP\ResponseInterface;
 
@@ -57,6 +58,18 @@ class SolusiController extends BaseController
             'nama_solusi' => $this->request->getPost('nama_solusi'),
             'deskripsi' => $this->request->getPost('deskripsi'),
             'gambar' => $path 
+        ]);
+        return redirect()->back();
+        // return $this->response->setJSON(['status' => true]);
+    }
+
+    public function ubahheadersolusi(){
+        $id = $this->request->getPost('id');
+        $headsolusi = new Headersolusi();
+        $headsolusi->save([
+            'id'=> $id,
+            'judul_solusi' => $this->request->getPost('judul_solusi'),
+            'deskripsi' => $this->request->getPost('deskripsi'),
         ]);
         return redirect()->back();
         // return $this->response->setJSON(['status' => true]);

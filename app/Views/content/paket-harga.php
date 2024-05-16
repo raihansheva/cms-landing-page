@@ -60,7 +60,7 @@
                                     </div>
                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                         <label for="exampleFormControlInput1" class="form-label">Harga :</label>
-                                        <input type="numeric" class="form-control" id="harga"
+                                        <input type="number" class="form-control" id="harga"
                                             placeholder="Masukan harga" name="harga">
                                     </div>
 
@@ -115,7 +115,7 @@
                             <td><?php echo $value['harga'] ?></td>
                             <td><?php echo $value['id_solusi'] ?></td>
                             <td class="m-0 p-1 d-flex gap-2">
-                                <a href="/detail-fitur">
+                                <a href="/benefit">
                                     <!-- Button modal detail -->
                                     <button class="btn btn-primary d-flex" type="button" data-bs-toggle="modal"
                                         data-bs-target="#exampleModaldetailfitur"><i
@@ -172,7 +172,7 @@
                                                         <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                                             <label for="exampleFormControlInput1" class="form-label">Harga
                                                                 :</label>
-                                                            <input type="numeric" class="form-control" id="harga"
+                                                            <input type="number" class="form-control" id="harga"
                                                                 placeholder="Masukan harga" name="harga" value="<?php echo $value['harga'] ?>">
                                                         </div>
 

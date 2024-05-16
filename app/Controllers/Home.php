@@ -4,6 +4,7 @@ namespace App\Controllers;
 use App\Models\Fitur;
 use App\Models\Banner;
 use App\Models\Harga;
+use App\Models\Headersolusi;
 use App\Models\Solusi;
 use App\Controllers\BaseController;
 
@@ -22,21 +23,15 @@ class Home extends BaseController
     public function content()
     {
         helper(['form']);
-        return view('content/konten');
+        $banner = new Banner();
+        $data =[
+            'banner' => $banner->findAll(),
+        ];
+        
+
+        return view('content/konten',$data);
     }
 
-    // public function tampilcontent()
-    // {
-    //     // helper(['form']);
-    //     $banner = new Banner();
-    //     $data = [
-    //         'banner' => $banner->findAll()
-    //     ];
-    //     // dd($data);
-    //     $output = view('content/konten' , $data);
-    //     echo json_encode($output);
-    //     // return view('content/konten' ,$data);
-    // }
     // ------------------------
 
 
@@ -45,10 +40,14 @@ class Home extends BaseController
     {
         helper(['form']);
         $solusi = new Solusi();
+        $headsolusi = new Headersolusi();
+        
         $data =[
-            'solusi' => $solusi->findAll()
+            'solusi' => $solusi->findAll(),
+            'head' => $headsolusi->findAll(),
         ];
-        return view('content/solusi' , $data );
+        // dd($head);
+        return view('content/solusi' , $data);
     }
     // ------------------------
 
@@ -74,9 +73,31 @@ class Home extends BaseController
     {
         helper(['form']);
         $harga = new Harga();
+
         $data = [
             'paket_harga' => $harga->findAll()
         ];
         return view('content/paket-harga' , $data);
+    }
+
+    public function benefit(): string
+    {
+        helper(['form']);
+        // $harga = new Harga();
+
+        // $data = [
+        //     'paket_harga' => $harga->findAll()
+        // ];
+        return view('content/benefit' );
+    }
+    public function artikel(): string
+    {
+        helper(['form']);
+        // $harga = new Harga();
+
+        // $data = [
+        //     'paket_harga' => $harga->findAll()
+        // ];
+        return view('content/artikel' );
     }
 }

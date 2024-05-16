@@ -13,24 +13,54 @@ class BannerController extends BaseController
         //
     }
     
-    public function add(){
+    public function addbanner(){
         $banner = new Banner();
 
         $image = $this->request->getFile('gambar');
-        $newName = $image->getRandomName();
+        $newName = $image->getClientName();
         $path = 'defalut.jpg';
-        // if ($image->isValid() && !$image->hasMoved()) {
-        //     $newName = $image->getRandomName();
-        //     $image->move(ROOTPATH . 'public/uploads', $newName);
+        if ($image->isValid() && !$image->hasMoved()) {
+            $newName = $image->getClientName();
+            $image->move(ROOTPATH . 'public/uploads', $newName);
 
-        //     $path = 'uploads/' . $newName;
-        // }
+            $path = 'uploads/' . $newName;
+        }
         $banner->save([
             'judul' => $this->request->getPost('judul'),
             'deskripsi' => $this->request->getPost('deskripsi'),
-            'gambar' => $newName 
+            'gambar' => $path 
         ]);
-        echo json_encode(['status' => TRUE]);
+        return redirect()->back();
         // return $this->response->setJSON(['status' => true]);
+    }
+
+    public function ubahbanner(){
+        $banner = new Banner();
+
+        $image = $this->request->getFile('gambar');
+        $newName = $image->getClientName();
+        $path = 'defalut.jpg';
+        if ($image->isValid() && !$image->hasMoved()) {
+            $newName = $image->getClientName();
+            $image->move(ROOTPATH . 'public/uploads', $newName);
+
+            $path = 'uploads/' . $newName;
+        }
+        $id = $this->request->getPost('id');
+        $banner->save([
+            'id' => $id,
+            'judul' => $this->request->getPost('judul'),
+            'deskripsi' => $this->request->getPost('deskripsi'),
+            'gambar' => $path 
+        ]);
+        return redirect()->back();
+        // return $this->response->setJSON(['status' => true]);
+    }
+
+    public function hapusbanner(){
+        $id = $this->request->getPost('id');
+        $banner = new Banner();
+        $delete = $banner->where('id', $id)->delete();
+        return redirect()->back();
     }
 }

@@ -176,10 +176,10 @@
                                                             :</label>
 
                                                         <select name="id_solusi" id="id_solusi" class="form-select">
-                                                            <option value="nama solusi 1">nama solusi 1</option>
-                                                            <option value="nama solusi 2">nama solusi 2</option>
-                                                            <option value="nama solusi 3">nama solusi 3</option>
-                                                            <option value="nama solusi 4">nama solusi 4</option>
+                                                            <option value="nama-solusi 1">nama solusi 1</option>
+                                                            <option value="nama-solusi 2">nama solusi 2</option>
+                                                            <option value="nama-solusi 3">nama solusi 3</option>
+                                                            <option value="nama-solusi 4">nama solusi 4</option>
                                                         </select>
                                                     </div>
 
