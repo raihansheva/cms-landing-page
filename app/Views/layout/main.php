@@ -52,7 +52,7 @@
                 <span>
                   <i class="ti ti-article"></i>
                 </span>
-                <span class="hide-menu">Konten</span>
+                <span class="hide-menu">Beranda</span>
               </a>
             </li>
             <li class="sidebar-item">
@@ -80,11 +80,19 @@
               </a>
             </li>
             <li class="sidebar-item">
+              <a class="sidebar-link" href="/artikel" aria-expanded="false">
+                <span>
+                  <i class="ti ti-news"></i>
+                </span>
+                <span class="hide-menu">Artikel</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
               <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
                 <span>
                   <i class="ti ti-alert-circle"></i>
                 </span>
-                <span class="hide-menu">About Us</span>
+                <span class="hide-menu">Tentang kami</span>
               </a>
             </li>
             <!--  -->
