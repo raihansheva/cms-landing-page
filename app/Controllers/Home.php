@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Controllers;
+use App\Models\Artikel;
 use App\Models\Fitur;
 use App\Models\Banner;
 use App\Models\Harga;
+use App\Models\Headerartikel;
 use App\Models\Headersolusi;
 use App\Models\Solusi;
 use App\Controllers\BaseController;
@@ -93,11 +95,12 @@ class Home extends BaseController
     public function artikel(): string
     {
         helper(['form']);
-        // $harga = new Harga();
-
-        // $data = [
-        //     'paket_harga' => $harga->findAll()
-        // ];
-        return view('content/artikel' );
+        $artikel = new Artikel();
+        $headartikel = new Headerartikel();
+        $data = [
+            'artikel' => $artikel->findAll(),
+            'head' => $headartikel->findAll()
+        ];
+        return view('content/artikel' ,$data );
     }
 }

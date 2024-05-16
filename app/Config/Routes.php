@@ -40,6 +40,7 @@ $routes->get('/detail-fitur', 'Home::detailfitur');
 $routes->get('/artikel', 'Home::artikel');
 $routes->post('/tambahartikel', 'ArtikelController::tambahartikel');
 $routes->post('/ubahartikel', 'ArtikelController::ubahartikel');
+$routes->post('/ubahheaderartikel', 'ArtikelController::ubahheadertikel');
 $routes->post('/hapusartikel', 'ArtikelController::hapusartikel');
 
 // paket harga
