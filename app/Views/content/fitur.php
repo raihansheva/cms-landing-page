@@ -176,10 +176,12 @@
                                                             :</label>
 
                                                         <select name="id_solusi" id="id_solusi" class="form-select">
-                                                            <option value="1">nama solusi</option>
-                                                            <option value="2">nama solusi</option>
-                                                            <option value="3">nama solusi</option>
-                                                            <option value="4">nama solusi</option>
+                                                            <option value="0">nama solusi
+                                                            </option>
+                                                            <?php foreach ($solusi as $key => $value) { ?>
+                                                                <option value="<?= $value['id'] ?>"><?= $value['nama_solusi'] ?>
+                                                                </option>
+                                                            <?php } ?>
                                                         </select>
                                                     </div>
 

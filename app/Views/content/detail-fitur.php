@@ -33,6 +33,9 @@
             <div class="modal fade" id="exampleModaltambahfitur" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                <form action="/tambahdetailfitur" method="post" id="form-data-fitur" class="modal-dialog-scrollable"
+                        enctype="multipart/form-data">
+                        <?= csrf_field(); ?>
                     <div class="modal-content">
                         <div class="modal-header border-bottom">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah detail Fitur</h1>
@@ -46,64 +49,77 @@
                                         Layout : </label>
                                 </div>
                                 <div class="col-12 d-flex gap-2">
-                                <div class="mb-3 p-2 col" style="text-align: left;">
-                                            <div class="col-12 border border-2 d-flex justify-content-center align-items-center"
-                                                style="height: 150px;">
-                                                <h4 class="text-middle">Layout A</h4>
-                                            </div>
-                                            <br>
-                                            <div class="form-check  col-12 d-flex justify-content-center gap-1">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                    id="flexRadioDefault1">
-                                                    <label for="exampleFormControlInput1"
-                                                    class="form-label d-flex justify-content-between">
-                                                    A </label>
+                                    <div class="mb-3 p-2 col" style="text-align: left;">
+                                        <div class="col-12 border border-2 d-flex p-2" style="height: 150px;">
+                                            <div class="col-6 border" style="height: 100%;"></div>
+                                            <div class="col-6 p-2 d-block justify-content-end" style="height: 100%;">
+                                                <div class="col-12 border mt-4"></div>
+                                                <div class="col-12 border mt-1" style="width: 60%;"></div>
+                                                <div class="col-12 border mt-1" style="width: 50%;"></div>
                                             </div>
                                         </div>
-                                        <div class="mb-3 p-2 col " style="text-align: left;">
-                                            <div class="col-12 border border-2 d-flex justify-content-center align-items-center"
-                                                style="height: 150px;">
-                                                <h4 class="text-middle">Layout B</h4>
-                                            </div>
-                                            <br>
-                                            <div class="form-check col-12 d-flex justify-content-center gap-1">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                    id="flexRadioDefault1">
-                                                    <label for="exampleFormControlInput1"
-                                                    class="form-label d-flex justify-content-between">
-                                                    B </label>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 p-2 col" style="text-align: left;">
-                                            <div class="col-12 border border-2 d-flex justify-content-center align-items-center"
-                                                style="height: 150px;">
-                                                <h4 class="text-middle">Layout C</h4>
-                                            </div>
-                                            <br>
-                                            <div class="form-check col-12 d-flex justify-content-center gap-1">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        <br>
+                                        <div class="form-check  col-12 d-flex justify-content-center gap-1">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
                                                 id="flexRadioDefault1">
-                                                <label for="exampleFormControlInput1"
-                                                    class="form-label d-flex justify-content-between">
-                                                    C </label>
+                                            <label for="exampleFormControlInput1"
+                                                class="form-label d-flex justify-content-between">
+                                                A </label>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 p-2 col " style="text-align: left;">
+                                        <div class="col-12 border border-2 d-flex p-2" style="height: 150px;">
+                                            <div class="col-6 p-2 d-block justify-content-end" style="height: 100%;">
+                                                <div class="col-12 border mt-4"></div>
+                                                <div class="col-12 border mt-1" style="width: 60%;"></div>
+                                                <div class="col-12 border mt-1" style="width: 50%;"></div>
+                                            </div>
+                                            <div class="col-6 border" style="height: 100%;"></div>
+                                        </div>
+                                        <br>
+                                        <div class="form-check col-12 d-flex justify-content-center gap-1">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                id="flexRadioDefault1">
+                                            <label for="exampleFormControlInput1"
+                                                class="form-label d-flex justify-content-between">
+                                                B </label>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 p-2 col" style="text-align: left;">
+                                        <div class="col-12 border border-2 p-2" style="height: 150px;">
+                                            <div class="col-12 border" style="height: 50%;"></div>
+                                            <div class="col-12 p-2 d-block justify-content-end" style="height: 100%;">
+                                                <div class="col-12 border mt-3"></div>
+                                                <div class="col-12 border mt-1" style="width: 60%;"></div>
+                                                <div class="col-12 border mt-1" style="width: 50%;"></div>
                                             </div>
                                         </div>
+                                        <br>
+                                        <div class="form-check col-12 d-flex justify-content-center gap-1">
+                                            <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                                id="flexRadioDefault1">
+                                            <label for="exampleFormControlInput1"
+                                                class="form-label d-flex justify-content-between">
+                                                C </label>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="mb-3 p-2 pt-0" style="text-align: left;">
                                 <label for="exampleFormControlInput1" class="form-label">Judul Detail :</label>
                                 <input type="text" class="form-control" id="exampleFormControlInput1"
-                                    placeholder="Masukan Nama Solusi">
+                                    placeholder="Masukan judul detail" name="judul_detail">
                             </div>
                             <div class="col-12 d-flex">
                                 <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                     <label for="exampleFormControlTextarea1" class="form-label">Deskripsi:</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1"
-                                        rows="7.5"></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="7.5"
+                                        name="deskripsi"></textarea>
                                 </div>
                                 <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                     <label for="exampleFormControlInput1" class="form-label">Gambar :</label>
-                                    <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar">
+                                    <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar"
+                                        name="gambar">
                                     <div class="col-12 mt-2 text-end">
                                         <!-- <button type="button" id="hapusGambar" class="btn btn-danger d-none">Hapus
                                                 Gambar</button> -->
@@ -116,21 +132,22 @@
                             </div>
                             <div class="mb-3 p-2 pt-0" style="text-align: left;">
                                 <label for="exampleFormControlInput1" class="form-label">Nama Fitur :</label>
-                                <select name="" id="" class="form-select">
-                                    <option value="">nama fitur</option>
-                                    <option value="">nama fitur</option>
-                                    <option value="">nama fitur</option>
-                                    <option value="">nama fitur</option>
+                                <select name="id_fitur" id="" class="form-select">
+                                    <?php foreach ($fitur as $key => $value) { ?>
+                                        <option value="<?= $value['id'] ?>"><?= $value['nama_fitur'] ?>
+                                        </option>
+                                    <?php } ?>
                                 </select>
                             </div>
                         </div>
                         <div class="modal-footer border-top pe-4">
-                            <button class="btn d-flex" type="button" style="background-color: #03C988; color:white;"><i
+                            <button class="btn d-flex" type="submit" style="background-color: #03C988; color:white;"><i
                                     class="ti ti-download pe-2 fs-6 align-middle p-1 "></i>
                                 <p class="m-0 p-1 align-middle">Simpan</p>
                             </button>
                         </div>
                     </div>
+                </form>
                 </div>
             </div>
 
@@ -145,39 +162,14 @@
                         <th scope="col">Judul Detail</th>
                         <th scope="col">Nama Fitur</th>
                         <th scope="col">Deskripsi</th>
-                        <th scope="col">Icon</th>
+                        <th scope="col">Gambar</th>
                         <th scope="col">Layout</th>
                         <th scope="col"></th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>Yaho</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>Yaho</td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                        <td>Yaho</td>
-                        <td></td>
-                        <td></td>
-                    </tr> -->
+                    <!-- -->
                 </tbody>
             </table>
         </div>

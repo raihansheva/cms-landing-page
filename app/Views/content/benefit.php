@@ -40,14 +40,20 @@
                         </div>
                         <div class="modal-body">
                             <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                <label for="exampleFormControlInput1" class="form-label">Nama paket :</label>
-                                <input type="text" class="form-control" id="exampleFormControlInput1"
-                                    placeholder="Masukan Nama Solusi">
+                                <label for="exampleFormControlInput1" class="form-label">Nama Solusi
+                                    :</label>
+                                <select name="id_paket_harga" id="id_solusi" class="form-select">
+                                    <option value=""></option>
+                                    <?php foreach ($paketharga as $key => $value) { ?>
+                                        <option value="<?= $value['id'] ?>">
+                                            <?= $value['nama_paket'] ?>
+                                        </option>
+                                    <?php } ?>
+                                </select>
                             </div>
                             <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
                                 <label for="exampleFormControlTextarea1" class="form-label">Benefit :</label>
-                                <textarea class="form-control" id="deskripsi" rows="8.5"
-                                    name="deskripsi"></textarea>
+                                <textarea class="form-control" id="deskripsi" rows="8.5" name="deskripsi"></textarea>
                             </div>
                         </div>
                         <div class="modal-footer border-top pe-4">
@@ -68,8 +74,8 @@
                 <thead class="">
                     <tr class="p-2">
                         <th scope="col">No</th>
-                        <th scope="col">Judul Detail</th>
-                        <th scope="col">Nama Fitur</th>
+                        <th scope="col">Nama Paket</th>
+                        <th scope="col">Benefit</th>
                         <th scope="col"></th>
                         <th scope="col"></th>
                     </tr>

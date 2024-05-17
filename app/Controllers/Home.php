@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Controllers;
+
 use App\Models\Artikel;
 use App\Models\Fitur;
 use App\Models\Banner;
@@ -12,7 +13,8 @@ use App\Controllers\BaseController;
 
 class Home extends BaseController
 {
-    public function __construct() {
+    public function __construct()
+    {
         $this->model = new Banner();
     }
     public function index(): string
@@ -26,12 +28,12 @@ class Home extends BaseController
     {
         helper(['form']);
         $banner = new Banner();
-        $data =[
+        $data = [
             'banner' => $banner->findAll(),
         ];
-        
 
-        return view('content/konten',$data);
+
+        return view('content/konten', $data);
     }
 
     // ------------------------
@@ -43,13 +45,13 @@ class Home extends BaseController
         helper(['form']);
         $solusi = new Solusi();
         $headsolusi = new Headersolusi();
-        
-        $data =[
+
+        $data = [
             'solusi' => $solusi->findAll(),
             'head' => $headsolusi->findAll(),
         ];
         // dd($head);
-        return view('content/solusi' , $data);
+        return view('content/solusi', $data);
     }
     // ------------------------
 
@@ -65,12 +67,17 @@ class Home extends BaseController
             'solusi' => $solusi->findAll()
         ];
 
-        return view('content/fitur' , $data, );
+        return view('content/fitur', $data, );
     }
 
     public function detailfitur(): string
     {
-        return view('content/detail-fitur');
+
+        $fitur = new Fitur();
+        $data = [
+            'fitur' => $fitur->findAll(),
+        ];
+        return view('content/detail-fitur', $data);
     }
     // ------------------------
 
@@ -78,22 +85,23 @@ class Home extends BaseController
     {
         helper(['form']);
         $harga = new Harga();
-
+        $solusi = new Solusi();
         $data = [
-            'paket_harga' => $harga->findAll()
+            'paket_harga' => $harga->findAll(),
+            'solusi' => $solusi->findAll()
         ];
-        return view('content/paket-harga' , $data);
+        return view('content/paket-harga', $data);
     }
 
     public function benefit(): string
     {
         helper(['form']);
-        // $harga = new Harga();
+        $harga = new Harga();
 
-        // $data = [
-        //     'paket_harga' => $harga->findAll()
-        // ];
-        return view('content/benefit' );
+        $data = [
+            'paketharga' => $harga->findAll()
+        ];
+        return view('content/benefit' , $data);
     }
     public function artikel(): string
     {
@@ -104,7 +112,7 @@ class Home extends BaseController
             'artikel' => $artikel->findAll(),
             'head' => $headartikel->findAll()
         ];
-        return view('content/artikel' ,$data );
+        return view('content/artikel', $data);
     }
     public function tentangkami(): string
     {

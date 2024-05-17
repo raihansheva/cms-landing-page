@@ -34,6 +34,9 @@ $routes->post('/ubahfitur', 'FiturController::ubahfitur');
 $routes->post('/hapusfitur', 'FiturController::hapusfitur');
 
 $routes->get('/detail-fitur', 'Home::detailfitur');
+$routes->post('/tambahdetailfitur', 'FiturController::tambahdetailfitur');
+$routes->post('/ubahdetailfitur', 'FiturController::ubahdetailfitur');
+$routes->post('/hapusdetailfitur', 'FiturController::hapusdetailfitur');
 // -----------
 
 // artikel
