@@ -29,12 +29,13 @@ class CreateDetailFitur extends Migration
               ],
             'id_fitur'       => [
                 'type'           => 'int',
-                'constraint'     => '11',
+                'constraint'     => 5,
               ],
             
           ]);
           $this->forge->addKey('id', true);
           $this->forge->createTable('detail_fitur');
+          $this->forge->addForeignKey('id_fitur', 'fitur', 'id', 'CASCADE', 'CASCADE');
     }
 
     public function down()

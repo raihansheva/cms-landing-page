@@ -33,11 +33,12 @@ class CreatePaketHarga extends Migration
             ],
             'id_solusi' => [
                 'type' => 'int',
-                'constraint' => '11',
+                'constraint' => 5,
             ],
         ]);
         $this->forge->addKey('id', true);
         $this->forge->createTable('paket_harga');
+        $this->forge->addForeignKey('id_solusi', 'solusi', 'id', 'CASCADE', 'CASCADE');
     }
 
     public function down()

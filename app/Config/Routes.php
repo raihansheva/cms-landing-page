@@ -51,6 +51,10 @@ $routes->post('/hapusharga', 'HargaController::hapusharga');
 
 $routes->get('/benefit', 'Home::benefit');
 
+
+
+
+$routes->get('/tentangkami', 'Home::tentangkami');
 // crud banner
 // -----------
 

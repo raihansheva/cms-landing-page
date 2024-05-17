@@ -66,10 +66,9 @@
                                     <label for="exampleFormControlInput1" class="form-label">Nama Solusi :</label>
 
                                     <select name="id_solusi" id="id_solusi" class="form-select">
-                                        <option value="1">nama solusi</option>
-                                        <option value="2">nama solusi</option>
-                                        <option value="3">nama solusi</option>
-                                        <option value="4">nama solusi</option>
+                                        <?php foreach ($solusi as $key => $value) { ?>
+                                            <option value="<?= $value['id'] ?>"><?= $value['nama_solusi'] ?></option>
+                                        <?php } ?>
                                     </select>
                                 </div>
 
@@ -108,8 +107,8 @@
                             <td><?php echo $value['nama_fitur'] ?></td>
                             <td><?php echo $value['deskripsi'] ?></td>
                             <td><?php echo $value['id_solusi'] ?></td>
-                            <td class=""><img src="<?php echo $value['icon'] ?>" alt=""
-                                    class="border" width="40px" height="40px"></td>
+                            <td class=""><img src="<?php echo $value['icon'] ?>" alt="" class="border" width="40px"
+                                    height="40px"></td>
                             <td class="m-0 p-1 d-flex gap-2">
                                 <a href="/detail-fitur">
                                     <!-- Button modal detail -->
@@ -141,7 +140,8 @@
                                                         aria-label="Close"></button>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <input type="text" value="<?php echo $value['id'] ?>" name="id" id="id" hidden>
+                                                    <input type="text" value="<?php echo $value['id'] ?>" name="id" id="id"
+                                                        hidden>
                                                     <div class="mb-3 p-2 pt-0" style="text-align: left;">
                                                         <label for="exampleFormControlInput1" class="form-label">Nama Fitur
                                                             :</label>
@@ -176,10 +176,10 @@
                                                             :</label>
 
                                                         <select name="id_solusi" id="id_solusi" class="form-select">
-                                                            <option value="nama-solusi 1">nama solusi 1</option>
-                                                            <option value="nama-solusi 2">nama solusi 2</option>
-                                                            <option value="nama-solusi 3">nama solusi 3</option>
-                                                            <option value="nama-solusi 4">nama solusi 4</option>
+                                                            <option value="1">nama solusi</option>
+                                                            <option value="2">nama solusi</option>
+                                                            <option value="3">nama solusi</option>
+                                                            <option value="4">nama solusi</option>
                                                         </select>
                                                     </div>
 
@@ -216,7 +216,8 @@
                                                 <?= csrf_field(); ?>
                                                 <div class="modal-body">
                                                     <p class="text-center">Yakin ingin hapus solusi ini?</p>
-                                                    <input type="text" value="<?= $value['id'] ?>" name="id" id="id_solusi" hidden>
+                                                    <input type="text" value="<?= $value['id'] ?>" name="id" id="id_solusi"
+                                                        hidden>
                                                 </div>
                                                 <div class="modal-footer d-flex justify-content-center">
                                                     <button class="btn btn-danger d-flex btn-delete" type="submit"><i

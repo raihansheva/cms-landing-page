@@ -55,14 +55,17 @@ class Home extends BaseController
 
 
     // fitur dan detail fitur 
-    public function fitur(): string
+    public function fitur()
     {
         helper(['form']);
         $fitur = new Fitur();
+        $solusi = new Solusi();
         $data = [
-            'fitur' => $fitur->findAll()
+            'fitur' => $fitur->findAll(),
+            'solusi' => $solusi->findAll()
         ];
-        return view('content/fitur' , $data);
+
+        return view('content/fitur' , $data, );
     }
 
     public function detailfitur(): string
@@ -102,5 +105,16 @@ class Home extends BaseController
             'head' => $headartikel->findAll()
         ];
         return view('content/artikel' ,$data );
+    }
+    public function tentangkami(): string
+    {
+        helper(['form']);
+        // $artikel = new Artikel();
+        // $headartikel = new Headerartikel();
+        // $data = [
+        //     'artikel' => $artikel->findAll(),
+        //     'head' => $headartikel->findAll()
+        // ];
+        return view('content/tentang-kami');
     }
 }

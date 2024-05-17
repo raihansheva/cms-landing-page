@@ -14,6 +14,12 @@ class Solusi extends Model
     protected $protectFields    = true;
     protected $allowedFields    = ['id','nama_solusi', 'deskripsi','gambar'];
 
+    public function getsolusi($idsolusi)
+    {
+        $fitur = new Fitur();
+        return $fitur->where('id_solusi', $idsolusi)->findAll();
+    }
+
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
 

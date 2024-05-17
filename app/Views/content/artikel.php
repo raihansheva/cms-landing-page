@@ -123,7 +123,7 @@
                                     <?= csrf_field(); ?>
                                     <div class="modal-content">
                                         <div class="modal-header border-bottom">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Ubah Solusi</h1>
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Ubah artikel</h1>
                                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                 aria-label="Close"></button>
                                         </div>
@@ -164,14 +164,14 @@
                             <div class="modal-dialog" style="width: 250px;">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus Solusi</h1>
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus artikel</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <form action="/hapusartikel" method="post" id="form-data-hapus">
                                         <?= csrf_field(); ?>
                                         <div class="modal-body">
-                                            <p class="text-center">Yakin ingin hapus solusi ini?</p>
+                                            <p class="text-center">Yakin ingin hapus artikel ini?</p>
                                             <input type="text" value="<?php echo $value['id'] ?>" name="id" id="id_solusi"
                                                 hidden>
                                         </div>

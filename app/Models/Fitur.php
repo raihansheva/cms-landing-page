@@ -13,6 +13,11 @@ class Fitur extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     protected $allowedFields    = ['id','nama_fitur','deskripsi','id_solusi','icon'];
+    // public function solusi()
+    // {
+    //     return $this->belongsto(Solusi::class, 'id_solusi', 'id');
+    // }
+    
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

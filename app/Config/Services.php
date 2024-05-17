@@ -29,4 +29,8 @@ class Services extends BaseService
      *     return new \CodeIgniter\Example();
      * }
      */
+    public $aliases = [
+        // ...
+        'number' => \CodeIgniter\NumberHelper::class,
+    ];
 }

@@ -36,9 +36,14 @@
                                     </div>
                                     <div class="col-12 d-flex gap-2">
                                         <div class="mb-3 p-2 col" style="text-align: left;">
-                                            <div class="col-12 border border-2 d-flex justify-content-center align-items-center"
-                                                style="height: 150px;">
-                                                <h4 class="text-middle">Layout A</h4>
+                                            <div class="col-12 border border-2 d-flex p-2" style="height: 150px;">
+                                                <div class="col-6 border" style="height: 100%;"></div>
+                                                <div class="col-6 p-2 d-block justify-content-end"
+                                                    style="height: 100%;">
+                                                    <div class="col-12 border mt-4"></div>
+                                                    <div class="col-12 border mt-1" style="width: 60%;"></div>
+                                                    <div class="col-12 border mt-1" style="width: 50%;"></div>
+                                                </div>
                                             </div>
                                             <br>
                                             <div class="form-check  col-12 d-flex justify-content-center gap-1">
@@ -50,9 +55,14 @@
                                             </div>
                                         </div>
                                         <div class="mb-3 p-2 col " style="text-align: left;">
-                                            <div class="col-12 border border-2 d-flex justify-content-center align-items-center"
-                                                style="height: 150px;">
-                                                <h4 class="text-middle">Layout B</h4>
+                                            <div class="col-12 border border-2 d-flex p-2" style="height: 150px;">
+                                                <div class="col-6 p-2 d-block justify-content-end"
+                                                    style="height: 100%;">
+                                                    <div class="col-12 border mt-4"></div>
+                                                    <div class="col-12 border mt-1" style="width: 60%;"></div>
+                                                    <div class="col-12 border mt-1" style="width: 50%;"></div>
+                                                </div>
+                                                <div class="col-6 border" style="height: 100%;"></div>
                                             </div>
                                             <br>
                                             <div class="form-check col-12 d-flex justify-content-center gap-1">
@@ -64,9 +74,14 @@
                                             </div>
                                         </div>
                                         <div class="mb-3 p-2 col" style="text-align: left;">
-                                            <div class="col-12 border border-2 d-flex justify-content-center align-items-center"
-                                                style="height: 150px;">
-                                                <h4 class="text-middle">Layout C</h4>
+                                            <div class="col-12 border border-2 p-2" style="height: 150px;">
+                                                <div class="col-12 border" style="height: 50%;"></div>
+                                                <div class="col-12 p-2 d-block justify-content-end"
+                                                    style="height: 100%;">
+                                                    <div class="col-12 border mt-3"></div>
+                                                    <div class="col-12 border mt-1" style="width: 60%;"></div>
+                                                    <div class="col-12 border mt-1" style="width: 50%;"></div>
+                                                </div>
                                             </div>
                                             <br>
                                             <div class="form-check col-12 d-flex justify-content-center gap-1">

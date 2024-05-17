@@ -25,7 +25,7 @@ class CreateFitur extends Migration
             ],
             'id_solusi'       => [
                 'type'           => 'int',
-                'constraint'     => '11',
+                'constraint'     => 5,
               ],
             'icon'       => [
               'type'           => 'varchar',
@@ -34,6 +34,7 @@ class CreateFitur extends Migration
           ]);
           $this->forge->addKey('id', true);
           $this->forge->createTable('fitur');
+          $this->forge->addForeignKey('id_solusi', 'solusi', 'id', 'CASCADE', 'CASCADE');
     }
 
     public function down()
