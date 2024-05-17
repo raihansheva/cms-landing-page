@@ -58,24 +58,25 @@
                                         <textarea class="form-control" rows="7.5" id="deskripsi" cols="80"
                                             name="deskripsi"></textarea>
                                     </div>
-                                    <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
-                                        <label for="exampleFormControlInput1" class="form-label">Harga :</label>
-                                        <input type="number" class="form-control" id="harga"
-                                            placeholder="Masukan harga" name="harga">
+                                    <div class="col-6">
+                                        <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
+                                            <label for="exampleFormControlInput1" class="form-label">Harga :</label>
+                                            <input type="number" class="form-control" id="harga"
+                                                placeholder="Masukan harga" name="harga">
+                                        </div>
+                                        <div class="mb-3 p-2 pt-0" style="text-align: left;">
+                                            <label for="exampleFormControlInput1" class="form-label">Nama Solusi
+                                                :</label>
+                                            <select name="id_solusi" id="id_solusi" class="form-select">
+                                                <option value=""></option>
+                                                <?php foreach ($solusi as $key => $value) { ?>
+                                                    <option value="<?= $value['id'] ?>"><?= $value['nama_solusi'] ?>
+                                                    </option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
                                     </div>
-
                                 </div>
-                                <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                    <label for="exampleFormControlInput1" class="form-label">Nama Solusi :</label>
-
-                                    <select name="id_solusi" id="id_solusi" class="form-select">
-                                        <option value="1">nama solusi</option>
-                                        <option value="2">nama solusi</option>
-                                        <option value="3">nama solusi</option>
-                                        <option value="4">nama solusi</option>
-                                    </select>
-                                </div>
-
                             </div>
                             <div class="modal-footer border-top pe-4">
                                 <button class="btn d-flex" type="submit"
@@ -112,7 +113,7 @@
                             <td><?php echo $value['nama_paket'] ?></td>
                             <td><?php echo $value['kategori_harga'] ?></td>
                             <td><?php echo $value['deskripsi'] ?></td>
-                            <td><?php echo $value['harga'] ?></td>
+                            <td><?php echo "Rp" . number_format( $value['harga'],0,',','.') ?></td>
                             <td><?php echo $value['id_solusi'] ?></td>
                             <td class="m-0 p-1 d-flex gap-2">
                                 <a href="/benefit">
@@ -139,7 +140,8 @@
                                             class="modal-dialog-scrollable" enctype="multipart/form-data">
                                             <?= csrf_field(); ?>
                                             <div class="modal-content">
-                                                <input type="text" value="<?php echo $value['id'] ?>" name="id" id="id" hidden>
+                                                <input type="text" value="<?php echo $value['id'] ?>" name="id" id="id"
+                                                    hidden>
                                                 <div class="modal-header border-bottom">
                                                     <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah paket harga
                                                     </h1>
@@ -152,13 +154,15 @@
                                                             <label for="exampleFormControlInput1" class="form-label">Nama
                                                                 Paket :</label>
                                                             <input type="text" class="form-control" id="nama_paket"
-                                                                placeholder="Masukan Nama Paket" name="nama_paket" value="<?php echo $value['nama_paket'] ?>">
+                                                                placeholder="Masukan Nama Paket" name="nama_paket"
+                                                                value="<?php echo $value['nama_paket'] ?>">
                                                         </div>
                                                         <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                                             <label for="exampleFormControlInput1"
                                                                 class="form-label">Kategori :</label>
                                                             <input type="text" class="form-control" id="kategori_harga"
-                                                                placeholder="Masukan kategori" name="kategori_harga" value="<?php echo $value['kategori_harga'] ?>">
+                                                                placeholder="Masukan kategori" name="kategori_harga"
+                                                                value="<?php echo $value['kategori_harga'] ?>">
                                                         </div>
                                                     </div>
 
@@ -167,28 +171,32 @@
                                                             <label for="exampleFormControlTextarea1"
                                                                 class="form-label">Deskripsi:</label>
                                                             <textarea class="form-control" rows="7.5" id="deskripsi"
-                                                                cols="80" name="deskripsi"><?php echo $value['deskripsi'] ?></textarea>
+                                                                cols="80"
+                                                                name="deskripsi"><?php echo $value['deskripsi'] ?></textarea>
                                                         </div>
-                                                        <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
-                                                            <label for="exampleFormControlInput1" class="form-label">Harga
-                                                                :</label>
-                                                            <input type="number" class="form-control" id="harga"
-                                                                placeholder="Masukan harga" name="harga" value="<?php echo $value['harga'] ?>">
+                                                        <div class="col-6">
+                                                            <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
+                                                                <label for="exampleFormControlInput1"
+                                                                    class="form-label">Harga :</label>
+                                                                <input type="text" class="form-control" id="harga"
+                                                                    placeholder="Masukan harga" name="harga" value="<?php echo "Rp" . number_format( $value['harga'],0,',','.') ?>">
+
+                                                            </div>
+                                                            <div class="mb-3 p-2 pt-0" style="text-align: left;">
+                                                                <label for="exampleFormControlInput1"
+                                                                    class="form-label">Nama Solusi
+                                                                    :</label>
+                                                                <select name="id_solusi" id="id_solusi" class="form-select">
+                                                                    <option value=""></option>
+                                                                    <?php foreach ($solusi as $key => $value) { ?>
+                                                                        <option value="<?= $value['id'] ?>">
+                                                                            <?= $value['nama_solusi'] ?>
+                                                                        </option>
+                                                                    <?php } ?>
+                                                                </select>
+                                                            </div>
                                                         </div>
-
                                                     </div>
-                                                    <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                                        <label for="exampleFormControlInput1" class="form-label">Nama Solusi
-                                                            :</label>
-
-                                                        <select name="id_solusi" id="id_solusi" class="form-select">
-                                                            <option value="1">nama solusi</option>
-                                                            <option value="2">nama solusi</option>
-                                                            <option value="3">nama solusi</option>
-                                                            <option value="4">nama solusi</option>
-                                                        </select>
-                                                    </div>
-
                                                 </div>
                                                 <div class="modal-footer border-top pe-4">
                                                     <button class="btn d-flex" type="submit"
@@ -222,8 +230,7 @@
                                                 <?= csrf_field(); ?>
                                                 <div class="modal-body">
                                                     <p class="text-center">Yakin ingin hapus solusi ini?</p>
-                                                    <input type="text" value="<?= $value['id'] ?>" name="id" id="id"
-                                                        hidden>
+                                                    <input type="text" value="<?= $value['id'] ?>" name="id" id="id" hidden>
                                                 </div>
                                                 <div class="modal-footer d-flex justify-content-center">
                                                     <button class="btn btn-danger d-flex btn-delete" type="submit"><i
