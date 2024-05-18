@@ -58,6 +58,10 @@ $routes->get('/benefit', 'Home::benefit');
 
 
 $routes->get('/tentangkami', 'Home::tentangkami');
+$routes->post('/tambahtentangkami', 'TentangKamiController::tambahtentangkami');
+$routes->post('/ubahtentangkami', 'TentangKamiController::ubahtentangkami');
+$routes->post('/ubahbannerinformasi', 'TentangKamiController::ubahheadtentangkami');
+$routes->post('/hapustentangkami', 'TentangKamiController::hapustentangkami');
 // crud banner
 // -----------
 

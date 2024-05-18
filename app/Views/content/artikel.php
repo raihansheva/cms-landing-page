@@ -110,7 +110,7 @@
         <div class="col-12 d-flex flex-wrap gap-2 justify-content-center"
             style="border: 1px black; height: 100%; display: flex; flex-wrap: wrap;">
             <?php foreach ($artikel as $key => $value) { ?>
-                <div class="card" style="padding: 24px; height: fit-content; width: 48%;">
+                <div class="card col" style="padding: 24px; height: fit-content; width: 100%; flex: 1 0 500px;">
                     <div class="card-kanan-atas">
                         <i class="ti ti-pencil" style="font-size: 30px;" type="button" data-bs-toggle="modal"
                             data-bs-target="#exampleModaleditartikel<?php echo $value['id'] ?>"></i>

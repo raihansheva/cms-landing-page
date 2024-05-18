@@ -23,18 +23,6 @@ class CreateAboutUs extends Migration
                 'type' => 'text',
                 'constraint' => '',
             ],
-            'misi' => [
-                'type' => 'text',
-                'constraint' => '',
-            ],
-            'visi' => [
-                'type' => 'text',
-                'constraint' => '',
-            ],
-            'histori' => [
-                'type' => 'text',
-                'constraint' => '',
-            ],
         ]);
         $this->forge->addKey('id', true);
         $this->forge->createTable('about_us');

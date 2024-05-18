@@ -8,8 +8,10 @@ use App\Models\Banner;
 use App\Models\Harga;
 use App\Models\Headerartikel;
 use App\Models\Headersolusi;
+use App\Models\Headertentangkami;
 use App\Models\Solusi;
 use App\Controllers\BaseController;
+use App\Models\Tentangkami;
 
 class Home extends BaseController
 {
@@ -117,12 +119,12 @@ class Home extends BaseController
     public function tentangkami(): string
     {
         helper(['form']);
-        // $artikel = new Artikel();
-        // $headartikel = new Headerartikel();
-        // $data = [
-        //     'artikel' => $artikel->findAll(),
-        //     'head' => $headartikel->findAll()
-        // ];
-        return view('content/tentang-kami');
+        $about = new Tentangkami();
+        $headabout = new Headertentangkami();
+        $data = [
+            'tentang' => $about->findAll(),
+            'head' => $headabout->findAll()
+        ];
+        return view('content/tentang-kami' , $data);
     }
 }
