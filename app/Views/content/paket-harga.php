@@ -116,16 +116,16 @@
                             <td><?php echo "Rp" . number_format( $value['harga'],0,',','.') ?></td>
                             <td><?php echo $value['id_solusi'] ?></td>
                             <td class="m-0 p-1 d-flex gap-2">
-                                <a href="/benefit">
+                                <a href="/benefit/<?php echo $value['id'] ?>">
                                     <!-- Button modal detail -->
-                                    <button class="btn btn-primary d-flex" type="button" data-bs-toggle="modal"
+                                    <button class="btn btn-primary d-flex btn-sm" type="button" data-bs-toggle="modal"
                                         data-bs-target="#exampleModaldetailfitur"><i
                                             class="ti ti-list-details pe-2 fs-6 align-middle p-1 "></i>
                                         <p class="m-0 p-1 align-middle">Benefit</p>
                                     </button>
                                 </a>
                                 <!-- Button modal ubah -->
-                                <button class="btn d-flex" type="button" data-bs-toggle="modal"
+                                <button class="btn d-flex btn-sm" type="button" data-bs-toggle="modal"
                                     data-bs-target="#exampleModaleditfitur<?php echo $value['id'] ?>"
                                     style="background-color: #03C988; color:white;"><i
                                         class="ti ti-edit pe-2 fs-6 align-middle p-1 "></i>
@@ -210,7 +210,7 @@
                                     </div>
                                 </div>
                                 <!-- Button modal hapus -->
-                                <button class="btn btn-danger d-flex" type="button" data-bs-toggle="modal"
+                                <button class="btn btn-danger d-flex btn-sm" type="button" data-bs-toggle="modal"
                                     data-bs-target="#exampleModalhapusfitur<?php echo $value['id'] ?>"><i
                                         class="ti ti-trash pe-2 fs-6 align-middle p-1 "></i>
                                     <!-- <p class="m-0 p-1 align-middle">Hapus</p> -->

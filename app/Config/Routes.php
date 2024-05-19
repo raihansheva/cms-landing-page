@@ -37,6 +37,8 @@ $routes->get('/detail-fitur', 'Home::detailfitur');
 $routes->post('/tambahdetailfitur', 'FiturController::tambahdetailfitur');
 $routes->post('/ubahdetailfitur', 'FiturController::ubahdetailfitur');
 $routes->post('/hapusdetailfitur', 'FiturController::hapusdetailfitur');
+$routes->get('/fitur/getdatafitur', 'FiturController::get_data_fitur');
+// $routes->post('/tiket/getTiketData', 'Tiket::getTiketData');
 // -----------
 
 // artikel
