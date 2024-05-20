@@ -124,9 +124,9 @@
             <div class="card " style="padding: 24px; height: fit-content; width: 100%; flex: 1 0 500px;">
                 <div class="card-kanan-atas">
                     <i class="ti ti-pencil" style="font-size: 30px;" type="button" data-bs-toggle="modal"
-                        data-bs-target="#exampleModaleditartikel"></i>
+                        data-bs-target="#exampleModaleditartikel<?= $value['id']?>"></i>
                     <!-- Modal -->
-                    <div class="modal fade" id="exampleModaleditartikel" tabindex="-1"
+                    <div class="modal fade" id="exampleModaleditartikel<?= $value['id']?>" tabindex="-1"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-lg modal-dialog-scrollable">
                             <form action="/ubahtentangkami" method="post" id="form-data-ubah" class="modal-dialog-scrollable"

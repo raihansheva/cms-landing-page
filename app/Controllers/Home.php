@@ -72,12 +72,14 @@ class Home extends BaseController
         return view('content/fitur', $data, );
     }
 
-    public function detailfitur(): string
+    public function detailfitur($id)
     {
 
         $fitur = new Fitur();
+        // $idF = $id;
         $data = [
             'fitur' => $fitur->findAll(),
+            'idF' => $id
         ];
         return view('content/detail-fitur', $data);
     }
@@ -95,7 +97,7 @@ class Home extends BaseController
         return view('content/paket-harga', $data);
     }
 
-    public function benefit(): string
+    public function benefit($id)
     {
         helper(['form']);
         $harga = new Harga();

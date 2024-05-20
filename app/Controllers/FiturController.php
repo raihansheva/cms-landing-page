@@ -41,40 +41,9 @@ class FiturController extends BaseController
     public function get_data_fitur()
     {
         return datatables('fitur')->make();
-        // $request = Services::request();
-        // $fitur = new Fitur();
-
-        // $draw = $request->getPost('draw');
-        // $start = $request->getPost('start');
-        // $length = $request->getPost('length');
-        // $searchValue = $request->getPost('search');
-
-        // $totalrecords = $fitur->countAll();
-        // $totalRecordwithFilter = $fitur->like('nama_fitur', $searchValue)->orLike('deskripsi', $searchValue)->orLike('id_solusi', $searchValue)->orLike('icon', $searchValue)->countAllResults();
-
-        // $record = $fitur->like('nama_fitur' , $searchValue)->orLike('deskripsi' , $searchValue)->orLike('id_solusi' , $searchValue)
-        // ->orLike('icon' , $searchValue)->orderBy('id' , 'DESC')->findAll($length, $start);
-
-        // $data = [];
-        // foreach ($record as $records) {
-        //     $data[] = [
-        //         'nama_fitur' => $records['nama_fitur'],
-        //         'deskripsi' => $records['deskripsi'],
-        //         'id_solusi' => $records['id_solusi'],
-        //         'icon' => $records['icon']
-        //     ];
-        // }
-
-        // $response = [
-        //     "draw" => intval($draw),
-        //     "recordsTotal" => $totalrecords,
-        //     "recordsFiltered" => $totalRecordwithFilter,
-        //     "data" => $data
-        // ];
-
-        // // echo json_encode($response);
-        // return $this->response->setJSON($response);
     }
+
+    
 
     public function tambahfitur()
     {

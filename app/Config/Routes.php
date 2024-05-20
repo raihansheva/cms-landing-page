@@ -33,7 +33,7 @@ $routes->post('/tambahfitur', 'FiturController::tambahfitur');
 $routes->post('/ubahfitur', 'FiturController::ubahfitur');
 $routes->post('/hapusfitur', 'FiturController::hapusfitur');
 
-$routes->get('/detail-fitur', 'Home::detailfitur');
+$routes->get('/detail-fitur/(:num)', 'Home::detailfitur/$1');
 $routes->post('/tambahdetailfitur', 'FiturController::tambahdetailfitur');
 $routes->post('/ubahdetailfitur', 'FiturController::ubahdetailfitur');
 $routes->post('/hapusdetailfitur', 'FiturController::hapusdetailfitur');
@@ -56,7 +56,7 @@ $routes->post('/hapusharga', 'HargaController::hapusharga');
 $routes->get('/harga/getdataharga', 'HargaController::get_data_harga');
 
 
-$routes->get('/benefit', 'Home::benefit');
+$routes->get('/benefit/(:num)', 'Home::benefit/$1');
 
 
 
