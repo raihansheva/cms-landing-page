@@ -53,6 +53,8 @@ $routes->get('/paketharga', 'Home::paketharga');
 $routes->post('/tambahharga', 'HargaController::tambahharga');
 $routes->post('/ubahharga', 'HargaController::ubahharga');
 $routes->post('/hapusharga', 'HargaController::hapusharga');
+$routes->get('/harga/getdataharga', 'HargaController::get_data_harga');
+
 
 $routes->get('/benefit', 'Home::benefit');
 

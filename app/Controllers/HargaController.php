@@ -13,6 +13,10 @@ class HargaController extends BaseController
         //
     }
 
+    public function get_data_harga(){
+        return datatables('paket_harga')->make();
+    }
+
     public function tambahharga(){
         $harga = new Harga();
         $harga->save([
