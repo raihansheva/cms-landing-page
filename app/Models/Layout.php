@@ -4,15 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Detailfitur extends Model
+class Layout extends Model
 {
-    protected $table            = 'detail_fitur';
+    protected $table            = 'layout';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id' ,'judul_detail' ,'deskripsi' , 'gambar' , 'id_fitur', 'layout'];
+    protected $allowedFields    = ['id' ,'nama_layout' , 'layout'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

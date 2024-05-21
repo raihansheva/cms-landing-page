@@ -9,6 +9,7 @@ use App\Models\Harga;
 use App\Models\Headerartikel;
 use App\Models\Headersolusi;
 use App\Models\Headertentangkami;
+use App\Models\Layout;
 use App\Models\Solusi;
 use App\Controllers\BaseController;
 use App\Models\Tentangkami;
@@ -76,10 +77,12 @@ class Home extends BaseController
     {
 
         $fitur = new Fitur();
+        $layout = new Layout();
         // $idF = $id;
         $data = [
             'fitur' => $fitur->findAll(),
-            'idF' => $id
+            'idF' => $id,
+            'layout' => $layout->findAll()
         ];
         return view('content/detail-fitur', $data);
     }
@@ -101,9 +104,10 @@ class Home extends BaseController
     {
         helper(['form']);
         $harga = new Harga();
-
+        // $idB = $id
         $data = [
-            'paketharga' => $harga->findAll()
+            'paketharga' => $harga->findAll(),
+            'idB' => $id
         ];
         return view('content/benefit' , $data);
     }

@@ -2,19 +2,37 @@
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
 use App\Models\Harga;
+use App\Models\Benefit;
+use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
+use Irsyadulibad\DataTables\DataTables;
 
 class HargaController extends BaseController
 {
     public function index()
     {
-        //
+        // $data = DataTables::use('benefit')
+        // ->select('benefit.id_paket_harga as idP, benefit.nama_benefit ')
+        // ->join('paket_harga', 'paket_harga.id = benefit.id_paket_harga' , 'INNER JOIN');
+        // var_dump($data);
     }
 
     public function get_data_harga(){
         return datatables('paket_harga')->make();
+    }
+    public function get_data_benefit($id)
+    {
+        $data = DataTables::use('benefit')
+        ->select('benefit.id_paket_harga as idP, benefit.nama_benefit ')
+        ->join('paket_harga', 'paket_harga.id = benefit.id_paket_harga' , 'INNER JOIN')
+        ->where(['id_paket_harga' => $id])->make();
+        // var_dump($data);
+        // return datatables('benefit')
+        // ->select('benefit.id_paket_harga as idP, benefit.nama_benefit FROM benefit')
+        // ->where(['id_paket_harga' => $id])->make();
+
+        
     }
 
     public function tambahharga(){
@@ -50,6 +68,41 @@ class HargaController extends BaseController
         $id = $this->request->getPost('id');
         $harga = new Harga();
         $delete = $harga->where('id', $id)->delete();
+        return redirect()->back();
+        // echo json_encode(['status' => TRUE]);
+
+    }
+
+    public function tambahbenefit()
+    {
+        $benefit = new Benefit();
+        $benefit->save([
+            'id_paket_harga' => $this->request->getPost('id_paket_harga'),
+            'nama_benefit' => $this->request->getPost('nama_benefit'),
+        ]);
+        return redirect()->back();
+        // echo json_encode(['status' => TRUE]);
+        // return $this->response->setJSON(['status' => true]);
+    }
+
+    public function ubahbenefit()
+    {
+        $benefit = new Benefit();
+        $id = $this->request->getPost('id');
+        $benefit->save([
+            'id' => $id,
+            'id_paket_harga' => $this->request->getPost('id_paket_harga'),
+            'nama_benefit' => $this->request->getPost('nama_benefit'),
+        ]);
+        return redirect()->back();
+        // return $this->response->setJSON(['status' => true]);
+    }
+
+    public function hapusbenefit()
+    {
+        $id = $this->request->getPost('id');
+        $benefit = new Benefit();
+        $delete = $benefit->where('id', $id)->delete();
         return redirect()->back();
         // echo json_encode(['status' => TRUE]);
 

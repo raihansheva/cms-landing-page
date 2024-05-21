@@ -42,6 +42,10 @@ class FiturController extends BaseController
     {
         return datatables('fitur')->make();
     }
+    public function get_data_detail_fitur($id)
+    {
+        return datatables('detail_fitur')->where(['id_fitur' => $id])->make();
+    }
 
     
 
@@ -123,6 +127,7 @@ class FiturController extends BaseController
             'deskripsi' => $this->request->getPost('deskripsi'),
             'gambar' => $path,
             'id_fitur' => $this->request->getPost('id_fitur'),
+            'layout' => $this->request->getPost('layout'),
         ]);
         return redirect()->back();
         // echo json_encode(['status' => TRUE]);
@@ -149,6 +154,7 @@ class FiturController extends BaseController
             'deskripsi' => $this->request->getPost('deskripsi'),
             'gambar' => $path,
             'id_fitur' => $this->request->getPost('id_fitur'),
+            'layout' => $this->request->getPost('layout'),
         ]);
         return redirect()->back();
         // return $this->response->setJSON(['status' => true]);

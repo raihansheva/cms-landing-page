@@ -33,36 +33,41 @@
             <div class="modal fade" id="exampleModaltambahfitur" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable">
-                    <div class="modal-content">
-                        <div class="modal-header border-bottom">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah benefit</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                <label for="exampleFormControlInput1" class="form-label">Nama Solusi
-                                    :</label>
-                                <select name="id_paket_harga" id="id_solusi" class="form-select">
-                                    <option value=""></option>
-                                    <?php foreach ($paketharga as $key => $value) { ?>
-                                        <option value="<?= $value['id'] ?>">
-                                            <?= $value['nama_paket'] ?>
-                                        </option>
-                                    <?php } ?>
-                                </select>
+                    <form action="/tambahbenefit" method="post">
+                        <div class="modal-content">
+                            <div class="modal-header border-bottom">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah benefit</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
                             </div>
-                            <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
-                                <label for="exampleFormControlTextarea1" class="form-label">Benefit :</label>
-                                <textarea class="form-control" id="deskripsi" rows="8.5" name="deskripsi"></textarea>
+                            <div class="modal-body">
+                                <div class="mb-3 p-2 pt-0" style="text-align: left;">
+                                    <label for="exampleFormControlInput1" class="form-label">Nama Solusi
+                                        :</label>
+                                    <select name="id_paket_harga" id="id_paket_harga" class="form-select">
+                                        <option value=""></option>
+                                        <?php foreach ($paketharga as $key => $value) { ?>
+                                            <option value="<?= $value['id'] ?>">
+                                                <?= $value['nama_paket'] ?>
+                                            </option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                                <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Benefit :</label>
+                                    <textarea class="form-control" id="nama_benefit" rows="8.5"
+                                        name="nama_benefit"></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer border-top pe-4">
+                                <button class="btn d-flex" type="submit"
+                                    style="background-color: #03C988; color:white;"><i
+                                        class="ti ti-download pe-2 fs-6 align-middle p-1 "></i>
+                                    <p class="m-0 p-1 align-middle">Simpan</p>
+                                </button>
                             </div>
                         </div>
-                        <div class="modal-footer border-top pe-4">
-                            <button class="btn d-flex" type="button" style="background-color: #03C988; color:white;"><i
-                                    class="ti ti-download pe-2 fs-6 align-middle p-1 "></i>
-                                <p class="m-0 p-1 align-middle">Simpan</p>
-                            </button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
 
@@ -70,14 +75,11 @@
         <br>
         <!-- <div class="card col-4" style="height: 200px; border:1px solid rgb(229, 234, 239);"> -->
         <div class="col-12 " style="height: 100%;">
-            <table id="tabelfitur" class="table col-12 " style="height: auto;">
+            <table id="tabelbenefit" class="table col-12 " style="height: auto;">
                 <thead class="">
                     <tr class="p-2">
-                        <th scope="col">No</th>
                         <th scope="col">Nama Paket</th>
                         <th scope="col">Benefit</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -87,17 +89,123 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="exampleModalubahbenefit" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+        <form action="/ubahbenefit" method="post">
+            <div class="modal-content">
+                <div class="modal-header border-bottom">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Ubah benefit</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3 p-2 pt-0" style="text-align: left;">
+                        <input type="text" name="id" id="id" hidden>
+                        <label for="exampleFormControlInput1" class="form-label">Nama paket
+                            :</label>
+                        <select name="id_paket_harga" id="id_paket_harga_ubah" class="form-select">
+                            <option value=""></option>
+                            <?php foreach ($paketharga as $key => $value) { ?>
+                                <option value="<?= $value['id'] ?>">
+                                    <?= $value['nama_paket'] ?>
+                                </option>
+                            <?php } ?>
+                        </select>
+                    </div>
+                    <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
+                        <label for="exampleFormControlTextarea1" class="form-label">Benefit :</label>
+                        <textarea class="form-control" id="nama_benefit_ubah" rows="8.5" name="nama_benefit"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer border-top pe-4">
+                    <button class="btn d-flex" type="submit" style="background-color: #03C988; color:white;"><i
+                            class="ti ti-download pe-2 fs-6 align-middle p-1 "></i>
+                        <p class="m-0 p-1 align-middle">Simpan</p>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal fade" id="exampleModalhapusbenefit" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" style="width: 250px;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus benefit</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/hapusbenefit" method="post" id="form-data-hapus">
+                <?= csrf_field(); ?>
+                <div class="modal-body">
+                    <p class="text-center">Yakin ingin hapus benefit ini?</p>
+                    <input type="text" value="" name="id" id="id_benefit_hapus" hidden>
+                </div>
+                <div class="modal-footer d-flex justify-content-center">
+                    <button class="btn btn-danger d-flex btn-delete" type="submit"><i
+                            class="ti ti-trash pe-2 fs-6 align-middle p-1" id="btn-delete"></i>
+                        <p class="m-0 p-1 align-middle">Hapus</p>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 <!-- Skrip jQuery -->
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 <!-- Skrip DataTables -->
-<script src="../node_modules/datatables.net.jqui/js/dataTables.jqueryui.min.js"></script>
+<script src="../node_modules/datatables.net-jqui/js/dataTables.jqueryui.min.js"></script>
 <script src="../node_modules/datatables.net/js/dataTables.min.js"></script>
 
 <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/detail-fitur.js"></script>
+<!-- <script src="js/detail-fitur.js"></script> -->
 <script>
     $(document).ready(function () {
-        $('#tabelfitur').DataTable();
+        $('#tabelbenefit').DataTable({
+            processing: true,
+            serverSide: true,
+            ajax: {
+                url: '<?= site_url('/benefit/getdatabenefit/' . $idB) ?>'
+
+            },
+            columns: [{
+                data: 'idP',
+                name: 'id_paket_harga'
+            },
+            {
+                data: 'nama_benefit',
+                name: 'nama_benefit'
+            },
+            // {
+            //     data: 'id',
+            //     name: 'id',
+            //     render: function (data, type, row) {
+            //         console.log(row);
+            //         return '<div class="d-flex gap-2 justify-content-end"><button type="button" class="btn d-flex btn-sm btn-edit-benefit" style="background-color: #03C988; color:white;" data-id="' + data + '" data-id_paket_harga="' + row.id_paket_harga + '" data-nama_benefit="' + row.nama_benefit + '" > <i class="ti ti-edit pe-2 fs-6 align-middle p-1 "></i> <p class="m-0 p-1 align-middle">Ubah</p></button><button type="button" class="btn btn-danger d-flex btn-sm btn-hapus-benefit" data-id="' + data + '"><i class="ti ti-trash pe-2 fs-6 align-middle p-1 "></button></div>'
+            //     },
+            //     orderable: false
+            // },
+            ]
+        });
+        //$('#tabelfitur').DataTable();
+        $('#tabelbenefit').on("click", '.btn-edit-benefit', function () {
+            let id = $(this).data('id');
+            let idPaket = $(this).data('id_paket_harga');
+            let benefit = $(this).data('nama_benefit');
+            // // alert(desk);
+            $('#id').val(id)
+            $('#id_paket_harga').val(idPaket)
+            $('#nama_benefit_ubah').val(benefit)
+            $('#exampleModalubahbenefit').modal('show')
+        });
+
+        $('#tabelbenefit').on("click", '.btn-hapus-benefit', function () {
+            let id = $(this).data('id');
+            $('#id_benefit_hapus').val(id)
+            // alert(id);
+            $('#exampleModalhapusbenefit').modal('show')
+        });
     });
+    // });
 </script>
 <?php $this->endsection() ?>

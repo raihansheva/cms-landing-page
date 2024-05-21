@@ -10,6 +10,8 @@ $routes->get('/', 'LoginController::login');
 
 // dashboard
 $routes->get('/dashboard', 'Home::index');
+$routes->get('/tes', 'HargaController::index');
+
 // -----------
 
 // banner
@@ -32,12 +34,13 @@ $routes->get('/fitur', 'Home::fitur');
 $routes->post('/tambahfitur', 'FiturController::tambahfitur');
 $routes->post('/ubahfitur', 'FiturController::ubahfitur');
 $routes->post('/hapusfitur', 'FiturController::hapusfitur');
+$routes->get('/fitur/getdatafitur', 'FiturController::get_data_fitur');
 
 $routes->get('/detail-fitur/(:num)', 'Home::detailfitur/$1');
 $routes->post('/tambahdetailfitur', 'FiturController::tambahdetailfitur');
 $routes->post('/ubahdetailfitur', 'FiturController::ubahdetailfitur');
 $routes->post('/hapusdetailfitur', 'FiturController::hapusdetailfitur');
-$routes->get('/fitur/getdatafitur', 'FiturController::get_data_fitur');
+$routes->get('/fitur/getdatadetailfitur/(:num)', 'FiturController::get_data_detail_fitur/$1');
 // $routes->post('/tiket/getTiketData', 'Tiket::getTiketData');
 // -----------
 
@@ -57,6 +60,10 @@ $routes->get('/harga/getdataharga', 'HargaController::get_data_harga');
 
 
 $routes->get('/benefit/(:num)', 'Home::benefit/$1');
+$routes->post('/tambahbenefit', 'HargaController::tambahbenefit');
+$routes->post('/ubahbenefit', 'HargaController::ubahbenefit');
+$routes->post('/hapusbenefit', 'HargaController::hapusbenefit');
+$routes->get('/benefit/getdatabenefit/(:num)', 'HargaController::get_data_benefit/$1');
 
 
 
