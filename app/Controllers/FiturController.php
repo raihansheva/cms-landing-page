@@ -18,17 +18,24 @@ class FiturController extends BaseController
 
     public function get_data_fitur()
     {
-        return datatables('fitur')->make();
+        // return datatables('fitur')->make();
+        return DataTables::use('fitur')
+        ->select('fitur.id as idF , fitur.nama_fitur , fitur.deskripsi as deskripsiF , solusi.nama_solusi , fitur.icon ')
+        ->join('solusi', 'solusi.id = fitur.id_solusi' , 'INNER JOIN')->make();
+        // return DataTables::use('benefit')
+        // ->select('benefit.id as idP, benefit.nama_benefit, paket_harga.nama_paket ')
+        // ->join('paket_harga', 'paket_harga.id = benefit.id_paket_harga' , 'INNER JOIN')
+        // ->where(['id_paket_harga' => $id])->make();
     }
     public function get_data_detail_fitur($id)
     {
-        return datatables('detail_fitur')->where(['id_fitur' => $id])->make();
-        // return DataTables::use('detail_fitur')
-        // ->select('detail_fitur.id as idD, detail_fitur.judul_detail , detail_fitur.deskripsi, detail_fitur.gambar, fitur.nama_fitur')
-        // ->join('fitur', 'fitur.id = detail_fitur.id_fitur' , 'INNER JOIN')
-        // // ->join('layout', 'layout.id = detail_fitur.layout' , 'INNER JOIN')
-        // ->where(['id_fitur' => $id])->make();
-        
+        // return datatables('detail_fitur')->where(['id_fitur' => $id])->make();
+        return DataTables::use('detail_fitur')
+        ->select('detail_fitur.id as idD, detail_fitur.judul_detail , detail_fitur.deskripsi as deskripsiDF, detail_fitur.gambar, fitur.nama_fitur , layout.nama_layout')
+        ->join('fitur', 'fitur.id = detail_fitur.id_fitur' , 'INNER JOIN')
+        ->join('layout', 'layout.id = detail_fitur.layout' , 'INNER JOIN')
+        ->where(['id_fitur' => $id])->make();
+        // return $data;
     }
 
     

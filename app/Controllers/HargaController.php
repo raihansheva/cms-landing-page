@@ -19,7 +19,10 @@ class HargaController extends BaseController
     }
 
     public function get_data_harga(){
-        return datatables('paket_harga')->make();
+        // return datatables('paket_harga')->make();
+        return DataTables::use('paket_harga')
+        ->select('paket_harga.id as idPH , paket_harga.nama_paket , paket_harga.kategori_harga , paket_harga.deskripsi as deskripsiPH , paket_harga.harga , solusi.nama_solusi')
+        ->join('solusi', 'solusi.id = paket_harga.id_solusi' , 'INNER JOIN')->make();
     }
     public function get_data_benefit($id)
     {

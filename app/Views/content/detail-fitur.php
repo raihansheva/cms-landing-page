@@ -252,29 +252,24 @@
             ajax: {
                 url: '/fitur/getdatadetailfitur/' + '<?= $idF ?>',
             },
-            columns: [{
+            columns: [
+            {
                 data: 'judul_detail',
-                name: 'judul_detail'
             },
             {
-                data: 'id_fitur',
-                name: 'id_fitur'
+                data: 'nama_fitur',
             },
             {
-                data: 'deskripsi',
-                name: 'deskripsi'
+                data: 'deskripsiDF',
             },
             {
                 data: 'gambar',
-                name: 'gambar'
             },
             {
-                data: 'layout',
-                name: 'layout'
+                data: 'nama_layout',
             },    
                 {
-                    data: 'id',
-                    name: 'id',
+                    data: 'idD',
                     render: function (data, type, row) {
                         console.log(row);
                         return '<div class="d-flex gap-2"><button type="button" class="btn d-flex btn-sm btn-edit-detail" style="background-color: #03C988; color:white;" data-id="' + data + '" data-judul_detail="' + row.judul_detail + '" data-deskripsi="'+ row.deskripsi +'" data-gambar="'+ row.gambar +'" data-id_fitur="'+ row.id_fitur +'" data-layout="'+ row.layout +'"> <i class="ti ti-edit pe-2 fs-6 align-middle p-1 "></i> <p class="m-0 p-1 align-middle">Ubah</p></button><button type="button" class="btn btn-danger d-flex btn-sm btn-hapus-detail" data-id="' + data + '"><i class="ti ti-trash pe-2 fs-6 align-middle p-1 "></button></div>'

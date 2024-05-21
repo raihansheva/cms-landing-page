@@ -78,9 +78,10 @@
             <table id="tabelbenefit" class="table col-12 " style="height: auto;">
                 <thead class="">
                     <tr class="p-2">
-                        <th scope="col" class="d-none">Id Paket</th>
+                        <!-- <th scope="col" class="d-none">Id Paket</th> -->
                         <th scope="col">Nama Paket</th>
                         <th scope="col">Benefit</th>
+                        <th scope="col"></th>
                     </tr>
                 </thead>
                 <tbody>
