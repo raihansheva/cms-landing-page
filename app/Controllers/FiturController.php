@@ -2,11 +2,12 @@
 
 namespace App\Controllers;
 
+use Config\Services;
 use App\Models\Fitur;
 use App\Models\Detailfitur;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
-use Config\Services;
+use Irsyadulibad\DataTables\DataTables;
 
 class FiturController extends BaseController
 {
@@ -15,29 +16,6 @@ class FiturController extends BaseController
         //
     }
 
-    // public function listdata()
-    // {
-    //     $request = Services::request();
-    //     $datamodel = new Modelfile($request);
-    //     if ($request->getMethod(true) == 'POST') {
-    //         $lists = $datamodel->get_datatables();
-    //         $data = [];
-    //         $no = $request->getPost("start");
-    //         foreach ($lists as $list) {
-    //             $no++;
-    //             $row = [];
-    //             $row[] = '';
-    //             $data[] = $row;
-    //         }
-    //         $output = [
-    //             "draw" => $request->getPost('draw'),
-    //             "recordsTotal" => $datamodel->count_all(),
-    //             "recordsFiltered" => $datamodel->count_filtered(),
-    //             "data" => $data
-    //         ];
-    //         echo json_encode($output);
-    //     }
-    // }
     public function get_data_fitur()
     {
         return datatables('fitur')->make();
@@ -45,6 +23,12 @@ class FiturController extends BaseController
     public function get_data_detail_fitur($id)
     {
         return datatables('detail_fitur')->where(['id_fitur' => $id])->make();
+        // return DataTables::use('detail_fitur')
+        // ->select('detail_fitur.id as idD, detail_fitur.judul_detail , detail_fitur.deskripsi, detail_fitur.gambar, fitur.nama_fitur')
+        // ->join('fitur', 'fitur.id = detail_fitur.id_fitur' , 'INNER JOIN')
+        // // ->join('layout', 'layout.id = detail_fitur.layout' , 'INNER JOIN')
+        // ->where(['id_fitur' => $id])->make();
+        
     }
 
     

@@ -78,6 +78,7 @@
             <table id="tabelbenefit" class="table col-12 " style="height: auto;">
                 <thead class="">
                     <tr class="p-2">
+                        <th scope="col" class="d-none">Id Paket</th>
                         <th scope="col">Nama Paket</th>
                         <th scope="col">Benefit</th>
                     </tr>
@@ -168,31 +169,28 @@
                 url: '<?= site_url('/benefit/getdatabenefit/' . $idB) ?>'
 
             },
-            columns: [{
-                data: 'idP',
-                name: 'id_paket_harga'
+            columns: [
+            {
+                data: 'nama_paket',
             },
             {
                 data: 'nama_benefit',
-                name: 'nama_benefit'
             },
-            // {
-            //     data: 'id',
-            //     name: 'id',
-            //     render: function (data, type, row) {
-            //         console.log(row);
-            //         return '<div class="d-flex gap-2 justify-content-end"><button type="button" class="btn d-flex btn-sm btn-edit-benefit" style="background-color: #03C988; color:white;" data-id="' + data + '" data-id_paket_harga="' + row.id_paket_harga + '" data-nama_benefit="' + row.nama_benefit + '" > <i class="ti ti-edit pe-2 fs-6 align-middle p-1 "></i> <p class="m-0 p-1 align-middle">Ubah</p></button><button type="button" class="btn btn-danger d-flex btn-sm btn-hapus-benefit" data-id="' + data + '"><i class="ti ti-trash pe-2 fs-6 align-middle p-1 "></button></div>'
-            //     },
-            //     orderable: false
-            // },
-            ]
-        });
+            {
+                data:'idP',
+                render: function (data, type, row) {
+                    return '<div class="d-flex gap-2 justify-content-end"><button type="button" class="btn d-flex btn-sm btn-edit-benefit" style="background-color: #03C988; color:white;" data-id="' + data + '" data-id_paket_harga="' + row.id_paket_harga + '" data-nama_benefit="' + row.nama_benefit + '" > <i class="ti ti-edit pe-2 fs-6 align-middle p-1 "></i> <p class="m-0 p-1 align-middle">Ubah</p></button><button type="button" class="btn btn-danger d-flex btn-sm btn-hapus-benefit" data-id="' + data + '"><i class="ti ti-trash pe-2 fs-6 align-middle p-1 "></button></div>'
+                },
+                orderable: false
+            }
+            ]
+        });
         //$('#tabelfitur').DataTable();
         $('#tabelbenefit').on("click", '.btn-edit-benefit', function () {
             let id = $(this).data('id');
             let idPaket = $(this).data('id_paket_harga');
             let benefit = $(this).data('nama_benefit');
-            // // alert(desk);
+            // alert(id);
             $('#id').val(id)
             $('#id_paket_harga').val(idPaket)
             $('#nama_benefit_ubah').val(benefit)
