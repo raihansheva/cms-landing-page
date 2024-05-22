@@ -8,7 +8,7 @@ class Banner extends Model
 {
     protected $table            = 'banner';
     protected $primaryKey       = 'id';
-    protected $allowedFields = ['id','judul', 'deskripsi','gambar'];
+    protected $allowedFields = ['id','judul', 'deskripsi','gambar' , 'layout'];
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;

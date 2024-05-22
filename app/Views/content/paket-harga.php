@@ -206,10 +206,6 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 <script src="../node_modules/datatables.net/js/dataTables.min.js"></script>
-<!-- Skrip DataTables -->
-<!-- <script src="../node_modules/datatables.net-jqui/js/dataTables.jqueryui.min.js"></script>
-<script src="../node_modules/datatables.net/js/dataTables.min.js"></script> -->
-<script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <!-- <script src="js/ajax_fitur.js"></script> -->
 <script src="js/paket_harga.js"></script>
 <!-- <script>

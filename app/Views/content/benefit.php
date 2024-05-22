@@ -158,8 +158,6 @@
 <!-- Skrip DataTables -->
 <script src="../node_modules/datatables.net-jqui/js/dataTables.jqueryui.min.js"></script>
 <script src="../node_modules/datatables.net/js/dataTables.min.js"></script>
-
-<script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <!-- <script src="js/detail-fitur.js"></script> -->
 <script>
     $(document).ready(function () {

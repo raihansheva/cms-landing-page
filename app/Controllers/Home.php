@@ -32,9 +32,11 @@ class Home extends BaseController
     {
         helper(['form']);
         $banner = new Banner();
+        $layout = new Layout();
         $footer = new Footer();
         $data = [
             'banner' => $banner->findAll(),
+            'layout' => $layout->findAll(),
             'footer' => $footer->findAll(),
         ];
 

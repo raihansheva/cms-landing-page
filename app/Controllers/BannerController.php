@@ -29,7 +29,8 @@ class BannerController extends BaseController
         $banner->save([
             'judul' => $this->request->getPost('judul'),
             'deskripsi' => $this->request->getPost('deskripsi'),
-            'gambar' => $path 
+            'gambar' => $path ,
+            'layout' => $this->request->getPost('layout')
         ]);
         return redirect()->back();
         // return $this->response->setJSON(['status' => true]);
@@ -52,7 +53,8 @@ class BannerController extends BaseController
             'id' => $id,
             'judul' => $this->request->getPost('judul'),
             'deskripsi' => $this->request->getPost('deskripsi'),
-            'gambar' => $path 
+            'gambar' => $path ,
+            'layout' => $this->request->getPost('layout')
         ]);
         return redirect()->back();
         // return $this->response->setJSON(['status' => true]);

@@ -35,63 +35,21 @@
                                             Layout : </label>
                                     </div>
                                     <div class="col-12 d-flex gap-2">
-                                        <div class="mb-3 p-2 col" style="text-align: left;">
-                                            <div class="col-12 border border-2 d-flex p-2" style="height: 150px;">
-                                                <div class="col-6 border" style="height: 100%;"></div>
-                                                <div class="col-6 p-2 d-block justify-content-end"
-                                                    style="height: 100%;">
-                                                    <div class="col-12 border mt-4"></div>
-                                                    <div class="col-12 border mt-1" style="width: 60%;"></div>
-                                                    <div class="col-12 border mt-1" style="width: 50%;"></div>
+                                        <?php foreach ($layout as $key => $value) { ?>
+                                            <div class="mb-3 p-2 col" style="text-align: left;">
+                                                <div class=" d-flex p-2" style="height: 150px; width: 228px;">
+                                                    <img class="img-thumbnail" src="/<?= $value['layout'] ?>" alt=""
+                                                        width="100%" height="100%">
+                                                </div>
+                                                <br>
+                                                <div class="form-check  col-12 d-flex justify-content-center gap-1">
+                                                    <input class="form-check-input" type="radio" name="layout"
+                                                        value="<?= $value['id'] ?>" id="layout">
+                                                    <label for="exampleFormControlInput1"
+                                                        class="form-label d-flex justify-content-between"><?= $value['nama_layout'] ?></label>
                                                 </div>
                                             </div>
-                                            <br>
-                                            <div class="form-check  col-12 d-flex justify-content-center gap-1">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                    id="flexRadioDefault1">
-                                                <label for="exampleFormControlInput1"
-                                                    class="form-label d-flex justify-content-between">
-                                                    A </label>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 p-2 col " style="text-align: left;">
-                                            <div class="col-12 border border-2 d-flex p-2" style="height: 150px;">
-                                                <div class="col-6 p-2 d-block justify-content-end"
-                                                    style="height: 100%;">
-                                                    <div class="col-12 border mt-4"></div>
-                                                    <div class="col-12 border mt-1" style="width: 60%;"></div>
-                                                    <div class="col-12 border mt-1" style="width: 50%;"></div>
-                                                </div>
-                                                <div class="col-6 border" style="height: 100%;"></div>
-                                            </div>
-                                            <br>
-                                            <div class="form-check col-12 d-flex justify-content-center gap-1">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                    id="flexRadioDefault1">
-                                                <label for="exampleFormControlInput1"
-                                                    class="form-label d-flex justify-content-between">
-                                                    B </label>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3 p-2 col" style="text-align: left;">
-                                            <div class="col-12 border border-2 p-2" style="height: 150px;">
-                                                <div class="col-12 border" style="height: 50%;"></div>
-                                                <div class="col-12 p-2 d-block justify-content-end"
-                                                    style="height: 100%;">
-                                                    <div class="col-12 border mt-3"></div>
-                                                    <div class="col-12 border mt-1" style="width: 60%;"></div>
-                                                    <div class="col-12 border mt-1" style="width: 50%;"></div>
-                                                </div>
-                                            </div>
-                                            <br>
-                                            <div class="form-check col-12 d-flex justify-content-center gap-1">
-                                                <input class="form-check-input" type="radio" name="flexRadioDefault"
-                                                    id="flexRadioDefault1">
-                                                <label for="exampleFormControlInput1"
-                                                    class="form-label d-flex justify-content-between">
-                                                    C </label>
-                                            </div>
-                                        </div>
+                                        <?php } ?>
                                     </div>
                                 </div>
                                 <div class="mb-3 p-2" style="text-align: left;">
@@ -141,172 +99,427 @@
         <div class="card col-12 p-4 pb-0 gap-2 bg-dark bg-opacity-10"
             style="height: 520px; border:1px solid rgb(229, 234, 239); overflow-y: auto;" id="style-3">
             <?php foreach ($banner as $key => $value) { ?>
-                <div class="card col-12 mb-3" style="padding: 24px;">
-                    <div class="card-kanan-atas">
-                        <i class="ti ti-pencil" style="font-size: 36px;" type="button" data-bs-toggle="modal"
-                            data-bs-target="#exampleModaleditbanner<?php echo $value['id']; ?>"></i>
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModaleditbanner<?php echo $value['id']; ?>" tabindex="-1"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg modal-dialog-scrollable">
-                                <form action="/ubahbanner" method="post" class="modal-dialog-scrollable"
-                                    enctype="multipart/form-data">
-                                    <?= csrf_field(); ?>
+                <?php if ($value['layout'] == '1') { ?>
+                    <div class="card col-12 mb-3" style="padding: 24px;">
+                        <div class="card-kanan-atas">
+                            <i class="ti ti-pencil" style="font-size: 36px;" type="button" data-bs-toggle="modal"
+                                data-bs-target="#exampleModaleditbanner<?php echo $value['id']; ?>"></i>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModaleditbanner<?php echo $value['id']; ?>" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                                    <form action="/ubahbanner" method="post" class="modal-dialog-scrollable"
+                                        enctype="multipart/form-data">
+                                        <?= csrf_field(); ?>
 
-                                    <div class="modal-content">
-                                        <div class="modal-header border-bottom">
-                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Ubah banner</h1>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="col-12 ">
-                                                <div class="ps-2" style="text-align: left;">
-                                                    <label for="exampleFormControlInput1"
-                                                        class="form-label d-flex justify-content-between">
-                                                        Layout : </label>
-                                                </div>
-                                                <div class="col-12 d-flex gap-2">
-                                                    <div class="mb-3 p-2 col" style="text-align: left;">
-                                                        <div class="col-12 border border-2 d-flex justify-content-center align-items-center"
-                                                            style="height: 150px;">
-                                                            <h4 class="text-middle">Layout A</h4>
-                                                        </div>
-                                                        <br>
-                                                        <div class="form-check  col-12 d-flex justify-content-center gap-1">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="flexRadioDefault" id="flexRadioDefault1">
-                                                            <label for="exampleFormControlInput1"
-                                                                class="form-label d-flex justify-content-between">
-                                                                A </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="mb-3 p-2 col " style="text-align: left;">
-                                                        <div class="col-12 border border-2 d-flex justify-content-center align-items-center"
-                                                            style="height: 150px;">
-                                                            <h4 class="text-middle">Layout B</h4>
-                                                        </div>
-                                                        <br>
-                                                        <div class="form-check col-12 d-flex justify-content-center gap-1">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="flexRadioDefault" id="flexRadioDefault1">
-                                                            <label for="exampleFormControlInput1"
-                                                                class="form-label d-flex justify-content-between">
-                                                                B </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="mb-3 p-2 col" style="text-align: left;">
-                                                        <div class="col-12 border border-2 d-flex justify-content-center align-items-center"
-                                                            style="height: 150px;">
-                                                            <h4 class="text-middle">Layout C</h4>
-                                                        </div>
-                                                        <br>
-                                                        <div class="form-check col-12 d-flex justify-content-center gap-1">
-                                                            <input class="form-check-input" type="radio"
-                                                                name="flexRadioDefault" id="flexRadioDefault1">
-                                                            <label for="exampleFormControlInput1"
-                                                                class="form-label d-flex justify-content-between">
-                                                                C </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                        <div class="modal-content">
+                                            <div class="modal-header border-bottom">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Ubah banner</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
                                             </div>
-                                            <div class="mb-3 p-2 pt-0" style="text-align: left; p-2">
-                                                <!-- <label for="exampleFormControlInput1"
+                                            <div class="modal-body">
+                                                <div class="col-12 ">
+                                                    <div class="ps-2" style="text-align: left;">
+                                                        <label for="exampleFormControlInput1"
+                                                            class="form-label d-flex justify-content-between">
+                                                            Layout : </label>
+                                                    </div>
+                                                    <div class="col-12 d-flex gap-2">
+                                                        <?php foreach ($layout as $key => $value2) { ?>
+                                                            <div class="mb-3 p-2 col" style="text-align: left;">
+                                                                <div class=" d-flex p-2" style="height: 150px; width: 228px;">
+                                                                    <img class="img-thumbnail" src="/<?= $value2['layout'] ?>"
+                                                                        alt="" width="100%" height="100%">
+                                                                </div>
+                                                                <br>
+                                                                <div class="form-check  col-12 d-flex justify-content-center gap-1">
+                                                                    <input class="form-check-input" type="radio" name="layout"
+                                                                        value="<?= $value2['id'] ?>" id="layout">
+                                                                    <label for="exampleFormControlInput1"
+                                                                        class="form-label d-flex justify-content-between"><?= $value2['nama_layout'] ?></label>
+                                                                </div>
+                                                            </div>
+                                                        <?php } ?>
+                                                    </div>
+                                                </div>
+                                                <div class="mb-3 p-2 pt-0" style="text-align: left; p-2">
+                                                    <!-- <label for="exampleFormControlInput1"
                                                 class="form-label d-flex justify-content-between">
                                                 Judul : <p class="p-0 m-0" id="limit2"></p></label>
                                             <input type="text" class="form-control" id="inputjudul2"
                                                 placeholder="Masukan Judul"> -->
-                                                <input type="text" value="<?php echo $value['id']; ?>" name="id" id="id"
-                                                    hidden>
-                                                <label for="exampleFormControlInput1"
-                                                    class="form-label d-flex justify-content-between">
-                                                    Judul : </label>
-                                                <input type="text" class="form-control" id="inputjudul2"
-                                                    placeholder="Masukan Judul" value="<?php echo $value['judul']; ?>"
-                                                    name="judul">
-                                            </div>
-                                            <div class="col-12 d-flex">
-                                                <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
-                                                    <label for="exampleFormControlTextarea1"
-                                                        class="form-label">Deskripsi:</label>
-                                                    <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                        rows="8.5"
-                                                        name="deskripsi"><?php echo $value['deskripsi']; ?></textarea>
+                                                    <input type="text" value="<?php echo $value['id']; ?>" name="id" id="id"
+                                                        hidden>
+                                                    <label for="exampleFormControlInput1"
+                                                        class="form-label d-flex justify-content-between">
+                                                        Judul : </label>
+                                                    <input type="text" class="form-control" id="inputjudul2"
+                                                        placeholder="Masukan Judul" value="<?php echo $value['judul']; ?>"
+                                                        name="judul">
                                                 </div>
-                                                <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
-                                                    <label for="exampleFormControlInput1" class="form-label">Gambar
-                                                        :</label>
-                                                    <input type="file" class="form-control" id="gambar"
-                                                        placeholder="Pilih Gambar" name="gambar">
+                                                <div class="col-12 d-flex">
+                                                    <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                                        <label for="exampleFormControlTextarea1"
+                                                            class="form-label">Deskripsi:</label>
+                                                        <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                            rows="8.5"
+                                                            name="deskripsi"><?php echo $value['deskripsi']; ?></textarea>
+                                                    </div>
+                                                    <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                                        <label for="exampleFormControlInput1" class="form-label">Gambar
+                                                            :</label>
+                                                        <input type="file" class="form-control" id="gambar"
+                                                            placeholder="Pilih Gambar" name="gambar">
 
-                                                    <div class="col-12 mt-2">
-                                                        <img src="#" alt="Pratinjau Gambar" id="preview"
-                                                            class="preview-image d-none image-fluid col-12" width="100%">
-                                                        <button type="button" id="hapusGambar"
-                                                            class="btn btn-danger d-none">Hapus
-                                                            Gambar</button>
+                                                        <div class="col-12 mt-2">
+                                                            <img src="#" alt="Pratinjau Gambar" id="preview"
+                                                                class="preview-image d-none image-fluid col-12" width="100%">
+                                                            <button type="button" id="hapusGambar"
+                                                                class="btn btn-danger d-none">Hapus
+                                                                Gambar</button>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div class="modal-footer pe-4 border-top">
-                                            <button class="btn d-flex" type="submit"
-                                                style="background-color: #03C988; color:white;"><i
-                                                    class="ti ti-edit pe-2 fs-6 align-middle p-1 "></i>
-                                                <p class="m-0 p-1 align-middle">Simpan perubahan</p>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <!-- ikon hapus -->
-                        <i class="ti ti-x" style="font-size: 36px;" type="button" data-bs-toggle="modal"
-                            data-bs-target="#exampleModalhapusbanner<?= $value['id'] ?>"></i>
-                        <!-- Modal -->
-                        <div class="modal fade" id="exampleModalhapusbanner<?= $value['id'] ?>" tabindex="-1"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" style="width: 250px;">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus Banner</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <form action="/hapusbanner" method="post" id="form-data-hapus">
-                                        <?= csrf_field(); ?>
-                                        <div class="modal-body">
-                                            <p class="text-center">Yakin ingin hapus solusi ini?</p>
-                                            <input type="text" value="<?= $value['id'] ?>" name="id" id="id" hidden>
-                                        </div>
-                                        <div class="modal-footer d-flex justify-content-center">
-                                            <button class="btn btn-danger d-flex btn-delete" type="submit"><i
-                                                    class="ti ti-trash pe-2 fs-6 align-middle p-1" id="btn-delete"></i>
-                                                <p class="m-0 p-1 align-middle">Hapus</p>
-                                            </button>
+                                            <div class="modal-footer pe-4 border-top">
+                                                <button class="btn d-flex" type="submit"
+                                                    style="background-color: #03C988; color:white;"><i
+                                                        class="ti ti-edit pe-2 fs-6 align-middle p-1 "></i>
+                                                    <p class="m-0 p-1 align-middle">Simpan perubahan</p>
+                                                </button>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
                             </div>
-                        </div>
+                            <!-- ikon hapus -->
+                            <i class="ti ti-x" style="font-size: 36px;" type="button" data-bs-toggle="modal"
+                                data-bs-target="#exampleModalhapusbanner<?= $value['id'] ?>"></i>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModalhapusbanner<?= $value['id'] ?>" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" style="width: 250px;">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus Banner</h1>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <form action="/hapusbanner" method="post" id="form-data-hapus">
+                                            <?= csrf_field(); ?>
+                                            <div class="modal-body">
+                                                <p class="text-center">Yakin ingin hapus solusi ini?</p>
+                                                <input type="text" value="<?= $value['id'] ?>" name="id" id="id" hidden>
+                                            </div>
+                                            <div class="modal-footer d-flex justify-content-center">
+                                                <button class="btn btn-danger d-flex btn-delete" type="submit"><i
+                                                        class="ti ti-trash pe-2 fs-6 align-middle p-1" id="btn-delete"></i>
+                                                    <p class="m-0 p-1 align-middle">Hapus</p>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
 
-                    </div>
-                    <div class="d-flex">
-                        <div class="col-6">
-                            <img src="<?php echo $value['gambar'] ?>" alt="" width="100%" height="100%">
                         </div>
-                        <div class="col-6 d-block">
-                            <div class="col-12 mt-5"></div>
-                            <div class="col-12 text-end mt-5">
-                                <h1><?php echo $value['judul']; ?></h1>
+                        <div class="d-flex">
+                            <div class="col-6">
+                                <img src="<?php echo $value['gambar'] ?>" alt="" width="100%" height="100%">
                             </div>
-                            <div class="col-12 text-end ">
-                                <p><?php echo $value['deskripsi']; ?></p>
+                            <div class="col-6 d-block">
+                                <div class="col-12 mt-5"></div>
+                                <div class="col-12 text-end mt-5">
+                                    <h1><?php echo $value['judul']; ?></h1>
+                                </div>
+                                <div class="col-12 text-end ">
+                                    <p><?php echo $value['deskripsi']; ?></p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                <?php } else if ($value['layout'] == '2') { ?>
+                        <div class="card col-12 mb-3" style="padding: 24px;">
+                            <div class="card-kanan-atas">
+                                <i class="ti ti-pencil" style="font-size: 36px;" type="button" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModaleditbanner<?php echo $value['id']; ?>"></i>
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModaleditbanner<?php echo $value['id']; ?>" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                                        <form action="/ubahbanner" method="post" class="modal-dialog-scrollable"
+                                            enctype="multipart/form-data">
+                                        <?= csrf_field(); ?>
+
+                                            <div class="modal-content">
+                                                <div class="modal-header border-bottom">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Ubah banner</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="col-12 ">
+                                                        <div class="ps-2" style="text-align: left;">
+                                                            <label for="exampleFormControlInput1"
+                                                                class="form-label d-flex justify-content-between">
+                                                                Layout : </label>
+                                                        </div>
+                                                        <div class="col-12 d-flex gap-2">
+                                                        <?php foreach ($layout as $key => $value2) { ?>
+                                                                <div class="mb-3 p-2 col" style="text-align: left;">
+                                                                    <div class=" d-flex p-2" style="height: 150px; width: 228px;">
+                                                                        <img class="img-thumbnail" src="/<?= $value2['layout'] ?>"
+                                                                            alt="" width="100%" height="100%">
+                                                                    </div>
+                                                                    <br>
+                                                                    <div class="form-check  col-12 d-flex justify-content-center gap-1">
+                                                                        <input class="form-check-input" type="radio" name="layout"
+                                                                            value="<?= $value2['id'] ?>" id="layout">
+                                                                        <label for="exampleFormControlInput1"
+                                                                            class="form-label d-flex justify-content-between"><?= $value2['nama_layout'] ?></label>
+                                                                    </div>
+                                                                </div>
+                                                        <?php } ?>
+                                                        </div>
+                                                    </div>
+                                                    <div class="mb-3 p-2 pt-0" style="text-align: left; p-2">
+                                                        <!-- <label for="exampleFormControlInput1"
+                                                class="form-label d-flex justify-content-between">
+                                                Judul : <p class="p-0 m-0" id="limit2"></p></label>
+                                            <input type="text" class="form-control" id="inputjudul2"
+                                                placeholder="Masukan Judul"> -->
+                                                        <input type="text" value="<?php echo $value['id']; ?>" name="id" id="id"
+                                                            hidden>
+                                                        <label for="exampleFormControlInput1"
+                                                            class="form-label d-flex justify-content-between">
+                                                            Judul : </label>
+                                                        <input type="text" class="form-control" id="inputjudul2"
+                                                            placeholder="Masukan Judul" value="<?php echo $value['judul']; ?>"
+                                                            name="judul">
+                                                    </div>
+                                                    <div class="col-12 d-flex">
+                                                        <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                                            <label for="exampleFormControlTextarea1"
+                                                                class="form-label">Deskripsi:</label>
+                                                            <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                                rows="8.5"
+                                                                name="deskripsi"><?php echo $value['deskripsi']; ?></textarea>
+                                                        </div>
+                                                        <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                                            <label for="exampleFormControlInput1" class="form-label">Gambar
+                                                                :</label>
+                                                            <input type="file" class="form-control" id="gambar"
+                                                                placeholder="Pilih Gambar" name="gambar">
+
+                                                            <div class="col-12 mt-2">
+                                                                <img src="#" alt="Pratinjau Gambar" id="preview"
+                                                                    class="preview-image d-none image-fluid col-12" width="100%">
+                                                                <button type="button" id="hapusGambar"
+                                                                    class="btn btn-danger d-none">Hapus
+                                                                    Gambar</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer pe-4 border-top">
+                                                    <button class="btn d-flex" type="submit"
+                                                        style="background-color: #03C988; color:white;"><i
+                                                            class="ti ti-edit pe-2 fs-6 align-middle p-1 "></i>
+                                                        <p class="m-0 p-1 align-middle">Simpan perubahan</p>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <!-- ikon hapus -->
+                                <i class="ti ti-x" style="font-size: 36px;" type="button" data-bs-toggle="modal"
+                                    data-bs-target="#exampleModalhapusbanner<?= $value['id'] ?>"></i>
+                                <!-- Modal -->
+                                <div class="modal fade" id="exampleModalhapusbanner<?= $value['id'] ?>" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" style="width: 250px;">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus Banner</h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <form action="/hapusbanner" method="post" id="form-data-hapus">
+                                            <?= csrf_field(); ?>
+                                                <div class="modal-body">
+                                                    <p class="text-center">Yakin ingin hapus solusi ini?</p>
+                                                    <input type="text" value="<?= $value['id'] ?>" name="id" id="id" hidden>
+                                                </div>
+                                                <div class="modal-footer d-flex justify-content-center">
+                                                    <button class="btn btn-danger d-flex btn-delete" type="submit"><i
+                                                            class="ti ti-trash pe-2 fs-6 align-middle p-1" id="btn-delete"></i>
+                                                        <p class="m-0 p-1 align-middle">Hapus</p>
+                                                    </button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex p-2">
+                                <div class="col-6 d-block">
+                                    <div class="col-12 mt-5"></div>
+                                    <div class="col-12 text-start mt-5">
+                                        <h1><?php echo $value['judul']; ?></h1>
+                                    </div>
+                                    <div class="col-10 text-start ">
+                                        <p><?php echo $value['deskripsi']; ?></p>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <img src="<?php echo $value['gambar'] ?>" alt="" width="100%" height="100%">
+                                </div>
+                            </div>
+                        </div>
+                <?php } else if ($value['layout'] == '3') { ?>
+                            <div class="card col-12 mb-3" style="padding: 24px;">
+                                <div class="card-kanan-atas">
+                                    <i class="ti ti-pencil" style="font-size: 36px;" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModaleditbanner<?php echo $value['id']; ?>"></i>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModaleditbanner<?php echo $value['id']; ?>" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                                            <form action="/ubahbanner" method="post" class="modal-dialog-scrollable"
+                                                enctype="multipart/form-data">
+                                        <?= csrf_field(); ?>
+                                                <div class="modal-content">
+                                                    <div class="modal-header border-bottom">
+                                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Ubah banner</h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <div class="col-12 ">
+                                                            <div class="ps-2" style="text-align: left;">
+                                                                <label for="exampleFormControlInput1"
+                                                                    class="form-label d-flex justify-content-between">
+                                                                    Layout : </label>
+                                                            </div>
+                                                            <div class="col-12 d-flex gap-2">
+                                                        <?php foreach ($layout as $key => $value2) { ?>
+                                                                    <div class="mb-3 p-2 col" style="text-align: left;">
+                                                                        <div class=" d-flex p-2" style="height: 150px; width: 228px;">
+                                                                            <img class="img-thumbnail" src="/<?= $value2['layout'] ?>"
+                                                                                alt="" width="100%" height="100%">
+                                                                        </div>
+                                                                        <br>
+                                                                        <div class="form-check  col-12 d-flex justify-content-center gap-1">
+                                                                            <input class="form-check-input" type="radio" name="layout"
+                                                                                value="<?= $value2['id'] ?>" id="layout">
+                                                                            <label for="exampleFormControlInput1"
+                                                                                class="form-label d-flex justify-content-between"><?= $value2['nama_layout'] ?></label>
+                                                                        </div>
+                                                                    </div>
+                                                        <?php } ?>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mb-3 p-2 pt-0" style="text-align: left; p-2">
+                                                            <!-- <label for="exampleFormControlInput1"
+                                                class="form-label d-flex justify-content-between">
+                                                Judul : <p class="p-0 m-0" id="limit2"></p></label>
+                                            <input type="text" class="form-control" id="inputjudul2"
+                                                placeholder="Masukan Judul"> -->
+                                                            <input type="text" value="<?php echo $value['id']; ?>" name="id" id="id"
+                                                                hidden>
+                                                            <label for="exampleFormControlInput1"
+                                                                class="form-label d-flex justify-content-between">
+                                                                Judul : </label>
+                                                            <input type="text" class="form-control" id="inputjudul2"
+                                                                placeholder="Masukan Judul" value="<?php echo $value['judul']; ?>"
+                                                                name="judul">
+                                                        </div>
+                                                        <div class="col-12 d-flex">
+                                                            <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                                                <label for="exampleFormControlTextarea1"
+                                                                    class="form-label">Deskripsi:</label>
+                                                                <textarea class="form-control" id="exampleFormControlTextarea1"
+                                                                    rows="8.5"
+                                                                    name="deskripsi"><?php echo $value['deskripsi']; ?></textarea>
+                                                            </div>
+                                                            <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                                                <label for="exampleFormControlInput1" class="form-label">Gambar
+                                                                    :</label>
+                                                                <input type="file" class="form-control" id="gambar"
+                                                                    placeholder="Pilih Gambar" name="gambar">
+
+                                                                <div class="col-12 mt-2">
+                                                                    <img src="#" alt="Pratinjau Gambar" id="preview"
+                                                                        class="preview-image d-none image-fluid col-12" width="100%">
+                                                                    <button type="button" id="hapusGambar"
+                                                                        class="btn btn-danger d-none">Hapus
+                                                                        Gambar</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer pe-4 border-top">
+                                                        <button class="btn d-flex" type="submit"
+                                                            style="background-color: #03C988; color:white;"><i
+                                                                class="ti ti-edit pe-2 fs-6 align-middle p-1 "></i>
+                                                            <p class="m-0 p-1 align-middle">Simpan perubahan</p>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- ikon hapus -->
+                                    <i class="ti ti-x" style="font-size: 36px;" type="button" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModalhapusbanner<?= $value['id'] ?>"></i>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="exampleModalhapusbanner<?= $value['id'] ?>" tabindex="-1"
+                                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog" style="width: 250px;">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Hapus Banner</h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <form action="/hapusbanner" method="post" id="form-data-hapus">
+                                            <?= csrf_field(); ?>
+                                                    <div class="modal-body">
+                                                        <p class="text-center">Yakin ingin hapus solusi ini?</p>
+                                                        <input type="text" value="<?= $value['id'] ?>" name="id" id="id" hidden>
+                                                    </div>
+                                                    <div class="modal-footer d-flex justify-content-center">
+                                                        <button class="btn btn-danger d-flex btn-delete" type="submit"><i
+                                                                class="ti ti-trash pe-2 fs-6 align-middle p-1" id="btn-delete"></i>
+                                                            <p class="m-0 p-1 align-middle">Hapus</p>
+                                                        </button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="p-2">
+                                    <div class="col-12">
+                                        <img  src="<?php echo $value['gambar'] ?>" alt="" width="100%" height="350px">
+                                    </div>
+                                    <div class="col-12 d-flex justify-content-center">
+                                        <div class="col-12 mt-1">
+                                            <div class="col-12 text-start mt-3 d-flex justify-content-center ">
+                                                <h1><?php echo $value['judul']; ?></h1>
+                                            </div>
+                                            <div class="col-12 text-center d-flex justify-content-center ">
+                                                <p class="col-6"><?php echo $value['deskripsi']; ?></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                <?php } else { ?>
+                            <!-- kalo nama_layoutnya ga ada kasih div untuk default -->
+                <?php } ?>
             <?php } ?>
         </div>
     </div>
