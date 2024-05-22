@@ -74,6 +74,7 @@
                                         <label for="exampleFormControlInput1" class="form-label">Gambar :</label>
                                         <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar"
                                             name="gambar">
+                                        <label class="fs-2" for="">* <span>Format file : .jpg | .png</span></label>
 
                                         <div class="col-12 mt-2 text-end">
                                             <i class="ti ti-x d-none" type="button" id="hapusGambar"
@@ -171,7 +172,8 @@
                                                             :</label>
                                                         <input type="file" class="form-control" id="gambar"
                                                             placeholder="Pilih Gambar" name="gambar">
-
+                                                        <label class="fs-2" for="">* <span>Format file : .jpg |
+                                                                .png</span></label>
                                                         <div class="col-12 mt-2">
                                                             <img src="#" alt="Pratinjau Gambar" id="preview"
                                                                 class="preview-image d-none image-fluid col-12" width="100%">
@@ -311,7 +313,8 @@
                                                                 :</label>
                                                             <input type="file" class="form-control" id="gambar"
                                                                 placeholder="Pilih Gambar" name="gambar">
-
+                                                            <label class="fs-2" for="">* <span>Format file : .jpg |
+                                                                    .png</span></label>
                                                             <div class="col-12 mt-2">
                                                                 <img src="#" alt="Pratinjau Gambar" id="preview"
                                                                     class="preview-image d-none image-fluid col-12" width="100%">
@@ -449,7 +452,8 @@
                                                                     :</label>
                                                                 <input type="file" class="form-control" id="gambar"
                                                                     placeholder="Pilih Gambar" name="gambar">
-
+                                                                <label class="fs-2" for="">* <span>Format file : .jpg |
+                                                                        .png</span></label>
                                                                 <div class="col-12 mt-2">
                                                                     <img src="#" alt="Pratinjau Gambar" id="preview"
                                                                         class="preview-image d-none image-fluid col-12" width="100%">
@@ -503,7 +507,7 @@
                                 </div>
                                 <div class="p-2">
                                     <div class="col-12">
-                                        <img  src="<?php echo $value['gambar'] ?>" alt="" width="100%" height="350px">
+                                        <img src="<?php echo $value['gambar'] ?>" alt="" width="100%" height="350px">
                                     </div>
                                     <div class="col-12 d-flex justify-content-center">
                                         <div class="col-12 mt-1">

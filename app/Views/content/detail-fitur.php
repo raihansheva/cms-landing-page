@@ -80,6 +80,7 @@
                                         <label for="exampleFormControlInput1" class="form-label">Gambar :</label>
                                         <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar"
                                             name="gambar">
+                                            <label class="fs-2" for="">* <span>Format file : .jpg | .png</span></label>
                                         <div class="col-12 mt-2 text-end">
                                           <!-- !-- <button type="button" id="hapusGambar" class="btn btn-danger d-none">Hapus
                                                 Gambar</button> --> 
@@ -162,8 +163,7 @@
                                                 <div class="form-check  col-12 d-flex justify-content-center gap-1">
                                                     <input class="form-check-input" type="radio" name="layout" value="<?= $value['id'] ?>"
                                                         id="layout_ubah">
-                                                    <label for="exampleFormControlInput1"
-                                                        class="form-label d-flex justify-content-between">
+                                                    <label for="exampleFormControlInput1"class="form-label d-flex justify-content-between">
                                                         <?= $value['nama_layout']?></label>
                                                 </div>
                                             </div>
@@ -187,6 +187,7 @@
                                         <label for="exampleFormControlInput1" class="form-label">Gambar :</label>
                                         <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar"
                                             name="gambar">
+                                            <label class="fs-2" for="">* <span>Format file : .jpg | .png</span></label>
                                         <div class="col-12 mt-2 text-end">
                                           <!-- !-- <button type="button" id="hapusGambar" class="btn btn-danger d-none">Hapus
                                                 Gambar</button> --> 

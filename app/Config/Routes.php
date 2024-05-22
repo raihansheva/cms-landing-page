@@ -14,6 +14,10 @@ $routes->get('/tes', 'HargaController::index');
 
 // -----------
 
+// user
+$routes->get('/profile', 'Home::profile');
+
+
 // banner
 $routes->get('/konten', 'Home::content');
 $routes->post('/tambahbanner', 'BannerController::addbanner');

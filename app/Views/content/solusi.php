@@ -11,12 +11,14 @@
             <h2>Solusi</h2>
             <div class="col-5 d-flex gap-2 justify-content-end">
                 <button class="btn d-flex" type="button" data-bs-toggle="modal"
-                    data-bs-target="#exampleModaljudulsolusi" style="background-color: #03C988; color:white; height: 45px;"><i
+                    data-bs-target="#exampleModaljudulsolusi"
+                    style="background-color: #03C988; color:white; height: 45px;"><i
                         class="ti ti-layout-navbar pe-2 fs-6 align-middle p-1 "></i>
-                        <span class="m-0 p-1 " style="width: 125px;">Ubah judul solusi</span>
+                    <span class="m-0 p-1 " style="width: 125px;">Ubah judul solusi</span>
                 </button>
                 <button class="btn d-flex" type="button" data-bs-toggle="modal"
-                    data-bs-target="#exampleModaltambahsolusi" style="background-color: #03C988; color:white; height: 45px;"><i
+                    data-bs-target="#exampleModaltambahsolusi"
+                    style="background-color: #03C988; color:white; height: 45px;"><i
                         class="ti ti-plus pe-2 fs-6 align-middle p-1 "></i>
                     <span class="m-0 p-1 " style="width: 105px;">Tambah solusi</span>
                 </button>
@@ -34,16 +36,17 @@
                                     aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <input type="text" value="<?= $head[0]['id']?>" name="id" id="id" hidden>
+                                <input type="text" value="<?= $head[0]['id'] ?>" name="id" id="id" hidden>
                                 <div class="mb-3 p-2 pt-0" style="text-align: left;">
                                     <label for="exampleFormControlInput1" class="form-label">Judul Solusi :</label>
                                     <input type="text" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="Masukan Nama Solusi" name="judul_solusi" value="<?= $head[0]['judul_solusi']?>">
+                                        placeholder="Masukan Nama Solusi" name="judul_solusi"
+                                        value="<?= $head[0]['judul_solusi'] ?>">
                                 </div>
                                 <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
                                     <label for="exampleFormControlTextarea1" class="form-label">Deskripsi :</label>
                                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="8.5"
-                                        name="deskripsi"><?= $head[0]['deskripsi']?></textarea>
+                                        name="deskripsi"><?= $head[0]['deskripsi'] ?></textarea>
                                 </div>
                             </div>
                             <div class="modal-footer border-top pe-4">
@@ -88,7 +91,7 @@
                                             :</label>
                                         <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar"
                                             name="gambar">
-
+                                        <label class="fs-2" for="">* <span>Format file : .jpg | .png</span></label>
                                         <div class="col-12 mt-2">
                                             <img src="#" alt="Pratinjau Gambar" id="preview"
                                                 class="preview-image d-none image-fluid col-12" width="100%">
@@ -111,16 +114,16 @@
         </div>
         <br>
         <!-- <div class="card col-4" style="height: 200px; border:1px solid rgb(229, 234, 239);"> -->
-        
+
         <div class="col-12">
             <div class="col-12 text-center">
-                <h3><?= $head[0]['judul_solusi']?></h3>
+                <h3><?= $head[0]['judul_solusi'] ?></h3>
             </div>
             <div class="col-12 text-center">
-                <p><?= $head[0]['deskripsi']?></p>
+                <p><?= $head[0]['deskripsi'] ?></p>
             </div>
         </div>
-       
+
         <div class="col-12 d-flex flex-wrap gap-2"
             style="border: 1px black; height: 100%; display: flex; flex-wrap: wrap;">
             <?php foreach ($solusi as $key => $value) { ?>
@@ -162,7 +165,8 @@
                                                         :</label>
                                                     <input type="file" class="form-control" id="gambar"
                                                         placeholder="Pilih Gambar" name="gambar">
-
+                                                    <label class="fs-2" for="">* <span>Format file : .jpg |
+                                                            .png</span></label>
                                                     <div class="col-12 mt-2">
                                                         <img src="#" alt="Pratinjau Gambar" id="preview"
                                                             class="preview-image d-none image-fluid col-12" width="100%">

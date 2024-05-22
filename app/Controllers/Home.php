@@ -25,6 +25,10 @@ class Home extends BaseController
     {
         return view('content/home');
     }
+    public function profile()
+    {
+        return view('content/profile');
+    }
 
 
     // banner

@@ -54,6 +54,7 @@
                                         <label for="exampleFormControlInput1" class="form-label">Icon :</label>
                                         <input type="file" class="form-control" placeholder="Pilih Gambar" id="icon"
                                             name="icon">
+                                        <label class="fs-2" for="">* <span>Format file : .jpg | .png</span></label>
                                         <div class="col-12 mt-2 text-end">
                                             <i class="ti ti-x d-none" type="button" id="hapusGambar"
                                                 style="font-size: 24px"></i>
@@ -94,7 +95,7 @@
                     <tr class="p-2">
                         <!-- <th scope="col">No</th> -->
                         <th scope="col">Nama Fitur</th>
-                        <th scope="col">Deskripsi</th> 
+                        <th scope="col">Deskripsi</th>
                         <th scope="col">Nama Solusi</th>
                         <th scope="col">Icon</th>
                         <!-- <th scope="col"></th> -->
@@ -131,8 +132,8 @@
                         <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                             <label for="exampleFormControlInput1" class="form-label">Icon
                                 :</label>
-                            <input type="file" class="form-control" placeholder="Pilih Gambar" id="icon"
-                                name="icon">
+                            <input type="file" class="form-control" placeholder="Pilih Gambar" id="icon" name="icon">
+                            <label class="fs-2" for="">* <span>Format file : .jpg | .png</span></label>
                             <div class="col-12 mt-2 text-end">
                                 <i class="ti ti-x d-none" type="button" id="hapusGambar" style="font-size: 24px"></i>
                                 <img src="#" alt="Pratinjau Gambar" id="preview"
