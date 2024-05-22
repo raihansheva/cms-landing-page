@@ -15,6 +15,10 @@ class CreateKontak extends Migration
                 'unsigned' => true,
                 'auto_increment' => true,
             ],
+            'nama_lengkap' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255',
+            ],
             'nama' => [
                 'type' => 'VARCHAR',
                 'constraint' => '255',
@@ -31,6 +35,10 @@ class CreateKontak extends Migration
                 'type' => 'INT',
                 'constraint' => '11',
             ],
+            'copyright' => [
+                'type' => 'VARCHAR',
+                'constraint' => '255',
+            ],
             'link_whatsapp' => [
                 'type' => 'VARCHAR',
                 'constraint' => '255',
@@ -41,11 +49,11 @@ class CreateKontak extends Migration
             ],
         ]);
         $this->forge->addKey('id', true);
-        $this->forge->createTable('kontak');
+        $this->forge->createTable('kontak_footer');
     }
 
     public function down()
     {
-        $this->forge->dropTable('kontak');
+        $this->forge->dropTable('kontak_footer');
     }
 }

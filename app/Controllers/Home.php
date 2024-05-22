@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\Artikel;
 use App\Models\Fitur;
 use App\Models\Banner;
+use App\Models\Footer;
 use App\Models\Harga;
 use App\Models\Headerartikel;
 use App\Models\Headersolusi;
@@ -31,8 +32,10 @@ class Home extends BaseController
     {
         helper(['form']);
         $banner = new Banner();
+        $footer = new Footer();
         $data = [
             'banner' => $banner->findAll(),
+            'footer' => $footer->findAll(),
         ];
 
 

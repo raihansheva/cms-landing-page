@@ -152,7 +152,7 @@
                                 <form action="/ubahbanner" method="post" class="modal-dialog-scrollable"
                                     enctype="multipart/form-data">
                                     <?= csrf_field(); ?>
-                                    
+
                                     <div class="modal-content">
                                         <div class="modal-header border-bottom">
                                             <h1 class="modal-title fs-5" id="exampleModalLabel">Ubah banner</h1>
@@ -217,19 +217,22 @@
                                                 Judul : <p class="p-0 m-0" id="limit2"></p></label>
                                             <input type="text" class="form-control" id="inputjudul2"
                                                 placeholder="Masukan Judul"> -->
-                                                <input type="text" value="<?php echo $value['id']; ?>" name="id" id="id" hidden>
+                                                <input type="text" value="<?php echo $value['id']; ?>" name="id" id="id"
+                                                    hidden>
                                                 <label for="exampleFormControlInput1"
                                                     class="form-label d-flex justify-content-between">
                                                     Judul : </label>
                                                 <input type="text" class="form-control" id="inputjudul2"
-                                                    placeholder="Masukan Judul" value="<?php echo $value['judul']; ?>" name="judul">
+                                                    placeholder="Masukan Judul" value="<?php echo $value['judul']; ?>"
+                                                    name="judul">
                                             </div>
                                             <div class="col-12 d-flex">
                                                 <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                                     <label for="exampleFormControlTextarea1"
                                                         class="form-label">Deskripsi:</label>
                                                     <textarea class="form-control" id="exampleFormControlTextarea1"
-                                                        rows="8.5" name="deskripsi"><?php echo $value['deskripsi']; ?></textarea>
+                                                        rows="8.5"
+                                                        name="deskripsi"><?php echo $value['deskripsi']; ?></textarea>
                                                 </div>
                                                 <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                                     <label for="exampleFormControlInput1" class="form-label">Gambar
@@ -316,56 +319,83 @@
             <div class="modal fade" id="exampleModaleditfooter" tabindex="-1" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header border">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Ubah Footer</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body ">
-                            <div class="col-12 d-flex ">
-                                <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
-                                    <label for="exampleFormControlInput1" class="form-label">Nama :</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="nama company">
+                    <form action="/ubahfooter" method="post" class="modal-dialog-scrollable"
+                        enctype="multipart/form-data">
+                        <?= csrf_field(); ?>
+                        <div class="modal-content">
+                            <div class="modal-header border">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Ubah Footer</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body ">
+                                <div class="col-12 d-flex ">
+                                    <input type="text" name="id" id="id" value="<?= $footer[0]['id'] ?>" hidden>
+                                    <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                        <label for="exampleFormControlInput1" class="form-label">Nama Lengkap :</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1"
+                                            placeholder="nama lengkap company" name="nama_lengkap"
+                                            value="<?= $footer[0]['nama_lengkap'] ?>">
+                                    </div>
+                                    <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                        <label for="exampleFormControlInput1" class="form-label">Nama :</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1"
+                                            placeholder="nama" name="nama" value="<?= $footer[0]['nama'] ?>">
+                                    </div>
                                 </div>
-                                <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
-                                    <label for="exampleFormControlInput1" class="form-label">Email :</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="example@gmail.com">
+                                <div class="col-12 d-flex ">
+                                    <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                        <label for="exampleFormControlInput1" class="form-label">Email :</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1"
+                                            placeholder="example@gmail.com" name="email"
+                                            value="<?= $footer[0]['email'] ?>">
+                                    </div>
+                                    <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                        <label for="exampleFormControlInput1" class="form-label">Alamat :</label>
+                                        <textarea type="text" class="form-control" name="alamat"
+                                            id="exampleFormControlInput1" placeholder="Alamat"
+                                            rows="4"><?= $footer[0]['alamat'] ?></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-12 d-flex">
+                                    <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                        <label for="exampleFormControlInput1" class="form-label">Copyright :</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1"
+                                            placeholder="copyright" name="hak_cipta"
+                                            value="<?= $footer[0]['hak_cipta'] ?>">
+                                    </div>
+                                    <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                        <label for="exampleFormControlInput1" class="form-label">Nomer Telepon :</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1"
+                                            placeholder="Masukan nomer telepon" name="nomor_telepon"
+                                            value="<?= $footer[0]['nomor_telepon'] ?>">
+                                    </div>
+                                </div>
+                                <div class="col-12 d-flex">
+                                    <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                        <label for="exampleFormControlInput1" class="form-label">Link WhatsApp :</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1"
+                                            placeholder="Link WhatsApp" name="link_whatsapp"
+                                            value="<?= $footer[0]['link_whatsapp'] ?>">
+                                    </div>
+                                    <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                        <label for="exampleFormControlInput1" class="form-label">Link Instagram
+                                            :</label>
+                                        <input type="text" class="form-control" id="exampleFormControlInput1"
+                                            placeholder="Link Instagram" name="link_instagram"
+                                            value="<?= $footer[0]['link_instagram'] ?>">
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-12 d-flex">
-                                <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
-                                    <label for="exampleFormControlInput1" class="form-label">Alamat :</label>
-                                    <textarea type="text" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="Alamat" rows="4"></textarea>
-                                </div>
-                                <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
-                                    <label for="exampleFormControlInput1" class="form-label">Nomer Telepon :</label>
-                                    <input type="number" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="Masukan nomer telepon">
-                                </div>
-                            </div>
-                            <div class="col-12 d-flex">
-                                <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
-                                    <label for="exampleFormControlInput1" class="form-label">Link WhatsApp :</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="Link WhatsApp">
-                                </div>
-                                <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
-                                    <label for="exampleFormControlInput1" class="form-label">Link Instagram :</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="Link Instagram">
-                                </div>
+                            <div class="modal-footer pe-4 border-top ">
+                                <button class="btn d-flex" type="submit"
+                                    style="background-color: #03C988; color:white;"><i
+                                        class="ti ti-edit pe-2 fs-6 align-middle p-1 "></i>
+                                    <p class="m-0 p-1 align-middle">Simpan perubahan</p>
+                                </button>
                             </div>
                         </div>
-                        <div class="modal-footer pe-4 border-top ">
-                            <button class="btn d-flex" type="button" style="background-color: #03C988; color:white;"><i
-                                    class="ti ti-edit pe-2 fs-6 align-middle p-1 "></i>
-                                <p class="m-0 p-1 align-middle">Simpan perubahan</p>
-                            </button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -376,7 +406,7 @@
                         <div class="col d-flex justify-content-center gap-3">
                             <div class="col-2 text-center d-flex justify-content-center mt-1">
                                 <div class="lingkaran p-2">
-                                    <a href="">
+                                    <a href="<?= $footer[0]['link_whatsapp'] ?>">
                                         <i class="ti ti-brand-whatsapp text-light" style="font-size: 36px; "></i>
                                         <!-- <p class="text-center text-dark-emphasis">WhatsApp</p> -->
                                     </a>
@@ -384,7 +414,7 @@
                             </div>
                             <div class="col-2 text-center d-flex justify-content-center mt-1">
                                 <div class="lingkaran p-2">
-                                    <a href="">
+                                    <a href="<?= $footer[0]['link_instagram'] ?>">
                                         <i class="ti ti-brand-instagram text-light" style="font-size: 36px; "></i>
                                         <!-- <p class="text-center text-dark-emphasis">Instagram</p> -->
                                     </a>
@@ -392,7 +422,7 @@
                             </div>
                         </div>
                         <div class="col text-center mt-4">
-                            <p class="txt m-0 p-0">PT.GoldStep Teknologi Indonesia.</p>
+                            <p class="txt m-0 p-0"><?= $footer[0]['nama_lengkap'] ?></p>
                         </div>
                     </div>
                     <div class="col-4">
@@ -415,16 +445,16 @@
                         <div class="col-7 text-center justify-content-center ">
                             <p class="txt p-0 m-0 fs-5 fw-bold">Contact</p>
                             <div class="col-12 p-2 text-start">
-                                <p class="txt p-0 m-0 fs-3 pb-2">goldstep@gmail.com</p>
-                                <p class="txt p-0 m-0 fs-3 pb-2">+6281222188524</p>
-                                <p class="txt p-0 m-0 fs-3">Taman Kopo Indah 3, Ruko D35 Bandung, Indonesia, 40128</p>
+                                <p class="txt p-0 m-0 fs-3 pb-2"><?= $footer[0]['email'] ?></p>
+                                <p class="txt p-0 m-0 fs-3 pb-2"><?= $footer[0]['nomor_telepon'] ?></p>
+                                <p class="txt p-0 m-0 fs-3"><?= $footer[0]['alamat'] ?></p>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="footer col-12 d-flex justify-content-center pt-3">
-                    <p class="txt p-0 m-0 text-light fw-bold fs-4">Goldstep</p>
-                    <p class="txt ps-5 p-0 m-0 text-light fs-4">Copyright 2024 PT.Goldstep Teknologi Indonesia</p>
+                    <p class="txt p-0 m-0 text-light fw-bold fs-4"><?= $footer[0]['nama'] ?></p>
+                    <p class="txt ps-5 p-0 m-0 text-light fs-4"><?= $footer[0]['hak_cipta'] ?></p>
                 </div>
             </div>
         </div>
@@ -436,4 +466,5 @@
 <script src="assets/libs/jquery/dist/jquery.min.js"></script>
 <script src="js/banner.js"></script>
 <script src="js/ajax.js"></script>
+<!-- -->
 <?php $this->endsection() ?>

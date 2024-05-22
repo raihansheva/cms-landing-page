@@ -21,6 +21,10 @@ $routes->post('/ubahbanner', 'BannerController::ubahbanner');
 $routes->post('/hapusbanner', 'BannerController::hapusbanner');
 // -----------
 
+// footer
+$routes->post('/ubahfooter', 'BannerController::ubahfooter');
+// -----------
+
 // solusi
 $routes->get('/solusi', 'Home::solusi');
 $routes->post('/tambahsolusi', 'SolusiController::addsolusi');

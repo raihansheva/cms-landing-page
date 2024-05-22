@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Models\Footer;
 use CodeIgniter\HTTP\ResponseInterface;
 use App\Models\Banner;
 
@@ -62,5 +63,25 @@ class BannerController extends BaseController
         $banner = new Banner();
         $delete = $banner->where('id', $id)->delete();
         return redirect()->back();
+    }
+
+    public function ubahfooter(){
+        $id = $this->request->getPost('id');
+        $footer = new Footer();
+
+        $footer->save([
+            'id' => $id,
+            'nama_lengkap' => $this->request->getPost('nama_lengkap'),
+            'nama' => $this->request->getPost('nama'),
+            'email' => $this->request->getPost('email'),
+            'alamat' => $this->request->getPost('alamat'),
+            'nomor_telepon' => $this->request->getPost('nomor_telepon'),
+            'copyright' => $this->request->getPost('copyright'),
+            'link_whatsapp' => $this->request->getPost('link_whatsapp'),
+            'link_instagram' => $this->request->getPost('link_instagram'),
+            
+        ]);
+        return redirect()->back();
+
     }
 }
