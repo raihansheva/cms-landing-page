@@ -32,6 +32,8 @@ const tombolHapusGambar = document.getElementById('hapusGambar');
 
 $(document).ready(function () {
     $('#tabelfitur').DataTable({
+        "pageLength": 5,
+
         processing: true,
         serverSide: true,
         ajax: {

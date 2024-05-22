@@ -10,7 +10,7 @@
   <!-- <link rel="stylesheet" href="../assets/style-bootstrap/css/boostrap.min.css"> -->
 </head>
 
-<body id="style-3"> 
+<body id="style-3" style="background-color: #F5F5F5F5; "> 
   <!--  Body Wrapper -->
   <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
     data-sidebar-position="fixed" data-header-position="fixed" id="style-3">
@@ -125,8 +125,8 @@
                       <p class="mb-0 fs-3">Profile</p>
                     </a>
                     <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
-                      <i class="ti ti-mail fs-6"></i>
-                      <p class="mb-0 fs-3">Histori</p>
+                      <i class="ti ti-history fs-6"></i>
+                      <p class="mb-0 fs-3">Riwayat</p>
                     </a>
                     <a href="./authentication-login.html" class="btn btn-outline-danger mx-3 mt-2 d-block">Logout</a>
                   </div>
@@ -137,7 +137,7 @@
         </nav>
       </header>
       <!--  Header End -->
-      <div class="container-fluid" id="style-3">
+      <div class="container-fluid" id="style-3" >
         <!-- konten disini -->
         <?php $this->renderSection('content') ?>
         <!-- akhir konten --> 

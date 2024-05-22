@@ -6,6 +6,7 @@ $(document).ready(function () {
         maximumFractionDigits: 0
     });
     $('#tabelharga').DataTable({
+        "pageLength": 5,
         processing: true,
         serverSide: true,
         ajax: {

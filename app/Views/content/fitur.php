@@ -90,7 +90,7 @@
         <br>
         <!-- <div class="card col-4" style="height: 200px; border:1px solid rgb(229, 234, 239);"> -->
         <div class="col-12 " style="height: 100%;">
-            <table id="tabelfitur" class="table col-12 " style="height: auto;">
+            <table id="tabelfitur" class="table col-12" style="height: auto; background-color: white; border-radius: 10px; ">
                 <thead class="">
                     <tr class="p-2">
                         <!-- <th scope="col">No</th> -->
