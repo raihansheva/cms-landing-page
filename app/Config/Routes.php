@@ -8,6 +8,11 @@ use CodeIgniter\Router\RouteCollection;
 // default
 $routes->get('/', 'Home::login');
 $routes->post('/login', 'Aksilogin::login');
+$routes->get('/logout', 'Aksilogin::logout');
+
+
+// edit profile
+$routes->post('/ubahprofile', 'Aksilogin::editprofile');
 $routes->post('/ubahpassword', 'Aksilogin::editpassword');
 // $routes->get('/login', 'LoginController::login');
 

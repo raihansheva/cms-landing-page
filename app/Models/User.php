@@ -34,6 +34,7 @@ class User extends Model
         return false;
     }
 
+    // cek pw lama
     public function cekpassword($id, $password)
     {
         $user = $this->where('id', $id)
@@ -47,6 +48,7 @@ class User extends Model
 
         return false;
     }
+    // ubah pw dengan hash
     public function ubahpassword($passwordbaru)
     {
             $pw = password_hash($passwordbaru , PASSWORD_DEFAULT);

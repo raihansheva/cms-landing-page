@@ -134,7 +134,7 @@
                       <i class="ti ti-history fs-6"></i>
                       <p class="mb-0 fs-3">Riwayat</p>
                     </a>
-                    <a href="./authentication-login.html" class="btn btn-outline-danger mx-3 mt-2 d-block">Logout</a>
+                    <a href="/logout" class="btn btn-outline-danger mx-3 mt-2 d-block">Logout</a>
                   </div>
                 </div>
               </li>

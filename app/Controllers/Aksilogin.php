@@ -58,29 +58,81 @@ class Aksilogin extends BaseController
                 'id' => $id,
                 'password' => $pwbaru
             ]);
-            return redirect()->back()->with('success', 'Password berhasil di ubah');;
+            session()->setFlashdata('modal', [
+                'name' => 'exampleModaleditpassword',
+                'type' => 'success',
+                'message' => 'Password berhasil di ubah'
+            ]);
+            return redirect()->back()->withInput();
         } else {
-            return redirect()->back()->with('error', 'Password lama tidak cocok');;
+            session()->setFlashdata('modal', [
+                'name' => 'exampleModaleditpassword',
+                'type' => 'error',
+                'message' => 'Password lama tidak cocok'
+            ]);
+            return redirect()->back()->withInput();
             // echo 'haloo';
         }
-
-        // echo 'haloo';
     }
 
     public function editprofile()
     {
         $users = new User();
         $id = $this->request->getPost('id');
-        $users->save([
-            'id' => $id,
-            'username' => $this->request->getPost('username'),
-            'nama' => $this->request->getPost('nama'),
-            'email' => $this->request->getPost('email'),
-            'role' => $this->request->getPost('role'),
-            'status' => $this->request->getPost('status'),
-        ]);
-        return redirect()->back();
+        $rules = [
+            'username' => 'required|min_length[3]|max_length[20]',
+            'nama' => 'required|min_length[3]|max_length[20]',
+            'email' => 'required|valid_email',
+            'password' => 'permit_empty|min_length[6]',
+            'status' => 'required|min_length[3]|max_length[20]',
+            'role' => 'required|min_length[3]|max_length[20]'
+        ];
+        if ($rules) {
+            $users->save([
+                'id' => $id,
+                'username' => $this->request->getPost('username'),
+                'nama' => $this->request->getPost('nama'),
+                'email' => $this->request->getPost('email'),
+                'role' => $this->request->getPost('role'),
+                'status' => $this->request->getPost('status'),
+                'foto' => 'default'
+            ]);
+            $data = $users->where('id', $id)->first();
+            $datasesi = [
+                'id' => $data['id'],
+                'username' => $data['username'],
+                'nama' => $data['nama'],
+                'email' => $data['email'],
+                'password' => $data['password'],
+                'status' => $data['status'],
+                'role' => $data['role'],
+                'foto' => $data['foto'],
+            ];
+            session()->set($datasesi);
+            session()->setFlashdata('modal', [
+                'name' => 'exampleModaleditprofile',
+                'type' => 'success',
+                'message' => 'Berhasil mengubah'
+            ]);
+            return redirect()->back()->withInput();
+        } else {
+            session()->setFlashdata('modal', [
+                'name' => 'exampleModaleditprofile',
+                'type' => 'error',
+                'message' => 'Form harus di isi semua'
+            ]);
+            return redirect()->back()->withInput();
+        }
 
         // echo 'haloo';
+    }
+
+    public function logout()
+    {
+        // Hapus data sesi pengguna
+        session()->destroy();
+
+        // Redirect ke halaman login atau halaman lain yang Anda tentukan
+        return redirect()->to('/');
     }
 }

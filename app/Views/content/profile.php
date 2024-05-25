@@ -42,6 +42,7 @@
                         <div class="modal-dialog modal-dialog-scrollable modal-lg">
                             <form action="/ubahprofile" method="post" class="modal-dialog-scrollable" enctype="multipart/form-data">
                                 <?= csrf_field(); ?>
+                                <input type="text" value="<?= session()->get('id') ?>" name="id" hidden>
                                 <div class="modal-content">
                                     <div class="modal-header border">
                                         <h1 class="modal-title fs-5" id="exampleModalLabel">Ubah Profile</h1>
@@ -51,12 +52,12 @@
                                         <div class="col-12 d-flex mt-3 ">
                                             <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                                 <label for="exampleFormControlInput1" class="form-label">Username :</label>
-                                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nama" name="email" value="<?= session()->get('username') ?>">
+                                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Username" name="username" value="<?= session()->get('username') ?>">
                                             </div>
                                             <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                                 <label for="exampleFormControlInput1" class="form-label">Nama
                                                     :</label>
-                                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Status" name="email" value="<?= session()->get('nama') ?>">
+                                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Nama" name="nama" value="<?= session()->get('nama') ?>">
                                             </div>
                                         </div>
                                         <div class="col-12 d-flex ">
@@ -66,13 +67,13 @@
                                             </div>
                                             <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                                 <label for="exampleFormControlInput1" class="form-label">Status :</label>
-                                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Role" name="email" value="<?= session()->get('status') ?>">
+                                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Status" name="status" value="<?= session()->get('status') ?>">
                                             </div>
                                         </div>
                                         <div class="col-12 d-flex ">
                                             <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                                 <label for="exampleFormControlInput1" class="form-label">Role :</label>
-                                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Email" name="email" value="<?= session()->get('role') ?>">
+                                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Role" name="role" value="<?= session()->get('role') ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -97,17 +98,20 @@
                                 </div>
                                 <form action="/ubahpassword" method="post">
                                     <div class="modal-body">
-                                        <?php if (session()->getFlashdata('error')) : ?>
-                                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                                <?php echo session()->getFlashdata('error'); ?>
-                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                            </div>
-                                        <?php endif; ?>
-                                        <?php if (session()->getFlashdata('success')) : ?>
-                                            <div class="alert alert-secondary alert-dismissible fade show" role="alert">
-                                                <?php echo session()->getFlashdata('success'); ?>
-                                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                            </div>
+                                        <?php
+                                        $modal = session()->getFlashdata('modal');
+                                        if ($modal && $modal['name'] === 'exampleModaleditpassword') : ?>
+                                            <?php if ($modal['type'] === 'error') : ?>
+                                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                                    <?php echo $modal['message']; ?>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                </div>
+                                            <?php elseif ($modal['type'] === 'success') : ?>
+                                                <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+                                                    <?php echo $modal['message']; ?>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                                </div>
+                                            <?php endif; ?>
                                         <?php endif; ?>
                                         <input type="text" value="<?= session()->get('id') ?>" name="id" hidden>
                                         <div class="col-12 d-flex ">
@@ -144,9 +148,11 @@
 <script>
     $(document).ready(function() {
         // Cek jika ada flashdata error atau success, lalu tampilkan modal
-        <?php if (session()->getFlashdata('error') || session()->getFlashdata('success')) : ?>
-            $('#exampleModaleditpassword').modal('show');
-        <?php endif; ?>
+        // 
+        var modalData = <?php echo json_encode(session()->getFlashdata('modal')); ?>;
+        if (modalData) {
+            $('#' + modalData.name).modal('show');
+        }
     });
 </script>
 <!-- -->
