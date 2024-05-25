@@ -4,10 +4,13 @@
 <link rel="stylesheet" href="../assets/css/styles.min.css" />
 <link href="https://cdn.datatables.net/v/ju/dt-2.0.7/datatables.min.css" rel="stylesheet">
 <link href="assets/bootsrap/css/bootstrap.min.css" rel="stylesheet">
-<link
-    href="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-2.0.6/b-3.0.2/b-colvis-3.0.2/b-html5-3.0.2/b-print-3.0.2/r-3.0.2/datatables.min.css"
-    rel="stylesheet">
-
+<link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-2.0.6/b-3.0.2/b-colvis-3.0.2/b-html5-3.0.2/b-print-3.0.2/r-3.0.2/datatables.min.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/poppins/font.css">
+<style>
+    * {
+        font-family: 'poppins', sans-serif;
+    }
+</style>
 
 <div class="bungkus">
     <div class="konten-banner">
@@ -21,24 +24,20 @@
                 <h2>Benefit</h2>
             </div>
             <div class="col-4 d-flex gap-2 justify-content-end">
-                <button class="btn d-flex" type="button" data-bs-toggle="modal"
-                    data-bs-target="#exampleModaltambahfitur" style="background-color: #03C988; color:white;"><i
-                        class="ti ti-plus pe-2 fs-6 align-middle p-1 "></i>
+                <button class="btn d-flex" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaltambahfitur" style="background-color: #03C988; color:white;"><i class="ti ti-plus pe-2 fs-6 align-middle p-1 "></i>
                     <p class="m-0 p-1 align-middle">Tambah benefit</p>
                 </button>
             </div>
 
 
             <!-- Modal Tambah fitur -->
-            <div class="modal fade" id="exampleModaltambahfitur" tabindex="-1" aria-labelledby="exampleModalLabel"
-                aria-hidden="true">
+            <div class="modal fade" id="exampleModaltambahfitur" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable">
                     <form action="/tambahbenefit" method="post">
                         <div class="modal-content">
                             <div class="modal-header border-bottom">
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah benefit</h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div class="mb-3 p-2 pt-0" style="text-align: left;">
@@ -55,14 +54,11 @@
                                 </div>
                                 <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
                                     <label for="exampleFormControlTextarea1" class="form-label">Benefit :</label>
-                                    <textarea class="form-control" id="nama_benefit" rows="8.5"
-                                        name="nama_benefit"></textarea>
+                                    <textarea class="form-control" id="nama_benefit" rows="8.5" name="nama_benefit"></textarea>
                                 </div>
                             </div>
                             <div class="modal-footer border-top pe-4">
-                                <button class="btn d-flex" type="submit"
-                                    style="background-color: #03C988; color:white;"><i
-                                        class="ti ti-download pe-2 fs-6 align-middle p-1 "></i>
+                                <button class="btn d-flex" type="submit" style="background-color: #03C988; color:white;"><i class="ti ti-download pe-2 fs-6 align-middle p-1 "></i>
                                     <p class="m-0 p-1 align-middle">Simpan</p>
                                 </button>
                             </div>
@@ -91,8 +87,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="exampleModalubahbenefit" tabindex="-1" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="exampleModalubahbenefit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable">
         <form action="/ubahbenefit" method="post">
             <div class="modal-content">
@@ -120,8 +115,7 @@
                     </div>
                 </div>
                 <div class="modal-footer border-top pe-4">
-                    <button class="btn d-flex" type="submit" style="background-color: #03C988; color:white;"><i
-                            class="ti ti-download pe-2 fs-6 align-middle p-1 "></i>
+                    <button class="btn d-flex" type="submit" style="background-color: #03C988; color:white;"><i class="ti ti-download pe-2 fs-6 align-middle p-1 "></i>
                         <p class="m-0 p-1 align-middle">Simpan</p>
                     </button>
                 </div>
@@ -129,8 +123,7 @@
         </form>
     </div>
 </div>
-<div class="modal fade" id="exampleModalhapusbenefit" tabindex="-1" aria-labelledby="exampleModalLabel"
-    aria-hidden="true">
+<div class="modal fade" id="exampleModalhapusbenefit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" style="width: 250px;">
         <div class="modal-content">
             <div class="modal-header">
@@ -144,8 +137,7 @@
                     <input type="text" value="" name="id" id="id_benefit_hapus" hidden>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
-                    <button class="btn btn-danger d-flex btn-delete" type="submit"><i
-                            class="ti ti-trash pe-2 fs-6 align-middle p-1" id="btn-delete"></i>
+                    <button class="btn btn-danger d-flex btn-delete" type="submit"><i class="ti ti-trash pe-2 fs-6 align-middle p-1" id="btn-delete"></i>
                         <p class="m-0 p-1 align-middle">Hapus</p>
                     </button>
                 </div>
@@ -160,7 +152,7 @@
 <script src="../node_modules/datatables.net/js/dataTables.min.js"></script>
 <!-- <script src="js/detail-fitur.js"></script> -->
 <script>
-    $(document).ready(function () {
+    $(document).ready(function() {
         $('#tabelbenefit').DataTable({
             "pageLength": 5,
             processing: true,
@@ -169,24 +161,23 @@
                 url: '<?= site_url('/benefit/getdatabenefit/' . $idB) ?>'
 
             },
-            columns: [
-            {
-                data: 'nama_paket',
-            },
-            {
-                data: 'nama_benefit',
-            },
-            {
-                data:'idP',
-                render: function (data, type, row) {
-                    return '<div class="d-flex gap-2 justify-content-end"><button type="button" class="btn d-flex btn-sm btn-edit-benefit" style="background-color: #03C988; color:white;" data-id="' + data + '" data-id_paket_harga="' + row.id_paket_harga + '" data-nama_benefit="' + row.nama_benefit + '" > <i class="ti ti-edit pe-2 fs-6 align-middle p-1 "></i> <p class="m-0 p-1 align-middle">Ubah</p></button><button type="button" class="btn btn-danger d-flex btn-sm btn-hapus-benefit" data-id="' + data + '"><i class="ti ti-trash pe-2 fs-6 align-middle p-1 "></button></div>'
+            columns: [{
+                    data: 'nama_paket',
                 },
-                orderable: false
-            }
-            ]
-        });
+                {
+                    data: 'nama_benefit',
+                },
+                {
+                    data: 'idP',
+                    render: function(data, type, row) {
+                        return '<div class="d-flex gap-2 justify-content-end"><button type="button" class="btn d-flex btn-sm btn-edit-benefit" style="background-color: #03C988; color:white;" data-id="' + data + '" data-id_paket_harga="' + row.id_paket_harga + '" data-nama_benefit="' + row.nama_benefit + '" > <i class="ti ti-edit pe-2 fs-6 align-middle p-1 "></i> <p class="m-0 p-1 align-middle">Ubah</p></button><button type="button" class="btn btn-danger d-flex btn-sm btn-hapus-benefit" data-id="' + data + '"><i class="ti ti-trash pe-2 fs-6 align-middle p-1 "></button></div>'
+                    },
+                    orderable: false
+                }
+            ]
+        });
         //$('#tabelfitur').DataTable();
-        $('#tabelbenefit').on("click", '.btn-edit-benefit', function () {
+        $('#tabelbenefit').on("click", '.btn-edit-benefit', function() {
             let id = $(this).data('id');
             let idPaket = $(this).data('id_paket_harga');
             let benefit = $(this).data('nama_benefit');
@@ -197,7 +188,7 @@
             $('#exampleModalubahbenefit').modal('show')
         });
 
-        $('#tabelbenefit').on("click", '.btn-hapus-benefit', function () {
+        $('#tabelbenefit').on("click", '.btn-hapus-benefit', function() {
             let id = $(this).data('id');
             $('#id_benefit_hapus').val(id)
             // alert(id);

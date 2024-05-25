@@ -20,7 +20,7 @@
                     data-bs-target="#exampleModaltambahinformasi"
                     style="background-color: #03C988; color:white; height: 45px;"><i
                         class="ti ti-plus pe-2 fs-6 align-middle p-1 "></i>
-                    <span class="m-0 p-1 " style="width: 130px;">Tambah Informasi</span>
+                    <span class="m-0 p-1 " style="width: 140px;">Tambah Informasi</span>
                 </button>
             </div>
             <div class="modal fade" id="exampleModaltambahbannerinformasi" tabindex="-1"
@@ -30,7 +30,7 @@
                         class="modal-dialog-scrollable" enctype="multipart/form-data">
                         <div class="modal-content">
                             <div class="modal-header border-bottom">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Banner</h1>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Ubah banner</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
@@ -39,7 +39,7 @@
                                     <input type="text" value="<?= $head[0]['id'] ?>" name="id" id="id" hidden>
                                     <label for="exampleFormControlInput1" class="form-label">Judul :</label>
                                     <input type="text" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="Masukan Nama Artikel" name="judul_banner"
+                                        placeholder="Masukan Judul" name="judul_banner"
                                         value="<?= $head[0]['judul_banner'] ?>">
                                 </div>
                                 <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
@@ -72,7 +72,7 @@
                         class="modal-dialog-scrollable" enctype="multipart/form-data">
                         <div class="modal-content">
                             <div class="modal-header border-bottom">
-                                <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Artikel</h1>
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Informasi</h1>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                     aria-label="Close"></button>
                             </div>
@@ -80,7 +80,7 @@
                                 <div class="mb-3 p-2 pt-0" style="text-align: left;">
                                     <label for="exampleFormControlInput1" class="form-label">Judul :</label>
                                     <input type="text" class="form-control" id="exampleFormControlInput1"
-                                        placeholder="Masukan Nama Artikel" name="judul">
+                                        placeholder="Masukan informasi" name="judul">
                                 </div>
                                 <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
                                     <label for="exampleFormControlTextarea1" class="form-label">Deskripsi :</label>

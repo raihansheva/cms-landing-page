@@ -7,6 +7,12 @@
   <title>CMS</title>
   <link rel="stylesheet" href="../assets/css/styles.min.css" />
 <link href="assets/bootsrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="assets/poppins/font.css">
+<style>
+  * {
+    font-family: 'poppins', sans-serif;
+  }
+</style>
   <!-- <link rel="stylesheet" href="../assets/style-bootstrap/css/boostrap.min.css"> -->
 </head>
 

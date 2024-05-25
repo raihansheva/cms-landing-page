@@ -14,13 +14,13 @@
                     data-bs-target="#exampleModalhead<?php echo $head[0]['id'] ?>"
                     style="background-color: #03C988; color:white; height: 45px;"><i
                         class="ti ti-layout-navbar pe-2 fs-6 align-middle p-1 "></i>
-                    <span class="m-0 p-1 " style="width: 125px;">Ubah judul artikel</span>
+                    <span class="m-0 p-1 " style="width: 140px;">Ubah judul artikel</span>
                 </button>
                 <button class="btn d-flex" type="button" data-bs-toggle="modal"
                     data-bs-target="#exampleModaltambahsolusi"
                     style="background-color: #03C988; color:white; height: 45px;"><i
                         class="ti ti-plus pe-2 fs-6 align-middle p-1 "></i>
-                    <span class="m-0 p-1 " style="width: 105px;">Tambah artikel</span>
+                    <span class="m-0 p-1 " style="width: 125px;">Tambah artikel</span>
                 </button>
             </div>
             <div class="modal fade" id="exampleModalhead<?php echo $head[0]['id'] ?>" tabindex="-1"

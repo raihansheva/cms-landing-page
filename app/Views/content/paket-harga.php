@@ -119,7 +119,7 @@
             <div class="modal-content">
                 <input type="text" value="" name="id" id="id" hidden>
                 <div class="modal-header border-bottom">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah paket harga
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Ubah paket harga
                     </h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>

@@ -20,7 +20,7 @@
                 <button class="btn d-flex" type="button" data-bs-toggle="modal"
                     data-bs-target="#exampleModaltambahfitur" style="background-color: #03C988; color:white;"><i
                         class="ti ti-plus pe-2 fs-6 align-middle p-1 "></i>
-                    <p class="m-0 p-1 align-middle">Tambah fitur</p>
+                    <p class="m-0 p-1 align-middle fs-3">Tambah fitur</p>
                 </button>
             </div>
 
