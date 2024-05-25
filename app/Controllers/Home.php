@@ -2,24 +2,29 @@
 
 namespace App\Controllers;
 
-use App\Models\Artikel;
+use App\Models\User;
 use App\Models\Fitur;
+use App\Models\Harga;
 use App\Models\Banner;
 use App\Models\Footer;
-use App\Models\Harga;
-use App\Models\Headerartikel;
-use App\Models\Headersolusi;
-use App\Models\Headertentangkami;
 use App\Models\Layout;
 use App\Models\Solusi;
-use App\Controllers\BaseController;
+use App\Models\Artikel;
 use App\Models\Tentangkami;
+use App\Models\Headersolusi;
+use App\Models\Headerartikel;
+use App\Models\Headertentangkami;
+use App\Controllers\BaseController;
 
 class Home extends BaseController
 {
-    public function __construct()
+    // public function __construct()
+    // {
+    //     $this->model = new Banner();
+    // }
+    public function login()
     {
-        $this->model = new Banner();
+        return view('page_login');
     }
     public function index(): string
     {

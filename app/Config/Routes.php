@@ -6,7 +6,10 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 // default
-$routes->get('/', 'LoginController::login');
+$routes->get('/', 'Home::login');
+$routes->post('/login', 'Aksilogin::login');
+$routes->post('/ubahpassword', 'Aksilogin::editpassword');
+// $routes->get('/login', 'LoginController::login');
 
 // dashboard
 $routes->get('/dashboard', 'Home::index');

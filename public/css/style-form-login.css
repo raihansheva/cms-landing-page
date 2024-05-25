@@ -80,7 +80,7 @@ button {
   -o-transition: 0.3s ease-in-out;
 }
 
-button:hover {
+/* button:hover {
   border-radius: 20px;
   border: 1px solid #02a770 ;
   background-color: #02a770 ;
@@ -96,9 +96,9 @@ button:hover {
   -moz-transition: 0.3s ease-in-out;
   -ms-transition: 0.3s ease-in-out;
   -o-transition: 0.3s ease-in-out;
-}
+} */
 
-button:active {
+/* button:active {
   transform: scale(0.95);
 }
 
@@ -110,7 +110,7 @@ button.ghost {
   background-color: transparent;
   border-color: #222222;
   color: #222222;
-}
+} */
 
 form {
   background-color: #ffffff;
