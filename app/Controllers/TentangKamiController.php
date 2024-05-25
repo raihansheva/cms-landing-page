@@ -33,7 +33,7 @@ class TentangKamiController extends BaseController
                 'deskripsi' => $this->request->getPost('deskripsi'),
                 'gambar' => $path 
             ]);
-            return redirect()->back();
+            return redirect()->back()->to('/tentangkami');
             // return $this->response->setJSON(['status' => true]);
         }
 
@@ -45,7 +45,7 @@ class TentangKamiController extends BaseController
             'judul' => $this->request->getPost('judul'),
             'deskripsi' => $this->request->getPost('deskripsi'),
         ]);
-        return redirect()->back();
+        return redirect()->back()->to('/tentangkami');
         // echo json_encode(['status' => TRUE]);
         // return $this->response->setJSON(['status' => true]);
     }
@@ -59,7 +59,7 @@ class TentangKamiController extends BaseController
             'judul' => $this->request->getPost('judul'),
             'deskripsi' => $this->request->getPost('deskripsi'),
         ]);
-        return redirect()->back();
+        return redirect()->back()->to('/tentangkami');
         // return $this->response->setJSON(['status' => true]);
     }
 
@@ -68,7 +68,7 @@ class TentangKamiController extends BaseController
         $id = $this->request->getPost('id');
         $aboutus = new Tentangkami();
         $delete = $aboutus->where('id', $id)->delete();
-        return redirect()->back();
+        return redirect()->back()->to('/tentangkami');
         // echo json_encode(['status' => TRUE]);
 
     }

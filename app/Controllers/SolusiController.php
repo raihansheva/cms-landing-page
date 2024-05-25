@@ -10,9 +10,9 @@ use CodeIgniter\HTTP\ResponseInterface;
 class SolusiController extends BaseController
 {
 
-    public function __construct() {
-        $this->db =\Config\Database::connect();
-    }
+    // public function __construct() {
+    //     $this->db =\Config\Database::connect();
+    // }
     public function index()
     {
         //
@@ -36,7 +36,7 @@ class SolusiController extends BaseController
             'deskripsi' => $this->request->getPost('deskripsi'),
             'gambar' => $path 
         ]);
-        return redirect()->back();
+        return redirect()->back()->to('/solusi');
         // return $this->response->setJSON(['status' => true]);
     }
 
@@ -59,7 +59,7 @@ class SolusiController extends BaseController
             'deskripsi' => $this->request->getPost('deskripsi'),
             'gambar' => $path 
         ]);
-        return redirect()->back();
+        return redirect()->back()->to('/solusi');
         // return $this->response->setJSON(['status' => true]);
     }
 
@@ -71,7 +71,7 @@ class SolusiController extends BaseController
             'judul_solusi' => $this->request->getPost('judul_solusi'),
             'deskripsi' => $this->request->getPost('deskripsi'),
         ]);
-        return redirect()->back();
+        return redirect()->back()->to('/solusi');
         // return $this->response->setJSON(['status' => true]);
     }
 
@@ -79,7 +79,7 @@ class SolusiController extends BaseController
         $id = $this->request->getPost('id');
         $solusi = new Solusi();
         $delete = $solusi->where('id', $id)->delete();
-        return redirect()->back();
+        return redirect()->back()->to('/solusi');
     }
 
 }

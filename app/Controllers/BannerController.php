@@ -32,7 +32,7 @@ class BannerController extends BaseController
             'gambar' => $path ,
             'layout' => $this->request->getPost('layout')
         ]);
-        return redirect()->back();
+        return redirect()->back()->to('/banner');
         // return $this->response->setJSON(['status' => true]);
     }
 
@@ -56,7 +56,7 @@ class BannerController extends BaseController
             'gambar' => $path ,
             'layout' => $this->request->getPost('layout')
         ]);
-        return redirect()->back();
+        return redirect()->back()->to('/banner');;
         // return $this->response->setJSON(['status' => true]);
     }
 
@@ -64,7 +64,7 @@ class BannerController extends BaseController
         $id = $this->request->getPost('id');
         $banner = new Banner();
         $delete = $banner->where('id', $id)->delete();
-        return redirect()->back();
+        return redirect()->back()->to('/banner');;
     }
 
     public function ubahfooter(){
@@ -83,7 +83,7 @@ class BannerController extends BaseController
             'link_instagram' => $this->request->getPost('link_instagram'),
             
         ]);
-        return redirect()->back();
+        return redirect()->back()->to('/banner');;
 
     }
 }

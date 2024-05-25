@@ -42,7 +42,7 @@ class HargaController extends BaseController
             'harga' => $this->request->getPost('harga'),
             'id_solusi' => $this->request->getPost('id_solusi'),
         ]);
-        return redirect()->back();
+        return redirect()->back()->to('/paketharga');
         // echo json_encode(['status' => TRUE]);
         // return $this->response->setJSON(['status' => true]);
     }
@@ -58,7 +58,7 @@ class HargaController extends BaseController
             'harga' => $this->request->getPost('harga'),
             'id_solusi' => $this->request->getPost('id_solusi'),
         ]);
-        return redirect()->back();
+        return redirect()->back()->to('/paketharga');
         // return $this->response->setJSON(['status' => true]);
     }
 
@@ -66,7 +66,7 @@ class HargaController extends BaseController
         $id = $this->request->getPost('id');
         $harga = new Harga();
         $delete = $harga->where('id', $id)->delete();
-        return redirect()->back();
+        return redirect()->back()->to('/paketharga');
         // echo json_encode(['status' => TRUE]);
 
     }

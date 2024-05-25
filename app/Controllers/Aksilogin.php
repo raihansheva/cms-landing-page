@@ -70,7 +70,7 @@ class Aksilogin extends BaseController
                 'type' => 'error',
                 'message' => 'Password lama tidak cocok'
             ]);
-            return redirect()->back()->withInput();
+            return redirect()->back()->to('/profile')->withInput();
             // echo 'haloo';
         }
     }
@@ -121,7 +121,7 @@ class Aksilogin extends BaseController
                 'type' => 'error',
                 'message' => 'Form harus di isi semua'
             ]);
-            return redirect()->back()->withInput();
+            return redirect()->back()->to('/profile')->withInput();
         }
 
         // echo 'haloo';

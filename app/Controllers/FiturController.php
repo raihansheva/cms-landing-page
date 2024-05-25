@@ -86,7 +86,7 @@ class FiturController extends BaseController
             'id_solusi' => $this->request->getPost('id_solusi'),
             'icon' => $path
         ]);
-        return redirect()->back();
+        return redirect()->back()->to('/fitur');
         // return $this->response->setJSON(['status' => true]);
     }
 
@@ -95,7 +95,7 @@ class FiturController extends BaseController
         $id = $this->request->getPost('id');
         $fitur = new Fitur();
         $delete = $fitur->where('id', $id)->delete();
-        return redirect()->back();
+        return redirect()->to('/fitur');
         // echo json_encode(['status' => TRUE]);
 
     }

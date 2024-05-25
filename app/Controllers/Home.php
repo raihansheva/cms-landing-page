@@ -96,7 +96,7 @@ class Home extends BaseController
         $data = [
             'fitur' => $fitur->findAll(),
             'idF' => $id,
-            'layout' => $layout->findAll()
+            'layout' => $layout->findAll(2)
         ];
         return view('content/detail-fitur', $data);
     }
