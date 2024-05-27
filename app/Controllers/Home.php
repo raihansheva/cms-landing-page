@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\KontakClient;
 use App\Models\User;
 use App\Models\Fitur;
 use App\Models\Harga;
@@ -15,6 +16,7 @@ use App\Models\Headersolusi;
 use App\Models\Headerartikel;
 use App\Models\Headertentangkami;
 use App\Controllers\BaseController;
+use Irsyadulibad\DataTables\DataTables;
 
 class Home extends BaseController
 {
@@ -22,13 +24,38 @@ class Home extends BaseController
     // {
     //     $this->model = new Banner();
     // }
+    
+    public function get_data_kontak()
+    {
+        return DataTables::use('kontak_user')->make();
+    }
     public function login()
     {
         return view('page_login');
     }
+    public function kontakuser()
+    {
+        return view('content/kontakuser');
+    }
+
+    public function hapuskontak()
+    {
+        $id = $this->request->getPost('id');
+        $kontak = new KontakClient();
+        $delete = $kontak->where('id', $id)->delete();
+        return redirect()->back()->to('/kontakuser');
+    }
     public function index(): string
     {
-        return view('content/home');
+        $solusi = new Solusi();
+        $fitur = new Fitur();
+        $harga = new Harga();
+        $data = [
+            'solusi' => $solusi->countAll(),
+            'fitur' => $fitur->countAll(),
+            'harga' => $harga->countAll(),
+        ];
+        return view('content/home' , $data);
     }
     public function profile()
     {
@@ -84,7 +111,7 @@ class Home extends BaseController
             'solusi' => $solusi->findAll()
         ];
 
-        return view('content/fitur', $data, );
+        return view('content/fitur', $data,);
     }
 
     public function detailfitur($id)
@@ -123,7 +150,7 @@ class Home extends BaseController
             'paketharga' => $harga->findAll(),
             'idB' => $id
         ];
-        return view('content/benefit' , $data);
+        return view('content/benefit', $data);
     }
     public function artikel(): string
     {
@@ -145,6 +172,6 @@ class Home extends BaseController
             'tentang' => $about->findAll(),
             'head' => $headabout->findAll()
         ];
-        return view('content/tentang-kami' , $data);
+        return view('content/tentang-kami', $data);
     }
 }

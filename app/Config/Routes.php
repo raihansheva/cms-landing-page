@@ -16,6 +16,11 @@ $routes->post('/ubahprofile', 'Aksilogin::editprofile');
 $routes->post('/ubahpassword', 'Aksilogin::editpassword');
 // $routes->get('/login', 'LoginController::login');
 
+
+$routes->get('/kontakuser', 'Home::kontakuser');
+$routes->get('/home/getdatakontak', 'Home::get_data_kontak');
+$routes->post('/hapuskontak', 'Home::hapuskontak');
+
 // dashboard
 $routes->get('/dashboard', 'Home::index');
 $routes->get('/tes', 'HargaController::index');
@@ -52,7 +57,7 @@ $routes->post('/ubahfitur', 'FiturController::ubahfitur');
 $routes->post('/hapusfitur', 'FiturController::hapusfitur');
 $routes->get('/fitur/getdatafitur', 'FiturController::get_data_fitur');
 
-$routes->get('/detail-fitur/(:num)', 'Home::detailfitur/$1');
+$routes->get('/detail-fitur/(:num)', 'Home::detailfitur/$1' , ['as' => 'detailfitur']);
 $routes->post('/tambahdetailfitur', 'FiturController::tambahdetailfitur');
 $routes->post('/ubahdetailfitur', 'FiturController::ubahdetailfitur');
 $routes->post('/hapusdetailfitur', 'FiturController::hapusdetailfitur');
@@ -75,7 +80,7 @@ $routes->post('/hapusharga', 'HargaController::hapusharga');
 $routes->get('/harga/getdataharga', 'HargaController::get_data_harga');
 
 
-$routes->get('/benefit/(:num)', 'Home::benefit/$1');
+$routes->get('/benefit/(:num)', 'Home::benefit/$1' , ['as' => 'benefit']);
 $routes->post('/tambahbenefit', 'HargaController::tambahbenefit');
 $routes->post('/ubahbenefit', 'HargaController::ubahbenefit');
 $routes->post('/hapusbenefit', 'HargaController::hapusbenefit');

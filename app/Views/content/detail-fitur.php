@@ -6,6 +6,7 @@
 <link href="assets/bootsrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-2.0.6/b-3.0.2/b-colvis-3.0.2/b-html5-3.0.2/b-print-3.0.2/r-3.0.2/datatables.min.css" rel="stylesheet">
 <link rel="stylesheet" href="assets/poppins/font.css">
+<link rel="stylesheet" href="<?= base_url('assets/poppins/font.css')  ?>">
 <style>
     * {
         font-family: 'poppins', sans-serif;
@@ -248,7 +249,7 @@
                     data: 'idD',
                     render: function(data, type, row) {
                         console.log(row);
-                        return '<div class="d-flex gap-2"><button type="button" class="btn d-flex btn-sm btn-edit-detail" style="background-color: #03C988; color:white;" data-id="' + data + '" data-judul_detail="' + row.judul_detail + '" data-deskripsi="' + row.deskripsi + '" data-gambar="' + row.gambar + '" data-id_fitur="' + row.id_fitur + '" data-layout="' + row.layout + '"> <i class="ti ti-edit pe-2 fs-6 align-middle p-1 "></i> <p class="m-0 p-1 align-middle">Ubah</p></button><button type="button" class="btn btn-danger d-flex btn-sm btn-hapus-detail" data-id="' + data + '"><i class="ti ti-trash pe-2 fs-6 align-middle p-1 "></button></div>'
+                        return '<div class="d-flex gap-2"><button type="button" class="btn d-flex btn-sm btn-edit-detail" style="background-color: #03C988; color:white;" data-id="' + data + '" data-judul_detail="' + row.judul_detail + '" data-deskripsi="' + row.deskripsiDF + '" data-gambar="' + row.gambar + '" data-id_fitur="' + row.id_fitur + '" data-layout="' + row.layout + '"> <i class="ti ti-edit pe-2 fs-6 align-middle p-1 "></i> <p class="m-0 p-1 align-middle">Ubah</p></button><button type="button" class="btn btn-danger d-flex btn-sm btn-hapus-detail" data-id="' + data + '"><i class="ti ti-trash pe-2 fs-6 align-middle p-1 "></button></div>'
                     },
                     orderable: false
                 },

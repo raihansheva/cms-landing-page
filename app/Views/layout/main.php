@@ -101,6 +101,14 @@
                 <span class="hide-menu">Tentang kami</span>
               </a>
             </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/kontakuser" aria-expanded="false">
+                <span>
+                  <i class="ti ti-message"></i>
+                </span>
+                <span class="hide-menu">Kontak user</span>
+              </a>
+            </li>
             <!--  -->
           </ul>
         </nav>

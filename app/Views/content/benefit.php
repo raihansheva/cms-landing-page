@@ -5,7 +5,7 @@
 <link href="https://cdn.datatables.net/v/ju/dt-2.0.7/datatables.min.css" rel="stylesheet">
 <link href="assets/bootsrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-2.0.6/b-3.0.2/b-colvis-3.0.2/b-html5-3.0.2/b-print-3.0.2/r-3.0.2/datatables.min.css" rel="stylesheet">
-<link rel="stylesheet" href="assets/poppins/font.css">
+<link rel="stylesheet" href="<?= base_url('assets/poppins/font.css')  ?>">
 <style>
     * {
         font-family: 'poppins', sans-serif;
