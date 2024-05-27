@@ -11,6 +11,13 @@
     * {
         font-family: 'poppins', sans-serif;
     }
+
+    .ck-editor_editable_inkline{
+        min-height: 250px !important;
+        max-height: 250px !important;
+        overflow-y: auto !important;
+        border-top: 1px solid #000 !important   ;
+    }
 </style>
 
 <div class="bungkus">
@@ -71,7 +78,7 @@
                                 <div class="col-12 d-flex">
                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                         <label for="exampleFormControlTextarea1" class="form-label">Deskripsi:</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="7.5" name="deskripsi"></textarea>
+                                        <textarea class="form-control" id="editor" rows="7.5" name="deskripsi"></textarea>
                                     </div>
                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                         <label for="exampleFormControlInput1" class="form-label">Gambar :</label>
@@ -166,7 +173,7 @@
                     <div class="col-12 d-flex">
                         <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                             <label for="exampleFormControlTextarea1" class="form-label">Deskripsi:</label>
-                            <textarea class="form-control" id="deskripsi_ubah" rows="7.5" name="deskripsi"></textarea>
+                            <textarea class="form-control" id="deskripsi_ubah" rows="7.5" name="deskripsi">haloo</textarea>
                         </div>
                         <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                             <label for="exampleFormControlInput1" class="form-label">Gambar :</label>
@@ -223,6 +230,12 @@
 <script src="../node_modules/datatables.net/js/dataTables.min.js"></script>
 <script>
     $(document).ready(function() {
+        ClassicEditor.create(document.querySelector('#editor')).catch(error =>{
+            console.error(error);
+        })
+        ClassicEditor.create(document.querySelector('#deskripsi_ubah')).catch(error =>{
+            console.error(error);
+        })
         $('#tabelfitur').DataTable({
             "pageLength": 5,
             processing: true,
@@ -241,6 +254,10 @@
                 },
                 {
                     data: 'gambar',
+                    render: function(data, type, row) {
+                        console.log(row.gambar);
+                        return '<img src="' + row.gambar + '" alt="" width="50px" height="50px">'
+                    },
                 },
                 {
                     data: 'nama_layout',
@@ -248,7 +265,7 @@
                 {
                     data: 'idD',
                     render: function(data, type, row) {
-                        console.log(row);
+                        // console.log(row);
                         return '<div class="d-flex gap-2"><button type="button" class="btn d-flex btn-sm btn-edit-detail" style="background-color: #03C988; color:white;" data-id="' + data + '" data-judul_detail="' + row.judul_detail + '" data-deskripsi="' + row.deskripsiDF + '" data-gambar="' + row.gambar + '" data-id_fitur="' + row.id_fitur + '" data-layout="' + row.layout + '"> <i class="ti ti-edit pe-2 fs-6 align-middle p-1 "></i> <p class="m-0 p-1 align-middle">Ubah</p></button><button type="button" class="btn btn-danger d-flex btn-sm btn-hapus-detail" data-id="' + data + '"><i class="ti ti-trash pe-2 fs-6 align-middle p-1 "></button></div>'
                     },
                     orderable: false
@@ -282,5 +299,5 @@
     });
     // });
 </script>
-<!-- <script src="../js/detail-fitur.js"></script> -->
+<script src="<?= base_url('ckeditor/build/ckeditor.js') ?>"></script>
 <?php $this->endsection() ?>
