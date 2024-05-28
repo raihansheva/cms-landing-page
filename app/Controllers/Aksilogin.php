@@ -37,6 +37,7 @@ class Aksilogin extends BaseController
                 session()->set($datasesi);
                 return view('layout/main');
             } else {
+                session()->setFlashdata('error', 'Username atau Password salah');
                 return redirect()->back();
             }
         }
@@ -63,14 +64,16 @@ class Aksilogin extends BaseController
                 'type' => 'success',
                 'message' => 'Password berhasil di ubah'
             ]);
-            return redirect()->back()->withInput();
+            // return redirect()->back()->withInput();
+            echo json_encode(['status' => true]);
         } else {
             session()->setFlashdata('modal', [
                 'name' => 'exampleModaleditpassword',
                 'type' => 'error',
                 'message' => 'Password lama tidak cocok'
             ]);
-            return redirect()->back()->to('/profile')->withInput();
+            // return redirect()->back()->to('/profile')->withInput();
+            echo json_encode(['status' => true]);
             // echo 'haloo';
         }
     }

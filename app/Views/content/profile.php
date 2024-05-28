@@ -2,7 +2,45 @@
 <?php $this->section('content') ?>
 <!-- <link rel="stylesheet" href="css/style-konten.css"> -->
 <link href="assets/bootsrap/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    .overlay {
+        z-index: 999999999999;
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: rgba(0, 0, 0, 0, 7);
+        text-align: center;
+        display: none;
+    }
+
+    .loader {
+        width: 48px;
+        height: 48px;
+        border: 5px solid #FFF;
+        border-bottom-color: #FF3D00;
+        border-radius: 50%;
+        display: inline-block;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+        margin-top: 250px;
+    }
+
+    @keyframes rotation {
+        0% {
+            transform: rotate(0deg);
+        }
+
+        100% {
+            transform: rotate(360deg);
+        }
+    }
+</style>
 <div class="col-12">
+    <div class="overlay">
+        <span class="loader"></span>
+    </div>
     <div class="col-12 text-center mt-3">
         <h2>Profile</h2>
     </div>
@@ -96,7 +134,7 @@
                                     <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Ubah Password</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <form action="/ubahpassword" method="post">
+                                <form id="form-ubah-password">
                                     <div class="modal-body">
                                         <?php
                                         $modal = session()->getFlashdata('modal');
@@ -127,7 +165,7 @@
                                     </div>
                                     <div class="modal-footer border-top ">
                                         <button class="btn btn-primary" type="button" data-bs-target="#exampleModaleditprofile" data-bs-toggle="modal">Kembali</button>
-                                        <button class="btn" type="submit" style="background-color: #03C988; color:white;" data-bs-target="#exampleModaleditprofile" data-bs-toggle="modal">Ubah</button>
+                                        <button class="btn" type="button" style="background-color: #03C988; color:white;" id="btn-ubah">Ubah</button>
                                     </div>
                                 </form>
                             </div>
@@ -149,6 +187,41 @@
     $(document).ready(function() {
         // Cek jika ada flashdata error atau success, lalu tampilkan modal
         // 
+        $('#btn-ubah').click(function() {
+            const formdata = new FormData($("#form-ubah-password")[0]);
+            const overlay = document.getElementsByClassName('.overlay');
+            console.log(formdata);
+            $.ajax({
+                type: 'post',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                url: '/ubahpassword',
+                data: formdata,
+                dataType: "json",
+                contentType: false,
+                processData: false,
+                success: function(res) {
+                    if (res.status == TRUE) {
+                        alert('anda berhasil menyimpan data');
+                    }else{
+                        alert('password tidak sesuai');
+                    }
+                },
+                beforeSend: function(res) {
+                    
+                },
+                complete: function(res) {
+
+                },
+                error: function(res) {
+
+                },
+                fail: function(res) {
+
+                },
+            })
+        });
         var modalData = <?php echo json_encode(session()->getFlashdata('modal')); ?>;
         if (modalData) {
             $('#' + modalData.name).modal('show');
