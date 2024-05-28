@@ -21,9 +21,9 @@
                 <div class="container-form">
                 <form action="/login" method="POST">
                     <?php if (session()->setFlashdata('error')) { ?>
-                        <!-- <div class="alert alert-danger"> -->
-                            <?php  echo session()->getFlashdata('error')  ?>
-                        <!-- </div> -->
+                        
+                            <p><?php  echo session()->getFlashdata('error')  ?></p>
+                        
                     <?php } ?>
 					<!-- @csrf -->
                     <h1 class="titledaftar">Log In</h1>

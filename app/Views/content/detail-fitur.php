@@ -12,11 +12,11 @@
         font-family: 'poppins', sans-serif;
     }
 
-    .ck-editor_editable_inkline{
+    .ck-editor__editable_inline {
         min-height: 250px !important;
         max-height: 250px !important;
         overflow-y: auto !important;
-        border-top: 1px solid #000 !important   ;
+        border-top: 1px solid #000 !important;
     }
 </style>
 
@@ -173,7 +173,7 @@
                     <div class="col-12 d-flex">
                         <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                             <label for="exampleFormControlTextarea1" class="form-label">Deskripsi:</label>
-                            <textarea class="form-control" id="deskripsi_ubah" rows="7.5" name="deskripsi">haloo</textarea>
+                            <textarea class="form-control" id="deskripsi_ubah" rows="7.5" name="deskripsi" style="height: 500px;"></textarea>
                         </div>
                         <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                             <label for="exampleFormControlInput1" class="form-label">Gambar :</label>
@@ -228,12 +228,16 @@
 <!-- Skrip DataTables -->
 <script src="../node_modules/datatables.net.jqui/js/dataTables.jqueryui.min.js"></script>
 <script src="../node_modules/datatables.net/js/dataTables.min.js"></script>
+<script src="<?= base_url('assets/ckeditor5/build/ckeditor.js') ?>"></script>
 <script>
     $(document).ready(function() {
-        ClassicEditor.create(document.querySelector('#editor')).catch(error =>{
+        ClassicEditor.create(document.querySelector('#editor')).catch(error => {
             console.error(error);
         })
-        ClassicEditor.create(document.querySelector('#deskripsi_ubah')).catch(error =>{
+        // ClassicEditor.replace('editor', {
+        //     height: 400 // Mengatur tinggi CKEditor menjadi 400px
+        // });
+        ClassicEditor.create(document.querySelector('#deskripsi_ubah')).catch(error => {
             console.error(error);
         })
         $('#tabelfitur').DataTable({
@@ -254,10 +258,10 @@
                 },
                 {
                     data: 'gambar',
-                    render: function(data, type, row) {
-                        console.log(row.gambar);
-                        return '<img src="' + row.gambar + '" alt="" width="50px" height="50px">'
-                    },
+                    // render: function(data, type, row) {
+                    //     console.log(row.gambar);
+                    //     return '<img src="' + row.gambar + '" alt="" width="50px" height="50px">'
+                    // },
                 },
                 {
                     data: 'nama_layout',
@@ -283,7 +287,7 @@
             // // alert(desk);
             $('#id').val(id)
             $('#judul_detail_ubah').val(judul)
-            $('#deskripsi_ubah').val(desk)
+            $('#deskripsi_ubah').html(desk)
             $('#gambar_ubah').val(gambar)
             $('#layout_ubah').val(layout)
             $('#id_fitur_ubah').val(idF)
@@ -299,5 +303,4 @@
     });
     // });
 </script>
-<script src="<?= base_url('ckeditor/build/ckeditor.js') ?>"></script>
 <?php $this->endsection() ?>

@@ -16,8 +16,6 @@ import { Indent } from '@ckeditor/ckeditor5-indent';
 import { Link } from '@ckeditor/ckeditor5-link';
 import { List } from '@ckeditor/ckeditor5-list';
 import { Paragraph } from '@ckeditor/ckeditor5-paragraph';
-import { PasteFromOffice } from '@ckeditor/ckeditor5-paste-from-office';
-import { Table, TableToolbar } from '@ckeditor/ckeditor5-table';
 import { TextTransformation } from '@ckeditor/ckeditor5-typing';
 import { Undo } from '@ckeditor/ckeditor5-undo';
 
@@ -37,9 +35,6 @@ class Editor extends ClassicEditor {
 		Link,
 		List,
 		Paragraph,
-		PasteFromOffice,
-		Table,
-		TableToolbar,
 		TextTransformation,
 		Undo
 	];
@@ -48,7 +43,6 @@ class Editor extends ClassicEditor {
 		toolbar: {
 			items: [
 				'heading',
-				'|',
 				'bold',
 				'italic',
 				'link',
@@ -59,19 +53,11 @@ class Editor extends ClassicEditor {
 				'indent',
 				'|',
 				'blockQuote',
-				'insertTable',
 				'undo',
 				'redo'
 			]
 		},
-		language: 'id',
-		table: {
-			contentToolbar: [
-				'tableColumn',
-				'tableRow',
-				'mergeTableCells'
-			]
-		}
+		language: 'id'
 	};
 }
 
