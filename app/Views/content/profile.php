@@ -194,7 +194,7 @@
             $.ajax({
                 type: 'post',
                 headers: {
-                    'X-Requested-With': 'XMLHttpRequest'
+                    'X-Requested-With': 'XMLHttpRequest'  
                 },
                 url: '/ubahpassword',
                 data: formdata,
@@ -202,17 +202,19 @@
                 contentType: false,
                 processData: false,
                 success: function(res) {
-                    if (res.status == TRUE) {
-                        alert('anda berhasil menyimpan data');
-                    }else{
-                        alert('password tidak sesuai');
-                    }
+                    // if (res.status) {
+                    //     alert('anda berhasil menyimpan data');
+                    // }
                 },
                 beforeSend: function(res) {
                     
                 },
                 complete: function(res) {
-
+                    if (res.status == true) {
+                        alert('anda berhasil menyimpan data');
+                    }else{
+                        alert('anda gagal menyimpan data');
+                    }
                 },
                 error: function(res) {
 

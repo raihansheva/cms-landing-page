@@ -73,7 +73,7 @@ class Aksilogin extends BaseController
                 'message' => 'Password lama tidak cocok'
             ]);
             // return redirect()->back()->to('/profile')->withInput();
-            echo json_encode(['status' => true]);
+            echo json_encode(['status' => false]);
             // echo 'haloo';
         }
     }
