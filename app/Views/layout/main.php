@@ -35,7 +35,7 @@
         </div>
         <!-- <div style="width: 80%; border:0.1px solid rgb(229, 234, 239);"></div> -->
         <!-- Sidebar navigation-->
-        <nav class="sidebar-nav scroll-sidebar" data-simplebar="" >
+        <nav class="sidebar-nav scroll-sidebar" data-simplebar="" style="height: 500px;" id="">
           <ul id="sidebarnav">
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
@@ -109,6 +109,26 @@
                 <span class="hide-menu">Kontak user</span>
               </a>
             </li>
+            <!-- <li class="nav-small-cap">
+              <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+              <span class="hide-menu">Other</span>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/konten" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Privacy & Policy</span>
+              </a>
+            </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="/konten" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Terms Conditions</span>
+              </a>
+            </li> -->
             <!--  -->
           </ul>
         </nav>
@@ -137,6 +157,14 @@
                     <a href="/profile" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-user fs-6"></i>
                       <p class="mb-0 fs-3">Profile</p>
+                    </a>
+                    <a href="/privacypolicy" class="d-flex align-items-center gap-2 dropdown-item">
+                      <i class="ti ti-spy fs-6"></i>
+                      <p class="mb-0 fs-3">Privacy & Policy</p>
+                    </a>
+                    <a href="/termsconditions" class="d-flex align-items-center gap-2 dropdown-item">
+                      <i class="ti ti-terminal-2 fs-6"></i>
+                      <p class="mb-0 fs-3">Terms & Conditions</p>
                     </a>
                     <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-history fs-6"></i>

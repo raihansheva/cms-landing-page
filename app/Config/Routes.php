@@ -7,9 +7,16 @@ use CodeIgniter\Router\RouteCollection;
  */
 // default
 $routes->get('/', 'Home::login');
+
 $routes->post('/login', 'Aksilogin::login');
 $routes->get('/logout', 'Aksilogin::logout');
 
+$routes->get('/privacypolicy', 'Home::PP');
+$routes->post('/ubahprivacyPolc', 'Home::ubahPP');
+
+
+$routes->get('/termsconditions', 'Home::TC');
+$routes->post('/ubahterms', 'Home::ubahterms');
 
 // edit profile
 $routes->post('/ubahprofile', 'Aksilogin::editprofile');

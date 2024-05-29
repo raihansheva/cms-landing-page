@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\KontakClient;
+use App\Models\Privacy;
+use App\Models\TermsCond;
 use App\Models\User;
 use App\Models\Fitur;
 use App\Models\Harga;
@@ -33,6 +35,48 @@ class Home extends BaseController
     {
         return view('page_login');
     }
+    public function ubahPP()
+    {
+        $pp = new Privacy();
+        $id = $this->request->getPost('id');
+        $pp->save([
+            'id' => $id,
+            'deskripsi' => $this->request->getPost('deskripsi'),
+        ]);
+        return redirect()->back()->to('/privacypolicy');
+    }
+    public function ubahterms()
+    {
+        $pp = new TermsCond();
+        $id = $this->request->getPost('id');
+        $pp->save([
+            'id' => $id,
+            'deskripsi' => $this->request->getPost('deskripsi'),
+        ]);
+        return redirect()->back()->to('/termsconditions');
+    }
+
+
+
+    public function PP()
+    {
+        $pp = new Privacy();
+        $data = [
+            'pp'=> $pp->findAll()
+        ];
+        return view('content/other/privacy', $data);
+    }
+    public function TC()
+    {
+        $tc = new TermsCond();
+        $data = [
+            'tc'=> $tc->findAll()
+        ];
+        return view('content/other/termsCond', $data);
+    }
+
+
+
     public function kontakuser()
     {
         return view('content/kontakuser');

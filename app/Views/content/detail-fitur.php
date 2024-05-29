@@ -237,7 +237,12 @@
         // ClassicEditor.replace('editor', {
         //     height: 400 // Mengatur tinggi CKEditor menjadi 400px
         // });
-        ClassicEditor.create(document.querySelector('#deskripsi_ubah')).catch(error => {
+        let editor;
+        ClassicEditor.create(document.querySelector('#deskripsi_ubah'))
+        .then(newEditor => {
+            editor = newEditor
+        })
+        .catch(error =>{
             console.error(error);
         })
         $('#tabelfitur').DataTable({
@@ -292,6 +297,8 @@
             $('#layout_ubah').val(layout)
             $('#id_fitur_ubah').val(idF)
             $('#exampleModaleditdetailfitur').modal('show')
+
+            editor.setData(desk)
         });
 
         $('#tabelfitur').on("click", '.btn-hapus-detail', function() {
