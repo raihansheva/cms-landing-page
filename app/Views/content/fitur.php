@@ -53,7 +53,7 @@
                                     </div>
                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                         <label for="exampleFormControlInput1" class="form-label">Icon :</label>
-                                        <input type="file" class="form-control" placeholder="Pilih Gambar" id="icon"
+                                        <input type="file" class="form-control" placeholder="Pilih Gambar" id="gambar"
                                             name="icon">
                                         <label class="fs-2" for="">* <span>Format file : .jpg | .png</span></label>
                                         <div class="col-12 mt-2 text-end">
@@ -133,11 +133,11 @@
                         <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                             <label for="exampleFormControlInput1" class="form-label">Icon
                                 :</label>
-                            <input type="file" class="form-control" placeholder="Pilih Gambar" id="icon" name="icon">
+                            <input type="file" class="form-control" placeholder="Pilih Gambar" id="gambarUbah" name="icon">
                             <label class="fs-2" for="">* <span>Format file : .jpg | .png</span></label>
                             <div class="col-12 mt-2 text-end">
-                                <i class="ti ti-x d-none" type="button" id="hapusGambar" style="font-size: 24px"></i>
-                                <img src="#" alt="Pratinjau Gambar" id="preview"
+                                <i class="ti ti-x d-none" type="button" id="hapusGambarUbah" style="font-size: 24px"></i>
+                                <img src="#" alt="Pratinjau Gambar" id="previewUbah"
                                     class="preview-image d-none image-fluid col-12" width="100%">
                             </div>
                         </div>

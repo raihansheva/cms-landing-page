@@ -139,12 +139,12 @@
                                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                                         <label for="exampleFormControlInput1" class="form-label">Gambar
                                                             :</label>
-                                                        <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar" name="gambar">
+                                                        <input type="file" class="form-control" id="gambar2" placeholder="Pilih Gambar" name="gambar">
                                                         <label class="fs-2" for="">* <span>Format file : .jpg |
                                                                 .png</span></label>
                                                         <div class="col-12 mt-2">
-                                                            <img src="#" alt="Pratinjau Gambar" id="preview" class="preview-image d-none image-fluid col-12" width="100%">
-                                                            <button type="button" id="hapusGambar" class="btn btn-danger d-none">Hapus
+                                                            <img src="#" alt="Pratinjau Gambar" id="preview2" class="preview-image d-none image-fluid col-12" width="100%">
+                                                            <button type="button" id="hapusGambar2" class="btn btn-danger d-none">Hapus
                                                                 Gambar</button>
                                                         </div>
                                                     </div>
@@ -256,12 +256,12 @@
                                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                                         <label for="exampleFormControlInput1" class="form-label">Gambar
                                                             :</label>
-                                                        <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar" name="gambar">
+                                                        <input type="file" class="form-control" id="gambar2" placeholder="Pilih Gambar" name="gambar">
                                                         <label class="fs-2" for="">* <span>Format file : .jpg |
                                                                 .png</span></label>
                                                         <div class="col-12 mt-2">
-                                                            <img src="#" alt="Pratinjau Gambar" id="preview" class="preview-image d-none image-fluid col-12" width="100%">
-                                                            <button type="button" id="hapusGambar" class="btn btn-danger d-none">Hapus
+                                                            <img src="#" alt="Pratinjau Gambar" id="preview2" class="preview-image d-none image-fluid col-12" width="100%">
+                                                            <button type="button" id="hapusGambar2" class="btn btn-danger d-none">Hapus
                                                                 Gambar</button>
                                                         </div>
                                                     </div>
@@ -371,12 +371,12 @@
                                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                                         <label for="exampleFormControlInput1" class="form-label">Gambar
                                                             :</label>
-                                                        <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar" name="gambar">
+                                                        <input type="file" class="form-control" id="gambar2" placeholder="Pilih Gambar" name="gambar">
                                                         <label class="fs-2" for="">* <span>Format file : .jpg |
                                                                 .png</span></label>
                                                         <div class="col-12 mt-2">
-                                                            <img src="#" alt="Pratinjau Gambar" id="preview" class="preview-image d-none image-fluid col-12" width="100%">
-                                                            <button type="button" id="hapusGambar" class="btn btn-danger d-none">Hapus
+                                                            <img src="#" alt="Pratinjau Gambar" id="preview2" class="preview-image d-none image-fluid col-12" width="100%">
+                                                            <button type="button" id="hapusGambar2" class="btn btn-danger d-none">Hapus
                                                                 Gambar</button>
                                                         </div>
                                                     </div>
@@ -404,7 +404,7 @@
                                         <form action="/hapusbanner" method="post" id="form-data-hapus">
                                             <?= csrf_field(); ?>
                                             <div class="modal-body">
-                                                <p class="text-center">Yakin ingin hapus solusi ini?</p>
+                                                <p class="text-center">Yakin ingin hapus banner ini?</p>
                                                 <input type="text" value="<?= $value['id'] ?>" name="id" id="id" hidden>
                                             </div>
                                             <div class="modal-footer d-flex justify-content-center">

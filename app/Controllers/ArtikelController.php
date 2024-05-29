@@ -68,7 +68,7 @@ class ArtikelController extends BaseController
         ];
         if ($this->validate($rules)) {
             $artikel->save([
-                'id' = $id,
+                'id' =>$id,
                 'nama_artikel' => $this->request->getPost('nama_artikel'),
                 'deskripsi' => $this->request->getPost('deskripsi'),
             ]);

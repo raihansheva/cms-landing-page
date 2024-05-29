@@ -1,68 +1,59 @@
+    // tambah gambar
+    const inputGambar = document.getElementById('gambar');
+    const pratinjauGambar = document.getElementById('preview');
+    const tombolHapusGambar = document.getElementById('hapusGambar');
 
-$(document).ready(function () {
-    // UNTUK TAMBAH SOLUSI
-    $('#btn-simpan').click(function () {
-            const formdata = new FormData($("#form-data-solusi")[0]);
-            $.ajax({
-                type: 'post',
-                headers:{'X-Requested-With': 'XMLHttpRequest'},
-                url: '/tambahbanner' ,
-                data: formdata,
-                dataType: "json",
-                success: function (res) {
-                    if (res.status) {
-                        alert('anda berhasil menyimpan data');
-                    }
-                }
-            })
-        });
-    // $(document).on('submit', '#form-data-solusi', function (e) {
-    //     e.preventDefault();
-    //     // alert('oke');
-    //     $.ajax({
-    //         url: "/tambahsolusi",
-    //         type: 'post',
-    //         data: $(this).serialize(),
-    //         dataType: "json",
-    //         success: function (res) {
-    //             if (res.status) {
-    //                 alert('anda berhasil menyimpan data solusi'); 
-    //             }
-    //         }
-    //     })
-    // })
-    // UNTUK UBAH SOLUSI
-    $(document).on('submit', '#form-data-ubah', function (e) {
-        e.preventDefault();
-        // alert('oke');
-        $.ajax({
-            url: "/ubahsolusi",
-            type: 'post',
-            data: $(this).serialize(),
-            dataType: "json",
-            success: function (res) {
-                if (res.status) {
-                    alert('anda berhasil mengahapus data solusi'); 
-                }
-            }
-        })
-    })
-    // UNTUK HAPUS SOLUSi
-    $(document).on('submit', '#form-data-hapus', function (e) {
-        e.preventDefault();
-        // alert('oke');
-        $.ajax({
-            url: "/hapussolusi",
-            type: 'post',
-            data: $(this).serialize(),
-            dataType: "json",
-            success: function (res) {
-                if (res.status) {
-                    alert('anda berhasil mengahapus data solusi'); 
-                }
-            }
-        })
-    })
-    // 
+    inputGambar.addEventListener('change', function() {
+        const file = this.files[0];
 
-})
+        if (file) {
+            const reader = new FileReader();
+            reader.addEventListener('load', function() {
+                pratinjauGambar.src = this.result;
+                pratinjauGambar.classList.remove('d-none');
+                tombolHapusGambar.classList.remove('d-none');
+            });
+            reader.readAsDataURL(file);
+        } else {
+            pratinjauGambar.src = "#";
+            pratinjauGambar.classList.add('d-none');
+            tombolHapusGambar.classList.add('d-none');
+        }
+    });
+
+    tombolHapusGambar.addEventListener('click', function() {
+        pratinjauGambar.src = "#";
+        pratinjauGambar.classList.add('d-none');
+        tombolHapusGambar.classList.add('d-none');
+        inputGambar.value = ""; // Menghapus file dari input file
+    });
+
+    // ubah gambar
+    const inputGambarubah = document.getElementById('gambarUbah');
+    const pratinjauGambarubah = document.getElementById('previewUbah');
+    const tombolHapusGambarubah = document.getElementById('hapusGambarUbah');
+
+    inputGambarubah.addEventListener('change', function() {
+        const file = this.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.addEventListener('load', function() {
+                pratinjauGambarubah.src = this.result;
+                pratinjauGambarubah.classList.remove('d-none');
+                tombolHapusGambarubah.classList.remove('d-none');
+            });
+            reader.readAsDataURL(file);
+        } else {
+            pratinjauGambarubah.src = "#";
+            pratinjauGambarubah.classList.add('d-none');
+            tombolHapusGambarubah.classList.add('d-none');
+        }
+    });
+
+    tombolHapusGambarubah.addEventListener('click', function() {
+        pratinjauGambarubah.src = "#";
+        pratinjauGambarubah.classList.add('d-none');
+        tombolHapusGambarubah.classList.add('d-none');
+        inputGambarubah.value = ""; // Menghapus file dari input file
+    });

@@ -50,3 +50,32 @@ tombolHapusGambar.addEventListener('click', function () {
     tombolHapusGambar.classList.add('d-none');
     inputGambar.value = ""; // Menghapus file dari input file
 });
+
+const inputGambar2 = document.getElementById('gambar2');
+const pratinjauGambar2 = document.getElementById('preview2');
+const tombolHapusGambar2 = document.getElementById('hapusGambar2');
+
+inputGambar2.addEventListener('change', function () {
+    const file2 = this.files[0];
+
+    if (file2) {
+        const reader2 = new FileReader();
+        reader2.addEventListener('load', function () {
+            pratinjauGambar2.src = this.result;
+            pratinjauGambar2.classList.remove('d-none');
+            tombolHapusGambar2.classList.remove('d-none');
+        });
+        reader2.readAsDataURL(file);
+    } else {
+        pratinjauGambar2.src = "#";
+        pratinjauGambar2.classList.add('d-none');
+        tombolHapusGambar2.classList.add('d-none');
+    }
+});
+
+tombolHapusGambar2.addEventListener('click', function () {
+    pratinjauGambar2.src = "#";
+    pratinjauGambar2.classList.add('d-none');
+    tombolHapusGambar2.classList.add('d-none');
+    inputGambar2.value = ""; // Menghapus file dari input file
+});

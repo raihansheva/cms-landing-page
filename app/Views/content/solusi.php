@@ -2,7 +2,7 @@
 <?php $this->section('content') ?>
 <link rel="stylesheet" href="css/style-konten.css">
 <link href="assets/bootsrap/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="<?php base_url('../assets/sweetalert2/dist/sweetalert2.min.css')?>">
+<link rel="stylesheet" href="<?php base_url('../assets/sweetalert2/dist/sweetalert2.min.css') ?>">
 <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js"> -->
 
 <div class="bungkus">
@@ -75,10 +75,9 @@
                                             :</label>
                                         <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar" name="gambar">
                                         <label class="fs-2" for="">* <span>Format file : .jpg | .png</span></label>
-                                        <div class="col-12 mt-2">
+                                        <div class="col-12 mt-2 text-end">
+                                            <i class="ti ti-x d-none" type="button" id="hapusGambar" style="font-size: 24px"></i>
                                             <img src="#" alt="Pratinjau Gambar" id="preview" class="preview-image d-none image-fluid col-12" width="100%">
-                                            <button type="button" id="hapusGambar" class="btn btn-danger d-none">Hapus
-                                                Gambar</button>
                                         </div>
                                     </div>
                                 </div>
@@ -136,13 +135,12 @@
                                                 <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                                     <label for="exampleFormControlInput1" class="form-label">Gambar / Icon
                                                         :</label>
-                                                    <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar" name="gambar">
+                                                    <input type="file" class="form-control" id="gambarUbah" placeholder="Pilih Gambar" name="gambar">
                                                     <label class="fs-2" for="">* <span>Format file : .jpg |
                                                             .png</span></label>
-                                                    <div class="col-12 mt-2">
-                                                        <img src="#" alt="Pratinjau Gambar" id="preview" class="preview-image d-none image-fluid col-12" width="100%">
-                                                        <button type="button" id="hapusGambar" class="btn btn-danger d-none">Hapus
-                                                            Gambar</button>
+                                                    <div class="col-12 mt-2 text-end">
+                                                        <i class="ti ti-x d-none" type="button" id="hapusGambarUbah" style="font-size: 24px"></i>
+                                                        <img src="#" alt="Pratinjau Gambar" id="previewUbah" class="preview-image d-none image-fluid col-12" width="100%">
                                                     </div>
                                                 </div>
                                             </div>
@@ -200,5 +198,65 @@
 <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.11.0/dist/sweetalert2.all.min.js"></script> -->
 <script src="../assets/sweetalert2/dist/sweetalert2.all.min.js"></script>
 <?= session()->getFlashdata('sweetalert'); ?>
-<!-- <script src="js/ajax_solusi.php"></script> -->
+<script>
+    // tambah gambar
+    const inputGambar = document.getElementById('gambar');
+    const pratinjauGambar = document.getElementById('preview');
+    const tombolHapusGambar = document.getElementById('hapusGambar');
+
+    inputGambar.addEventListener('change', function() {
+        const file = this.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.addEventListener('load', function() {
+                pratinjauGambar.src = this.result;
+                pratinjauGambar.classList.remove('d-none');
+                tombolHapusGambar.classList.remove('d-none');
+            });
+            reader.readAsDataURL(file);
+        } else {
+            pratinjauGambar.src = "#";
+            pratinjauGambar.classList.add('d-none');
+            tombolHapusGambar.classList.add('d-none');
+        }
+    });
+
+    tombolHapusGambar.addEventListener('click', function() {
+        pratinjauGambar.src = "#";
+        pratinjauGambar.classList.add('d-none');
+        tombolHapusGambar.classList.add('d-none');
+        inputGambar.value = ""; // Menghapus file dari input file
+    });
+
+    // ubah gambar
+    const inputGambarubah = document.getElementById('gambarUbah');
+    const pratinjauGambarubah = document.getElementById('previewUbah');
+    const tombolHapusGambarubah = document.getElementById('hapusGambarUbah');
+
+    inputGambarubah.addEventListener('change', function() {
+        const file = this.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.addEventListener('load', function() {
+                pratinjauGambarubah.src = this.result;
+                pratinjauGambarubah.classList.remove('d-none');
+                tombolHapusGambarubah.classList.remove('d-none');
+            });
+            reader.readAsDataURL(file);
+        } else {
+            pratinjauGambarubah.src = "#";
+            pratinjauGambarubah.classList.add('d-none');
+            tombolHapusGambarubah.classList.add('d-none');
+        }
+    });
+
+    tombolHapusGambarubah.addEventListener('click', function() {
+        pratinjauGambarubah.src = "#";
+        pratinjauGambarubah.classList.add('d-none');
+        tombolHapusGambarubah.classList.add('d-none');
+        inputGambarubah.value = ""; // Menghapus file dari input file
+    });
+</script>
 <?php $this->endsection() ?>
