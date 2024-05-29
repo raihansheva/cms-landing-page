@@ -2,6 +2,7 @@
 <?php $this->section('content') ?>
 <link rel="stylesheet" href="css/style-konten.css">
 <link href="assets/bootsrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="<?php base_url('../assets/sweetalert2/dist/sweetalert2.min.css')?>">
 <div class="bungkus">
     <div class="konten-banner">
         <!-- <div class="area-banner">
@@ -573,5 +574,7 @@
 <script src="assets/libs/jquery/dist/jquery.min.js"></script>
 <script src="js/banner.js"></script>
 <script src="js/ajax.js"></script>
+<script src="../assets/sweetalert2/dist/sweetalert2.all.min.js"></script>
+<?= session()->getFlashdata('sweetalert'); ?>
 <!-- -->
 <?php $this->endsection() ?>

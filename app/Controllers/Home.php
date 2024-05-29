@@ -43,6 +43,16 @@ class Home extends BaseController
             'id' => $id,
             'deskripsi' => $this->request->getPost('deskripsi'),
         ]);
+        session()->setFlashdata('sweetalert', "
+                <script>
+                    Swal.fire({
+                        title: 'Berhasil',
+                        text: 'Anda mengubah privacy & policy',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    });
+                </script>
+            ");
         return redirect()->back()->to('/privacypolicy');
     }
     public function ubahterms()
@@ -53,6 +63,16 @@ class Home extends BaseController
             'id' => $id,
             'deskripsi' => $this->request->getPost('deskripsi'),
         ]);
+        session()->setFlashdata('sweetalert', "
+                <script>
+                    Swal.fire({
+                        title: 'Berhasil',
+                        text: 'Anda mengubah terms & conditions',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    });
+                </script>
+            ");
         return redirect()->back()->to('/termsconditions');
     }
 

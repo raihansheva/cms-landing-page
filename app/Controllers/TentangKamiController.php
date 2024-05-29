@@ -14,9 +14,16 @@ class TentangKamiController extends BaseController
         //
     }
 
-        public function ubahheadtentangkami(){
-            $head = new Headertentangkami();
-
+    public function ubahheadtentangkami()
+    {
+        $head = new Headertentangkami();
+        $validation = \config\Services::validation();
+        $rules = [
+            'judul_banner' => 'required',
+            'deskripsi' => 'required',
+            'gambar' => 'required',
+        ];
+        if ($this->validate($rules)) {
             $image = $this->request->getFile('gambar');
             $newName = $image->getClientName();
             $path = 'defalut.jpg';
@@ -31,21 +38,76 @@ class TentangKamiController extends BaseController
                 'id' => $id,
                 'judul_banner' => $this->request->getPost('judul_banner'),
                 'deskripsi' => $this->request->getPost('deskripsi'),
-                'gambar' => $path 
+                'gambar' => $path
             ]);
+            session()->setFlashdata('sweetalert', "
+                <script>
+                    Swal.fire({
+                        title: 'Berhasil',
+                        text: 'Anda mengubah head tentang kami',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    });
+                </script>
+            ");
             return redirect()->back()->to('/tentangkami');
-            // return $this->response->setJSON(['status' => true]);
+        } else {
+            session()->setFlashdata('sweetalert', "
+                <script>
+                    Swal.fire({
+                        title: 'Gagal',
+                        text: 'Form harus di isi',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    });
+                </script>
+            ");
+            return redirect()->back()->to('/tentangkami');
         }
+
+
+        // return $this->response->setJSON(['status' => true]);
+    }
 
     public function tambahtentangkami()
     {
         $aboutus = new Tentangkami();
+        $validation = \config\Services::validation();
+        $rules = [
+            'judul' => 'required',
+            'deskripsi' => 'required',
+        ];
+        if ($this->validate($rules)) {
+            $aboutus->save([
+                'judul' => $this->request->getPost('judul'),
+                'deskripsi' => $this->request->getPost('deskripsi'),
+            ]);
+            session()->setFlashdata('sweetalert', "
+                    <script>
+                        Swal.fire({
+                            title: 'Berhasil',
+                            text: 'Anda menambahkan informasi',
+                            icon: 'success',
+                            confirmButtonText: 'Ok'
+                        });
+                    </script>
+                ");
+            return redirect()->back()->to('/tentangkami');
+        } else {
+            session()->setFlashdata('sweetalert', "
+            <script>
+                Swal.fire({
+                    title: 'Gagal',
+                    text: 'Form harus di isi',
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                });
+            </script>
+        ");
+            return redirect()->back()->to('/tentangkami');
+        }
 
-        $aboutus->save([
-            'judul' => $this->request->getPost('judul'),
-            'deskripsi' => $this->request->getPost('deskripsi'),
-        ]);
-        return redirect()->back()->to('/tentangkami');
+
         // echo json_encode(['status' => TRUE]);
         // return $this->response->setJSON(['status' => true]);
     }
@@ -54,12 +116,43 @@ class TentangKamiController extends BaseController
     {
         $aboutus = new Tentangkami();
         $id = $this->request->getPost('id');
-        $aboutus->save([
-            'id' => $id,
-            'judul' => $this->request->getPost('judul'),
-            'deskripsi' => $this->request->getPost('deskripsi'),
-        ]);
-        return redirect()->back()->to('/tentangkami');
+        $validation = \config\Services::validation();
+        $rules = [
+            'judul' => 'required',
+            'deskripsi' => 'required',
+        ];
+        if ($this->validate($rules)) {
+            $aboutus->save([
+                'id' => $id,
+                'judul' => $this->request->getPost('judul'),
+                'deskripsi' => $this->request->getPost('deskripsi'),
+            ]);
+            session()->setFlashdata('sweetalert', "
+                    <script>
+                        Swal.fire({
+                            title: 'Berhasil',
+                            text: 'Anda mengubah informasi',
+                            icon: 'success',
+                            confirmButtonText: 'Ok'
+                        });
+                    </script>
+                ");
+            return redirect()->back()->to('/tentangkami');
+        } else {
+            session()->setFlashdata('sweetalert', "
+            <script>
+                Swal.fire({
+                    title: 'Gagal',
+                    text: 'Form harus di isi',
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                });
+            </script>
+        ");
+            return redirect()->back()->to('/tentangkami');
+        }
+
+
         // return $this->response->setJSON(['status' => true]);
     }
 
@@ -68,6 +161,16 @@ class TentangKamiController extends BaseController
         $id = $this->request->getPost('id');
         $aboutus = new Tentangkami();
         $delete = $aboutus->where('id', $id)->delete();
+        session()->setFlashdata('sweetalert', "
+                <script>
+                    Swal.fire({
+                        title: 'Berhasil',
+                        text: 'Anda menghapus informasi',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    });
+                </script>
+            ");
         return redirect()->back()->to('/tentangkami');
         // echo json_encode(['status' => TRUE]);
 

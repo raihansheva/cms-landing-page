@@ -17,29 +17,63 @@ class Aksilogin extends BaseController
     public function login()
     {
         $users = new User();
+        $validation = \config\Services::validation();
+        $rules = [
+            'username' => 'required',
+            'password' => 'required',
+        ];
+
+        
+        
         $login = $this->request->getPost('login');
         if ($login) {
-            $username = $this->request->getPost('username');
-            $password = $this->request->getPost('password');
-            $user = $users->login($username, $password);
-            if ($user) {
-                $data = $users->where('username', $username)->first();
-                $datasesi = [
-                    'id' => $data['id'],
-                    'username' => $data['username'],
-                    'nama' => $data['nama'],
-                    'email' => $data['email'],
-                    'password' => $data['password'],
-                    'status' => $data['status'],
-                    'role' => $data['role'],
-                    'foto' => $data['foto'],
-                ];
-                session()->set($datasesi);
-                return view('layout/main');
+            if ($this->validate($rules)) {
+                $username = $this->request->getPost('username');
+                $password = $this->request->getPost('password');
+                $user = $users->login($username, $password);
+    
+                if ($user) {
+                    $data = $users->where('username', $username)->first();
+                    $datasesi = [
+                        'id' => $data['id'],
+                        'username' => $data['username'],
+                        'nama' => $data['nama'],
+                        'email' => $data['email'],
+                        'password' => $data['password'],
+                        'status' => $data['status'],
+                        'role' => $data['role'],
+                        'foto' => $data['foto'],
+                    ];
+                    session()->set($datasesi);
+    
+                    return view('layout/main');
+                } else {
+                    session()->setFlashdata('sweetalert', "
+                         <script>
+                                 Swal.fire({
+                                    title: 'Gagal',
+                                    text: 'Username atau Password anda salah',
+                                    icon: 'error',
+                                    confirmButtonText: 'Ok'
+                                });
+                        </script>
+            ");
+                    return redirect()->back();
+                }
             } else {
-                session()->setFlashdata('error', 'Username atau Password salah');
-                return redirect()->back();
+                session()->setFlashdata('sweetalert', "
+                         <script>
+                                 Swal.fire({
+                                    title: 'Gagal',
+                                    text: 'Username atau Password harus diisi',
+                                    icon: 'error',
+                                    confirmButtonText: 'Ok'
+                                });
+                        </script>
+            ");
+                    return redirect()->back();
             }
+            
         }
         // echo 'haloo';
     }

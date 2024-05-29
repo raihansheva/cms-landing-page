@@ -7,6 +7,7 @@
 <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-2.0.6/b-3.0.2/b-colvis-3.0.2/b-html5-3.0.2/b-print-3.0.2/r-3.0.2/datatables.min.css" rel="stylesheet">
 <link rel="stylesheet" href="assets/poppins/font.css">
 <link rel="stylesheet" href="<?= base_url('assets/poppins/font.css')  ?>">
+<link rel="stylesheet" href="<?php base_url('../assets/sweetalert2/dist/sweetalert2.min.css')?>">
 <style>
     * {
         font-family: 'poppins', sans-serif;
@@ -229,6 +230,8 @@
 <script src="../node_modules/datatables.net.jqui/js/dataTables.jqueryui.min.js"></script>
 <script src="../node_modules/datatables.net/js/dataTables.min.js"></script>
 <script src="<?= base_url('assets/ckeditor5/build/ckeditor.js') ?>"></script>
+<script src="<?= base_url('../assets/sweetalert2/dist/sweetalert2.all.min.js') ?>"></script>
+<?= session()->getFlashdata('sweetalert'); ?>
 <script>
     $(document).ready(function() {
         ClassicEditor.create(document.querySelector('#editor')).catch(error => {

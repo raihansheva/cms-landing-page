@@ -2,10 +2,11 @@
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
-use App\Models\Headersolusi;
 use App\Models\Solusi;
+use App\Models\Headersolusi;
+use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class SolusiController extends BaseController
 {
@@ -20,23 +21,55 @@ class SolusiController extends BaseController
 
     public function addsolusi(){
         $solusi = new Solusi();
+        $validation = \config\Services::validation();
+        $rules = [
+            'nama_solusi' => 'required',
+            'deskripsi' => 'required',
+            'gambar' => 'required',
+        ];
 
-        $image = $this->request->getFile('gambar');
-        $newName = $image->getClientName();
-        $path = 'defalut.jpg';
-        if ($image->isValid() && !$image->hasMoved()) {
+        if ($this->validate($rules)) {
+            $image = $this->request->getFile('gambar');
             $newName = $image->getClientName();
-            $image->move(ROOTPATH . 'public/uploads', $newName);
-
-            $path = 'uploads/' . $newName;
+            $path = 'defalut.jpg';
+            if ($image->isValid() && !$image->hasMoved()) {
+                $newName = $image->getClientName();
+                $image->move(ROOTPATH . 'public/uploads', $newName);
+                $path = 'uploads/' . $newName;
+            }
+            
+            $solusi->save([
+                'nama_solusi' => $this->request->getPost('nama_solusi'),
+                'deskripsi' => $this->request->getPost('deskripsi'),
+                'gambar' => $path 
+            ]);
+            session()->setFlashdata('sweetalert', "
+                <script>
+                    Swal.fire({
+                        title: 'Berhasil',
+                        text: 'Anda menambahkan solusi',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    });
+                </script>
+            ");
+            return redirect()->back()->to('/solusi');
+        } else {
+            session()->setFlashdata('sweetalert', "
+            <script>
+                Swal.fire({
+                    title: 'Gagal',
+                    text: 'form harus diisi',
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                });
+            </script>
+        ");
+        return redirect()->back()->to('/solusi');
         }
         
-        $solusi->save([
-            'nama_solusi' => $this->request->getPost('nama_solusi'),
-            'deskripsi' => $this->request->getPost('deskripsi'),
-            'gambar' => $path 
-        ]);
-        return redirect()->back()->to('/solusi');
+
+       
         // return $this->response->setJSON(['status' => true]);
     }
 
@@ -59,6 +92,17 @@ class SolusiController extends BaseController
             'deskripsi' => $this->request->getPost('deskripsi'),
             'gambar' => $path 
         ]);
+        session()->setFlashdata('sweetalert', "
+            <script>
+                Swal.fire({
+                    title: 'Berhasil',
+                    text: 'Annda mengubah solusi',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                });
+            </script>
+        ");
+        
         return redirect()->back()->to('/solusi');
         // return $this->response->setJSON(['status' => true]);
     }
@@ -79,6 +123,16 @@ class SolusiController extends BaseController
         $id = $this->request->getPost('id');
         $solusi = new Solusi();
         $delete = $solusi->where('id', $id)->delete();
+        session()->setFlashdata('sweetalert', "
+            <script>
+                Swal.fire({
+                    title: 'Berhasil',
+                    text: 'Anda mengahapus solusi',
+                    icon: 'success',
+                    confirmButtonText: 'Ok'
+                });
+            </script>
+        ");
         return redirect()->back()->to('/solusi');
     }
 

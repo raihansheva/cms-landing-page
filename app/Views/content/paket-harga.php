@@ -7,7 +7,7 @@
 <link
     href="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-2.0.6/b-3.0.2/b-colvis-3.0.2/b-html5-3.0.2/b-print-3.0.2/r-3.0.2/datatables.min.css"
     rel="stylesheet">
-
+    <link rel="stylesheet" href="<?php base_url('../assets/sweetalert2/dist/sweetalert2.min.css')?>">
 
 <div class="bungkus">
     <div class="konten-banner">
@@ -208,6 +208,8 @@
 <script src="../node_modules/datatables.net/js/dataTables.min.js"></script>
 <!-- <script src="js/ajax_fitur.js"></script> -->
 <script src="js/paket_harga.js"></script>
+<script src="../assets/sweetalert2/dist/sweetalert2.all.min.js"></script>
+<?= session()->getFlashdata('sweetalert'); ?>
 <!-- <script>
     $(document).ready(function () {
         $('#tabelfitur').DataTable();

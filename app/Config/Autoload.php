@@ -41,6 +41,7 @@ class Autoload extends AutoloadConfig
      */
     public $psr4 = [
         APP_NAMESPACE => APPPATH,
+        'RealRashid\\SweetAlert\\' => APPPATH . 'ThirdParty/realrashid/sweet-alert/src',
     ];
 
     /**
@@ -90,5 +91,5 @@ class Autoload extends AutoloadConfig
      *
      * @var list<string>
      */
-    public $helpers = ['form'];
+    public $helpers = ['form' , 'sweetalert'];
 }

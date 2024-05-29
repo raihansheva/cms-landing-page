@@ -35,14 +35,48 @@ class HargaController extends BaseController
 
     public function tambahharga(){
         $harga = new Harga();
-        $harga->save([
-            'nama_paket' => $this->request->getPost('nama_paket'),
-            'kategori_harga' => $this->request->getPost('kategori_harga'),
-            'deskripsi' => $this->request->getPost('deskripsi'),
-            'harga' => $this->request->getPost('harga'),
-            'id_solusi' => $this->request->getPost('id_solusi'),
-        ]);
-        return redirect()->back()->to('/paketharga');
+        $validation = \config\Services::validation();
+        $rules = [
+            'nama_paket' => 'required',
+            'kategori_harga' => 'required',
+            'deskripsi' => 'required',
+            'harga' => 'required',
+            'id_solusi' => 'required',
+        ];
+        if ($this->validate($rules)) {
+            $harga->save([
+                'nama_paket' => $this->request->getPost('nama_paket'),
+                'kategori_harga' => $this->request->getPost('kategori_harga'),
+                'deskripsi' => $this->request->getPost('deskripsi'),
+                'harga' => $this->request->getPost('harga'),
+                'id_solusi' => $this->request->getPost('id_solusi'),
+            ]);
+            session()->setFlashdata('sweetalert', "
+                    <script>
+                        Swal.fire({
+                            title: 'Berhasil',
+                            text: 'Anda menambahkan paket harga',
+                            icon: 'success',
+                            confirmButtonText: 'Ok'
+                        });
+                    </script>
+                ");
+            return redirect()->back()->to('/paketharga');
+        } else {
+            session()->setFlashdata('sweetalert', "
+                    <script>
+                        Swal.fire({
+                            title: 'Gagal',
+                            text: 'Form harus di isi',
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        });
+                    </script>
+                ");
+            return redirect()->back()->to('/paketharga');
+        }
+        
+       
         // echo json_encode(['status' => TRUE]);
         // return $this->response->setJSON(['status' => true]);
     }
@@ -50,15 +84,49 @@ class HargaController extends BaseController
     public function ubahharga(){
         $id = $this->request->getPost('id');
         $harga = new Harga();
-        $harga->save([
-            'id' => $id,
-            'nama_paket' => $this->request->getPost('nama_paket'),
-            'kategori_harga' => $this->request->getPost('kategori_harga'),
-            'deskripsi' => $this->request->getPost('deskripsi'),
-            'harga' => $this->request->getPost('harga'),
-            'id_solusi' => $this->request->getPost('id_solusi'),
-        ]);
-        return redirect()->back()->to('/paketharga');
+        $validation = \config\Services::validation();
+        $rules = [
+            'nama_paket' => 'required',
+            'kategori_harga' => 'required',
+            'deskripsi' => 'required',
+            'harga' => 'required',
+            'id_solusi' => 'required',
+        ];
+        if ($this->validate($rules)) {
+            $harga->save([
+                'id' => $id,
+                'nama_paket' => $this->request->getPost('nama_paket'),
+                'kategori_harga' => $this->request->getPost('kategori_harga'),
+                'deskripsi' => $this->request->getPost('deskripsi'),
+                'harga' => $this->request->getPost('harga'),
+                'id_solusi' => $this->request->getPost('id_solusi'),
+            ]);
+            session()->setFlashdata('sweetalert', "
+                    <script>
+                        Swal.fire({
+                            title: 'Berhasil',
+                            text: 'Anda mengubah paket harga',
+                            icon: 'success',
+                            confirmButtonText: 'Ok'
+                        });
+                    </script>
+                ");
+            return redirect()->back()->to('/paketharga');
+        } else {
+            session()->setFlashdata('sweetalert', "
+                    <script>
+                        Swal.fire({
+                            title: 'Gagal',
+                            text: 'Form harus di isi',
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        });
+                    </script>
+                ");
+            return redirect()->back()->to('/paketharga');
+        }
+        
+        
         // return $this->response->setJSON(['status' => true]);
     }
 
@@ -66,6 +134,16 @@ class HargaController extends BaseController
         $id = $this->request->getPost('id');
         $harga = new Harga();
         $delete = $harga->where('id', $id)->delete();
+        session()->setFlashdata('sweetalert', "
+                <script>
+                    Swal.fire({
+                        title: 'Berhasil',
+                        text: 'Anda menghapus paket harga',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    });
+                </script>
+            ");
         return redirect()->back()->to('/paketharga');
         // echo json_encode(['status' => TRUE]);
 
@@ -74,11 +152,40 @@ class HargaController extends BaseController
     public function tambahbenefit()
     {
         $benefit = new Benefit();
-        $benefit->save([
-            'id_paket_harga' => $this->request->getPost('id_paket_harga'),
-            'nama_benefit' => $this->request->getPost('nama_benefit'),
-        ]);
-        return redirect()->back();
+        $validation = \config\Services::validation();
+        $rules = [
+            'id_paket_harga' => 'required',
+            'nama_benefit' => 'required',
+        ];
+        if ($this->validate($rules)) {
+            $benefit->save([
+                'id_paket_harga' => $this->request->getPost('id_paket_harga'),
+                'nama_benefit' => $this->request->getPost('nama_benefit'),
+            ]);
+            session()->setFlashdata('sweetalert', "
+                    <script>
+                        Swal.fire({
+                            title: 'Berhasil',
+                            text: 'Anda menambahkan benefit',
+                            icon: 'success',
+                            confirmButtonText: 'Ok'
+                        });
+                    </script>
+                ");
+            return redirect()->back();
+        } else {
+            session()->setFlashdata('sweetalert', "
+            <script>
+                Swal.fire({
+                    title: 'Gagal',
+                    text: 'Form harus di isi',
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                });
+            </script>
+        ");
+    return redirect()->back();
+        }
         // echo json_encode(['status' => TRUE]);
         // return $this->response->setJSON(['status' => true]);
     }
@@ -87,12 +194,43 @@ class HargaController extends BaseController
     {
         $benefit = new Benefit();
         $id = $this->request->getPost('id');
-        $benefit->save([
-            'id' => $id,
-            'id_paket_harga' => $this->request->getPost('id_paket_harga'),
-            'nama_benefit' => $this->request->getPost('nama_benefit'),
-        ]);
-        return redirect()->back();
+        $validation = \config\Services::validation();
+        $rules = [
+            'id_paket_harga' => 'required',
+            'nama_benefit' => 'required',
+        ];
+        if ($this->validate($rules)) {
+            $benefit->save([
+                'id' => $id,
+                'id_paket_harga' => $this->request->getPost('id_paket_harga'),
+                'nama_benefit' => $this->request->getPost('nama_benefit'),
+            ]);
+            session()->setFlashdata('sweetalert', "
+                    <script>
+                        Swal.fire({
+                            title: 'Berhasil',
+                            text: 'Anda mengubah benefit',
+                            icon: 'success',
+                            confirmButtonText: 'Ok'
+                        });
+                    </script>
+                ");
+            return redirect()->back();
+        } else {
+            session()->setFlashdata('sweetalert', "
+                    <script>
+                        Swal.fire({
+                            title: 'Gagal',
+                            text: 'Form harus di isi',
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        });
+                    </script>
+                ");
+            return redirect()->back();
+        }
+        
+        
         // return $this->response->setJSON(['status' => true]);
     }
 
@@ -101,6 +239,16 @@ class HargaController extends BaseController
         $id = $this->request->getPost('id');
         $benefit = new Benefit();
         $delete = $benefit->where('id', $id)->delete();
+        session()->setFlashdata('sweetalert', "
+                <script>
+                    Swal.fire({
+                        title: 'Berhasil',
+                        text: 'Anda menghapus benefit',
+                        icon: 'success',
+                        confirmButtonText: 'Ok'
+                    });
+                </script>
+            ");
         return redirect()->back();
         // echo json_encode(['status' => TRUE]);
 

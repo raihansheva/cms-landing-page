@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="assets/fontawesome/css/fontawesome.css">
     <link rel="stylesheet" href="assets/fontawesome/css/all.css">
     <link rel="stylesheet" href="assets/poppins/font.css">
+    <link rel="stylesheet" href="<?php base_url('../assets/sweetalert2/dist/sweetalert2.min.css')?>">
     <!-- <link rel="stylesheet" href="../assets/css/styles.min.css" />
 <link href="assets/bootsrap/css/bootstrap.min.css" rel="stylesheet"> -->
 </head>
@@ -41,7 +42,8 @@
     <script src="assets/fontawesome/js/all.js"></script>
     <script src="assets/fontawesome/js/fontawesome.js"></script>
  <!-- <script src="../assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script> -->
-
+ <script src="../assets/sweetalert2/dist/sweetalert2.all.min.js"></script>
+<?= session()->getFlashdata('sweetalert'); ?>
 	<!-- @include('sweetalert::alert') -->
 </body>
 
