@@ -46,7 +46,7 @@
 </style>
 <div class="col-12">
     <div class="col-12 text-center mt-3">
-        <h2>Privacy & Policy</h2>
+        <!-- <h2> <i class="ti ti-spy fs-6"></i></h2> -->
     </div>
     <div class="col-12 d-flex justify-content-center mt-4">
         <div class="card col-10 p-3 shadow " >

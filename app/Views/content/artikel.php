@@ -2,7 +2,19 @@
 <?php $this->section('content') ?>
 <link rel="stylesheet" href="css/style-konten.css">
 <link href="assets/bootsrap/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="<?php base_url('../assets/sweetalert2/dist/sweetalert2.min.css')?>">
+<link rel="stylesheet" href="<?php base_url('../assets/sweetalert2/dist/sweetalert2.min.css') ?>">
+<style>
+    * {
+        font-family: 'poppins', sans-serif;
+    }
+
+    .ck-editor__editable_inline {
+        min-height: 250px !important;
+        max-height: 250px !important;
+        overflow-y: auto !important;
+        border-top: 1px solid #000 !important;
+    }
+</style>
 <div class="bungkus">
     <div class="konten-banner">
         <!-- <div class="area-banner">
@@ -49,9 +61,8 @@
 
             <!-- Modal Tambah Banner -->
             <div class="modal fade" id="exampleModaltambahsolusi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-dialog modal-lg modal-dialog-scrollable">
                     <form action="/ubahartikel" method="post" id="form-data-solusi" class="modal-dialog-scrollable" enctype="multipart/form-data">
-
                         <div class="modal-content">
                             <div class="modal-header border-bottom">
                                 <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Artikel</h1>
@@ -64,7 +75,7 @@
                                 </div>
                                 <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
                                     <label for="exampleFormControlTextarea1" class="form-label">Deskripsi :</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="8.5" name="deskripsi"></textarea>
+                                    <textarea class="form-control" id="deskripsi" rows="8.5" name="deskripsi"></textarea>
                                 </div>
                             </div>
                             <div class="modal-footer border-top pe-4">
@@ -113,7 +124,7 @@
                                             <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
                                                 <label for="exampleFormControlTextarea1" class="form-label">Deskripsi
                                                     :</label>
-                                                <textarea class="form-control" id="deskripsi" rows="8.5" name="deskripsi"><?php echo $value['deskripsi'] ?></textarea>
+                                                <textarea class="form-control" id="deskripsiU" rows="8.5" name="deskripsi"><?php echo $value['deskripsi'] ?></textarea>
                                             </div>
                                         </div>
                                         <div class="modal-footer border-top pe-4">
@@ -164,5 +175,22 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="../assets/sweetalert2/dist/sweetalert2.all.min.js"></script>
+<script src="<?= base_url('assets/ckeditor5/build/ckeditor.js') ?>"></script>
 <?= session()->getFlashdata('sweetalert'); ?>
+<script>
+    $(document).ready(function() {
+        let editor;
+        ClassicEditor.create(document.querySelector('#deskripsi'))
+            .then(newEditor => {
+                editor = newEditor
+            })
+            .catch(error => {
+                console.error(error);
+            })
+        // let editor2;
+        ClassicEditor.create(document.querySelector('#deskripsiU')).catch(error => {
+            console.error(error);
+        })
+    });
+</script>
 <?php $this->endsection() ?>
