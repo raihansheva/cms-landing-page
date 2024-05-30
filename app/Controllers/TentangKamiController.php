@@ -9,6 +9,20 @@ use CodeIgniter\HTTP\ResponseInterface;
 
 class TentangKamiController extends BaseController
 {
+    private function create_slug($string)
+    {
+        $slug = url_title($string, '-' , true);
+        $tentangkami = new Tentangkami();
+
+        $count = 0;
+        $newSlug = $slug;
+        while ($tentangkami->where('slug' , $newSlug)->countAllResults() > 0) {
+            $count++;
+            $newSlug = $slug . '-' . $count;
+        }
+
+        return $newSlug;
+    }
     public function index()
     {
         //

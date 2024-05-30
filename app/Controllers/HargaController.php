@@ -10,6 +10,34 @@ use Irsyadulibad\DataTables\DataTables;
 
 class HargaController extends BaseController
 {
+    private function create_slug($string)
+    {
+        $slug = url_title($string, '-', true);
+        $harga = new Harga();
+
+        $count = 0;
+        $newSlug = $slug;
+        while ($harga->where('slug', $newSlug)->countAllResults() > 0) {
+            $count++;
+            $newSlug = $slug . '-' . $count;
+        }
+
+        return $newSlug;
+    }
+    private function create_slug_benefit($string)
+    {
+        $slug = url_title($string, '-', true);
+        $benefit = new Benefit();
+
+        $count = 0;
+        $newSlug = $slug;
+        while ($benefit->where('slug', $newSlug)->countAllResults() > 0) {
+            $count++;
+            $newSlug = $slug . '-' . $count;
+        }
+
+        return $newSlug;
+    }
     public function index()
     {
         // $data = DataTables::use('benefit')
@@ -18,22 +46,24 @@ class HargaController extends BaseController
         // var_dump($data);
     }
 
-    public function get_data_harga(){
+    public function get_data_harga()
+    {
         // return datatables('paket_harga')->make();
         return DataTables::use('paket_harga')
-        ->select('paket_harga.id as idPH , paket_harga.nama_paket , paket_harga.kategori_harga , paket_harga.deskripsi as deskripsiPH , paket_harga.harga , solusi.nama_solusi')
-        ->join('solusi', 'solusi.id = paket_harga.id_solusi' , 'INNER JOIN')->make();
+            ->select('paket_harga.id as idPH , paket_harga.nama_paket , paket_harga.kategori_harga , paket_harga.deskripsi as deskripsiPH , paket_harga.harga , solusi.nama_solusi')
+            ->join('solusi', 'solusi.id = paket_harga.id_solusi', 'INNER JOIN')->make();
     }
     public function get_data_benefit($id)
     {
         return DataTables::use('benefit')
-        ->select('benefit.id as idP, benefit.nama_benefit, paket_harga.nama_paket ')
-        ->join('paket_harga', 'paket_harga.id = benefit.id_paket_harga' , 'INNER JOIN')
-        ->where(['id_paket_harga' => $id])->make();
+            ->select('benefit.id as idP, benefit.nama_benefit, paket_harga.nama_paket ')
+            ->join('paket_harga', 'paket_harga.id = benefit.id_paket_harga', 'INNER JOIN')
+            ->where(['id_paket_harga' => $id])->make();
         // return  $data;
     }
 
-    public function tambahharga(){
+    public function tambahharga()
+    {
         $harga = new Harga();
         $validation = \config\Services::validation();
         $rules = [
@@ -43,13 +73,20 @@ class HargaController extends BaseController
             'harga' => 'required',
             'id_solusi' => 'required',
         ];
-        if ($this->validate($rules)) {
+        $nama_paket = $this->request->getPost('nama_paket');
+        $kat = $this->request->getPost('kategori_harga');
+        $deskripsi = $this->request->getPost('deskripsi');
+        $hargaP = $this->request->getPost('harga');
+        $id_solusi = $this->request->getPost('id_solusi');
+        $slug = $this->create_slug($nama_paket);
+        // if ($this->validate($rules)) {
             $harga->save([
-                'nama_paket' => $this->request->getPost('nama_paket'),
-                'kategori_harga' => $this->request->getPost('kategori_harga'),
-                'deskripsi' => $this->request->getPost('deskripsi'),
-                'harga' => $this->request->getPost('harga'),
-                'id_solusi' => $this->request->getPost('id_solusi'),
+                'nama_paket' => $nama_paket,
+                'kategori_harga' => $kat,
+                'slug' => $slug,
+                'deskripsi' => $deskripsi,
+                'harga' => $hargaP,
+                'id_solusi' => $id_solusi,
             ]);
             session()->setFlashdata('sweetalert', "
                     <script>
@@ -62,26 +99,27 @@ class HargaController extends BaseController
                     </script>
                 ");
             return redirect()->back()->to('/paketharga');
-        } else {
-            session()->setFlashdata('sweetalert', "
-                    <script>
-                        Swal.fire({
-                            title: 'Gagal',
-                            text: 'Form harus di isi',
-                            icon: 'error',
-                            confirmButtonText: 'Ok'
-                        });
-                    </script>
-                ");
-            return redirect()->back()->to('/paketharga');
-        }
-        
-       
+        // } else {
+        //     session()->setFlashdata('sweetalert', "
+        //             <script>
+        //                 Swal.fire({
+        //                     title: 'Gagal',
+        //                     text: 'Form harus di isi',
+        //                     icon: 'error',
+        //                     confirmButtonText: 'Ok'
+        //                 });
+        //             </script>
+        //         ");
+        //     return redirect()->back()->to('/paketharga');
+        // }
+
+
         // echo json_encode(['status' => TRUE]);
         // return $this->response->setJSON(['status' => true]);
     }
 
-    public function ubahharga(){
+    public function ubahharga()
+    {
         $id = $this->request->getPost('id');
         $harga = new Harga();
         $validation = \config\Services::validation();
@@ -92,14 +130,21 @@ class HargaController extends BaseController
             'harga' => 'required',
             'id_solusi' => 'required',
         ];
-        if ($this->validate($rules)) {
+        $nama_paket = $this->request->getPost('nama_paket');
+        $kat = $this->request->getPost('kategori_harga');
+        $deskripsi = $this->request->getPost('deskripsi');
+        $hargaP = $this->request->getPost('harga');
+        $id_solusi = $this->request->getPost('id_solusi');
+        $slug = $this->create_slug($nama_paket);
+        // if ($this->validate($rules)) {
             $harga->save([
                 'id' => $id,
-                'nama_paket' => $this->request->getPost('nama_paket'),
-                'kategori_harga' => $this->request->getPost('kategori_harga'),
-                'deskripsi' => $this->request->getPost('deskripsi'),
-                'harga' => $this->request->getPost('harga'),
-                'id_solusi' => $this->request->getPost('id_solusi'),
+                'nama_paket' => $nama_paket,
+                'kategori_harga' => $kat,
+                'slug' => $slug,
+                'deskripsi' => $deskripsi,
+                'harga' => $hargaP,
+                'id_solusi' => $id_solusi,
             ]);
             session()->setFlashdata('sweetalert', "
                     <script>
@@ -112,25 +157,26 @@ class HargaController extends BaseController
                     </script>
                 ");
             return redirect()->back()->to('/paketharga');
-        } else {
-            session()->setFlashdata('sweetalert', "
-                    <script>
-                        Swal.fire({
-                            title: 'Gagal',
-                            text: 'Form harus di isi',
-                            icon: 'error',
-                            confirmButtonText: 'Ok'
-                        });
-                    </script>
-                ");
-            return redirect()->back()->to('/paketharga');
-        }
-        
-        
+        // } else {
+        //     session()->setFlashdata('sweetalert', "
+        //             <script>
+        //                 Swal.fire({
+        //                     title: 'Gagal',
+        //                     text: 'Form harus di isi',
+        //                     icon: 'error',
+        //                     confirmButtonText: 'Ok'
+        //                 });
+        //             </script>
+        //         ");
+        //     return redirect()->back()->to('/paketharga');
+        // }
+
+
         // return $this->response->setJSON(['status' => true]);
     }
 
-    public function hapusharga(){
+    public function hapusharga()
+    {
         $id = $this->request->getPost('id');
         $harga = new Harga();
         $delete = $harga->where('id', $id)->delete();
@@ -157,10 +203,14 @@ class HargaController extends BaseController
             'id_paket_harga' => 'required',
             'nama_benefit' => 'required',
         ];
-        if ($this->validate($rules)) {
+        $idpaket = $this->request->getPost('id_paket_harga');
+        $namaB =  $this->request->getPost('nama_benefit');
+        $slug = $this->create_slug_benefit($namaB);
+        // if ($this->validate($rules)) {
             $benefit->save([
-                'id_paket_harga' => $this->request->getPost('id_paket_harga'),
-                'nama_benefit' => $this->request->getPost('nama_benefit'),
+                'id_paket_harga' => $idpaket ,
+                'nama_benefit' => $namaB,
+                'slug' => $slug,
             ]);
             session()->setFlashdata('sweetalert', "
                     <script>
@@ -173,19 +223,19 @@ class HargaController extends BaseController
                     </script>
                 ");
             return redirect()->back();
-        } else {
-            session()->setFlashdata('sweetalert', "
-            <script>
-                Swal.fire({
-                    title: 'Gagal',
-                    text: 'Form harus di isi',
-                    icon: 'error',
-                    confirmButtonText: 'Ok'
-                });
-            </script>
-        ");
-    return redirect()->back();
-        }
+        // } else {
+        //     session()->setFlashdata('sweetalert', "
+        //     <script>
+        //         Swal.fire({
+        //             title: 'Gagal',
+        //             text: 'Form harus di isi',
+        //             icon: 'error',
+        //             confirmButtonText: 'Ok'
+        //         });
+        //     </script>
+        // ");
+        //     return redirect()->back();
+        // }
         // echo json_encode(['status' => TRUE]);
         // return $this->response->setJSON(['status' => true]);
     }
@@ -199,11 +249,15 @@ class HargaController extends BaseController
             'id_paket_harga' => 'required',
             'nama_benefit' => 'required',
         ];
-        if ($this->validate($rules)) {
+        $idpaket = $this->request->getPost('id_paket_harga');
+        $namaB =  $this->request->getPost('nama_benefit');
+        $slug = $this->create_slug_benefit($namaB);
+        // if ($this->validate($rules)) {
             $benefit->save([
                 'id' => $id,
-                'id_paket_harga' => $this->request->getPost('id_paket_harga'),
-                'nama_benefit' => $this->request->getPost('nama_benefit'),
+                'id_paket_harga' => $idpaket ,
+                'nama_benefit' => $namaB,
+                'slug' => $slug,
             ]);
             session()->setFlashdata('sweetalert', "
                     <script>
@@ -216,21 +270,21 @@ class HargaController extends BaseController
                     </script>
                 ");
             return redirect()->back();
-        } else {
-            session()->setFlashdata('sweetalert', "
-                    <script>
-                        Swal.fire({
-                            title: 'Gagal',
-                            text: 'Form harus di isi',
-                            icon: 'error',
-                            confirmButtonText: 'Ok'
-                        });
-                    </script>
-                ");
-            return redirect()->back();
-        }
-        
-        
+        // } else {
+        //     session()->setFlashdata('sweetalert', "
+        //             <script>
+        //                 Swal.fire({
+        //                     title: 'Gagal',
+        //                     text: 'Form harus di isi',
+        //                     icon: 'error',
+        //                     confirmButtonText: 'Ok'
+        //                 });
+        //             </script>
+        //         ");
+        //     return redirect()->back();
+        // }
+
+
         // return $this->response->setJSON(['status' => true]);
     }
 

@@ -12,7 +12,7 @@ class Fitur extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id','nama_fitur','deskripsi','id_solusi','icon'];
+    protected $allowedFields    = ['id','nama_fitur', 'slug' ,'deskripsi','id_solusi','icon'];
     
     
     

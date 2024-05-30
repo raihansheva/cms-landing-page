@@ -11,6 +11,34 @@ use Irsyadulibad\DataTables\DataTables;
 
 class FiturController extends BaseController
 {
+    private function create_slug($string)
+    {
+        $slug = url_title($string, '-', true);
+        $fitur = new Fitur();
+
+        $count = 0;
+        $newSlug = $slug;
+        while ($fitur->where('slug', $newSlug)->countAllResults() > 0) {
+            $count++;
+            $newSlug = $slug . '-' . $count;
+        }
+
+        return $newSlug;
+    }
+    private function create_slug_detail($string)
+    {
+        $slug = url_title($string, '-', true);
+        $Dfitur = new Detailfitur();
+
+        $count = 0;
+        $newSlug = $slug;
+        while ($Dfitur->where('slug', $newSlug)->countAllResults() > 0) {
+            $count++;
+            $newSlug = $slug . '-' . $count;
+        }
+
+        return $newSlug;
+    }
     public function index()
     {
         //
@@ -20,8 +48,8 @@ class FiturController extends BaseController
     {
         // return datatables('fitur')->make();
         return DataTables::use('fitur')
-        ->select('fitur.id as idF , fitur.nama_fitur , fitur.deskripsi as deskripsiF , solusi.nama_solusi , fitur.icon ')
-        ->join('solusi', 'solusi.id = fitur.id_solusi' , 'INNER JOIN')->make();
+            ->select('fitur.id as idF , fitur.nama_fitur , fitur.deskripsi as deskripsiF , solusi.nama_solusi , fitur.icon ')
+            ->join('solusi', 'solusi.id = fitur.id_solusi', 'INNER JOIN')->make();
         // return DataTables::use('benefit')
         // ->select('benefit.id as idP, benefit.nama_benefit, paket_harga.nama_paket ')
         // ->join('paket_harga', 'paket_harga.id = benefit.id_paket_harga' , 'INNER JOIN')
@@ -31,14 +59,14 @@ class FiturController extends BaseController
     {
         // return datatables('detail_fitur')->where(['id_fitur' => $id])->make();
         return DataTables::use('detail_fitur')
-        ->select('detail_fitur.id as idD, detail_fitur.judul_detail , detail_fitur.deskripsi as deskripsiDF, detail_fitur.gambar, fitur.nama_fitur , layout.nama_layout')
-        ->join('fitur', 'fitur.id = detail_fitur.id_fitur' , 'INNER JOIN')
-        ->join('layout', 'layout.id = detail_fitur.layout' , 'INNER JOIN')
-        ->where(['id_fitur' => $id])->make();
+            ->select('detail_fitur.id as idD, detail_fitur.judul_detail , detail_fitur.deskripsi as deskripsiDF, detail_fitur.gambar, fitur.nama_fitur , layout.nama_layout')
+            ->join('fitur', 'fitur.id = detail_fitur.id_fitur', 'INNER JOIN')
+            ->join('layout', 'layout.id = detail_fitur.layout', 'INNER JOIN')
+            ->where(['id_fitur' => $id])->make();
         // return $data;
     }
 
-    
+
 
     public function tambahfitur()
     {
@@ -58,7 +86,7 @@ class FiturController extends BaseController
             if ($image->isValid() && !$image->hasMoved()) {
                 $newName = $image->getClientName();
                 $image->move(ROOTPATH . 'public/uploads', $newName);
-    
+
                 $path = 'uploads/' . $newName;
             }
             $fitur->save([
@@ -89,11 +117,11 @@ class FiturController extends BaseController
                         });
                     </script>
                 ");
-                return redirect()->back();
+            return redirect()->back();
         }
-        
 
-       
+
+
         // echo json_encode(['status' => TRUE]);
         // return $this->response->setJSON(['status' => true]);
     }
@@ -165,8 +193,8 @@ class FiturController extends BaseController
             'id_fitur' => 'required',
             'layout' => 'required',
         ];
-        if ($this->validate($rules)) {
-            $image = $this->request->getFile('gambar');
+        // if ($this->validate($rules)) {
+        $image = $this->request->getFile('gambar');
         $newName = $image->getClientName();
         $path = 'defalut.jpg';
         if ($image->isValid() && !$image->hasMoved()) {
@@ -175,12 +203,18 @@ class FiturController extends BaseController
 
             $path = 'uploads/' . $newName;
         }
+        $judul_detail = $this->request->getPost('judul_detail');
+        $deskripsi = $this->request->getPost('deskripsi');
+        $id_fitur = $this->request->getPost('id_fitur');
+        $layout = $this->request->getPost('layout');
+        $slug = $this->create_slug_detail($judul_detail);
         $fitur->save([
-            'judul_detail' => $this->request->getPost('judul_detail'),
-            'deskripsi' => $this->request->getPost('deskripsi'),
+            'judul_detail' => $judul_detail,
+            'deskripsi' => $deskripsi,
+            'slug' => $slug,
             'gambar' => $path,
-            'id_fitur' => $this->request->getPost('id_fitur'),
-            'layout' => $this->request->getPost('layout'),
+            'id_fitur' => $id_fitur,
+            'layout' => $layout,
         ]);
         session()->setFlashdata('sweetalert', "
                 <script>
@@ -193,21 +227,21 @@ class FiturController extends BaseController
                 </script>
             ");
         return redirect()->back();
-        } else {
-            session()->setFlashdata('sweetalert', "
-            <script>
-                Swal.fire({
-                    title: 'Gagal',
-                    text: 'Form harus di isi',
-                    icon: 'error',
-                    confirmButtonText: 'Ok'
-                });
-            </script>
-        ");
-    return redirect()->back();
-        }
-        
-        
+        //     } else {
+        //         session()->setFlashdata('sweetalert', "
+        //         <script>
+        //             Swal.fire({
+        //                 title: 'Gagal',
+        //                 text: 'Form harus di isi',
+        //                 icon: 'error',
+        //                 confirmButtonText: 'Ok'
+        //             });
+        //         </script>
+        //     ");
+        // return redirect()->back();
+        //     }
+
+
         // echo json_encode(['status' => TRUE]);
         // return $this->response->setJSON(['status' => true]);
     }
@@ -226,13 +260,20 @@ class FiturController extends BaseController
             $path = 'uploads/' . $newName;
         }
         $id = $this->request->getPost('id');
+        $judul_detail = $this->request->getPost('judul_detail');
+        $deskripsi = $this->request->getPost('deskripsi');
+        $id_fitur = $this->request->getPost('id_fitur');
+        $layout = $this->request->getPost('layout');
+        $slug = $this->create_slug_detail($judul_detail);
+
         $fitur->save([
             'id' => $id,
-            'judul_detail' => $this->request->getPost('judul_detail'),
-            'deskripsi' => $this->request->getPost('deskripsi'),
+            'judul_detail' => $judul_detail,
+            'deskripsi' => $deskripsi,
+            'slug' => $slug,
             'gambar' => $path,
-            'id_fitur' => $this->request->getPost('id_fitur'),
-            'layout' => $this->request->getPost('layout'),
+            'id_fitur' => $id_fitur,
+            'layout' => $layout,
         ]);
         session()->setFlashdata('sweetalert', "
                 <script>

@@ -12,7 +12,7 @@ class Detailfitur extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id' ,'judul_detail' ,'deskripsi' , 'gambar' , 'id_fitur', 'layout'];
+    protected $allowedFields    = ['id' ,'judul_detail', 'slug' ,'deskripsi' , 'gambar' , 'id_fitur', 'layout'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

@@ -12,7 +12,7 @@ class Solusi extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id','nama_solusi', 'deskripsi','gambar'];
+    protected $allowedFields    = ['id','nama_solusi', 'slug' , 'deskripsi','gambar'];
 
     public function getsolusi($idsolusi)
     {

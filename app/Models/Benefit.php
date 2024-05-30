@@ -12,7 +12,7 @@ class Benefit extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id' , 'id_paket_harga' , 'nama_benefit'];
+    protected $allowedFields    = ['id' , 'id_paket_harga' , 'nama_benefit' , 'slug'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;
