@@ -6,7 +6,7 @@ use App\Models\Solusi;
 use App\Models\Headersolusi;
 use App\Controllers\BaseController;
 use CodeIgniter\HTTP\ResponseInterface;
-use RealRashid\SweetAlert\Facades\Alert;
+use RealRashid\SweetAlert\Facades\Alert;  
 
 class SolusiController extends BaseController
 {
@@ -17,12 +17,12 @@ class SolusiController extends BaseController
 
     private function create_slug($string)
     {
-        $slug = url_title($string, '-' , true);
+        $slug = url_title($string, '-', true);
         $solusi = new Solusi();
 
         $count = 0;
         $newSlug = $slug;
-        while ($solusi->where('slug' , $newSlug)->countAllResults() > 0) {
+        while ($solusi->where('slug', $newSlug)->countAllResults() > 0) {
             $count++;
             $newSlug = $slug . '-' . $count;
         }
@@ -47,23 +47,23 @@ class SolusiController extends BaseController
             $image->move(ROOTPATH . 'public/uploads', $newName);
             $path = 'uploads/' . $newName;
         }
-        // $rules = [
-        //     'nama_solusi' => 'required',
-        //     'deskripsi' => 'required',
-        //     'gambar' => 'required',
-        // ];
+        $rules = [
+            'nama_solusi' => 'required',
+            'deskripsi' => 'required',
+            // 'gambar' => 'required',
+        ];
 
-        // if ($this->validate($rules)) {
-        $namasolusi = $this->request->getPost('nama_solusi');
-        $deskripsi = $this->request->getPost('deskripsi');
-        $slug = $this->create_slug($namasolusi);
-        $solusi->save([
-            'nama_solusi' => $namasolusi,
-            'slug' => $slug,
-            'deskripsi' => $deskripsi,
-            'gambar' => $path
-        ]);
-        session()->setFlashdata('sweetalert', "
+        if ($this->validate($rules)) {
+            $namasolusi = $this->request->getPost('nama_solusi');
+            $deskripsi = $this->request->getPost('deskripsi');
+            $slug = $this->create_slug($namasolusi);
+            $solusi->save([
+                'nama_solusi' => $namasolusi,
+                'slug' => $slug,
+                'deskripsi' => $deskripsi,
+                'gambar' => $path
+            ]);
+            session()->setFlashdata('sweetalert', "
                 <script>
                     Swal.fire({
                         title: 'Berhasil',
@@ -73,20 +73,20 @@ class SolusiController extends BaseController
                     });
                 </script>
             ");
-        return redirect()->back()->to('/solusi');
-        // } else {
-        //     session()->setFlashdata('sweetalert', "
-        //     <script>
-        //         Swal.fire({
-        //             title: 'Gagal',
-        //             text: 'form harus diisi',
-        //             icon: 'error',
-        //             confirmButtonText: 'Ok'
-        //         });
-        //     </script>
-        // ");
-        //     return redirect()->back()->to('/solusi');
-        // }
+            return redirect()->back()->to('/solusi');
+        } else {
+            session()->setFlashdata('sweetalert', "
+            <script>
+                Swal.fire({
+                    title: 'Gagal',
+                    text: 'form harus diisi',
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                });
+            </script>
+        ");
+            return redirect()->back()->to('/solusi');
+        }
 
 
 

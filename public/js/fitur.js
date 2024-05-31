@@ -27,36 +27,52 @@
         tombolHapusGambar.classList.add('d-none');
         inputGambar.value = ""; // Menghapus file dari input file
     });
+// validasi foto
+function validateFile() {
+    const fileInput = document.getElementById('gambar');
+    const filePath = fileInput.value;
+    const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+    const maxSize = 2 * 1024 * 1024; // Ukuran maksimum 2MB
+    const errorMessage = document.getElementById('fileErrorTambah');
 
-    // ubah gambar
-    const inputGambarubah = document.getElementById('gambarUbah');
-    const pratinjauGambarubah = document.getElementById('previewUbah');
-    const tombolHapusGambarubah = document.getElementById('hapusGambarUbah');
+    if (!allowedExtensions.exec(filePath)) {
+        errorMessage.innerText = 'Harap unggah file dengan tipe .jpeg, .jpg, atau .png.';
+        fileInput.value = '';
+        return false;
+    }
 
-    inputGambarubah.addEventListener('change', function() {
-        const file = this.files[0];
+    if (fileInput.files[0].size > maxSize) {
+        errorMessage.innerText = 'Ukuran file terlalu besar. Maksimum 2MB.';
+        fileInput.value = '';
+        return false;
+    }
 
-        if (file) {
-            const reader = new FileReader();
-            reader.addEventListener('load', function() {
-                pratinjauGambarubah.src = this.result;
-                pratinjauGambarubah.classList.remove('d-none');
-                tombolHapusGambarubah.classList.remove('d-none');
-            });
-            reader.readAsDataURL(file);
-        } else {
-            pratinjauGambarubah.src = "#";
-            pratinjauGambarubah.classList.add('d-none');
-            tombolHapusGambarubah.classList.add('d-none');
-        }
-    });
+    errorMessage.innerText = '';
+    return true;
+}
 
-    tombolHapusGambarubah.addEventListener('click', function() {
-        pratinjauGambarubah.src = "#";
-        pratinjauGambarubah.classList.add('d-none');
-        tombolHapusGambarubah.classList.add('d-none');
-        inputGambarubah.value = ""; // Menghapus file dari input file
-    });
+function validateFileEdit() {
+    const fileInput = document.getElementById('gambar2');
+    const filePath = fileInput.value;
+    const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+    const maxSize = 2 * 1024 * 1024; // Ukuran maksimum 2MB
+    const errorMessage = document.getElementById('fileErrorEdit');
+
+    if (!allowedExtensions.exec(filePath)) {
+        errorMessage.innerText = 'Harap unggah file dengan tipe .jpeg, .jpg, atau .png.';
+        fileInput.value = '';
+        return false;
+    }
+
+    if (fileInput.files[0].size > maxSize) {
+        errorMessage.innerText = 'Ukuran file terlalu besar. Maksimum 2MB.';
+        fileInput.value = '';
+        return false;
+    }
+
+    errorMessage.innerText = '';
+    return true;
+}
 $(document).ready(function () {
     $('#tabelfitur').DataTable({
         "pageLength": 5,

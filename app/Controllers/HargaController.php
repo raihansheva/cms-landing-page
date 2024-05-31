@@ -80,15 +80,15 @@ class HargaController extends BaseController
         $id_solusi = $this->request->getPost('id_solusi');
         $slug = $this->create_slug($nama_paket);
         // if ($this->validate($rules)) {
-            $harga->save([
-                'nama_paket' => $nama_paket,
-                'kategori_harga' => $kat,
-                'slug' => $slug,
-                'deskripsi' => $deskripsi,
-                'harga' => $hargaP,
-                'id_solusi' => $id_solusi,
-            ]);
-            session()->setFlashdata('sweetalert', "
+        $harga->save([
+            'nama_paket' => $nama_paket,
+            'kategori_harga' => $kat,
+            'slug' => $slug,
+            'deskripsi' => $deskripsi,
+            'harga' => $hargaP,
+            'id_solusi' => $id_solusi,
+        ]);
+        session()->setFlashdata('sweetalert', "
                     <script>
                         Swal.fire({
                             title: 'Berhasil',
@@ -98,7 +98,7 @@ class HargaController extends BaseController
                         });
                     </script>
                 ");
-            return redirect()->back()->to('/paketharga');
+        return redirect()->back()->to('/paketharga');
         // } else {
         //     session()->setFlashdata('sweetalert', "
         //             <script>
@@ -136,7 +136,7 @@ class HargaController extends BaseController
         $hargaP = $this->request->getPost('harga');
         $id_solusi = $this->request->getPost('id_solusi');
         $slug = $this->create_slug($nama_paket);
-        // if ($this->validate($rules)) {
+        if ($this->validate($rules)) {
             $harga->save([
                 'id' => $id,
                 'nama_paket' => $nama_paket,
@@ -157,19 +157,19 @@ class HargaController extends BaseController
                     </script>
                 ");
             return redirect()->back()->to('/paketharga');
-        // } else {
-        //     session()->setFlashdata('sweetalert', "
-        //             <script>
-        //                 Swal.fire({
-        //                     title: 'Gagal',
-        //                     text: 'Form harus di isi',
-        //                     icon: 'error',
-        //                     confirmButtonText: 'Ok'
-        //                 });
-        //             </script>
-        //         ");
-        //     return redirect()->back()->to('/paketharga');
-        // }
+        } else {
+            session()->setFlashdata('sweetalert', "
+                    <script>
+                        Swal.fire({
+                            title: 'Gagal',
+                            text: 'Form harus di isi',
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        });
+                    </script>
+                ");
+            return redirect()->back()->to('/paketharga');
+        }
 
 
         // return $this->response->setJSON(['status' => true]);
@@ -206,9 +206,9 @@ class HargaController extends BaseController
         $idpaket = $this->request->getPost('id_paket_harga');
         $namaB =  $this->request->getPost('nama_benefit');
         $slug = $this->create_slug_benefit($namaB);
-        // if ($this->validate($rules)) {
+        if ($this->validate($rules)) {
             $benefit->save([
-                'id_paket_harga' => $idpaket ,
+                'id_paket_harga' => $idpaket,
                 'nama_benefit' => $namaB,
                 'slug' => $slug,
             ]);
@@ -223,19 +223,19 @@ class HargaController extends BaseController
                     </script>
                 ");
             return redirect()->back();
-        // } else {
-        //     session()->setFlashdata('sweetalert', "
-        //     <script>
-        //         Swal.fire({
-        //             title: 'Gagal',
-        //             text: 'Form harus di isi',
-        //             icon: 'error',
-        //             confirmButtonText: 'Ok'
-        //         });
-        //     </script>
-        // ");
-        //     return redirect()->back();
-        // }
+        } else {
+            session()->setFlashdata('sweetalert', "
+            <script>
+                Swal.fire({
+                    title: 'Gagal',
+                    text: 'Form harus di isi',
+                    icon: 'error',
+                    confirmButtonText: 'Ok'
+                });
+            </script>
+        ");
+            return redirect()->back();
+        }
         // echo json_encode(['status' => TRUE]);
         // return $this->response->setJSON(['status' => true]);
     }
@@ -252,10 +252,10 @@ class HargaController extends BaseController
         $idpaket = $this->request->getPost('id_paket_harga');
         $namaB =  $this->request->getPost('nama_benefit');
         $slug = $this->create_slug_benefit($namaB);
-        // if ($this->validate($rules)) {
+        if ($this->validate($rules)) {
             $benefit->save([
                 'id' => $id,
-                'id_paket_harga' => $idpaket ,
+                'id_paket_harga' => $idpaket,
                 'nama_benefit' => $namaB,
                 'slug' => $slug,
             ]);
@@ -270,19 +270,19 @@ class HargaController extends BaseController
                     </script>
                 ");
             return redirect()->back();
-        // } else {
-        //     session()->setFlashdata('sweetalert', "
-        //             <script>
-        //                 Swal.fire({
-        //                     title: 'Gagal',
-        //                     text: 'Form harus di isi',
-        //                     icon: 'error',
-        //                     confirmButtonText: 'Ok'
-        //                 });
-        //             </script>
-        //         ");
-        //     return redirect()->back();
-        // }
+        } else {
+            session()->setFlashdata('sweetalert', "
+                    <script>
+                        Swal.fire({
+                            title: 'Gagal',
+                            text: 'Form harus di isi',
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        });
+                    </script>
+                ");
+            return redirect()->back();
+        }
 
 
         // return $this->response->setJSON(['status' => true]);

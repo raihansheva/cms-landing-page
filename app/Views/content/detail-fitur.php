@@ -83,7 +83,8 @@
                                     </div>
                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                         <label for="exampleFormControlInput1" class="form-label">Gambar :</label>
-                                        <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar" name="gambar">
+                                        <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar" name="gambar" onchange="validateFile()">
+                                        <small id="fileErrorTambah" class="text-danger"></small>
                                         <label class="fs-2" for="">* <span>Format file : .jpg | .png</span></label>
                                         <div class="col-12 mt-2 text-end">
                                             <!-- !-- <button type="button" id="hapusGambar" class="btn btn-danger d-none">Hapus
@@ -178,7 +179,8 @@
                         </div>
                         <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                             <label for="exampleFormControlInput1" class="form-label">Gambar :</label>
-                            <input type="file" class="form-control" id="gambarUbah" placeholder="Pilih Gambar" name="gambar">
+                            <input type="file" class="form-control" id="gambar2" placeholder="Pilih Gambar" name="gambar" onchange="validateFileEdit()">
+                            <small id="fileErrorEdit" class="text-danger"></small>
                             <label class="fs-2" for="">* <span>Format file : .jpg | .png</span></label>
                             <div class="col-12 mt-2 text-end">
                                 <!-- !-- <button type="button" id="hapusGambar" class="btn btn-danger d-none">Hapus
@@ -234,6 +236,52 @@
 
 <?= session()->getFlashdata('sweetalert'); ?>
 <script>
+    // validasi foto
+    function validateFile() {
+        const fileInput = document.getElementById('gambar');
+        const filePath = fileInput.value;
+        const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+        const maxSize = 2 * 1024 * 1024; // Ukuran maksimum 2MB
+        const errorMessage = document.getElementById('fileErrorTambah');
+
+        if (!allowedExtensions.exec(filePath)) {
+            errorMessage.innerText = 'Harap unggah file dengan tipe .jpeg, .jpg, atau .png.';
+            fileInput.value = '';
+            return false;
+        }
+
+        if (fileInput.files[0].size > maxSize) {
+            errorMessage.innerText = 'Ukuran file terlalu besar. Maksimum 2MB.';
+            fileInput.value = '';
+            return false;
+        }
+
+        errorMessage.innerText = '';
+        return true;
+    }
+
+    function validateFileEdit() {
+        const fileInput = document.getElementById('gambar2');
+        const filePath = fileInput.value;
+        const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+        const maxSize = 2 * 1024 * 1024; // Ukuran maksimum 2MB
+        const errorMessage = document.getElementById('fileErrorEdit');
+
+        if (!allowedExtensions.exec(filePath)) {
+            errorMessage.innerText = 'Harap unggah file dengan tipe .jpeg, .jpg, atau .png.';
+            fileInput.value = '';
+            return false;
+        }
+
+        if (fileInput.files[0].size > maxSize) {
+            errorMessage.innerText = 'Ukuran file terlalu besar. Maksimum 2MB.';
+            fileInput.value = '';
+            return false;
+        }
+
+        errorMessage.innerText = '';
+        return true;
+    }
     $(document).ready(function() {
         ClassicEditor.create(document.querySelector('#editor')).catch(error => {
             console.error(error);
@@ -249,6 +297,7 @@
             .catch(error => {
                 console.error(error);
             })
+
         $('#tabelfitur').DataTable({
             "pageLength": 5,
             processing: true,
@@ -344,34 +393,34 @@
     });
 
     // ubah gambar
-    const inputGambarubah = document.getElementById('gambarUbah');
-    const pratinjauGambarubah = document.getElementById('previewUbah');
-    const tombolHapusGambarubah = document.getElementById('hapusGambarUbah');
+    // const inputGambarubah = document.getElementById('gambar2');
+    // const pratinjauGambarubah = document.getElementById('previewUbah');
+    // const tombolHapusGambarubah = document.getElementById('hapusGambarUbah');
 
-    inputGambarubah.addEventListener('change', function() {
-        const file = this.files[0];
+    // inputGambarubah.addEventListener('change', function() {
+    //     const file = this.files[0];
 
-        if (file) {
-            const reader = new FileReader();
-            reader.addEventListener('load', function() {
-                pratinjauGambarubah.src = this.result;
-                pratinjauGambarubah.classList.remove('d-none');
-                tombolHapusGambarubah.classList.remove('d-none');
-            });
-            reader.readAsDataURL(file);
-        } else {
-            pratinjauGambarubah.src = "#";
-            pratinjauGambarubah.classList.add('d-none');
-            tombolHapusGambarubah.classList.add('d-none');
-        }
-    });
+    //     if (file) {
+    //         const reader = new FileReader();
+    //         reader.addEventListener('load', function() {
+    //             pratinjauGambarubah.src = this.result;
+    //             pratinjauGambarubah.classList.remove('d-none');
+    //             tombolHapusGambarubah.classList.remove('d-none');
+    //         });
+    //         reader.readAsDataURL(file);
+    //     } else {
+    //         pratinjauGambarubah.src = "#";
+    //         pratinjauGambarubah.classList.add('d-none');
+    //         tombolHapusGambarubah.classList.add('d-none');
+    //     }
+    // });
 
-    tombolHapusGambarubah.addEventListener('click', function() {
-        pratinjauGambarubah.src = "#";
-        pratinjauGambarubah.classList.add('d-none');
-        tombolHapusGambarubah.classList.add('d-none');
-        inputGambarubah.value = ""; // Menghapus file dari input file
-    });
+    // tombolHapusGambarubah.addEventListener('click', function() {
+    //     pratinjauGambarubah.src = "#";
+    //     pratinjauGambarubah.classList.add('d-none');
+    //     tombolHapusGambarubah.classList.add('d-none');
+    //     inputGambarubah.value = ""; // Menghapus file dari input file
+    // });
 </script>
 <script src="<?php base_url('js/detail-fitur.js') ?>"></script>
 <?php $this->endsection() ?>

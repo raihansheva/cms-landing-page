@@ -76,9 +76,13 @@ class FiturController extends BaseController
             'nama_fitur' => 'required',
             'deskripsi' => 'required',
             'id_solusi' => 'required',
-            'icon' => 'required',
+            // 'icon' => 'required',
         ];
-
+        $id = $this->request->getPost('id');
+        $namafitur = $this->request->getPost('nama_fitur');
+        $deskripsi = $this->request->getPost('deskripsi');
+        $idS = $this->request->getPost('id_solusi');
+        $slug = $this->create_slug_detail($namafitur);
         if ($this->validate($rules)) {
             $image = $this->request->getFile('icon');
             $newName = $image->getClientName();
@@ -90,9 +94,10 @@ class FiturController extends BaseController
                 $path = 'uploads/' . $newName;
             }
             $fitur->save([
-                'nama_fitur' => $this->request->getPost('nama_fitur'),
-                'deskripsi' => $this->request->getPost('deskripsi'),
-                'id_solusi' => $this->request->getPost('id_solusi'),
+                'nama_fitur' => $namafitur,
+                'slug' => $slug,
+                'deskripsi' => $deskripsi,
+                'id_solusi' => $idS,
                 'icon' => $path
             ]);
             session()->setFlashdata('sweetalert', "
@@ -141,11 +146,16 @@ class FiturController extends BaseController
         }
 
         $id = $this->request->getPost('id');
+        $namafitur = $this->request->getPost('nama_fitur');
+        $deskripsi = $this->request->getPost('deskripsi');
+        $idS = $this->request->getPost('id_solusi');
+        $slug = $this->create_slug_detail($namafitur);
         $fitur->save([
             'id' => $id,
-            'nama_fitur' => $this->request->getPost('nama_fitur'),
-            'deskripsi' => $this->request->getPost('deskripsi'),
-            'id_solusi' => $this->request->getPost('id_solusi'),
+            'nama_fitur' => $namafitur,
+            'slug' => $slug,
+            'deskripsi' => $deskripsi,
+            'id_solusi' => $idS,
             'icon' => $path
         ]);
         session()->setFlashdata('sweetalert', "
@@ -189,7 +199,7 @@ class FiturController extends BaseController
         $rules = [
             'judul_detail' => 'required',
             'deskripsi' => 'required',
-            'gambar' => 'required',
+            // 'gambar' => 'required',
             'id_fitur' => 'required',
             'layout' => 'required',
         ];
@@ -249,44 +259,66 @@ class FiturController extends BaseController
     public function ubahdetailfitur()
     {
         $fitur = new Detailfitur();
-
-        $image = $this->request->getFile('gambar');
-        $newName = $image->getClientName();
-        $path = 'defalut.jpg';
-        if ($image->isValid() && !$image->hasMoved()) {
+        $validation = \config\Services::validation();
+        $rules = [
+            'judul_detail' => 'required',
+            'deskripsi' => 'required',
+            // 'gambar' => 'required',
+            'id_fitur' => 'required',
+            'layout' => 'required',
+        ];
+        if (!$this->validate($rules)) {
+            $image = $this->request->getFile('gambar');
             $newName = $image->getClientName();
-            $image->move(ROOTPATH . 'public/uploads', $newName);
-
-            $path = 'uploads/' . $newName;
+            $path = 'defalut.jpg';
+            if ($image->isValid() && !$image->hasMoved()) {
+                $newName = $image->getClientName();
+                $image->move(ROOTPATH . 'public/uploads', $newName);
+    
+                $path = 'uploads/' . $newName;
+            }
+            $id = $this->request->getPost('id');
+            $judul_detail = $this->request->getPost('judul_detail');
+            $deskripsi = $this->request->getPost('deskripsi');
+            $id_fitur = $this->request->getPost('id_fitur');
+            $layout = $this->request->getPost('layout');
+            $slug = $this->create_slug_detail($judul_detail);
+    
+            $fitur->save([
+                'id' => $id,
+                'judul_detail' => $judul_detail,
+                'deskripsi' => $deskripsi,
+                'slug' => $slug,
+                'gambar' => $path,
+                'id_fitur' => $id_fitur,
+                'layout' => $layout,
+            ]);
+            session()->setFlashdata('sweetalert', "
+                    <script>
+                        Swal.fire({
+                            title: 'Berhasil',
+                            text: 'Anda mengubah detail fitur',
+                            icon: 'success',
+                            confirmButtonText: 'Ok'
+                        });
+                    </script>
+                ");
+            return redirect()->back();
+            // return $this->response->setJSON(['status' => true]);
+        }else{
+            session()->setFlashdata('sweetalert', "
+                    <script>
+                        Swal.fire({
+                            title: 'Gagal',
+                            text: 'Form harus di isi',
+                            icon: 'error',
+                            confirmButtonText: 'Ok'
+                        });
+                    </script>
+                ");
+            return redirect()->back();
         }
-        $id = $this->request->getPost('id');
-        $judul_detail = $this->request->getPost('judul_detail');
-        $deskripsi = $this->request->getPost('deskripsi');
-        $id_fitur = $this->request->getPost('id_fitur');
-        $layout = $this->request->getPost('layout');
-        $slug = $this->create_slug_detail($judul_detail);
-
-        $fitur->save([
-            'id' => $id,
-            'judul_detail' => $judul_detail,
-            'deskripsi' => $deskripsi,
-            'slug' => $slug,
-            'gambar' => $path,
-            'id_fitur' => $id_fitur,
-            'layout' => $layout,
-        ]);
-        session()->setFlashdata('sweetalert', "
-                <script>
-                    Swal.fire({
-                        title: 'Berhasil',
-                        text: 'Anda mengubah detail fitur',
-                        icon: 'success',
-                        confirmButtonText: 'Ok'
-                    });
-                </script>
-            ");
-        return redirect()->back();
-        // return $this->response->setJSON(['status' => true]);
+       
     }
 
     public function hapusdetailfitur()

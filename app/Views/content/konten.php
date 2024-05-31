@@ -2,7 +2,7 @@
 <?php $this->section('content') ?>
 <link rel="stylesheet" href="css/style-konten.css">
 <link href="assets/bootsrap/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="<?php base_url('../assets/sweetalert2/dist/sweetalert2.min.css')?>">
+<link rel="stylesheet" href="<?php base_url('../assets/sweetalert2/dist/sweetalert2.min.css') ?>">
 <div class="bungkus">
     <div class="konten-banner">
         <!-- <div class="area-banner">
@@ -61,7 +61,8 @@
                                     </div>
                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                         <label for="exampleFormControlInput1" class="form-label">Gambar :</label>
-                                        <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar" name="gambar">
+                                        <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar" name="gambar" onchange="validateFile()" accept="image/*">
+                                        <small id="fileErrorTambah" class="text-danger"></small>
                                         <label class="fs-2" for="">* <span>Format file : .jpg | .png</span></label>
 
                                         <div class="col-12 mt-2 text-end">
@@ -139,7 +140,8 @@
                                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                                         <label for="exampleFormControlInput1" class="form-label">Gambar
                                                             :</label>
-                                                        <input type="file" class="form-control" id="gambar2" placeholder="Pilih Gambar" name="gambar">
+                                                        <input type="file" class="form-control" id="gambar2" placeholder="Pilih Gambar" name="gambar" onchange="validateFileEdit()">
+                                                        <small id="fileErrorEdit" class="text-danger"></small>
                                                         <label class="fs-2" for="">* <span>Format file : .jpg |
                                                                 .png</span></label>
                                                         <div class="col-12 mt-2">
@@ -256,7 +258,8 @@
                                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                                         <label for="exampleFormControlInput1" class="form-label">Gambar
                                                             :</label>
-                                                        <input type="file" class="form-control" id="gambar2" placeholder="Pilih Gambar" name="gambar">
+                                                        <input type="file" class="form-control" id="gambar2" placeholder="Pilih Gambar" name="gambar" onchange="validateFileEdit()">
+                                                        <small id="fileErrorEdit" class="text-danger"></small>
                                                         <label class="fs-2" for="">* <span>Format file : .jpg |
                                                                 .png</span></label>
                                                         <div class="col-12 mt-2">
@@ -371,7 +374,8 @@
                                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                                         <label for="exampleFormControlInput1" class="form-label">Gambar
                                                             :</label>
-                                                        <input type="file" class="form-control" id="gambar2" placeholder="Pilih Gambar" name="gambar">
+                                                        <input type="file" class="form-control" id="gambar2" placeholder="Pilih Gambar" name="gambar" onchange="validateFileEdit()">
+                                                        <small id="fileErrorEdit" class="text-danger"></small>
                                                         <label class="fs-2" for="">* <span>Format file : .jpg |
                                                                 .png</span></label>
                                                         <div class="col-12 mt-2">
@@ -576,5 +580,30 @@
 <script src="js/ajax.js"></script>
 <script src="../assets/sweetalert2/dist/sweetalert2.all.min.js"></script>
 <?= session()->getFlashdata('sweetalert'); ?>
+<script>
+    // function validasifoto(input) {
+    //     const maxFileSize = 2 * 1024 * 1024;
+    //     const validFileExtensions = ['image/jpeg', 'image/jpg', 'image/png'];
+    //     const fileinput = input.files[0];
+    //     const errorElement = document.getElementById('fileErrorTambah');
+
+    //     if (fileinput) {
+
+    //         if (fileinput.size > maxFileSize) {
+    //             errorElement.textContent = 'Ukuran file maksimum 2MB';
+    //             input.value = '';
+    //             return;
+    //         }
+
+    //         if (!validFileExtensions.includes(fileinput.type)) {
+    //             errorElement.textContent = 'Format file tidak valid. Harus .jpeg , .jpg , atau .png';
+    //             input.value = '';
+    //             return;
+    //         }
+
+    //         errorElement.textContent = '';
+    //     }
+    // }
+</script>
 <!-- -->
 <?php $this->endsection() ?>
