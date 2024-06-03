@@ -164,8 +164,6 @@
                                     </div>
                                 </div>
                             <?php } ?>
-
-
                         </div>
                     </div>
                     <div class="mb-3 p-2 pt-0" style="text-align: left;">

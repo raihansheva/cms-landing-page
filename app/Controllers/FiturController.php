@@ -268,11 +268,11 @@ class FiturController extends BaseController
         $fitur = new Detailfitur();
         $validation = \config\Services::validation();
         $rules = [
-            'judul_detail' => 'required',
-            'deskripsi' => 'required',
+            // 'judul_detail' => 'required',
+            // 'deskripsi' => 'required',
             // 'gambar' => 'required',
-            'id_fitur' => 'required',
-            'layout' => 'required',
+            // 'id_fitur' => 'required',
+            // 'layout' => 'required',
         ];
         if (!$this->validate($rules)) {
             $image = $this->request->getFile('gambar');
