@@ -332,7 +332,8 @@
                     },
                     orderable: false
                 },
-            ]
+            ],
+            "order": [[2, "desc"]]
         });
         //$('#tabelfitur').DataTable();
         $('#tabelfitur').on("click", '.btn-edit-detail', function() {

@@ -39,6 +39,12 @@ class FiturController extends BaseController
 
         return $newSlug;
     }
+    private function clean_desk($string)
+    {
+        $clean = strip_tags($string);
+        // $Dfitur = new Detailfitur();
+        return $clean;
+    }
     public function index()
     {
         //
@@ -215,12 +221,13 @@ class FiturController extends BaseController
         }
         $judul_detail = $this->request->getPost('judul_detail');
         $deskripsi = $this->request->getPost('deskripsi');
+        $desk = $this->clean_desk($deskripsi);
         $id_fitur = $this->request->getPost('id_fitur');
         $layout = $this->request->getPost('layout');
         $slug = $this->create_slug_detail($judul_detail);
         $fitur->save([
             'judul_detail' => $judul_detail,
-            'deskripsi' => $deskripsi,
+            'deskripsi' => $desk,
             'slug' => $slug,
             'gambar' => $path,
             'id_fitur' => $id_fitur,
@@ -280,6 +287,7 @@ class FiturController extends BaseController
             $id = $this->request->getPost('id');
             $judul_detail = $this->request->getPost('judul_detail');
             $deskripsi = $this->request->getPost('deskripsi');
+            $desk = $this->clean_desk($deskripsi);
             $id_fitur = $this->request->getPost('id_fitur');
             $layout = $this->request->getPost('layout');
             $slug = $this->create_slug_detail($judul_detail);
@@ -287,7 +295,7 @@ class FiturController extends BaseController
             $fitur->save([
                 'id' => $id,
                 'judul_detail' => $judul_detail,
-                'deskripsi' => $deskripsi,
+                'deskripsi' => $desk,
                 'slug' => $slug,
                 'gambar' => $path,
                 'id_fitur' => $id_fitur,

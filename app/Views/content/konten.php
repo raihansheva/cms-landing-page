@@ -45,14 +45,13 @@
                                     </div>
                                 </div>
                                 <div class="mb-3 p-2" style="text-align: left;">
-                                    <!-- <label for="exampleFormControlInput1"
-                                        class="form-label d-flex justify-content-between">
-                                        Judul : <p class="p-0 m-0" id="limit"></p></label>
-                                    <input type="text" class="form-control m-0" id="inputjudul"
-                                        placeholder="Masukan Judul" name="judul"> -->
                                     <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
+                                        Judul : <p class="p-0 m-0" id="limit"></p></label>
+                                    <input type="text" class="form-control m-0" id="inputjudul" placeholder="Masukan Judul" name="judul">
+                                    <span class="text-danger" id="limit2"></span>
+                                    <!-- <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
                                         Judul : </label>
-                                    <input type="text" class="form-control" id="inputjudul2" placeholder="Masukan Judul" name="judul">
+                                    <input type="text" class="form-control" id="inputjudul2" placeholder="Masukan Judul" name="judul"> -->
                                 </div>
                                 <div class="col-12 d-flex">
                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
@@ -114,7 +113,11 @@
                                                                 </div>
                                                                 <br>
                                                                 <div class="form-check  col-12 d-flex justify-content-center gap-1">
-                                                                    <input class="form-check-input" type="radio" name="layout" value="<?= $value2['id'] ?>" id="layout">
+                                                                    <?php if ($value['layout'] == $value2['id']) { ?>
+                                                                        <input class="form-check-input" type="radio" name="layout" value="<?= $value['layout'] ?>" id="layout" checked>
+                                                                    <?php } else { ?>
+                                                                        <input class="form-check-input" type="radio" name="layout" value="<?= $value2['id'] ?>" id="layout">
+                                                                    <?php } ?>
                                                                     <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between"><?= $value2['nama_layout'] ?></label>
                                                                 </div>
                                                             </div>
@@ -122,15 +125,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                                    <!-- <label for="exampleFormControlInput1"
-                                                class="form-label d-flex justify-content-between">
-                                                Judul : <p class="p-0 m-0" id="limit2"></p></label>
-                                            <input type="text" class="form-control" id="inputjudul2"
-                                                placeholder="Masukan Judul"> -->
                                                     <input type="text" value="<?php echo $value['id']; ?>" name="id" id="id" hidden>
                                                     <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
-                                                        Judul : </label>
-                                                    <input type="text" class="form-control" id="inputjudul2" placeholder="Masukan Judul" value="<?php echo $value['judul']; ?>" name="judul">
+                                                        Judul : <p class="p-0 m-0" id="limitedit1"></p></label>
+                                                    <input type="text" class="form-control m-0" id="inputjuduledit1" placeholder="Masukan Judul" name="judul" value="<?php echo $value['judul']; ?>">
+                                                    <span class="text-danger" id="limit2edit1"></span>
                                                 </div>
                                                 <div class="col-12 d-flex">
                                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
@@ -232,7 +231,11 @@
                                                                 </div>
                                                                 <br>
                                                                 <div class="form-check  col-12 d-flex justify-content-center gap-1">
-                                                                    <input class="form-check-input" type="radio" name="layout" value="<?= $value2['id'] ?>" id="layout">
+                                                                <?php if ($value['layout'] == $value2['id']) { ?>
+                                                                        <input class="form-check-input" type="radio" name="layout" value="<?= $value['layout'] ?>" id="layout" checked>
+                                                                    <?php } else { ?>
+                                                                        <input class="form-check-input" type="radio" name="layout" value="<?= $value2['id'] ?>" id="layout">
+                                                                    <?php } ?>
                                                                     <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between"><?= $value2['nama_layout'] ?></label>
                                                                 </div>
                                                             </div>
@@ -240,22 +243,18 @@
                                                     </div>
                                                 </div>
                                                 <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                                    <!-- <label for="exampleFormControlInput1"
-                                                class="form-label d-flex justify-content-between">
-                                                Judul : <p class="p-0 m-0" id="limit2"></p></label>
-                                            <input type="text" class="form-control" id="inputjudul2"
-                                                placeholder="Masukan Judul"> -->
                                                     <input type="text" value="<?php echo $value['id']; ?>" name="id" id="id" hidden>
                                                     <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
-                                                        Judul : </label>
-                                                    <input type="text" class="form-control" id="inputjudul2" placeholder="Masukan Judul" value="<?php echo $value['judul']; ?>" name="judul">
+                                                        Judul : <p class="p-0 m-0" id="limitedit2"></p></label>
+                                                    <input type="text" class="form-control m-0" id="inputjuduledit2" placeholder="Masukan Judul" name="judul" value="<?php echo $value['judul']; ?>">
+                                                    <span class="text-danger" id="limit2edit2"></span>
                                                 </div>
                                                 <div class="col-12 d-flex">
                                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                                         <label for="exampleFormControlTextarea1" class="form-label">Deskripsi:</label>
                                                         <textarea class="form-control" id="exampleFormControlTextarea1" rows="8.5" name="deskripsi"><?php echo $value['deskripsi']; ?></textarea>
                                                     </div>
-                                                    <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
+                                                    <div class="col-6 mb-3 p-2 pt-0" style="text-align: lef t;">
                                                         <label for="exampleFormControlInput1" class="form-label">Gambar
                                                             :</label>
                                                         <input type="file" class="form-control" id="gambar2" placeholder="Pilih Gambar" name="gambar" onchange="validateFileEdit()">
@@ -348,7 +347,11 @@
                                                                 </div>
                                                                 <br>
                                                                 <div class="form-check  col-12 d-flex justify-content-center gap-1">
-                                                                    <input class="form-check-input" type="radio" name="layout" value="<?= $value2['id'] ?>" id="layout">
+                                                                <?php if ($value['layout'] == $value2['id']) { ?>
+                                                                        <input class="form-check-input" type="radio" name="layout" value="<?= $value['layout'] ?>" id="layout" checked>
+                                                                    <?php } else { ?>
+                                                                        <input class="form-check-input" type="radio" name="layout" value="<?= $value2['id'] ?>" id="layout">
+                                                                    <?php } ?>
                                                                     <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between"><?= $value2['nama_layout'] ?></label>
                                                                 </div>
                                                             </div>
@@ -356,15 +359,11 @@
                                                     </div>
                                                 </div>
                                                 <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                                    <!-- <label for="exampleFormControlInput1"
-                                                class="form-label d-flex justify-content-between">
-                                                Judul : <p class="p-0 m-0" id="limit2"></p></label>
-                                            <input type="text" class="form-control" id="inputjudul2"
-                                                placeholder="Masukan Judul"> -->
                                                     <input type="text" value="<?php echo $value['id']; ?>" name="id" id="id" hidden>
                                                     <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
-                                                        Judul : </label>
-                                                    <input type="text" class="form-control" id="inputjudul2" placeholder="Masukan Judul" value="<?php echo $value['judul']; ?>" name="judul">
+                                                        Judul : <p class="p-0 m-0" id="limitedit3"></p></label>
+                                                    <input type="text" class="form-control m-0" id="inputjuduledit3" placeholder="Masukan Judul" name="judul" value="<?php echo $value['judul']; ?>">
+                                                    <span class="text-danger" id="limit2edit3"></span>
                                                 </div>
                                                 <div class="col-12 d-flex">
                                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
