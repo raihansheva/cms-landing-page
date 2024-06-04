@@ -166,8 +166,6 @@
                                     </div>
                                 </div>
                             <?php } ?>
-
-
                         </div>
                     </div>
                     <div class="mb-3 p-2 pt-0" style="text-align: left;">
@@ -329,7 +327,8 @@
                     },
                     orderable: false
                 },
-            ]
+            ],
+            "order": [[2, "desc"]]
         });
         //$('#tabelfitur').DataTable();
         $('#tabelfitur').on("click", '.btn-edit-detail', function() {

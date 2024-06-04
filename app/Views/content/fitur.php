@@ -40,6 +40,12 @@
                                     <span class="text-danger" id="limit2"></span>
                                     <!-- <label for="exampleFormControlInput1" class="form-label">Nama Fitur :</label>
                                     <input type="text" class="form-control" id="nama_fitur" placeholder="Masukan Nama Solusi" name="nama_fitur"> -->
+                                    <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
+                                        Nama Fitur : <p class="p-0 m-0" id="limit"></p></label>
+                                    <input type="text" class="form-control m-0" id="inputjudul" placeholder="Masukan Nama Fitur" name="nama_fitur">
+                                    <span class="text-danger" id="limit2"></span>
+                                    <!-- <label for="exampleFormControlInput1" class="form-label">Nama Fitur :</label>
+                                    <input type="text" class="form-control" id="nama_fitur" placeholder="Masukan Nama Solusi" name="nama_fitur"> -->
                                 </div>
                                 <div class="col-12 d-flex">
                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
@@ -110,6 +116,7 @@
                 </div>
                 <div class="modal-body">
                     <input type="text" value="<?= $value['id'] ?>" name="id" id="id" hidden>
+                    <input type="text" value="<?= $value['id'] ?>" name="id" id="id" hidden>
                     <div class="mb-3 p-2 pt-0" style="text-align: left;">
                         <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
                             Nama Fitur : <p class="p-0 m-0" id="limitedit1"></p></label>
@@ -169,6 +176,7 @@
                 <?= csrf_field(); ?>
                 <div class="modal-body">
                     <p class="text-center">Yakin ingin hapus fitur ini?</p>
+                    <input type="text" value="<?= $value['id'] ?>" name="id" id="id_fitur_hapus" hidden>
                     <input type="text" value="<?= $value['id'] ?>" name="id" id="id_fitur_hapus" hidden>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
