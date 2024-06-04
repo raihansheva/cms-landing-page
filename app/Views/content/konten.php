@@ -84,7 +84,7 @@
                 <?php if ($value['layout'] == '1') { ?>
                     <div class="card col-12 mb-3" style="padding: 24px;">
                         <div class="card-kanan-atas">
-                            <i class="ti ti-pencil" style="font-size: 36px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaleditbanner<?php echo $value['id']; ?>"></i>
+                            <i class="ti ti-pencil" style="font-size: 36px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaleditbanner<?php echo $value['id']; ?>"  onclick="limitText('inputjuduledit<?= $key + 1 ?>', 'limitedit<?= $key + 1 ?>' , 'limit2edit<?= $key + 1 ?>')"></i>
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModaleditbanner<?php echo $value['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -124,9 +124,9 @@
                                                 <div class="mb-3 p-2 pt-0" style="text-align: left;">
                                                     <input type="text" value="<?php echo $value['id']; ?>" name="id" id="id" hidden>
                                                     <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
-                                                        Judul : <p class="p-0 m-0" id="limitedit1"></p></label>
-                                                    <input type="text" class="form-control m-0" id="inputjuduledit1" placeholder="Masukan Judul" name="judul" value="<?php echo $value['judul']; ?>">
-                                                    <span class="text-danger" id="limit2edit1"></span>
+                                                        Judul : <p class="p-0 m-0" id="limitedit<?= $key + 1 ?>"></p></label>
+                                                    <input type="text" class="form-control m-0" id="inputjuduledit<?= $key + 1 ?>" placeholder="Masukan Judul" name="judul" value="<?php echo $value['judul']; ?>"  oninput="limitText('inputjuduledit<?= $key + 1 ?>', 'limitedit<?= $key + 1 ?>' , 'limit2edit<?= $key + 1 ?>')">
+                                                    <span class="text-danger" id="limit2edit<?= $key + 1 ?>"></span>
                                                 </div>
                                                 <div class="col-12 d-flex">
                                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
@@ -202,7 +202,7 @@
                 <?php } else if ($value['layout'] == '2') { ?>
                     <div class="card col-12 mb-3" style="padding: 24px;">
                         <div class="card-kanan-atas">
-                            <i class="ti ti-pencil" style="font-size: 36px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaleditbanner<?php echo $value['id']; ?>"></i>
+                            <i class="ti ti-pencil" style="font-size: 36px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaleditbanner<?php echo $value['id']; ?>"  onclick="limitText('inputjuduledit<?= $key + 1 ?>', 'limitedit<?= $key + 1 ?>' , 'limit2edit<?= $key + 1 ?>')"></i>
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModaleditbanner<?php echo $value['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -242,9 +242,9 @@
                                                 <div class="mb-3 p-2 pt-0" style="text-align: left;">
                                                     <input type="text" value="<?php echo $value['id']; ?>" name="id" id="id" hidden>
                                                     <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
-                                                        Judul : <p class="p-0 m-0" id="limitedit2"></p></label>
-                                                    <input type="text" class="form-control m-0" id="inputjuduledit2" placeholder="Masukan Judul" name="judul" value="<?php echo $value['judul']; ?>">
-                                                    <span class="text-danger" id="limit2edit2"></span>
+                                                        Judul : <p class="p-0 m-0" id="limitedit<?= $key + 1 ?>"></p></label>
+                                                    <input type="text" class="form-control m-0" id="inputjuduledit<?= $key + 1 ?>" placeholder="Masukan Judul" name="judul" value="<?php echo $value['judul']; ?>"  oninput="limitText('inputjuduledit<?= $key + 1 ?>', 'limitedit<?= $key + 1 ?>' , 'limit2edit<?= $key + 1 ?>')">
+                                                    <span class="text-danger" id="limit2edit<?= $key + 1 ?>"></span>
                                                 </div>
                                                 <div class="col-12 d-flex">
                                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
@@ -319,7 +319,7 @@
                 <?php } else if ($value['layout'] == '3') { ?>
                     <div class="card col-12 mb-3" style="padding: 24px;">
                         <div class="card-kanan-atas">
-                            <i class="ti ti-pencil" style="font-size: 36px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaleditbanner<?php echo $value['id']; ?>"></i>
+                            <i class="ti ti-pencil" style="font-size: 36px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaleditbanner<?php echo $value['id']; ?>"  onclick="limitText('inputjuduledit<?= $key + 1 ?>', 'limitedit<?= $key + 1 ?>' , 'limit2edit<?= $key + 1 ?>')"></i>
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModaleditbanner<?php echo $value['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -358,9 +358,9 @@
                                                 <div class="mb-3 p-2 pt-0" style="text-align: left;">
                                                     <input type="text" value="<?php echo $value['id']; ?>" name="id" id="id" hidden>
                                                     <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
-                                                        Judul : <p class="p-0 m-0" id="limitedit3"></p></label>
-                                                    <input type="text" class="form-control m-0" id="inputjuduledit3" placeholder="Masukan Judul" name="judul" value="<?php echo $value['judul']; ?>">
-                                                    <span class="text-danger" id="limit2edit3"></span>
+                                                        Judul : <p class="p-0 m-0" id="limitedit<?= $key + 1 ?>"></p></label>
+                                                    <input type="text" class="form-control m-0" id="inputjuduledit<?= $key + 1 ?>" placeholder="Masukan Judul" name="judul" value="<?php echo $value['judul']; ?>" oninput="limitText('inputjuduledit<?= $key + 1 ?>', 'limitedit<?= $key + 1 ?>' , 'limit2edit<?= $key + 1 ?>')">
+                                                    <span class="text-danger" id="limit2edit<?= $key + 1 ?>"></span>
                                                 </div>
                                                 <div class="col-12 d-flex">
                                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">

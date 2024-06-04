@@ -109,7 +109,7 @@
             <?php foreach ($artikel as $key => $value) { ?>
                 <div class="card col" style="padding: 24px; height: fit-content; width: 100%; flex: 1 0 500px;">
                     <div class="card-kanan-atas">
-                        <i class="ti ti-pencil" style="font-size: 30px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaleditartikel<?php echo $value['id'] ?>"></i>
+                        <i class="ti ti-pencil" style="font-size: 30px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaleditartikel<?php echo $value['id'] ?>" onclick="limitTextUbah('inputUnamaA<?= $key + 1 ?>' , 'limitUNA<?= $key + 1 ?>' , 'limit2UNA<?= $key + 1 ?>')"></i>
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModaleditartikel<?php echo $value['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -124,9 +124,9 @@
                                             <input type="text" value="<?php echo $value['id'] ?>" name="id" id="id" hidden>
                                             <div class="mb-3 p-2 pt-0" style="text-align: left;">
                                                 <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
-                                                    Nama Artikel : <p class="p-0 m-0" id="limitUNA"></p></label>
-                                                <input type="text" class="form-control m-0" id="inputUnamaA" placeholder="Masukan Nama Artikel" name="nama_artikel" value="<?php echo $value['nama_artikel'] ?>">
-                                                <span class="text-danger" id="limit2UNA"></span>
+                                                    Nama Artikel : <p class="p-0 m-0" id="limitUNA<?= $key + 1 ?>"></p></label>
+                                                <input type="text" class="form-control m-0" id="inputUnamaA<?= $key + 1 ?>" placeholder="Masukan Nama Artikel" name="nama_artikel" value="<?php echo $value['nama_artikel'] ?>" oninput="limitTextUbah('inputUnamaA<?= $key + 1 ?>' , 'limitUNA<?= $key + 1 ?>' , 'limit2UNA<?= $key + 1 ?>')">
+                                                <span class="text-danger" id="limit2UNA<?= $key + 1 ?>"></span>
                                             </div>
                                             <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
                                                 <label for="exampleFormControlTextarea1" class="form-label">Deskripsi
@@ -246,27 +246,42 @@
             LimittNA.innerText = "";
         }
     });
-    const InputTextUNA = document.getElementById("inputUnamaA");
-    const LimitUNA = document.getElementById("limitUNA");
-    const LimittUNA = document.getElementById("limit2UNA");
-    const limitUNA = 100;
 
-    LimitUNA.textContent = "0/" + limitNA;
+    function limitTextUbah(input, limit1, limit2) {
+        const InputTextUNA = document.getElementById(input);
+        const LimitUNA = document.getElementById(limit1);
+        const LimittUNA = document.getElementById(limit2);
+        const limitUNA = 100;
 
-    InputTextUNA.addEventListener("input", function() {
-        const textlengthUNA = InputTextUNA.value.length;
-        LimitUNA.textContent = textlengthUNA + "/" + limitUNA;
+        LimitUNA.textContent = "0/" + limitNA;
 
-        if (textlengthUNA > limitUNA) {
-            LimitUNA.classList.add("warning");
-            // alert("Input tidak boleh lebih dari 45 karakter.");
-            InputTextUNA.value = InputTextUNA.value.substring(0, limitUNA);
-            LimitUNA.textContent = limitUNA + "/" + limitUNA;
-            LimittUNA.innerText = "Input tidak boleh lebih dari 100 karakter.";
-        } else {
-            LimitUNA.classList.remove("warning");
-            LimittUNA.innerText = "";
-        }
-    });
+        InputTextUNA.addEventListener("input", function() {
+            const textlengthUNA = InputTextUNA.value.length;
+            LimitUNA.textContent = textlengthUNA + "/" + limitUNA;
+
+            // if (textlengthUNA > limitUNA) {
+            //     LimitUNA.classList.add("warning");
+            //     // alert("Input tidak boleh lebih dari 45 karakter.");
+            //     InputTextUNA.value = InputTextUNA.value.substring(0, limitUNA);
+            //     LimitUNA.textContent = limitUNA + "/" + limitUNA;
+            //     LimittUNA.innerText = "Input tidak boleh lebih dari 100 karakter.";
+            // } else {
+            //     LimitUNA.classList.remove("warning");
+            //     LimittUNA.innerText = "";
+            // }
+            if (textlengthUNA > limitUNA) {
+                LimitUNA.classList.add("warning");
+                InputTextUNA.style.border = "1px solid red";
+
+                if (textlengthUNA > limitUNA) {
+                    InputTextUNA.value = InputTextUNA.value.substring(0, limitUNA);
+                    LimitUNA.textContent = limitUNA + "/" + limitUNA;
+                }
+            } else {
+                LimitUNA.classList.remove("warning");
+                InputTextUNA.style.border = '';
+            }
+        });
+    }
 </script>
 <?php $this->endsection() ?>

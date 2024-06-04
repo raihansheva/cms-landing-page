@@ -20,7 +20,7 @@
                 </button>
             </div>
             <div class="modal fade" id="exampleModaljudulsolusi" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-dialog modal-lg modal-dialog-scrollable">
                     <form action="/ubahheadersolusi" method="post" id="form-data-solusi" class="modal-dialog-scrollable" enctype="multipart/form-data">
                         <!--  -->
                         <div class="modal-content">
@@ -31,8 +31,10 @@
                             <div class="modal-body">
                                 <input type="text" value="<?= $head[0]['id'] ?>" name="id" id="id" hidden>
                                 <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                    <label for="exampleFormControlInput1" class="form-label">Judul Solusi :</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Nama Solusi" name="judul_solusi" value="<?= $head[0]['judul_solusi'] ?>">
+                                    <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
+                                        Judul Solusi : <p class="p-0 m-0" id="limitS"></p></label>
+                                    <input type="text" class="form-control m-0" id="inputjudulS" placeholder="Masukan Judul Solusi" name="judul_solusi" value="<?= $head[0]['judul_solusi'] ?>">
+                                    <span class="text-danger" id="limit2S"></span>
                                 </div>
                                 <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
                                     <label for="exampleFormControlTextarea1" class="form-label">Deskripsi :</label>
@@ -113,7 +115,7 @@
             <?php foreach ($solusi as $key => $value) { ?>
                 <div class="card" style="padding: 24px; height: 310px; width: 352px;">
                     <div class="card-kanan-atas">
-                        <i class="ti ti-pencil" style="font-size: 30px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaleditsolusi<?= $value['id'] ?>"></i>
+                        <i class="ti ti-pencil" style="font-size: 30px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaleditsolusi<?= $value['id'] ?>" onclick="limitText('inputjuduledit1<?= $key + 1 ?>' , 'limitedit1<?= $key + 1 ?>' , 'limit2edit1<?= $key + 1 ?>')"></i>
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModaleditsolusi<?= $value['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -128,9 +130,9 @@
                                             <input type="text" value="<?= $value['id'] ?>" name="id" id="id" hidden>
                                             <div class="mb-3 p-2 pt-0" style="text-align: left;">
                                                 <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
-                                                    Nama Solusi : <p class="p-0 m-0" id="limitedit1"></p></label>
-                                                <input type="text" class="form-control m-0" id="inputjuduledit1" placeholder="Masukan Judul" name="nama_solusi" value="<?= $value['nama_solusi'] ?>">
-                                                <span class="text-danger" id="limit2edit1"></span>
+                                                    Nama Solusi : <p class="p-0 m-0" id="limitedit1<?= $key + 1 ?>"></p></label>
+                                                <input type="text" class="form-control m-0" id="inputjuduledit1<?= $key + 1 ?>" placeholder="Masukan Judul" name="nama_solusi" value="<?= $value['nama_solusi'] ?>" oninput="limitText('inputjuduledit1<?= $key + 1 ?>' , 'limitedit1<?= $key + 1 ?>' , 'limitedit2<?= $key + 1 ?>')">
+                                                <span class="text-danger" id="limitedit2<?= $key + 1 ?>"></span>
                                                 <!-- <label for="exampleFormControlInput1" class="form-label">Nama Solusi
                                                     :</label>
                                                 <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Nama Solusi" value="<?= $value['nama_solusi'] ?>" name="nama_solusi" id="deskripsi"> -->
@@ -144,8 +146,8 @@
                                                 <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                                     <label for="exampleFormControlInput1" class="form-label">Gambar / Icon
                                                         :</label>
-                                                    <input type="file" class="form-control" id="gambar2" placeholder="Pilih Gambar" name="gambar" onchange="validateFileEdit()">
-                                                    <small id="fileErrorEdit" class="text-danger"></small>
+                                                    <input type="file" class="form-control" id="gambar2<?= $key + 1 ?>" placeholder="Pilih Gambar" name="gambar" onchange="validateFileEdit('gambar2<?= $key + 1 ?>' , 'fileErrorEdit<?= $key + 1 ?>')">
+                                                    <small id="fileErrorEdit<?= $key + 1 ?>" class="text-danger"></small>
                                                     <label class="fs-2" for="">* <span>Format file : .jpg |
                                                             .png</span></label>
                                                     <div class="col-12 mt-2 text-end">
@@ -293,12 +295,12 @@
         return true;
     }
 
-    function validateFileEdit() {
-        const fileInput = document.getElementById('gambar2');
+    function validateFileEdit(gambar, error) {
+        const fileInput = document.getElementById(gambar);
         const filePath = fileInput.value;
         const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
         const maxSize = 2 * 1024 * 1024; // Ukuran maksimum 2MB
-        const errorMessage = document.getElementById('fileErrorEdit');
+        const errorMessage = document.getElementById(error);
 
         if (!allowedExtensions.exec(filePath)) {
             errorMessage.innerText = 'Harap unggah file dengan tipe .jpeg, .jpg, atau .png.';
@@ -338,28 +340,52 @@
             Limitt.innerText = "";
         }
     });
-    // edit solusi
-    const InputTextEdit1 = document.getElementById("inputjuduledit1");
-    const LimitEdit1 = document.getElementById("limitedit1");
-    const LimittEdit1 = document.getElementById("limit2edit1");
-    const limitEdit1 = 45;
+    const InputTextS = document.getElementById("inputjudulS");
+    const LimitS = document.getElementById("limitS");
+    const LimittS = document.getElementById("limit2S");
+    const limitS = 30;
 
-    LimitEdit1.textContent = "0/" + limitEdit1;
+    LimitS.textContent = "0/" + limitS;
 
-    InputTextEdit1.addEventListener("input", function() {
-        const textlengthEdit1 = InputTextEdit1.value.length;
-        LimitEdit1.textContent = textlengthEdit1 + "/" + limitEdit1;
+    InputTextS.addEventListener("input", function() {
+        const textlengthS = InputTextS.value.length;
+        LimitS.textContent = textlengthS + "/" + limitS;
 
-        if (textlengthEdit1 > limitEdit1) {
-            LimitEdit1.classList.add("warning");
+        if (textlengthS > limitS) {
+            LimitS.classList.add("warning");
             // alert("Input tidak boleh lebih dari 45 karakter.");
-            InputTextEdit1.value = InputTextEdit1.value.substring(0, limitEdit1);
-            LimitEdit1.textContent = limitEdit1 + "/" + limitEdit1;
-            LimittEdit1.innerText = "Input tidak boleh lebih dari 45 karakter.";
+            InputTextS.value = InputTextS.value.substring(0, limitS);
+            LimitS.textContent = limitS + "/" + limitS;
+            LimittS.innerText = "Input tidak boleh lebih dari 45 karakter.";
         } else {
-            LimitEdit1.classList.remove("warning");
-            LimittEdit1.innerText = "";
+            LimitS.classList.remove("warning");
+            LimittS.innerText = "";
         }
     });
+    // edit solusi
+    function limitText(input, limit1, limit2) {
+        const InputTextEdit1 = document.getElementById(input);
+        const LimitEdit1 = document.getElementById(limit1);
+        const LimittEdit1 = document.getElementById(limit2);
+        const limitEdit1 = 45;
+
+        LimitEdit1.textContent = "0/" + limitEdit1;
+
+        InputTextEdit1.addEventListener("input", function() {
+            const textlengthEdit1 = InputTextEdit1.value.length;
+            LimitEdit1.textContent = textlengthEdit1 + "/" + limitEdit1;
+
+            if (textlengthEdit1 > limitEdit1) {
+                LimitEdit1.classList.add("warning");
+                // alert("Input tidak boleh lebih dari 45 karakter.");
+                InputTextEdit1.value = InputTextEdit1.value.substring(0, limitEdit1);
+                LimitEdit1.textContent = limitEdit1 + "/" + limitEdit1;
+                LimittEdit1.innerText = "Input tidak boleh lebih dari 45 karakter.";
+            } else {
+                LimitEdit1.classList.remove("warning");
+                LimittEdit1.innerText = "";
+            }
+        });
+    }
 </script>
 <?php $this->endsection() ?>
