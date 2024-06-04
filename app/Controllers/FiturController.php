@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Solusi;
 use Config\Services;
 use App\Models\Fitur;
 use App\Models\Detailfitur;
@@ -71,6 +72,7 @@ class FiturController extends BaseController
     public function tambahfitur()
     {
         $fitur = new Fitur();
+        $solusi = new Solusi();
         $validation = \config\Services::validation();
         $rules = [
             'nama_fitur' => 'required',
@@ -82,6 +84,9 @@ class FiturController extends BaseController
         $namafitur = $this->request->getPost('nama_fitur');
         $deskripsi = $this->request->getPost('deskripsi');
         $idS = $this->request->getPost('id_solusi');
+        // $cekslug = $solusi->where('id' , $idS)->first();
+        // $hasilslug = $cekslug['slug'];
+        // $slug = $this->create_slug_detail($hasilslug);
         $slug = $this->create_slug_detail($namafitur);
         if ($this->validate($rules)) {
             $image = $this->request->getFile('icon');
@@ -134,7 +139,7 @@ class FiturController extends BaseController
     public function ubahfitur()
     {
         $fitur = new Fitur();
-
+        $solusi = new Solusi();
         $image = $this->request->getFile('icon');
         $newName = $image->getClientName();
         $path = 'defalut.jpg';
@@ -149,7 +154,11 @@ class FiturController extends BaseController
         $namafitur = $this->request->getPost('nama_fitur');
         $deskripsi = $this->request->getPost('deskripsi');
         $idS = $this->request->getPost('id_solusi');
+        // $cekslug = $solusi->where('id' , $idS)->first();
+        // $hasilslug = $cekslug['slug'];
+        // $slug = $this->create_slug_detail($hasilslug);
         $slug = $this->create_slug_detail($namafitur);
+        // dd($slug);
         $fitur->save([
             'id' => $id,
             'nama_fitur' => $namafitur,

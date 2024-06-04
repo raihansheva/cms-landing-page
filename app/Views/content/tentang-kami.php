@@ -40,8 +40,10 @@
                             <div class="modal-body">
                                 <div class="mb-3 p-2 pt-0" style="text-align: left;">
                                     <input type="text" value="<?= $head[0]['id'] ?>" name="id" id="id" hidden>
-                                    <label for="exampleFormControlInput1" class="form-label">Judul :</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Judul" name="judul_banner" value="<?= $head[0]['judul_banner'] ?>">
+                                    <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
+                                        Judul : <p class="p-0 m-0" id="limitTK"></p></label>
+                                    <input type="text" class="form-control m-0" id="inputjudulTK" placeholder="Masukan Judul" name="judul_banner" value="<?= $head[0]['judul_banner'] ?>">
+                                    <span class="text-danger" id="limit2TK"></span>
                                 </div>
                                 <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
                                     <label for="exampleFormControlTextarea1" class="form-label">Deskripsi :</label>
@@ -77,8 +79,12 @@
                             </div>
                             <div class="modal-body">
                                 <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                    <label for="exampleFormControlInput1" class="form-label">Judul :</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan informasi" name="judul">
+                                    <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
+                                        Judul : <p class="p-0 m-0" id="limitJ"></p></label>
+                                    <input type="text" class="form-control m-0" id="inputjudulJ" placeholder="Masukan informasi" name="judul">
+                                    <span class="text-danger" id="limit2J"></span>
+                                    <!-- <label for="exampleFormControlInput1" class="form-label">Judul :</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan informasi" name="judul"> -->
                                 </div>
                                 <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
                                     <label for="exampleFormControlTextarea1" class="form-label">Deskripsi :</label>
@@ -135,9 +141,13 @@
                                         <div class="modal-body">
                                             <input type="text" value="<?= $value['id'] ?>" name="id" id="id" hidden>
                                             <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                                <label for="exampleFormControlInput1" class="form-label">Judul
+                                                <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
+                                                    Judul : <p class="p-0 m-0" id="limitUJ"></p></label>
+                                                <input type="text" class="form-control m-0" id="inputjudulUJ" placeholder="Masukan informasi" name="judul" value="<?= $value['judul'] ?>">
+                                                <span class="text-danger" id="limit2UJ"></span>
+                                                <!-- <label for="exampleFormControlInput1" class="form-label">Judul
                                                     :</label>
-                                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Nama Solusi" value="<?= $value['judul'] ?>" name="judul" id="deskripsi">
+                                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Nama Solusi" value="<?= $value['judul'] ?>" name="judul" id="deskripsi"> -->
                                             </div>
                                             <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
                                                 <label for="exampleFormControlTextarea1" class="form-label">Deskripsi
@@ -241,6 +251,72 @@
             tombolHapusGambar.classList.add('d-none');
             inputGambar.value = ""; // Menghapus file dari input file
         });
+    });
+    const InputTextTK = document.getElementById("inputjudulTK");
+    const LimitTK = document.getElementById("limitTK");
+    const LimittTK = document.getElementById("limit2TK");
+    const limitTK = 40;
+
+    LimitTK.textContent = "0/" + limitTK;
+
+    InputTextTK.addEventListener("input", function() {
+        const textlengthTK = InputTextTK.value.length;
+        LimitTK.textContent = textlengthTK + "/" + limitTK;
+
+        if (textlengthTK > limitTK) {
+            LimitTK.classList.add("warning");
+            // alert("Input tidak boleh lebih dari 45 karakter.");
+            InputTextTK.value = InputTextTK.value.substring(0, limitTK);
+            LimitTK.textContent = limitTK + "/" + limitTK;
+            LimittTK.innerText = "Input tidak boleh lebih dari 40 karakter.";
+        } else {
+            LimitTK.classList.remove("warning");
+            LimittTK.innerText = "";
+        }
+    });
+    const InputTextJ = document.getElementById("inputjudulJ");
+    const LimitJ = document.getElementById("limitJ");
+    const LimittJ = document.getElementById("limit2J");
+    const limitJ = 40;
+
+    LimitJ.textContent = "0/" + limitTK;
+
+    InputTextJ.addEventListener("input", function() {
+        const textlengthJ = InputTextJ.value.length;
+        LimitJ.textContent = textlengthJ + "/" + limitJ;
+
+        if (textlengthJ > limitJ) {
+            LimitJ.classList.add("warning");
+            // alert("Input tidak boleh lebih dari 45 karakter.");
+            InputTextJ.value = InputTextJ.value.substring(0, limitJ);
+            LimitJ.textContent = limitJ + "/" + limitJ;
+            LimittJ.innerText = "Input tidak boleh lebih dari 40 karakter.";
+        } else {
+            LimitJ.classList.remove("warning");
+            LimittJ.innerText = "";
+        }
+    });
+    const InputTextUJ = document.getElementById("inputjudulUJ");
+    const LimitUJ = document.getElementById("limitUJ");
+    const LimittUJ = document.getElementById("limit2UJ");
+    const limitUJ = 40;
+
+    LimitUJ.textContent = "0/" + limitTK;
+
+    InputTextUJ.addEventListener("input", function() {
+        const textlengthUJ = InputTextUJ.value.length;
+        LimitUJ.textContent = textlengthUJ + "/" + limitUJ;
+
+        if (textlengthUJ > limitUJ) {
+            LimitUJ.classList.add("warning");
+            // alert("Input tidak boleh lebih dari 45 karakter.");
+            InputTextUJ.value = InputTextUJ.value.substring(0, limitUJ);
+            LimitUJ.textContent = limitUJ + "/" + limitUJ;
+            LimittUJ.innerText = "Input tidak boleh lebih dari 40 karakter.";
+        } else {
+            LimitUJ.classList.remove("warning");
+            LimittUJ.innerText = "";
+        }
     });
 </script>
 <?php $this->endsection() ?>

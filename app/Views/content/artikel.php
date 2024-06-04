@@ -30,7 +30,7 @@
                 </button>
             </div>
             <div class="modal fade" id="exampleModalhead<?php echo $head[0]['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-dialog modal-lg modal-dialog-scrollable">
                     <form action="/ubahheaderartikel" method="post" id="form-data-solusi" class="modal-dialog-scrollable" enctype="multipart/form-data">
                         <!--  -->
                         <div class="modal-content">
@@ -41,12 +41,16 @@
                             <div class="modal-body">
                                 <input type="text" value="<?php echo $head[0]['id'] ?>" name="id" id="id" hidden>
                                 <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                    <label for="exampleFormControlInput1" class="form-label">Judul artikel :</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan judul solusi" name="judul_artikel" value="<?php echo $head[0]['judul_artikel'] ?>">
+                                    <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
+                                        Judul artikel : <p class="p-0 m-0" id="limitA"></p></label>
+                                    <input type="text" class="form-control m-0" id="inputjudulA" placeholder="Masukan Judul Artikel" name="judul_artikel" value="<?php echo $head[0]['judul_artikel'] ?>">
+                                    <span class="text-danger" id="limit2A"></span>
+                                    <!-- <label for="exampleFormControlInput1" class="form-label">Judul artikel :</label>
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan judul solusi" name="judul_artikel" value="<?php echo $head[0]['judul_artikel'] ?>"> -->
                                 </div>
                                 <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
                                     <label for="exampleFormControlTextarea1" class="form-label">Deskripsi :</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="8.5" name="deskripsi"><?php echo $head[0]['deskripsi'] ?></textarea>
+                                    <textarea class="form-control" id="deskA" rows="8.5" name="deskripsi"><?php echo $head[0]['deskripsi'] ?></textarea>
                                 </div>
                             </div>
                             <div class="modal-footer border-top pe-4">
@@ -70,8 +74,10 @@
                             </div>
                             <div class="modal-body">
                                 <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                    <label for="exampleFormControlInput1" class="form-label">Nama Artikel :</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Nama Artikel" name="nama_artikel">
+                                    <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
+                                        Nama Artikel : <p class="p-0 m-0" id="limitNA"></p></label>
+                                    <input type="text" class="form-control m-0" id="inputnamaA" placeholder="Masukan Nama Artikel" name="nama_artikel">
+                                    <span class="text-danger" id="limit2NA"></span>
                                 </div>
                                 <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
                                     <label for="exampleFormControlTextarea1" class="form-label">Deskripsi :</label>
@@ -117,9 +123,10 @@
                                         <div class="modal-body">
                                             <input type="text" value="<?php echo $value['id'] ?>" name="id" id="id" hidden>
                                             <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                                <label for="exampleFormControlInput1" class="form-label">Nama Artikel
-                                                    :</label>
-                                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Nama Solusi" value="<?php echo $value['nama_artikel'] ?>" name="nama_artikel" id="deskripsi">
+                                                <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
+                                                    Nama Artikel : <p class="p-0 m-0" id="limitUNA"></p></label>
+                                                <input type="text" class="form-control m-0" id="inputUnamaA" placeholder="Masukan Nama Artikel" name="nama_artikel" value="<?php echo $value['nama_artikel'] ?>">
+                                                <span class="text-danger" id="limit2UNA"></span>
                                             </div>
                                             <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
                                                 <label for="exampleFormControlTextarea1" class="form-label">Deskripsi
@@ -191,6 +198,75 @@
         ClassicEditor.create(document.querySelector('#deskripsiU')).catch(error => {
             console.error(error);
         })
+        ClassicEditor.create(document.querySelector('#deskA')).catch(error => {
+            console.error(error);
+        })
+    });
+    const InputTextJudulA = document.getElementById("inputjudulA");
+    const LimitJudulA = document.getElementById("limitA");
+    const LimittJudulA = document.getElementById("limit2A");
+    const limitJudulA = 100;
+
+    LimitJudulA.textContent = "0/" + limitJudulA;
+
+    InputTextJudulA.addEventListener("input", function() {
+        const textlengthA = InputTextJudulA.value.length;
+        LimitJudulA.textContent = textlengthA + "/" + limitJudulA;
+
+        if (textlengthA > limitJudulA) {
+            LimitJudulA.classList.add("warning");
+            // alert("Input tidak boleh lebih dari 45 karakter.");
+            InputTextJudulA.value = InputTextJudulA.value.substring(0, limitJudulA);
+            LimitJudulA.textContent = limitJudulA + "/" + limitJudulA;
+            LimittJudulA.innerText = "Input tidak boleh lebih dari 100 karakter.";
+        } else {
+            LimitJudulA.classList.remove("warning");
+            LimittJudulA.innerText = "";
+        }
+    });
+    const InputTextNA = document.getElementById("inputnamaA");
+    const LimitNA = document.getElementById("limitNA");
+    const LimittNA = document.getElementById("limit2NA");
+    const limitNA = 100;
+
+    LimitNA.textContent = "0/" + limitNA;
+
+    InputTextNA.addEventListener("input", function() {
+        const textlengthNA = InputTextNA.value.length;
+        LimitNA.textContent = textlengthNA + "/" + limitNA;
+
+        if (textlengthNA > limitNA) {
+            LimitNA.classList.add("warning");
+            // alert("Input tidak boleh lebih dari 45 karakter.");
+            InputTextNA.value = InputTextNA.value.substring(0, limitNA);
+            LimitNA.textContent = limitNA + "/" + limitNA;
+            LimittNA.innerText = "Input tidak boleh lebih dari 100 karakter.";
+        } else {
+            LimitNA.classList.remove("warning");
+            LimittNA.innerText = "";
+        }
+    });
+    const InputTextUNA = document.getElementById("inputUnamaA");
+    const LimitUNA = document.getElementById("limitUNA");
+    const LimittUNA = document.getElementById("limit2UNA");
+    const limitUNA = 100;
+
+    LimitUNA.textContent = "0/" + limitNA;
+
+    InputTextUNA.addEventListener("input", function() {
+        const textlengthUNA = InputTextUNA.value.length;
+        LimitUNA.textContent = textlengthUNA + "/" + limitUNA;
+
+        if (textlengthUNA > limitUNA) {
+            LimitUNA.classList.add("warning");
+            // alert("Input tidak boleh lebih dari 45 karakter.");
+            InputTextUNA.value = InputTextUNA.value.substring(0, limitUNA);
+            LimitUNA.textContent = limitUNA + "/" + limitUNA;
+            LimittUNA.innerText = "Input tidak boleh lebih dari 100 karakter.";
+        } else {
+            LimitUNA.classList.remove("warning");
+            LimittUNA.innerText = "";
+        }
     });
 </script>
 <?php $this->endsection() ?>

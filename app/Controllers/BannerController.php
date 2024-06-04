@@ -19,9 +19,10 @@ class BannerController extends BaseController
         $banner = new Banner();
         $validation = \config\Services::validation();
         $rules = [
-            'nama_solusi' => 'required',
+            'judul' => 'required',
             'deskripsi' => 'required',
-            'gambar' => 'required',
+            // 'gambar' => 'required',
+            'layout'=> 'required',
         ];
         if ($this->validate($rules)) {
             $image = $this->request->getFile('gambar');
@@ -49,7 +50,7 @@ class BannerController extends BaseController
                     });
                 </script>
             ");
-            return redirect()->back()->to('/banner');
+            return redirect()->back()->to('/konten');
         } else {
             session()->setFlashdata('sweetalert', "
                 <script>
@@ -61,6 +62,7 @@ class BannerController extends BaseController
                     });
                 </script>
             ");
+            return redirect()->back()->to('/konten');
         }
 
         // return $this->response->setJSON(['status' => true]);
@@ -73,7 +75,7 @@ class BannerController extends BaseController
         $rules = [
             'judul' => 'required',
             'deskripsi' => 'required',
-            'gambar' => 'required',
+            // 'gambar' => 'required',
             'layout' => 'required',
         ];
         if ($this->validate($rules)) {
@@ -104,7 +106,7 @@ class BannerController extends BaseController
                 });
             </script>
         ");
-            return redirect()->back()->to('/banner');
+            return redirect()->back()->to('/konten');
         } else {
             session()->setFlashdata('sweetalert', "
             <script>
@@ -116,7 +118,7 @@ class BannerController extends BaseController
                 });
             </script>
         ");
-            return redirect()->back()->to('/banner');
+            return redirect()->back()->to('/konten');
         }
 
 

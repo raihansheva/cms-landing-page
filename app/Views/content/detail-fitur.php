@@ -55,7 +55,7 @@
                                         <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
                                             Layout : </label>
                                     </div>
-                                    <div class="col-12 d-flex gap-2">
+                                    <div class="col-12 d-flex gap-2 ">
                                         <?php foreach ($layout as $key => $value) { ?>
                                             <div class="mb-3 p-2 col">
                                                 <div class="col-12 d-flex justify-content-center">
@@ -150,14 +150,16 @@
                             <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
                                 Layout : </label>
                         </div>
-                        <div class="col-12 d-flex gap-2">
+                        <div class="col-12 d-flex gap-2 justify-content-center">
                             <?php foreach ($layout as $key => $value) { ?>
-                                <div class="mb-3 p-2 col" style="text-align: left;">
-                                    <div class=" d-flex p-2" style="height: 150px; width: 228px;">
-                                        <img class="img-thumbnail" src="/<?= $value['layout'] ?>" alt="" width="100%" height="100%">
+                                <div class="mb-3 p-2 col">
+                                    <div class="col-12 d-flex justify-content-center">
+                                        <div class="d-flex p-2" style="height: 150px; width: 228px;">
+                                            <img class="img-thumbnail" src="/<?= $value['layout'] ?>" alt="" width="100%" height="100%">
+                                        </div>
                                     </div>
                                     <br>
-                                    <div class="form-check  col-12 d-flex justify-content-center gap-1">
+                                    <div class="form-check col-12 d-flex justify-content-center gap-1">
                                         <input class="form-check-input" type="radio" name="layout" value="<?= $value['id'] ?>" id="layout_ubah">
                                         <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
                                             <?= $value['nama_layout'] ?></label>
@@ -183,17 +185,12 @@
                             <small id="fileErrorEdit" class="text-danger"></small>
                             <label class="fs-2" for="">* <span>Format file : .jpg | .png</span></label>
                             <div class="col-12 mt-2 text-end">
-                                <!-- !-- <button type="button" id="hapusGambar" class="btn btn-danger d-none">Hapus
-                                                Gambar</button> -->
                                 <i class="ti ti-x d-none" type="button" id="hapusGambarUbah" style="font-size: 24px"></i>
-                                <img src="#" alt="Pratinjau Gambar" id="previewUbah" class="preview-image d-none image-fluid col-12 rounded" width="100%">
+                                <img src="#" alt="Pratinjau Gambar" id="previewUbah" class="preview-image d-none image-fluid col-12 rounded" width="200">
                             </div>
                         </div>
                     </div>
                     <input type="text" value="<?= $idF ?>" name="id_fitur" id="id_fitur" hidden>
-                    <!-- <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                    
-                                </div> -->
                 </div>
                 <div class="modal-footer border-top pe-4">
                     <button class="btn d-flex" type="submit" style="background-color: #03C988; color:white;"><i class="ti ti-edit pe-2 fs-6 align-middle p-1 "></i>
@@ -348,6 +345,7 @@
             $('#deskripsi_ubah').html(desk)
             $('#gambar_ubah').val(gambar)
             $('#layout_ubah').val(layout)
+            // $('#layout_ubah').prop('checked', true);
             $('#id_fitur_ubah').val(idF)
             $('#exampleModaleditdetailfitur').modal('show')
 
@@ -392,35 +390,34 @@
         inputGambar.value = ""; // Menghapus file dari input file
     });
 
-    // ubah gambar
-    // const inputGambarubah = document.getElementById('gambar2');
-    // const pratinjauGambarubah = document.getElementById('previewUbah');
-    // const tombolHapusGambarubah = document.getElementById('hapusGambarUbah');
+    const inputGambarubah = document.getElementById('gambar2');
+    const pratinjauGambarubah = document.getElementById('previewUbah');
+    const tombolHapusGambarubah = document.getElementById('hapusGambarUbah');
 
-    // inputGambarubah.addEventListener('change', function() {
-    //     const file = this.files[0];
+    inputGambarubah.addEventListener('change', function() {
+        const fileubah = this.files[0];
 
-    //     if (file) {
-    //         const reader = new FileReader();
-    //         reader.addEventListener('load', function() {
-    //             pratinjauGambarubah.src = this.result;
-    //             pratinjauGambarubah.classList.remove('d-none');
-    //             tombolHapusGambarubah.classList.remove('d-none');
-    //         });
-    //         reader.readAsDataURL(file);
-    //     } else {
-    //         pratinjauGambarubah.src = "#";
-    //         pratinjauGambarubah.classList.add('d-none');
-    //         tombolHapusGambarubah.classList.add('d-none');
-    //     }
-    // });
+        if (fileubah) {
+            const readerubah = new FileReader();
+            readerubah.addEventListener('load', function() {
+                pratinjauGambarubah.src = this.result;
+                pratinjauGambarubah.classList.remove('d-none');
+                tombolHapusGambarubah.classList.remove('d-none');
+            });
+            readerubah.readAsDataURL(fileubah);
+        } else {
+            pratinjauGambarubah.src = "#";
+            pratinjauGambarubah.classList.add('d-none');
+            tombolHapusGambarubah.classList.add('d-none');
+        }
+    });
 
-    // tombolHapusGambarubah.addEventListener('click', function() {
-    //     pratinjauGambarubah.src = "#";
-    //     pratinjauGambarubah.classList.add('d-none');
-    //     tombolHapusGambarubah.classList.add('d-none');
-    //     inputGambarubah.value = ""; // Menghapus file dari input file
-    // });
+    tombolHapusGambarubah.addEventListener('click', function() {
+        pratinjauGambarubah.src = "#";
+        pratinjauGambarubah.classList.add('d-none');
+        tombolHapusGambarubah.classList.add('d-none');
+        inputGambarubah.value = ""; // Menghapus file dari input file
+    });
 </script>
 <script src="<?php base_url('js/detail-fitur.js') ?>"></script>
 <?php $this->endsection() ?>

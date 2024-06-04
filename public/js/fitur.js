@@ -27,6 +27,35 @@
         tombolHapusGambar.classList.add('d-none');
         inputGambar.value = ""; // Menghapus file dari input file
     });
+
+    const inputGambarubah = document.getElementById('gambarUbah');
+    const pratinjauGambarubah = document.getElementById('previewUbah');
+    const tombolHapusGambarubah = document.getElementById('hapusGambarUbah');
+
+    inputGambarubah.addEventListener('change', function() {
+        const fileubah = this.files[0];
+
+        if (fileubah) {
+            const readerubah = new FileReader();
+            readerubah.addEventListener('load', function() {
+                pratinjauGambarubah.src = this.result;
+                pratinjauGambarubah.classList.remove('d-none');
+                tombolHapusGambarubah.classList.remove('d-none');
+            });
+            readerubah.readAsDataURL(fileubah);
+        } else {
+            pratinjauGambarubah.src = "#";
+            pratinjauGambarubah.classList.add('d-none');
+            tombolHapusGambarubah.classList.add('d-none');
+        }
+    });
+
+    tombolHapusGambarubah.addEventListener('click', function() {
+        pratinjauGambarubah.src = "#";
+        pratinjauGambarubah.classList.add('d-none');
+        tombolHapusGambarubah.classList.add('d-none');
+        inputGambarubah.value = ""; // Menghapus file dari input file
+    });
 // validasi foto
 function validateFile() {
     const fileInput = document.getElementById('gambar');
@@ -52,7 +81,7 @@ function validateFile() {
 }
 
 function validateFileEdit() {
-    const fileInput = document.getElementById('gambar2');
+    const fileInput = document.getElementById('gambarUbah');
     const filePath = fileInput.value;
     const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
     const maxSize = 2 * 1024 * 1024; // Ukuran maksimum 2MB
@@ -73,6 +102,51 @@ function validateFileEdit() {
     errorMessage.innerText = '';
     return true;
 }
+const InputText = document.getElementById("inputjudul");
+const Limit = document.getElementById("limit");
+const Limitt = document.getElementById("limit2");
+const limit = 30;
+
+Limit.textContent = "0/" + limit;
+
+InputText.addEventListener("input", function () {
+  const textlength = InputText.value.length;
+  Limit.textContent = textlength + "/" + limit;
+
+  if (textlength > limit) {
+    Limit.classList.add("warning");
+    // alert("Input tidak boleh lebih dari 45 karakter.");
+    InputText.value = InputText.value.substring(0, limit);
+    Limit.textContent = limit + "/" + limit;
+    Limitt.innerText ="Input tidak boleh lebih dari 45 karakter.";
+} else {
+    Limit.classList.remove("warning");
+    Limitt.innerText ="";
+  }
+});
+
+const InputTextEdit1 = document.getElementById("nama_fitur_ubah");
+const LimitEdit1 = document.getElementById("limitedit1");
+const LimittEdit1 = document.getElementById("limit2edit1");
+const limitEdit1 = 30;
+
+LimitEdit1.textContent = "0/" + limitEdit1;
+
+InputTextEdit1.addEventListener("input", function () {
+  const textlengthEdit1 = InputTextEdit1.value.length;
+  LimitEdit1.textContent = textlengthEdit1 + "/" + limitEdit1;
+
+  if (textlengthEdit1 > limitEdit1) {
+    LimitEdit1.classList.add("warning");
+    // alert("Input tidak boleh lebih dari 45 karakter.");
+    InputTextEdit1.value = InputTextEdit1.value.substring(0, limitEdit1);
+    LimitEdit1.textContent = limitEdit1 + "/" + limitEdit1;
+    LimittEdit1.innerText ="Input tidak boleh lebih dari 45 karakter.";
+} else {
+    LimitEdit1.classList.remove("warning");
+    LimittEdit1.innerText ="";
+  }
+});
 $(document).ready(function () {
     $('#tabelfitur').DataTable({
         "pageLength": 5,

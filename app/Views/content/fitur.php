@@ -34,8 +34,12 @@
                             </div>
                             <div class="modal-body">
                                 <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                    <label for="exampleFormControlInput1" class="form-label">Nama Fitur :</label>
-                                    <input type="text" class="form-control" id="nama_fitur" placeholder="Masukan Nama Solusi" name="nama_fitur">
+                                    <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
+                                        Nama Fitur : <p class="p-0 m-0" id="limit"></p></label>
+                                    <input type="text" class="form-control m-0" id="inputjudul" placeholder="Masukan Nama Fitur" name="nama_fitur">
+                                    <span class="text-danger" id="limit2"></span>
+                                    <!-- <label for="exampleFormControlInput1" class="form-label">Nama Fitur :</label>
+                                    <input type="text" class="form-control" id="nama_fitur" placeholder="Masukan Nama Solusi" name="nama_fitur"> -->
                                 </div>
                                 <div class="col-12 d-flex">
                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
@@ -47,9 +51,11 @@
                                         <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar" name="icon" onchange="validateFile()">
                                         <small id="fileErrorTambah" class="text-danger"></small>
                                         <label class="fs-2" for="">* <span>Format file : .jpg | .png</span></label>
-                                        <div class="col-12 mt-2 text-end">
+                                        <div class="col-12 mt-2 ">
                                             <i class="ti ti-x d-none" type="button" id="hapusGambar" style="font-size: 24px"></i>
-                                            <img src="#" alt="Pratinjau Gambar" id="preview" class="preview-image d-none image-fluid col-12" width="100%">
+                                            <div class="col">
+                                                <img src="#" alt="Pratinjau Gambar" id="preview" class="preview-image d-none image-fluid " width="68px" height="68px">
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -103,11 +109,12 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <input type="text" value="" name="id" id="id" hidden>
+                    <input type="text" value="<?= $value['id'] ?>" name="id" id="id" hidden>
                     <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                        <label for="exampleFormControlInput1" class="form-label">Nama Fitur
-                            :</label>
-                        <input type="text" class="form-control" id="nama_fitur_ubah" placeholder="Masukan Nama Fitur" name="nama_fitur" value="">
+                        <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
+                            Nama Fitur : <p class="p-0 m-0" id="limitedit1"></p></label>
+                        <input type="text" class="form-control m-0" id="nama_fitur_ubah" placeholder="Masukan Nama Fitur" name="nama_fitur">
+                        <span class="text-danger" id="limit2edit1"></span>
                     </div>
                     <div class="col-12 d-flex">
                         <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
@@ -117,12 +124,14 @@
                         <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                             <label for="exampleFormControlInput1" class="form-label">Icon
                                 :</label>
-                            <input type="file" class="form-control" id="gambar2" placeholder="Pilih Gambar" name="icon" onchange="validateFileEdit()">
+                            <input type="file" class="form-control" id="gambarUbah" placeholder="Pilih Gambar" name="icon" onchange="validateFileEdit()">
                             <small id="fileErrorEdit" class="text-danger"></small>
                             <label class="fs-2" for="">* <span>Format file : .jpg | .png</span></label>
-                            <div class="col-12 mt-2 text-end">
+                            <div class="col-12 mt-2 ">
                                 <i class="ti ti-x d-none" type="button" id="hapusGambarUbah" style="font-size: 24px"></i>
-                                <img src="#" alt="Pratinjau Gambar" id="previewUbah" class="preview-image d-none image-fluid col-12" width="100%">
+                                <div class="col">
+                                    <img src="#" alt="Pratinjau Gambar" id="previewUbah" class="preview-image d-none image-fluid " width="68px" height="68px">
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -160,7 +169,7 @@
                 <?= csrf_field(); ?>
                 <div class="modal-body">
                     <p class="text-center">Yakin ingin hapus fitur ini?</p>
-                    <input type="text" value="" name="id" id="id_fitur_hapus" hidden>
+                    <input type="text" value="<?= $value['id'] ?>" name="id" id="id_fitur_hapus" hidden>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">
                     <button class="btn btn-danger d-flex btn-delete" type="submit"><i class="ti ti-trash pe-2 fs-6 align-middle p-1" id="btn-delete"></i>
