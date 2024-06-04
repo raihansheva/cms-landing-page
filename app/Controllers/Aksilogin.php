@@ -45,7 +45,7 @@ class Aksilogin extends BaseController
                         'foto' => $data['foto'],
                     ];
                     session()->set($datasesi);
-    
+                    session()->set('isLoggedIn', true);
                     return view('layout/main');
                 } else {
                     session()->setFlashdata('sweetalert', "
