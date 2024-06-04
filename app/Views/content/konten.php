@@ -47,11 +47,8 @@
                                 <div class="mb-3 p-2" style="text-align: left;">
                                     <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
                                         Judul : <p class="p-0 m-0" id="limit"></p></label>
-                                    <input type="text" class="form-control m-0" id="inputjudul" placeholder="Masukan Judul" name="judul">
+                                    <input type="text" class="form-control m-0" id="inputjudul" placeholder="Masukan Judul" name="judul" >
                                     <span class="text-danger" id="limit2"></span>
-                                    <!-- <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
-                                        Judul : </label>
-                                    <input type="text" class="form-control" id="inputjudul2" placeholder="Masukan Judul" name="judul"> -->
                                 </div>
                                 <div class="col-12 d-flex">
                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
@@ -139,8 +136,8 @@
                                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                                         <label for="exampleFormControlInput1" class="form-label">Gambar
                                                             :</label>
-                                                        <input type="file" class="form-control" id="gambar2" placeholder="Pilih Gambar" name="gambar" onchange="validateFileEdit()">
-                                                        <small id="fileErrorEdit" class="text-danger"></small>
+                                                        <input type="file" class="form-control" id="gambar2A" placeholder="Pilih Gambar" name="gambar" onchange="validateFileEditA()">
+                                                        <small id="fileErrorEditA" class="text-danger"></small>
                                                         <label class="fs-2" for="">* <span>Format file : .jpg |
                                                                 .png</span></label>
                                                         <div class="col-12 mt-2">
@@ -257,8 +254,8 @@
                                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: lef t;">
                                                         <label for="exampleFormControlInput1" class="form-label">Gambar
                                                             :</label>
-                                                        <input type="file" class="form-control" id="gambar2" placeholder="Pilih Gambar" name="gambar" onchange="validateFileEdit()">
-                                                        <small id="fileErrorEdit" class="text-danger"></small>
+                                                        <input type="file" class="form-control" id="gambar2B" placeholder="Pilih Gambar" name="gambar" onchange="validateFileEditB()">
+                                                        <small id="fileErrorEditB" class="text-danger"></small>
                                                         <label class="fs-2" for="">* <span>Format file : .jpg |
                                                                 .png</span></label>
                                                         <div class="col-12 mt-2">
@@ -373,8 +370,8 @@
                                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                                         <label for="exampleFormControlInput1" class="form-label">Gambar
                                                             :</label>
-                                                        <input type="file" class="form-control" id="gambar2" placeholder="Pilih Gambar" name="gambar" onchange="validateFileEdit()">
-                                                        <small id="fileErrorEdit" class="text-danger"></small>
+                                                        <input type="file" class="form-control" id="gambar2C" placeholder="Pilih Gambar" name="gambar" onchange="validateFileEditC()">
+                                                        <small id="fileErrorEditC" class="text-danger"></small>
                                                         <label class="fs-2" for="">* <span>Format file : .jpg |
                                                                 .png</span></label>
                                                         <div class="col-12 mt-2">

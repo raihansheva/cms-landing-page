@@ -116,7 +116,6 @@
                 </div>
                 <div class="modal-body">
                     <input type="text" value="<?= $value['id'] ?>" name="id" id="id" hidden>
-                    <input type="text" value="<?= $value['id'] ?>" name="id" id="id" hidden>
                     <div class="mb-3 p-2 pt-0" style="text-align: left;">
                         <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
                             Nama Fitur : <p class="p-0 m-0" id="limitedit1"></p></label>

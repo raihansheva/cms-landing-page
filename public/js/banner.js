@@ -1,26 +1,27 @@
+// function limit() {
+  const InputText = document.getElementById("inputjudul");
+  const Limit = document.getElementById("limit");
+  const Limitt = document.getElementById("limit2");
+  const limit = 45;
 
-const InputText = document.getElementById("inputjudul");
-const Limit = document.getElementById("limit");
-const Limitt = document.getElementById("limit2");
-const limit = 45;
+  Limit.textContent = "0/" + limit;
 
-Limit.textContent = "0/" + limit;
+  InputText.addEventListener("input", function () {
+    const textlength = InputText.value.length;
+    Limit.textContent = textlength + "/" + limit;
 
-InputText.addEventListener("input", function () {
-  const textlength = InputText.value.length;
-  Limit.textContent = textlength + "/" + limit;
-
-  if (textlength > limit) {
-    Limit.classList.add("warning");
-    // alert("Input tidak boleh lebih dari 45 karakter.");
-    InputText.value = InputText.value.substring(0, limit);
-    Limit.textContent = limit + "/" + limit;
-    Limitt.innerText ="Input tidak boleh lebih dari 45 karakter.";
-} else {
-    Limit.classList.remove("warning");
-    Limitt.innerText ="";
-  }
-});
+    if (textlength > limit) {
+      Limit.classList.add("warning");
+      // alert("Input tidak boleh lebih dari 45 karakter.");
+      InputText.value = InputText.value.substring(0, limit);
+      Limit.textContent = limit + "/" + limit;
+      Limitt.innerText = "Input tidak boleh lebih dari 45 karakter.";
+    } else {
+      Limit.classList.remove("warning");
+      Limitt.innerText = "";
+    }
+  });
+// }
 
 // function limitCharacter(inputElement, maxChars) {
 //   const charCountDisplay = inputElement.nextElementSibling;
@@ -33,7 +34,6 @@ InputText.addEventListener("input", function () {
 //   const remainingChars = maxChars - inputElement.value.length;
 //   charCountDisplay.textContent = `${remainingChars}/${maxChars}`;
 // }
-
 
 const InputTextEdit1 = document.getElementById("inputjuduledit1");
 const LimitEdit1 = document.getElementById("limitedit1");
@@ -51,10 +51,10 @@ InputTextEdit1.addEventListener("input", function () {
     // alert("Input tidak boleh lebih dari 45 karakter.");
     InputTextEdit1.value = InputTextEdit1.value.substring(0, limitEdit1);
     LimitEdit1.textContent = limitEdit1 + "/" + limitEdit1;
-    LimittEdit1.innerText ="Input tidak boleh lebih dari 45 karakter.";
-} else {
+    LimittEdit1.innerText = "Input tidak boleh lebih dari 45 karakter.";
+  } else {
     LimitEdit1.classList.remove("warning");
-    LimittEdit1.innerText ="";
+    LimittEdit1.innerText = "";
   }
 });
 // const InputTextEdit2 = document.getElementById("inputjuduledit2");
@@ -95,10 +95,10 @@ InputTextEdit3.addEventListener("input", function () {
     // alert("Input tidak boleh lebih dari 45 karakter.");
     InputTextEdit3.value = InputTextEdit3.value.substring(0, limitEdit3);
     LimitEdit3.textContent = limitEdit3 + "/" + limitEdit3;
-    LimittEdit3.innerText ="Input tidak boleh lebih dari 45 karakter.";
-} else {
+    LimittEdit3.innerText = "Input tidak boleh lebih dari 45 karakter.";
+  } else {
     LimitEdit3.classList.remove("warning");
-    LimittEdit3.innerText ="";
+    LimittEdit3.innerText = "";
   }
 });
 
@@ -186,12 +186,58 @@ function validateFile() {
   return true;
 }
 
-function validateFileEdit() {
-  const fileInput = document.getElementById("gambar2");
+function validateFileEditA() {
+  const fileInput = document.getElementById("gambar2A");
   const filePath = fileInput.value;
   const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
   const maxSize = 2 * 1024 * 1024; // Ukuran maksimum 2MB
-  const errorMessage = document.getElementById("fileErrorEdit");
+  const errorMessage = document.getElementById("fileErrorEditA");
+
+  if (!allowedExtensions.exec(filePath)) {
+    errorMessage.innerText =
+      "Harap unggah file dengan tipe .jpeg, .jpg, atau .png.";
+    fileInput.value = "";
+    return false;
+  }
+
+  if (fileInput.files[0].size > maxSize) {
+    errorMessage.innerText = "Ukuran file terlalu besar. Maksimum 2MB.";
+    fileInput.value = "";
+    return false;
+  }
+
+  errorMessage.innerText = "";
+  return true;
+}
+function validateFileEditB() {
+  const fileInput = document.getElementById("gambar2B");
+  const filePath = fileInput.value;
+  const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+  const maxSize = 2 * 1024 * 1024; // Ukuran maksimum 2MB
+  const errorMessage = document.getElementById("fileErrorEditB");
+
+  if (!allowedExtensions.exec(filePath)) {
+    errorMessage.innerText =
+      "Harap unggah file dengan tipe .jpeg, .jpg, atau .png.";
+    fileInput.value = "";
+    return false;
+  }
+
+  if (fileInput.files[0].size > maxSize) {
+    errorMessage.innerText = "Ukuran file terlalu besar. Maksimum 2MB.";
+    fileInput.value = "";
+    return false;
+  }
+
+  errorMessage.innerText = "";
+  return true;
+}
+function validateFileEditC() {
+  const fileInput = document.getElementById("gambar2C");
+  const filePath = fileInput.value;
+  const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+  const maxSize = 2 * 1024 * 1024; // Ukuran maksimum 2MB
+  const errorMessage = document.getElementById("fileErrorEditC");
 
   if (!allowedExtensions.exec(filePath)) {
     errorMessage.innerText =
