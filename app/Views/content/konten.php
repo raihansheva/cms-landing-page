@@ -47,7 +47,7 @@
                                 <div class="mb-3 p-2" style="text-align: left;">
                                     <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
                                         Judul : <p class="p-0 m-0" id="limit"></p></label>
-                                    <input type="text" class="form-control m-0" id="inputjudul" placeholder="Masukan Judul" name="judul" >
+                                    <input type="text" class="form-control m-0" id="inputjudul" placeholder="Masukan Judul" name="judul">
                                     <span class="text-danger" id="limit2"></span>
                                 </div>
                                 <div class="col-12 d-flex">
@@ -69,7 +69,7 @@
                                 </div>
                             </div>
                             <div class="modal-footer m-2 border-top">
-                                <button class="btn d-flex" type="submit" style="background-color: #03C988; color:white;" id="btn-simpan"><i class="ti ti-device-floppy pe-1 fs-6 align-middle p-1 "></i>
+                                <button class="btn d-flex" type="submit" style="background-color: #03C988; color:white;" id="btn-simpan"><i class="ti ti-device-floppy pe-1 fs-6 align-middle p-1 " ></i>
                                     <p class="m-0 p-1 align-middle">Simpan</p>
                                 </button>
                             </div>
@@ -84,7 +84,7 @@
                 <?php if ($value['layout'] == '1') { ?>
                     <div class="card col-12 mb-3" style="padding: 24px;">
                         <div class="card-kanan-atas">
-                            <i class="ti ti-pencil" style="font-size: 36px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaleditbanner<?php echo $value['id']; ?>"  onclick="limitText('inputjuduledit<?= $key + 1 ?>', 'limitedit<?= $key + 1 ?>' , 'limit2edit<?= $key + 1 ?>')"></i>
+                            <i class="ti ti-pencil" style="font-size: 36px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaleditbanner<?php echo $value['id']; ?>" onclick="limitA('limiteditA')" ></i>
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModaleditbanner<?php echo $value['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -124,9 +124,9 @@
                                                 <div class="mb-3 p-2 pt-0" style="text-align: left;">
                                                     <input type="text" value="<?php echo $value['id']; ?>" name="id" id="id" hidden>
                                                     <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
-                                                        Judul : <p class="p-0 m-0" id="limitedit<?= $key + 1 ?>"></p></label>
-                                                    <input type="text" class="form-control m-0" id="inputjuduledit<?= $key + 1 ?>" placeholder="Masukan Judul" name="judul" value="<?php echo $value['judul']; ?>"  oninput="limitText('inputjuduledit<?= $key + 1 ?>', 'limitedit<?= $key + 1 ?>' , 'limit2edit<?= $key + 1 ?>')">
-                                                    <span class="text-danger" id="limit2edit<?= $key + 1 ?>"></span>
+                                                        Judul : <p class="p-0 m-0" id="limiteditA"></p></label>
+                                                    <input type="text" class="form-control m-0" id="inputjuduleditA" placeholder="Masukan Judul" name="judul" value="<?php echo $value['judul']; ?>" oninput="limitA('limiteditA')">
+                                                    <span class="text-danger" id="limit2editA"></span>
                                                 </div>
                                                 <div class="col-12 d-flex">
                                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
@@ -141,8 +141,8 @@
                                                         <label class="fs-2" for="">* <span>Format file : .jpg |
                                                                 .png</span></label>
                                                         <div class="col-12 mt-2">
-                                                            <img src="#" alt="Pratinjau Gambar" id="preview2" class="preview-image d-none image-fluid col-12" width="100%">
-                                                            <button type="button" id="hapusGambar2" class="btn btn-danger d-none">Hapus
+                                                            <img src="#" alt="Pratinjau Gambar" id="preview2A" class="preview-image d-none image-fluid col-12" width="100%">
+                                                            <button type="button" id="hapusGambar2A" class="btn btn-danger d-none">Hapus
                                                                 Gambar</button>
                                                         </div>
                                                     </div>
@@ -202,7 +202,7 @@
                 <?php } else if ($value['layout'] == '2') { ?>
                     <div class="card col-12 mb-3" style="padding: 24px;">
                         <div class="card-kanan-atas">
-                            <i class="ti ti-pencil" style="font-size: 36px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaleditbanner<?php echo $value['id']; ?>"  onclick="limitText('inputjuduledit<?= $key + 1 ?>', 'limitedit<?= $key + 1 ?>' , 'limit2edit<?= $key + 1 ?>')"></i>
+                            <i class="ti ti-pencil" style="font-size: 36px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaleditbanner<?php echo $value['id']; ?>" onclick="limitB('limiteditB)" ></i>
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModaleditbanner<?php echo $value['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -228,7 +228,7 @@
                                                                 </div>
                                                                 <br>
                                                                 <div class="form-check  col-12 d-flex justify-content-center gap-1">
-                                                                <?php if ($value['layout'] == $value2['id']) { ?>
+                                                                    <?php if ($value['layout'] == $value2['id']) { ?>
                                                                         <input class="form-check-input" type="radio" name="layout" value="<?= $value['layout'] ?>" id="layout" checked>
                                                                     <?php } else { ?>
                                                                         <input class="form-check-input" type="radio" name="layout" value="<?= $value2['id'] ?>" id="layout">
@@ -242,9 +242,9 @@
                                                 <div class="mb-3 p-2 pt-0" style="text-align: left;">
                                                     <input type="text" value="<?php echo $value['id']; ?>" name="id" id="id" hidden>
                                                     <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
-                                                        Judul : <p class="p-0 m-0" id="limitedit<?= $key + 1 ?>"></p></label>
-                                                    <input type="text" class="form-control m-0" id="inputjuduledit<?= $key + 1 ?>" placeholder="Masukan Judul" name="judul" value="<?php echo $value['judul']; ?>"  oninput="limitText('inputjuduledit<?= $key + 1 ?>', 'limitedit<?= $key + 1 ?>' , 'limit2edit<?= $key + 1 ?>')">
-                                                    <span class="text-danger" id="limit2edit<?= $key + 1 ?>"></span>
+                                                        Judul : <p class="p-0 m-0" id="limiteditB"></p></label>
+                                                    <input type="text" class="form-control m-0" id="inputjuduleditB" placeholder="Masukan Judul" name="judul" value="<?php echo $value['judul']; ?>" oninput="limitB('limiteditB)">
+                                                    <span class="text-danger" id="limit2editB"></span>
                                                 </div>
                                                 <div class="col-12 d-flex">
                                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
@@ -254,7 +254,7 @@
                                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: lef t;">
                                                         <label for="exampleFormControlInput1" class="form-label">Gambar
                                                             :</label>
-                                                        <input type="file" class="form-control" id="gambar2B" placeholder="Pilih Gambar" name="gambar" onchange="validateFileEditB()">
+                                                        <input type="file" class="form-control" id="gambar2B" placeholder="Pilih Gambar" name="gambar" onchange="validateFileEditB()"> 
                                                         <small id="fileErrorEditB" class="text-danger"></small>
                                                         <label class="fs-2" for="">* <span>Format file : .jpg |
                                                                 .png</span></label>
@@ -319,7 +319,7 @@
                 <?php } else if ($value['layout'] == '3') { ?>
                     <div class="card col-12 mb-3" style="padding: 24px;">
                         <div class="card-kanan-atas">
-                            <i class="ti ti-pencil" style="font-size: 36px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaleditbanner<?php echo $value['id']; ?>"  onclick="limitText('inputjuduledit<?= $key + 1 ?>', 'limitedit<?= $key + 1 ?>' , 'limit2edit<?= $key + 1 ?>')"></i>
+                            <i class="ti ti-pencil" style="font-size: 36px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaleditbanner<?php echo $value['id']; ?>"></i>
                             <!-- Modal -->
                             <div class="modal fade" id="exampleModaleditbanner<?php echo $value['id']; ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -344,7 +344,7 @@
                                                                 </div>
                                                                 <br>
                                                                 <div class="form-check  col-12 d-flex justify-content-center gap-1">
-                                                                <?php if ($value['layout'] == $value2['id']) { ?>
+                                                                    <?php if ($value['layout'] == $value2['id']) { ?>
                                                                         <input class="form-check-input" type="radio" name="layout" value="<?= $value['layout'] ?>" id="layout" checked>
                                                                     <?php } else { ?>
                                                                         <input class="form-check-input" type="radio" name="layout" value="<?= $value2['id'] ?>" id="layout">
@@ -358,9 +358,9 @@
                                                 <div class="mb-3 p-2 pt-0" style="text-align: left;">
                                                     <input type="text" value="<?php echo $value['id']; ?>" name="id" id="id" hidden>
                                                     <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
-                                                        Judul : <p class="p-0 m-0" id="limitedit<?= $key + 1 ?>"></p></label>
-                                                    <input type="text" class="form-control m-0" id="inputjuduledit<?= $key + 1 ?>" placeholder="Masukan Judul" name="judul" value="<?php echo $value['judul']; ?>" oninput="limitText('inputjuduledit<?= $key + 1 ?>', 'limitedit<?= $key + 1 ?>' , 'limit2edit<?= $key + 1 ?>')">
-                                                    <span class="text-danger" id="limit2edit<?= $key + 1 ?>"></span>
+                                                        Judul : <p class="p-0 m-0" id="limiteditC"></p></label>
+                                                    <input type="text" class="form-control m-0" id="inputjuduleditC" placeholder="Masukan Judul" name="judul" value="<?php echo $value['judul']; ?>">
+                                                    <span class="text-danger" id="limit2editC"></span>
                                                 </div>
                                                 <div class="col-12 d-flex">
                                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
@@ -577,29 +577,7 @@
 <script src="../assets/sweetalert2/dist/sweetalert2.all.min.js"></script>
 <?= session()->getFlashdata('sweetalert'); ?>
 <script>
-    // function validasifoto(input) {
-    //     const maxFileSize = 2 * 1024 * 1024;
-    //     const validFileExtensions = ['image/jpeg', 'image/jpg', 'image/png'];
-    //     const fileinput = input.files[0];
-    //     const errorElement = document.getElementById('fileErrorTambah');
-
-    //     if (fileinput) {
-
-    //         if (fileinput.size > maxFileSize) {
-    //             errorElement.textContent = 'Ukuran file maksimum 2MB';
-    //             input.value = '';
-    //             return;
-    //         }
-
-    //         if (!validFileExtensions.includes(fileinput.type)) {
-    //             errorElement.textContent = 'Format file tidak valid. Harus .jpeg , .jpg , atau .png';
-    //             input.value = '';
-    //             return;
-    //         }
-
-    //         errorElement.textContent = '';
-    //     }
-    // }
+        
 </script>
 <!-- -->
 <?php $this->endsection() ?>

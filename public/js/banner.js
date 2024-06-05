@@ -22,42 +22,78 @@ InputText.addEventListener("input", function () {
   }
 });
 // }
+function limitA(limit1) {
+  const InputTextEdit1A = document.getElementById("inputjuduleditA");
+  const LimitEdit1A = document.getElementById(limit1);
+  const LimittEdit1A = document.getElementById("limit2editA");
+  const limitEdit1A = 45;
 
-// function limitCharacter(inputElement, maxChars) {
-//   const charCountDisplay = inputElement.nextElementSibling;
-//   const currentLength = inputElement.value.length;
+  LimitEdit1A.textContent = "0/" + limitEdit1A;
 
-//   if (currentLength > maxChars) {
-//     inputElement.value = inputElement.value.substring(0, maxChars);
-//   }
+  InputTextEdit1A.addEventListener("input", function () {
+    const textlengthEdit1A = InputTextEdit1A.value.length;
+    LimitEdit1A.textContent = textlengthEdit1A + "/" + limitEdit1A;
 
-//   const remainingChars = maxChars - inputElement.value.length;
-//   charCountDisplay.textContent = `${remainingChars}/${maxChars}`;
-// }
-function limitText(input, limit1, limit2) {
-  const InputTextEdit1 = document.getElementById(input);
-  const LimitEdit1 = document.getElementById(limit1);
-  const LimittEdit1 = document.getElementById(limit2);
-  const limitEdit1 = 45;
-
-  LimitEdit1.textContent = "0/" + limitEdit1;
-
-  InputTextEdit1.addEventListener("input", function () {
-    const textlengthEdit1 = InputTextEdit1.value.length;
-    LimitEdit1.textContent = textlengthEdit1 + "/" + limitEdit1;
-
-    if (textlengthEdit1 > limitEdit1) {
-      LimitEdit1.classList.add("warning");
+    if (textlengthEdit1A >= limitEdit1A) {
+      LimitEdit1A.classList.add("warning");
       // alert("Input tidak boleh lebih dari 45 karakter.");
-      InputTextEdit1.value = InputTextEdit1.value.substring(0, limitEdit1);
-      LimitEdit1.textContent = limitEdit1 + "/" + limitEdit1;
-      LimittEdit1.innerText = "Input tidak boleh lebih dari 45 karakter.";
+      InputTextEdit1A.value = InputTextEdit1A.value.substring(0, limitEdit1A);
+      LimitEdit1A.textContent = limitEdit1A + "/" + limitEdit1A;
+      LimittEdit1A.innerText = "Input tidak boleh lebih dari 45 karakter.";
     } else {
-      LimitEdit1.classList.remove("warning");
-      LimittEdit1.innerText = "";
+      LimitEdit1A.classList.remove("warning");
+      LimittEdit1A.innerText = "";
     }
   });
 }
+
+function limitB(limit1) {
+  const InputTextEdit1B = document.getElementById("inputjuduleditB");
+  const LimitEdit1B = document.getElementById(limit1);
+  const LimittEdit1B = document.getElementById("limit2editB");
+  const limitEdit1B = 45;
+
+  LimitEdit1B.textContent = "0/" + limitEdit1B;
+
+  InputTextEdit1B.addEventListener("input", function () {
+    const textlengthEdit1B = InputTextEdit1B.value.length;
+    LimitEdit1B.textContent = textlengthEdit1B + "/" + limitEdit1B;
+
+    if (textlengthEdit1B >= limitEdit1B) {
+      LimitEdit1B.classList.add("warning");
+      // alert("Input tidak boleh lebih dari 45 karakter.");
+      InputTextEdit1B.value = InputTextEdit1B.value.substring(0, limitEdit1B);
+      LimitEdit1B.textContent = limitEdit1B + "/" + limitEdit1B;
+      LimittEdit1B.innerText = "Input tidak boleh lebih dari 45 karakter.";
+    } else {
+      LimitEdit1B.classList.remove("warning");
+      LimittEdit1B.innerText = "";
+    }
+  });
+}
+
+const InputTextEdit1C = document.getElementById("inputjuduleditC");
+const LimitEdit1C = document.getElementById("limiteditC");
+const LimittEdit1C = document.getElementById("limit2editC");
+const limitEdit1C = 45;
+
+LimitEdit1C.textContent = "0/" + limitEdit1C;
+
+InputTextEdit1C.addEventListener("input", function () {
+  const textlengthEdit1C = InputTextEdit1C.value.length;
+  LimitEdit1C.textContent = textlengthEdit1C + "/" + limitEdit1C;
+
+  if (textlengthEdit1C >= limitEdit1C) {
+    LimitEdit1C.classList.add("warning");
+    // alert("Input tidak boleh lebih dari 45 karakter.");
+    InputTextEdit1C.value = InputTextEdit1C.value.substring(0, limitEdit1C);
+    LimitEdit1C.textContent = limitEdit1C + "/" + limitEdit1C;
+    LimittEdit1C.innerText = "Input tidak boleh lebih dari 45 karakter.";
+  } else {
+    LimitEdit1C.classList.remove("warning");
+    LimittEdit1C.innerText = "";
+  }
+});
 
 // image preview
 const inputGambar = document.getElementById("gambar");
@@ -88,35 +124,6 @@ tombolHapusGambar.addEventListener("click", function () {
   tombolHapusGambar.classList.add("d-none");
   inputGambar.value = ""; // Menghapus file dari input file
 });
-
-// const inputGambar2 = document.getElementById('gambar2');
-// const pratinjauGambar2 = document.getElementById('preview2');
-// const tombolHapusGambar2 = document.getElementById('hapusGambar2');
-
-// inputGambar2.addEventListener('change', function () {
-//     const file2 = this.files[0];
-
-//     if (file2) {
-//         const reader2 = new FileReader();
-//         reader2.addEventListener('load', function () {
-//             pratinjauGambar2.src = this.result;
-//             pratinjauGambar2.classList.remove('d-none');
-//             tombolHapusGambar2.classList.remove('d-none');
-//         });
-//         reader2.readAsDataURL(file);
-//     } else {
-//         pratinjauGambar2.src = "#";
-//         pratinjauGambar2.classList.add('d-none');
-//         tombolHapusGambar2.classList.add('d-none');
-//     }
-// });
-
-// tombolHapusGambar2.addEventListener('click', function () {
-//     pratinjauGambar2.src = "#";
-//     pratinjauGambar2.classList.add('d-none');
-//     tombolHapusGambar2.classList.add('d-none');
-//     inputGambar2.value = ""; // Menghapus file dari input file
-// });
 
 // validasi foto
 function validateFile() {
@@ -162,7 +169,27 @@ function validateFileEditA() {
     fileInput.value = "";
     return false;
   }
+  // const inputGambar = document.getElementById("gambar");
+  const pratinjauGambar = document.getElementById("preview2A");
+  const tombolHapusGambar = document.getElementById("hapusGambar2A");
 
+  fileInput.addEventListener("change", function () {
+    const file = this.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+      reader.addEventListener("load", function () {
+        pratinjauGambar.src = this.result;
+        pratinjauGambar.classList.remove("d-none");
+        tombolHapusGambar.classList.remove("d-none");
+      });
+      reader.readAsDataURL(file);
+    } else {
+      pratinjauGambar.src = "#";
+      pratinjauGambar.classList.add("d-none");
+      tombolHapusGambar.classList.add("d-none");
+    }
+  });
   errorMessage.innerText = "";
   return true;
 }

@@ -115,7 +115,7 @@
             <?php foreach ($solusi as $key => $value) { ?>
                 <div class="card" style="padding: 24px; height: 310px; width: 352px;">
                     <div class="card-kanan-atas">
-                        <i class="ti ti-pencil" style="font-size: 30px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaleditsolusi<?= $value['id'] ?>" onclick="limitText('inputjuduledit1<?= $key + 1 ?>' , 'limitedit1<?= $key + 1 ?>' , 'limit2edit1<?= $key + 1 ?>')"></i>
+                        <i class="ti ti-pencil" style="font-size: 30px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaleditsolusi<?= $value['id'] ?>" onclick="limitText('inputjuduledit1<?= $key + 1 ?>' , 'limitedit1<?= $key + 1 ?>' , 'limitedit2<?= $key + 1 ?>')"></i>
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModaleditsolusi<?= $value['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -133,9 +133,6 @@
                                                     Nama Solusi : <p class="p-0 m-0" id="limitedit1<?= $key + 1 ?>"></p></label>
                                                 <input type="text" class="form-control m-0" id="inputjuduledit1<?= $key + 1 ?>" placeholder="Masukan Judul" name="nama_solusi" value="<?= $value['nama_solusi'] ?>" oninput="limitText('inputjuduledit1<?= $key + 1 ?>' , 'limitedit1<?= $key + 1 ?>' , 'limitedit2<?= $key + 1 ?>')">
                                                 <span class="text-danger" id="limitedit2<?= $key + 1 ?>"></span>
-                                                <!-- <label for="exampleFormControlInput1" class="form-label">Nama Solusi
-                                                    :</label>
-                                                <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Nama Solusi" value="<?= $value['nama_solusi'] ?>" name="nama_solusi" id="deskripsi"> -->
                                             </div>
                                             <div class="col-12 d-flex">
                                                 <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
@@ -332,9 +329,10 @@
         if (textlength > limit) {
             Limit.classList.add("warning");
             // alert("Input tidak boleh lebih dari 45 karakter.");
+            // console.log(textlength);
             InputText.value = InputText.value.substring(0, limit);
             Limit.textContent = limit + "/" + limit;
-            Limitt.innerText = "Input tidak boleh lebih dari 45 karakter.";
+            Limitt.innerText = "Input tidak boleh lebih dari 30 karakter.";
         } else {
             Limit.classList.remove("warning");
             Limitt.innerText = "";
@@ -356,7 +354,7 @@
             // alert("Input tidak boleh lebih dari 45 karakter.");
             InputTextS.value = InputTextS.value.substring(0, limitS);
             LimitS.textContent = limitS + "/" + limitS;
-            LimittS.innerText = "Input tidak boleh lebih dari 45 karakter.";
+            LimittS.innerText = "Input tidak boleh lebih dari 30 karakter.";
         } else {
             LimitS.classList.remove("warning");
             LimittS.innerText = "";
@@ -367,25 +365,42 @@
         const InputTextEdit1 = document.getElementById(input);
         const LimitEdit1 = document.getElementById(limit1);
         const LimittEdit1 = document.getElementById(limit2);
-        const limitEdit1 = 45;
+        const maxlimit = 45;
 
-        LimitEdit1.textContent = "0/" + limitEdit1;
+        // LimitEdit1.textContent = "0/" + maxlimit;
+
+        // InputTextEdit1.addEventListener("input", function() {
+        //     const textlengthEdit1 = InputTextEdit1.value.length;
+        //     LimitEdit1.textContent = textlengthEdit1 + "/" + maxlimit;
+
+        //     if (textlengthEdit1 > maxlimit) {
+        //         LimitEdit1.classList.add("warning");
+        //         // alert("Input tidak boleh lebih dari 45 karakter.");
+        //         // console.log(textlengthEdit1);
+        //         InputTextEdit1.value = InputTextEdit1.value.substring(0, maxlimit);
+        //         LimitEdit1.textContent = maxlimit + "/" + maxlimit;
+        //         LimittEdit1.textContent = "Input tidak boleh lebih dari 45 karakter.";
+        //         // console.log(LimittEdit1);
+        //     } else {
+        //         LimitEdit1.classList.remove("warning");
+        //         LimittEdit1.textContent = "";
+        //     }
+        // });
+        LimitEdit1.textContent = "0/" + maxlimit;
 
         InputTextEdit1.addEventListener("input", function() {
             const textlengthEdit1 = InputTextEdit1.value.length;
-            LimitEdit1.textContent = textlengthEdit1 + "/" + limitEdit1;
 
-            if (textlengthEdit1 > limitEdit1) {
-                LimitEdit1.classList.add("warning");
-                // alert("Input tidak boleh lebih dari 45 karakter.");
-                InputTextEdit1.value = InputTextEdit1.value.substring(0, limitEdit1);
-                LimitEdit1.textContent = limitEdit1 + "/" + limitEdit1;
-                LimittEdit1.innerText = "Input tidak boleh lebih dari 45 karakter.";
+            if (textlengthEdit1 > maxlimit) {
+                LimittEdit1.textContent = "Input tidak boleh lebih dari 45 karakter.";
+                InputTextEdit1.value = InputTextEdit1.value.substring(0, maxlimit);
             } else {
-                LimitEdit1.classList.remove("warning");
-                LimittEdit1.innerText = "";
+                LimittEdit1.textContent = "";
             }
+
+            LimitEdit1.textContent = InputTextEdit1.value.length + "/" + maxlimit;
         });
+
     }
 </script>
 <?php $this->endsection() ?>

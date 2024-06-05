@@ -259,28 +259,28 @@
             const textlengthUNA = InputTextUNA.value.length;
             LimitUNA.textContent = textlengthUNA + "/" + limitUNA;
 
-            // if (textlengthUNA > limitUNA) {
-            //     LimitUNA.classList.add("warning");
-            //     // alert("Input tidak boleh lebih dari 45 karakter.");
-            //     InputTextUNA.value = InputTextUNA.value.substring(0, limitUNA);
-            //     LimitUNA.textContent = limitUNA + "/" + limitUNA;
-            //     LimittUNA.innerText = "Input tidak boleh lebih dari 100 karakter.";
-            // } else {
-            //     LimitUNA.classList.remove("warning");
-            //     LimittUNA.innerText = "";
-            // }
             if (textlengthUNA > limitUNA) {
                 LimitUNA.classList.add("warning");
-                InputTextUNA.style.border = "1px solid red";
-
-                if (textlengthUNA > limitUNA) {
-                    InputTextUNA.value = InputTextUNA.value.substring(0, limitUNA);
-                    LimitUNA.textContent = limitUNA + "/" + limitUNA;
-                }
+                // alert("Input tidak boleh lebih dari 45 karakter.");
+                InputTextUNA.value = InputTextUNA.value.substring(0, limitUNA);
+                LimitUNA.textContent = limitUNA + "/" + limitUNA;
+                LimittUNA.innerText = "Input tidak boleh lebih dari 100 karakter.";
             } else {
                 LimitUNA.classList.remove("warning");
-                InputTextUNA.style.border = '';
+                LimittUNA.innerText = "";
             }
+            // if (textlengthUNA >= limitUNA) {
+            //     LimitUNA.classList.add("warning");
+            //     InputTextUNA.style.border = "1px solid red";
+
+            //     if (textlengthUNA > limitUNA) {
+            //         InputTextUNA.value = InputTextUNA.value.substring(0, limitUNA);
+            //         LimitUNA.textContent = limitUNA + "/" + limitUNA;
+            //     }
+            // } else {
+            //     LimitUNA.classList.remove("warning");
+            //     InputTextUNA.style.border = '';
+            // }
         });
     }
 </script>
