@@ -2,8 +2,8 @@
 <?php $this->section('content') ?>
 <link rel="stylesheet" href="css/style-konten.css">
 <link rel="stylesheet" href="../assets/css/styles.min.css" />
-<link href="https://cdn.datatables.net/v/ju/dt-2.0.7/datatables.min.css" rel="stylesheet">
 <link href="assets/bootsrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="<?php base_url('DataTables/datatables.min.css') ?>" rel="stylesheet">
 <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-2.0.6/b-3.0.2/b-colvis-3.0.2/b-html5-3.0.2/b-print-3.0.2/r-3.0.2/datatables.min.css" rel="stylesheet">
 <link rel="stylesheet" href="<?= base_url('assets/poppins/font.css')  ?>">
 <style>
@@ -21,7 +21,7 @@
                 <a href="/paketharga" class="text-dark">
                     <i class="ti ti-chevron-left pe-4 align-middle p-1" style="font-size: 34px;"></i>
                 </a>
-                <h2>Benefit</h2>
+                <h3 class="pt-1">Benefit / <?= $namaP ?></h3>
             </div>
             <div class="col-4 d-flex gap-2 justify-content-end">
                 <button class="btn d-flex" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaltambahfitur" style="background-color: #03C988; color:white;"><i class="ti ti-plus pe-2 fs-6 align-middle p-1 "></i>
@@ -41,16 +41,10 @@
                             </div>
                             <div class="modal-body">
                                 <div class="mb-3 p-2 pt-0" style="text-align: left;">
-                                    <label for="exampleFormControlInput1" class="form-label">Nama Solusi
+                                    <label for="exampleFormControlInput1" class="form-label">Nama Paket
                                         :</label>
-                                    <select name="id_paket_harga" id="id_paket_harga" class="form-select">
-                                        <option value=""></option>
-                                        <?php foreach ($paketharga as $key => $value) { ?>
-                                            <option value="<?= $value['id'] ?>">
-                                                <?= $value['nama_paket'] ?>
-                                            </option>
-                                        <?php } ?>
-                                    </select>
+                                    <input type="text" name="id_paket_harga" id="id_paket_harga" class="form-control" value="<?= $id ?>" hidden>
+                                    <input type="text" name="namaP" id="namaP" class="form-control" value="<?= $namaP ?>" readonly>
                                 </div>
                                 <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
                                     <label for="exampleFormControlTextarea1" class="form-label">Benefit :</label>
@@ -98,16 +92,10 @@
                 <div class="modal-body">
                     <div class="mb-3 p-2 pt-0" style="text-align: left;">
                         <input type="text" name="id" id="id" hidden>
-                        <label for="exampleFormControlInput1" class="form-label">Nama paket
+                        <label for="exampleFormControlInput1" class="form-label">Nama Paket
                             :</label>
-                        <select name="id_paket_harga" id="id_paket_harga_ubah" class="form-select">
-                            <option value=""></option>
-                            <?php foreach ($paketharga as $key => $value) { ?>
-                                <option value="<?= $value['id'] ?>">
-                                    <?= $value['nama_paket'] ?>
-                                </option>
-                            <?php } ?>
-                        </select>
+                        <input type="text" name="id_paket_harga" id="id_paket_harga_ubah" class="form-control" value="<?= $id ?>" hidden>
+                        <input type="text" name="namaP" id="namaP" class="form-control" value="<?= $namaP ?>" readonly>
                     </div>
                     <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
                         <label for="exampleFormControlTextarea1" class="form-label">Benefit :</label>
@@ -148,21 +136,41 @@
 <!-- Skrip jQuery -->
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 <!-- Skrip DataTables -->
-<script src="../node_modules/datatables.net-jqui/js/dataTables.jqueryui.min.js"></script>
-<script src="../node_modules/datatables.net/js/dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/v/bs5/dt-2.0.8/datatables.min.js"></script>
+<!-- <script src="../node_modules/datatables.net-jqui/js/dataTables.jqueryui.min.js"></script>
+<script src="../node_modules/datatables.net/js/dataTables.min.js"></script> -->
 <!-- <script src="js/detail-fitur.js"></script> -->
 <script src="../assets/sweetalert2/dist/sweetalert2.all.min.js"></script>
 <?= session()->getFlashdata('sweetalert'); ?>
 <script>
     $(document).ready(function() {
         $('#tabelbenefit').DataTable({
-            "order": [[0, "desc"]],
+            "order": [
+                [0, "desc"]
+            ],
             "pageLength": 5,
             processing: true,
             serverSide: true,
             ajax: {
                 url: '<?= site_url('/benefit/getdatabenefit/' . $idB) ?>'
 
+            },
+            language: {
+                "sEmptyTable": "Tidak ada data yang tersedia di tabel",
+                "sInfo": "Menampilkan START hingga END dari TOTAL entri",
+                "sInfoEmpty": "Menampilkan 0 hingga 0 dari 0 entri",
+                "sInfoFiltered": "(disaring dari MAX total entri)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ",",
+                "sLengthMenu": "Tampilkan MENU",
+                "sLoadingRecords": "Memuat...",
+                "sProcessing": "Memproses...",
+                "sSearch": "Cari:",
+                "sZeroRecords": "Tidak ada data yang cocok ditemukan",
+                "oAria": {
+                    "sSortAscending": ": aktifkan untuk mengurutkan kolom secara meningkat",
+                    "sSortDescending": ": aktifkan untuk mengurutkan kolom secara menurun"
+                }
             },
             columns: [{
                     data: 'nama_paket',

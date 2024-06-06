@@ -240,34 +240,34 @@
 
     // ubah gambar
     // function preview(gambar, Pubah, hapusgambar) {
-        // const inputGambarubah = document.getElementById('gambar2');
-        // const pratinjauGambarubah = document.getElementById('previewUbah');
-        // const tombolHapusGambarubah = document.getElementById('hapusGambarUbah');
+    // const inputGambarubah = document.getElementById('gambar2');
+    // const pratinjauGambarubah = document.getElementById('previewUbah');
+    // const tombolHapusGambarubah = document.getElementById('hapusGambarUbah');
 
-        // inputGambarubah.addEventListener('change', function() {
-        //     const file = this.files[0];
+    // inputGambarubah.addEventListener('change', function() {
+    //     const file = this.files[0];
 
-        //     if (file) {
-        //         const reader = new FileReader();
-        //         reader.addEventListener('load', function() {
-        //             pratinjauGambarubah.src = this.result;
-        //             pratinjauGambarubah.classList.remove('d-none');
-        //             tombolHapusGambarubah.classList.remove('d-none');
-        //         });
-        //         reader.readAsDataURL(file);
-        //     } else {
-        //         pratinjauGambarubah.src = "#";
-        //         pratinjauGambarubah.classList.add('d-none');
-        //         tombolHapusGambarubah.classList.add('d-none');
-        //     }
-        // });
+    //     if (file) {
+    //         const reader = new FileReader();
+    //         reader.addEventListener('load', function() {
+    //             pratinjauGambarubah.src = this.result;
+    //             pratinjauGambarubah.classList.remove('d-none');
+    //             tombolHapusGambarubah.classList.remove('d-none');
+    //         });
+    //         reader.readAsDataURL(file);
+    //     } else {
+    //         pratinjauGambarubah.src = "#";
+    //         pratinjauGambarubah.classList.add('d-none');
+    //         tombolHapusGambarubah.classList.add('d-none');
+    //     }
+    // });
 
-        // tombolHapusGambarubah.addEventListener('click', function() {
-        //     pratinjauGambarubah.src = "#";
-        //     pratinjauGambarubah.classList.add('d-none');
-        //     tombolHapusGambarubah.classList.add('d-none');
-        //     inputGambarubah.value = ""; // Menghapus file dari input file
-        // });
+    // tombolHapusGambarubah.addEventListener('click', function() {
+    //     pratinjauGambarubah.src = "#";
+    //     pratinjauGambarubah.classList.add('d-none');
+    //     tombolHapusGambarubah.classList.add('d-none');
+    //     inputGambarubah.value = ""; // Menghapus file dari input file
+    // });
     // }
 
 
@@ -358,6 +358,7 @@
             InputTextS.value = InputTextS.value.substring(0, limitS);
             LimitS.textContent = limitS + "/" + limitS;
             LimittS.innerText = "Input tidak boleh lebih dari 30 karakter.";
+            
         } else {
             LimitS.classList.remove("warning");
             LimittS.innerText = "";
@@ -370,42 +371,48 @@
         const LimittEdit1 = document.getElementById(limit2);
         const maxlimit = 45;
 
-        // LimitEdit1.textContent = "0/" + maxlimit;
-
-        // InputTextEdit1.addEventListener("input", function() {
-        //     const textlengthEdit1 = InputTextEdit1.value.length;
-        //     LimitEdit1.textContent = textlengthEdit1 + "/" + maxlimit;
-
-        //     if (textlengthEdit1 > maxlimit) {
-        //         LimitEdit1.classList.add("warning");
-        //         // alert("Input tidak boleh lebih dari 45 karakter.");
-        //         // console.log(textlengthEdit1);
-        //         InputTextEdit1.value = InputTextEdit1.value.substring(0, maxlimit);
-        //         LimitEdit1.textContent = maxlimit + "/" + maxlimit;
-        //         LimittEdit1.textContent = "Input tidak boleh lebih dari 45 karakter.";
-        //         // console.log(LimittEdit1);
-        //     } else {
-        //         LimitEdit1.classList.remove("warning");
-        //         LimittEdit1.textContent = "";
-        //     }
-        // });
         LimitEdit1.textContent = "0/" + maxlimit;
 
         InputTextEdit1.addEventListener("input", function() {
             const textlengthEdit1 = InputTextEdit1.value.length;
-            console.log(textlengthEdit1 , maxlimit);
-            if (textlengthEdit1 > maxlimit) {
-                console.log('tes');
-                LimitS.classList.add("warning");
-                LimittEdit1.textContent = "Input tidak boleh lebih dari 45 karakter.";
-                InputTextEdit1.value = InputTextEdit1.value.substring(0, maxlimit);
-            } else {
-                LimitS.classList.remove("warning");
-                // LimittEdit1.textContent = "";
-            }
+            LimitEdit1.textContent = textlengthEdit1 + "/" + maxlimit;
 
-            LimitEdit1.textContent = InputTextEdit1.value.length + "/" + maxlimit;
+            if (textlengthEdit1 > maxlimit) {
+                // setTimeout(function() {
+                    LimitEdit1.classList.add("warning");
+                    // alert("Input tidak boleh lebih dari 45 karakter.");
+                    // console.log(textlengthEdit1);
+                    InputTextEdit1.value = InputTextEdit1.value.substring(0, maxlimit);
+                    LimitEdit1.textContent = maxlimit + "/" + maxlimit;
+                    LimittEdit1.textContent = "Input tidak boleh lebih dari 45 karakter.";
+                    // InputTextEdit1.style.border = "1px red solid";
+                // }, 500); //
+                // console.log(LimittEdit1);
+            } else {
+                setTimeout(function() {
+                    LimitEdit1.classList.remove("warning");
+                    LimittEdit1.textContent = "";
+                    // InputTextEdit1.style.border = "";
+                }, 5000); //
+            }
         });
+        // LimitEdit1.textContent = "0/" + maxlimit;
+
+        // InputTextEdit1.addEventListener("input", function() {
+        //     const textlengthEdit1 = InputTextEdit1.value.length;
+        //     console.log(textlengthEdit1 , maxlimit);
+        //     if (textlengthEdit1 > maxlimit) {
+        //         console.log('tes');
+        //         LimitS.classList.add("warning");
+        //         InputTextEdit1.value = InputTextEdit1.value.substring(0, maxlimit);
+        //         LimittEdit1.textContent = "Input tidak boleh lebih dari 45 karakter.";
+        //     } else {
+        //         LimitS.classList.remove("warning");
+        //         // LimittEdit1.textContent = "";
+        //     }
+
+        //     LimitEdit1.textContent = InputTextEdit1.value.length + "/" + maxlimit;
+        // });
 
     }
 </script>

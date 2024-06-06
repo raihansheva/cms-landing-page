@@ -2,8 +2,8 @@
 <?php $this->section('content') ?>
 <link rel="stylesheet" href="css/style-konten.css">
 <link rel="stylesheet" href="../assets/css/styles.min.css" />
-<link href="https://cdn.datatables.net/v/ju/dt-2.0.7/datatables.min.css" rel="stylesheet">
 <link href="assets/bootsrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="<?php base_url('DataTables/datatables.min.css') ?>" rel="stylesheet">
 <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-2.0.6/b-3.0.2/b-colvis-3.0.2/b-html5-3.0.2/b-print-3.0.2/r-3.0.2/datatables.min.css" rel="stylesheet">
 <link rel="stylesheet" href="assets/poppins/font.css">
 <link rel="stylesheet" href="<?= base_url('assets/poppins/font.css')  ?>">
@@ -30,7 +30,7 @@
                 <a href="/fitur" class="text-dark">
                     <i class="ti ti-chevron-left pe-4 align-middle p-1" style="font-size: 34px;"></i>
                 </a>
-                <h2>Detail Fitur</h2>
+                <h3 class="pt-1">Detail Fitur / <?= $namafitur ?></h3>
             </div>
             <div class="col-4 d-flex gap-2 justify-content-end">
                 <button class="btn d-flex" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaltambahfitur" style="background-color: #03C988; color:white;"><i class="ti ti-plus pe-2 fs-6 align-middle p-1 "></i>
@@ -224,8 +224,9 @@
 <!-- Skrip jQuery -->
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
 <!-- Skrip DataTables -->
-<script src="../node_modules/datatables.net.jqui/js/dataTables.jqueryui.min.js"></script>
-<script src="../node_modules/datatables.net/js/dataTables.min.js"></script>
+<!-- <script src="../node_modules/datatables.net.jqui/js/dataTables.jqueryui.min.js"></script>
+<script src="../node_modules/datatables.net/js/dataTables.min.js"></script> -->
+<script src="https://cdn.datatables.net/v/bs5/dt-2.0.8/datatables.min.js"></script>
 <script src="<?= base_url('assets/ckeditor5/build/ckeditor.js') ?>"></script>
 <script src="<?= base_url('../assets/sweetalert2/dist/sweetalert2.all.min.js') ?>"></script>
 

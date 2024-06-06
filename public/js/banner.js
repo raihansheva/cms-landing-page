@@ -34,15 +34,17 @@ function limitA(limit1) {
     const textlengthEdit1A = InputTextEdit1A.value.length;
     LimitEdit1A.textContent = textlengthEdit1A + "/" + limitEdit1A;
 
-    if (textlengthEdit1A >= limitEdit1A) {
+    if (textlengthEdit1A > limitEdit1A) {
       LimitEdit1A.classList.add("warning");
       // alert("Input tidak boleh lebih dari 45 karakter.");
       InputTextEdit1A.value = InputTextEdit1A.value.substring(0, limitEdit1A);
       LimitEdit1A.textContent = limitEdit1A + "/" + limitEdit1A;
       LimittEdit1A.innerText = "Input tidak boleh lebih dari 45 karakter.";
     } else {
-      LimitEdit1A.classList.remove("warning");
-      LimittEdit1A.innerText = "";
+      setTimeout(function () {
+        LimitEdit1A.classList.remove("warning");
+        LimittEdit1A.innerText = "";
+      }, 5000); //
     }
   });
 }
@@ -66,8 +68,10 @@ function limitB(limit1) {
       LimitEdit1B.textContent = limitEdit1B + "/" + limitEdit1B;
       LimittEdit1B.innerText = "Input tidak boleh lebih dari 45 karakter.";
     } else {
-      LimitEdit1B.classList.remove("warning");
-      LimittEdit1B.innerText = "";
+      setTimeout(function () {
+        LimitEdit1B.classList.remove("warning");
+        LimittEdit1B.innerText = "";
+      }, 5000); //
     }
   });
 }
@@ -90,8 +94,10 @@ InputTextEdit1C.addEventListener("input", function () {
     LimitEdit1C.textContent = limitEdit1C + "/" + limitEdit1C;
     LimittEdit1C.innerText = "Input tidak boleh lebih dari 45 karakter.";
   } else {
-    LimitEdit1C.classList.remove("warning");
-    LimittEdit1C.innerText = "";
+    setTimeout(function () {
+      LimitEdit1C.classList.remove("warning");
+      LimittEdit1C.innerText = "";
+    }, 5000); //
   }
 });
 

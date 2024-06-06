@@ -283,8 +283,10 @@
                 LimitUNA.textContent = limitUNA + "/" + limitUNA;
                 LimittUNA.innerText = "Input tidak boleh lebih dari 100 karakter.";
             } else {
-                LimitUNA.classList.remove("warning");
-                LimittUNA.innerText = "";
+                setTimeout(function() {
+                    LimitUNA.classList.remove("warning");
+                    LimittUNA.innerText = "";
+                }, 5000); //
             }
             // if (textlengthUNA >= limitUNA) {
             //     LimitUNA.classList.add("warning");

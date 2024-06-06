@@ -2,7 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\Headfitur;
+
 use App\Models\User;
 use App\Models\Fitur;
 use App\Models\Harga;
@@ -11,8 +11,10 @@ use App\Models\Footer;
 use App\Models\Layout;
 use App\Models\Solusi;
 use App\Models\Artikel;
+use App\Models\Benefit;
 use App\Models\Privacy;
 use App\Models\Riwayat;
+use App\Models\Headfitur;
 use App\Models\TermsCond;
 use App\Models\Tentangkami;
 use App\Models\Headersolusi;
@@ -227,11 +229,14 @@ class Home extends BaseController
 
         $fitur = new Fitur();
         $layout = new Layout();
+        $f = $fitur->where('id' , $id)->first();
+        $namaF = $f['nama_fitur'];
         // $idF = $id;
         $data = [
             'fitur' => $fitur->findAll(),
             'idF' => $id,
-            'layout' => $layout->findAll(2)
+            'layout' => $layout->findAll(2),
+            'namafitur' => $namaF
         ];
         return view('content/detail-fitur', $data);
     }
@@ -252,11 +257,16 @@ class Home extends BaseController
     public function benefit($id)
     {
         helper(['form']);
+        // $benefit = new Benefit();
         $harga = new Harga();
-        // $idB = $id
+        $B = $harga->where('id' , $id)->first();
+        $namapaket = $B['nama_paket'];
+        $idBT = $B['id'];
         $data = [
             'paketharga' => $harga->findAll(),
-            'idB' => $id
+            'idB' => $id,
+            'namaP' => $namapaket,
+            'id' => $idBT
         ];
         return view('content/benefit', $data);
     }

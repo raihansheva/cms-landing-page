@@ -222,36 +222,36 @@
     //     ClassicEditor.create(document.querySelector('#deskripsiU')).catch(error => {
     //         console.error(error);
     //     })
-        // tambah gambar
-        const inputGambar = document.getElementById('gambar');
-        const pratinjauGambar = document.getElementById('preview');
-        const tombolHapusGambar = document.getElementById('hapusGambar');
+    // tambah gambar
+    const inputGambar = document.getElementById('gambar');
+    const pratinjauGambar = document.getElementById('preview');
+    const tombolHapusGambar = document.getElementById('hapusGambar');
 
-        inputGambar.addEventListener('change', function() {
-            const file = this.files[0];
+    inputGambar.addEventListener('change', function() {
+        const file = this.files[0];
 
-            if (file) {
-                const reader = new FileReader();
-                reader.addEventListener('load', function() {
-                    pratinjauGambar.src = this.result;
-                    pratinjauGambar.classList.remove('d-none');
-                    tombolHapusGambar.classList.remove('d-none');
-                });
-                reader.readAsDataURL(file);
-            } else {
-                pratinjauGambar.src = "#";
-                pratinjauGambar.classList.add('d-none');
-                tombolHapusGambar.classList.add('d-none');
-            }
-        });
-
-        tombolHapusGambar.addEventListener('click', function() {
+        if (file) {
+            const reader = new FileReader();
+            reader.addEventListener('load', function() {
+                pratinjauGambar.src = this.result;
+                pratinjauGambar.classList.remove('d-none');
+                tombolHapusGambar.classList.remove('d-none');
+            });
+            reader.readAsDataURL(file);
+        } else {
             pratinjauGambar.src = "#";
             pratinjauGambar.classList.add('d-none');
             tombolHapusGambar.classList.add('d-none');
-            inputGambar.value = ""; // Menghapus file dari input file
-        });
+        }
     });
+
+    tombolHapusGambar.addEventListener('click', function() {
+        pratinjauGambar.src = "#";
+        pratinjauGambar.classList.add('d-none');
+        tombolHapusGambar.classList.add('d-none');
+        inputGambar.value = ""; // Menghapus file dari input file
+    });
+    // });
     const InputTextTK = document.getElementById("inputjudulTK");
     const LimitTK = document.getElementById("limitTK");
     const LimittTK = document.getElementById("limit2TK");
@@ -263,29 +263,16 @@
         const textlengthTK = InputTextTK.value.length;
         LimitTK.textContent = textlengthTK + "/" + limitTK;
 
-        // if (textlengthTK > limitTK) {
-        //     LimitTK.classList.add("warning");
-        //     // alert("Input tidak boleh lebih dari 45 karakter.");
-        //     InputTextTK.value = InputTextTK.value.substring(0, limitTK);
-        //     LimitTK.textContent = limitTK + "/" + limitTK;
-        //     LimittTK.innerText = "Input tidak boleh lebih dari 40 karakter.";
-        // } else {
-        //     LimitTK.classList.remove("warning");
-        //     LimittTK.innerText = "";
-        // }
-        
         if (textlengthTK > limitTK) {
-                LimitTK.classList.add("warning");
-                InputTextTK.style.border = "1px solid red";
-
-                if (textlengthTK > limitTK) {
-                    InputTextTK.value = InputTextTK.value.substring(0, limitTK);
-                    LimitTK.textContent = limitTK + "/" + limitTK;
-                }
-            } else {
-                LimitTK.classList.remove("warning");
-                InputTextTK.style.border = '';
-            }
+            LimitTK.classList.add("warning");
+            // alert("Input tidak boleh lebih dari 45 karakter.");
+            InputTextTK.value = InputTextTK.value.substring(0, limitTK);
+            LimitTK.textContent = limitTK + "/" + limitTK;
+            LimittTK.innerText = "Input tidak boleh lebih dari 40 karakter.";
+        } else {
+            LimitTK.classList.remove("warning");
+            LimittTK.innerText = "";
+        }
     });
 
 
@@ -300,28 +287,16 @@
         const textlengthJ = InputTextJ.value.length;
         LimitJ.textContent = textlengthJ + "/" + limitJ;
 
-        // if (textlengthJ > limitJ) {
-        //     LimitJ.classList.add("warning");
-        //     // alert("Input tidak boleh lebih dari 45 karakter.");
-        //     InputTextJ.value = InputTextJ.value.substring(0, limitJ);
-        //     LimitJ.textContent = limitJ + "/" + limitJ;
-        //     LimittJ.innerText = "Input tidak boleh lebih dari 40 karakter.";
-        // } else {
-        //     LimitJ.classList.remove("warning");
-        //     LimittJ.innerText = "";
-        // }
         if (textlengthJ > limitJ) {
-                LimitJ.classList.add("warning");
-                InputTextJ.style.border = "1px solid red";
-
-                if (textlengthJ > limitJ) {
-                    InputTextJ.value = InputTextJ.value.substring(0, limitJ);
-                    LimitJ.textContent = limitJ + "/" + limitJ;
-                }
-            } else {
-                LimitJ.classList.remove("warning");
-                InputTextJ.style.border = '';
-            }
+            LimitJ.classList.add("warning");
+            // alert("Input tidak boleh lebih dari 45 karakter.");
+            InputTextJ.value = InputTextJ.value.substring(0, limitJ);
+            LimitJ.textContent = limitJ + "/" + limitJ;
+            LimittJ.innerText = "Input tidak boleh lebih dari 40 karakter.";
+        } else {
+            LimitJ.classList.remove("warning");
+            LimittJ.innerText = "";
+        }
     });
 
     function limitText(input, limit1, limit2) {
@@ -338,15 +313,15 @@
 
             if (textlengthUJ > limitUJ) {
                 LimitUJ.classList.add("warning");
-                InputTextUJ.style.border = "1px solid red";
-
-                if (textlengthUJ > limitUJ) {
-                    InputTextUJ.value = InputTextUJ.value.substring(0, limitUJ);
-                    LimitUJ.textContent = limitUJ + "/" + limitUJ;
-                }
+                // alert("Input tidak boleh lebih dari 45 karakter.");
+                InputTextUJ.value = InputTextUJ.value.substring(0, limitUJ);
+                LimitUJ.textContent = limitUJ + "/" + limitUJ;
+                LimittUJ.innerText = "Input tidak boleh lebih dari 40 karakter.";
             } else {
-                LimitUJ.classList.remove("warning");
-                InputTextUJ.style.border = '';
+                setTimeout(function() {
+                    LimitUJ.classList.remove("warning");
+                    LimittUJ.innerText = "";
+                }, 5000); //
             }
         });
     }
