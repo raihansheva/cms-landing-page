@@ -1,11 +1,23 @@
-/*! DataTables 2.0.7
+/*
+ * This combined file was created by the DataTables downloader builder:
+ *   https://datatables.net/download
+ *
+ * To rebuild or modify this file with the latest versions of the included
+ * software please visit:
+ *   https://datatables.net/download/#bs5/dt-2.0.8
+ *
+ * Included libraries:
+ *   DataTables 2.0.8
+ */
+
+/*! DataTables 2.0.8
  * © SpryMedia Ltd - datatables.net/license
  */
 
 /**
  * @summary     DataTables
  * @description Paginate, search and order HTML tables
- * @version     2.0.7
+ * @version     2.0.8
  * @author      SpryMedia Ltd
  * @contact     www.datatables.net
  * @copyright   SpryMedia Ltd.
@@ -551,7 +563,7 @@
 		 *
 		 *  @type string
 		 */
-		builder: "-source-",
+		builder: "bs5/dt-2.0.8",
 	
 	
 		/**
@@ -7560,6 +7572,16 @@
 			order  = opts.order,   // applied, current, index (original - compatibility with 1.9)
 			page   = opts.page;    // all, current
 	
+		if ( _fnDataSource( settings ) == 'ssp' ) {
+			// In server-side processing mode, most options are irrelevant since
+			// rows not shown don't exist and the index order is the applied order
+			// Removed is a special case - for consistency just return an empty
+			// array
+			return search === 'removed' ?
+				[] :
+				_range( 0, displayMaster.length );
+		}
+	
 		if ( page == 'current' ) {
 			// Current page implies that order=current and filter=applied, since it is
 			// fairly senseless otherwise, regardless of what order and search actually
@@ -8231,7 +8253,7 @@
 	_api_register( _child_obj+'.isShown()', function () {
 		var ctx = this.context;
 	
-		if ( ctx.length && this.length ) {
+		if ( ctx.length && this.length && ctx[0].aoData[ this[0] ] ) {
 			// _detailsShown as false or undefined will fall through to return false
 			return ctx[0].aoData[ this[0] ]._detailsShow || false;
 		}
@@ -8254,7 +8276,7 @@
 	// can be an array of these items, comma separated list, or an array of comma
 	// separated lists
 	
-	var __re_column_selector = /^([^:]+):(name|title|visIdx|visible)$/;
+	var __re_column_selector = /^([^:]+)?:(name|title|visIdx|visible)$/;
 	
 	
 	// r1 and r2 are redundant - but it means that the parameters match for the
@@ -8326,17 +8348,24 @@
 				switch( match[2] ) {
 					case 'visIdx':
 					case 'visible':
-						var idx = parseInt( match[1], 10 );
-						// Visible index given, convert to column index
-						if ( idx < 0 ) {
-							// Counting from the right
-							var visColumns = columns.map( function (col,i) {
-								return col.bVisible ? i : null;
-							} );
-							return [ visColumns[ visColumns.length + idx ] ];
+						if (match[1]) {
+							var idx = parseInt( match[1], 10 );
+							// Visible index given, convert to column index
+							if ( idx < 0 ) {
+								// Counting from the right
+								var visColumns = columns.map( function (col,i) {
+									return col.bVisible ? i : null;
+								} );
+								return [ visColumns[ visColumns.length + idx ] ];
+							}
+							// Counting from the left
+							return [ _fnVisibleToColumnIndex( settings, idx ) ];
 						}
-						// Counting from the left
-						return [ _fnVisibleToColumnIndex( settings, idx ) ];
+						
+						// `:visible` on its own
+						return columns.map( function (col, i) {
+							return col.bVisible ? i : null;
+						} );
 	
 					case 'name':
 						// match by name. `names` is column index complete and in order
@@ -9611,7 +9640,7 @@
 	 *  @type string
 	 *  @default Version number
 	 */
-	DataTable.version = "2.0.7";
+	DataTable.version = "2.0.8";
 	
 	/**
 	 * Private data store, containing all of the settings objects that are
@@ -13152,3 +13181,154 @@
 
 	return DataTable;
 }));
+
+
+/*! DataTables Bootstrap 5 integration
+ * © SpryMedia Ltd - datatables.net/license
+ */
+
+(function( factory ){
+	if ( typeof define === 'function' && define.amd ) {
+		// AMD
+		define( ['jquery', 'datatables.net'], function ( $ ) {
+			return factory( $, window, document );
+		} );
+	}
+	else if ( typeof exports === 'object' ) {
+		// CommonJS
+		var jq = require('jquery');
+		var cjsRequires = function (root, $) {
+			if ( ! $.fn.dataTable ) {
+				require('datatables.net')(root, $);
+			}
+		};
+
+		if (typeof window === 'undefined') {
+			module.exports = function (root, $) {
+				if ( ! root ) {
+					// CommonJS environments without a window global must pass a
+					// root. This will give an error otherwise
+					root = window;
+				}
+
+				if ( ! $ ) {
+					$ = jq( root );
+				}
+
+				cjsRequires( root, $ );
+				return factory( $, root, root.document );
+			};
+		}
+		else {
+			cjsRequires( window, jq );
+			module.exports = factory( jq, window, window.document );
+		}
+	}
+	else {
+		// Browser
+		factory( jQuery, window, document );
+	}
+}(function( $, window, document ) {
+'use strict';
+var DataTable = $.fn.dataTable;
+
+
+
+/**
+ * DataTables integration for Bootstrap 5.
+ *
+ * This file sets the defaults and adds options to DataTables to style its
+ * controls using Bootstrap. See https://datatables.net/manual/styling/bootstrap
+ * for further information.
+ */
+
+/* Set the defaults for DataTables initialisation */
+$.extend( true, DataTable.defaults, {
+	renderer: 'bootstrap'
+} );
+
+
+/* Default class modification */
+$.extend( true, DataTable.ext.classes, {
+	container: "dt-container dt-bootstrap5",
+	search: {
+		input: "form-control form-control-sm"
+	},
+	length: {
+		select: "form-select form-select-sm"
+	},
+	processing: {
+		container: "dt-processing card"
+	}
+} );
+
+
+/* Bootstrap paging button renderer */
+DataTable.ext.renderer.pagingButton.bootstrap = function (settings, buttonType, content, active, disabled) {
+	var btnClasses = ['dt-paging-button', 'page-item'];
+
+	if (active) {
+		btnClasses.push('active');
+	}
+
+	if (disabled) {
+		btnClasses.push('disabled')
+	}
+
+	var li = $('<li>').addClass(btnClasses.join(' '));
+	var a = $('<a>', {
+		'href': disabled ? null : '#',
+		'class': 'page-link'
+	})
+		.html(content)
+		.appendTo(li);
+
+	return {
+		display: li,
+		clicker: a
+	};
+};
+
+DataTable.ext.renderer.pagingContainer.bootstrap = function (settings, buttonEls) {
+	return $('<ul/>').addClass('pagination').append(buttonEls);
+};
+
+DataTable.ext.renderer.layout.bootstrap = function ( settings, container, items ) {
+	var row = $( '<div/>', {
+			"class": items.full ?
+				'row mt-2 justify-content-md-center' :
+				'row mt-2 justify-content-between'
+		} )
+		.appendTo( container );
+
+	$.each( items, function (key, val) {
+		var klass;
+
+		// Apply start / end (left / right when ltr) margins
+		if (val.table) {
+			klass = 'col-12';
+		}
+		else if (key === 'start') {
+			klass = 'col-md-auto me-auto';
+		}
+		else if (key === 'end') {
+			klass = 'col-md-auto ms-auto';
+		}
+		else {
+			klass = 'col-md';
+		}
+
+		$( '<div/>', {
+				id: val.id || null,
+				"class": klass + ' ' + (val.className || '')
+			} )
+			.append( val.contents )
+			.appendTo( row );
+	} );
+};
+
+
+return DataTable;
+}));
+
+

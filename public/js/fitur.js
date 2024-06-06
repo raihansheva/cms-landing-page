@@ -179,6 +179,23 @@ $(document).ready(function () {
         ajax: {
             url: '/fitur/getdatafitur',
         },
+        language: {
+            "sEmptyTable": "Tidak ada data yang tersedia di tabel",
+            "sInfo": "Menampilkan START hingga END dari TOTAL entri",
+            "sInfoEmpty": "Menampilkan 0 hingga 0 dari 0 entri",
+            "sInfoFiltered": "(disaring dari MAX total entri)",
+            "sInfoPostFix": "",
+            "sInfoThousands": ",",
+            "sLengthMenu": "Tampilkan MENU",
+            "sLoadingRecords": "Memuat...",
+            "sProcessing": "Memproses...",
+            "sSearch": "Cari:",
+            "sZeroRecords": "Tidak ada data yang cocok ditemukan",
+            "oAria": {
+                "sSortAscending": ": aktifkan untuk mengurutkan kolom secara meningkat",
+                "sSortDescending": ": aktifkan untuk mengurutkan kolom secara menurun"
+            }
+        },
         columns: [{
             data: 'nama_fitur',
         },

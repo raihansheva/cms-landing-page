@@ -2,12 +2,12 @@
 <?php $this->section('content') ?>
 <link rel="stylesheet" href="css/style-konten.css">
 <link rel="stylesheet" href="../assets/css/styles.min.css" />
-<link href="https://cdn.datatables.net/v/ju/dt-2.0.7/datatables.min.css" rel="stylesheet">
+<!-- <link href="https://cdn.datatables.net/v/ju/dt-2.0.7/datatables.min.css" rel="stylesheet"> -->
+ 
 <link href="assets/bootsrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="<?php base_url('DataTables/datatables.min.css') ?>" rel="stylesheet">
 <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-2.0.6/b-3.0.2/b-colvis-3.0.2/b-html5-3.0.2/b-print-3.0.2/r-3.0.2/datatables.min.css" rel="stylesheet">
 <link rel="stylesheet" href="<?php base_url('../assets/sweetalert2/dist/sweetalert2.min.css') ?>">
-
-
 <div class="bungkus">
     <div class="konten-banner">
         <!-- <div class="area-banner">
@@ -224,63 +224,13 @@
     </div>
 </div>
 <!-- Skrip jQuery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 <script src="../node_modules/jquery/dist/jquery.min.js"></script>
-<script src="../node_modules/datatables.net/js/dataTables.min.js"></script>
+<!-- <script src="../node_modules/datatables.net-bs5/js/dataTables.boostrap.min.js"></script> -->
+<!-- <script src="../node_modules/datatables.net/js/dataTables.min.js"></script> -->
+<script src="https://cdn.datatables.net/v/bs5/dt-2.0.8/datatables.min.js"></script>
 <!-- <script src="js/ajax_fitur.js"></script> -->
 <script src="js/fitur.js"></script>
 <script src="../assets/sweetalert2/dist/sweetalert2.all.min.js"></script>
 <?= session()->getFlashdata('sweetalert'); ?>
-<!-- <script>
-    $(document).ready(function () {
-        $('#tabelfitur').DataTable({
-            processing: true,
-            serverSide: true,
-            ajax: {
-                url: '/fitur/getdatafitur',
-            },
-            columns: [{
-                data: 'nama_fitur',
-                name: 'nama_fitur'
-            },
-            {
-                data: 'deskripsi',
-                name: 'deskripsi'
-            },
-            {
-                data: 'id_solusi',
-                name: 'id_solusi'
-            },
-            {
-                data: 'icon',
-                name: 'icon'
-            },
-            {
-                data: 'id',
-                name: 'id',
-                render: function (data, type, row) {
-                    console.log(row);
-                    return '<div class="d-flex gap-2"><a class="btn btn-primary d-flex btn-sm" href="/detail-fitur"><i class="ti ti-list-details pe-2 fs-6 align-middle p-1 "></i><p class="m-0 p-1 align-middle">Detail</p></a><button type="button" class="btn d-flex btn-sm btn-edit" style="background-color: #03C988; color:white;" data-id="' + data + '" data-nama_fitur="' + row.nama_fitur + '"> <i class="ti ti-edit pe-2 fs-6 align-middle p-1 "></i> <p class="m-0 p-1 align-middle">Ubah</p></button><button type="button" class="btn btn-danger d-flex btn-sm btn-hapus" data-id="' + data + '"><i class="ti ti-trash pe-2 fs-6 align-middle p-1 "></button></div>'
-                },
-                orderable: false
-            },
-            ]
-        });
-        //$('#tabelfitur').DataTable();
-        $('#tabelfitur').on("click", '.btn-edit', function () {
-            let id = $(this).data('id');
-            let nama = $(this).data('nama_fitur');
-            alert(id);
-            $('#nama_fitur_ubah').val(nama)
-            $('#exampleModaleditfitur').modal('show')
-        });
-
-        $('#tabelfitur').on("click", '.btn-hapus', function () {
-            let id = $(this).data('id');
-            // alert(id);
-            $('#exampleModalhapusfitur').modal('show')
-        });
-
-    });
-</script> -->
 <?php $this->endsection() ?>
