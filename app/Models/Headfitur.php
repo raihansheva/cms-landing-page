@@ -4,18 +4,15 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class Fitur extends Model
+class Headfitur extends Model
 {
-    protected $table            = 'fitur';
+    protected $table            = 'headfitur';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id','nama_fitur', 'slug' ,'deskripsi','id_solusi','icon' , 'created_at'];
-    
-    
-    
+    protected $allowedFields    = ['id' , 'judul_fitur' , 'deskripsi'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

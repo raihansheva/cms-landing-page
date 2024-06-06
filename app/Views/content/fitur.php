@@ -15,13 +15,47 @@
         <div class="col-12 d-flex justify-content-between">
 
             <h2>Fitur</h2>
-            <div class="col-4 d-flex gap-2 justify-content-end">
+            <div class="col-5 d-flex gap-2 justify-content-end">
+            <button class="btn d-flex" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaljudulfitur" style="background-color: #03C988; color:white; height: 45px;"><i class="ti ti-layout-navbar pe-2 fs-6 align-middle p-1 "></i>
+                    <span class="m-0 p-1 " style="width: 130px;">Ubah judul fitur</span>
+                </button>
                 <button class="btn d-flex" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaltambahfitur" style="background-color: #03C988; color:white;"><i class="ti ti-plus pe-2 fs-6 align-middle p-1 "></i>
                     <p class="m-0 p-1 align-middle fs-3">Tambah fitur</p>
                 </button>
             </div>
 
-
+            <!-- modal judul fitur -->
+            <div class="modal fade" id="exampleModaljudulfitur" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                    <form action="/ubahheaderfitur" method="post" id="form-data-solusi" class="modal-dialog-scrollable" enctype="multipart/form-data">
+                        <!--  -->
+                        <div class="modal-content">
+                            <div class="modal-header border-bottom">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Ubah judul fitur</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <input type="text" value="<?= $head[0]['id'] ?>" name="id" id="id" hidden>
+                                <div class="mb-3 p-2 pt-0" style="text-align: left;">
+                                    <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
+                                        Judul Fitur : <p class="p-0 m-0" id="limitS"></p></label>
+                                    <input type="text" class="form-control m-0" id="inputjudulS" placeholder="Masukan Judul Solusi" name="judul_fitur" value="<?= $head[0]['judul_fitur'] ?>">
+                                    <span class="text-danger" id="limit2S"></span>
+                                </div>
+                                <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Deskripsi :</label>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="8.5" name="deskripsi"><?= $head[0]['deskripsi'] ?></textarea>
+                                </div>
+                            </div>
+                            <div class="modal-footer border-top pe-4">
+                                <button class="btn d-flex" type="submit" style="background-color: #03C988; color:white;" id="btn-simpan"><i class="ti ti-download pe-2 fs-6 align-middle p-1 "></i>
+                                    <p class="m-0 p-1 align-middle">Simpan</p>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
             <!-- Modal Tambah fitur -->
             <div class="modal fade" id="exampleModaltambahfitur" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -40,12 +74,7 @@
                                     <span class="text-danger" id="limit2"></span>
                                     <!-- <label for="exampleFormControlInput1" class="form-label">Nama Fitur :</label>
                                     <input type="text" class="form-control" id="nama_fitur" placeholder="Masukan Nama Solusi" name="nama_fitur"> -->
-                                    <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
-                                        Nama Fitur : <p class="p-0 m-0" id="limit"></p></label>
-                                    <input type="text" class="form-control m-0" id="inputjudul" placeholder="Masukan Nama Fitur" name="nama_fitur">
-                                    <span class="text-danger" id="limit2"></span>
-                                    <!-- <label for="exampleFormControlInput1" class="form-label">Nama Fitur :</label>
-                                    <input type="text" class="form-control" id="nama_fitur" placeholder="Masukan Nama Solusi" name="nama_fitur"> -->
+                                    
                                 </div>
                                 <div class="col-12 d-flex">
                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
@@ -88,6 +117,14 @@
 
         </div>
         <br>
+        <div class="col-12">
+            <div class="col-12 text-center">
+                <h3><?= $head[0]['judul_fitur'] ?></h3>
+            </div>
+            <div class="col-12 text-center">
+                <p><?= $head[0]['deskripsi'] ?></p>
+            </div>
+        </div>
         <!-- <div class="card col-4" style="height: 200px; border:1px solid rgb(229, 234, 239);"> -->
         <div class="col-12 " style="height: 100%;">
             <table id="tabelfitur" class="table col-12" style="height: auto; background-color: white; border-radius: 10px; ">
@@ -115,7 +152,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <input type="text" value="<?= $value['id'] ?>" name="id" id="id" hidden>
+                    <input type="text" value="" name="id" id="id_fitur" hidden>
                     <div class="mb-3 p-2 pt-0" style="text-align: left;">
                         <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
                             Nama Fitur : <p class="p-0 m-0" id="limitedit1"></p></label>
@@ -175,7 +212,6 @@
                 <?= csrf_field(); ?>
                 <div class="modal-body">
                     <p class="text-center">Yakin ingin hapus fitur ini?</p>
-                    <input type="text" value="<?= $value['id'] ?>" name="id" id="id_fitur_hapus" hidden>
                     <input type="text" value="<?= $value['id'] ?>" name="id" id="id_fitur_hapus" hidden>
                 </div>
                 <div class="modal-footer d-flex justify-content-center">

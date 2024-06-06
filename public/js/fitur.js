@@ -124,6 +124,28 @@ InputText.addEventListener("input", function () {
     Limitt.innerText ="";
   }
 });
+const InputTextS = document.getElementById("inputjudulS");
+const LimitS = document.getElementById("limitS");
+const LimittS = document.getElementById("limit2S");
+const limitS = 30;
+
+LimitS.textContent = "0/" + limitS;
+
+InputTextS.addEventListener("input", function() {
+    const textlengthS = InputTextS.value.length;
+    LimitS.textContent = textlengthS + "/" + limitS;
+
+    if (textlengthS > limitS) {
+        LimitS.classList.add("warning");
+        // alert("Input tidak boleh lebih dari 45 karakter.");
+        InputTextS.value = InputTextS.value.substring(0, limitS);
+        LimitS.textContent = limitS + "/" + limitS;
+        LimittS.innerText = "Input tidak boleh lebih dari 30 karakter.";
+    } else {
+        LimitS.classList.remove("warning");
+        LimittS.innerText = "";
+    }
+});
 
 const InputTextEdit1 = document.getElementById("nama_fitur_ubah");
 const LimitEdit1 = document.getElementById("limitedit1");
@@ -149,6 +171,7 @@ InputTextEdit1.addEventListener("input", function () {
 });
 $(document).ready(function () {
     $('#tabelfitur').DataTable({
+        "order": [[5, "asc"]],
         "pageLength": 5,
 
         processing: true,
@@ -188,8 +211,8 @@ $(document).ready(function () {
         let nama = $(this).data('nama_fitur');
         let desk = $(this).data('deskripsi');
         let idS = $(this).data('idS');
-        // alert(desk);
-        $('#id').val(id)
+        // alert(id);
+        $('#id_fitur').val(id)
         $('#nama_fitur_ubah').val(nama)
         $('#deskripsi_ubah').val(desk)
         $('#id_solusi_ubah').val(idS)

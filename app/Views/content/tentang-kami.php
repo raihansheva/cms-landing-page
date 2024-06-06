@@ -206,22 +206,22 @@
 <script src="<?= base_url('assets/ckeditor5/build/ckeditor.js') ?>"></script>
 <?= session()->getFlashdata('sweetalert'); ?>
 <script>
-    $(document).ready(function() {
-        let editor;
-        ClassicEditor.create(document.querySelector('#deskripsi'))
-            .then(newEditor => {
-                editor = newEditor
-            })
-            .catch(error => {
-                console.error(error);
-            })
-        // let editor2;
-        ClassicEditor.create(document.querySelector('#deskripsiI')).catch(error => {
-            console.error(error);
-        })
-        ClassicEditor.create(document.querySelector('#deskripsiU')).catch(error => {
-            console.error(error);
-        })
+    // $(document).ready(function() {
+    //     let editor;
+    //     ClassicEditor.create(document.querySelector('#deskripsi'))
+    //         .then(newEditor => {
+    //             editor = newEditor
+    //         })
+    //         .catch(error => {
+    //             console.error(error);
+    //         })
+    //     // let editor2;
+    //     ClassicEditor.create(document.querySelector('#deskripsiI')).catch(error => {
+    //         console.error(error);
+    //     })
+    //     ClassicEditor.create(document.querySelector('#deskripsiU')).catch(error => {
+    //         console.error(error);
+    //     })
         // tambah gambar
         const inputGambar = document.getElementById('gambar');
         const pratinjauGambar = document.getElementById('preview');

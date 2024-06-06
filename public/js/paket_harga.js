@@ -52,6 +52,7 @@ $(document).ready(function () {
   });
 
   $("#tabelharga").DataTable({
+    "order": [[0, "desc"]],
     pageLength: 5,
     processing: true,
     serverSide: true,

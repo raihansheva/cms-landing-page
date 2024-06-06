@@ -294,6 +294,7 @@
             })
 
         $('#tabelfitur').DataTable({
+            // "order": [[0, "desc"]],
             "pageLength": 5,
             processing: true,
             serverSide: true,
@@ -328,7 +329,7 @@
                     orderable: false
                 },
             ],
-            "order": [[2, "desc"]]
+            "order": [[0, "desc"]]
         });
         //$('#tabelfitur').DataTable();
         $('#tabelfitur').on("click", '.btn-edit-detail', function() {

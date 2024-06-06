@@ -2,9 +2,7 @@
 
 namespace App\Controllers;
 
-use App\Models\KontakClient;
-use App\Models\Privacy;
-use App\Models\TermsCond;
+use App\Models\Headfitur;
 use App\Models\User;
 use App\Models\Fitur;
 use App\Models\Harga;
@@ -13,8 +11,12 @@ use App\Models\Footer;
 use App\Models\Layout;
 use App\Models\Solusi;
 use App\Models\Artikel;
+use App\Models\Privacy;
+use App\Models\Riwayat;
+use App\Models\TermsCond;
 use App\Models\Tentangkami;
 use App\Models\Headersolusi;
+use App\Models\KontakClient;
 use App\Models\Headerartikel;
 use App\Models\Headertentangkami;
 use App\Controllers\BaseController;
@@ -26,10 +28,14 @@ class Home extends BaseController
     // {
     //     $this->model = new Banner();
     // }
-    
+
     public function get_data_kontak()
     {
         return DataTables::use('kontak_user')->make();
+    }
+    public function get_data_riwayat()
+    {
+        return DataTables::use('riwayat')->make();
     }
     public function login()
     {
@@ -39,9 +45,25 @@ class Home extends BaseController
     {
         $pp = new Privacy();
         $id = $this->request->getPost('id');
+        $session = session();
+        $userID = $session->get('id');
+        $nama = $session->get('nama');
+        $riwayat = new Riwayat();
+
+        $desk = $this->request->getPost('deskripsi');
+
+        $datasebelumnya = $pp->find($id);
+        $desksebelumnya = $datasebelumnya['deskripsi'];
         $pp->save([
             'id' => $id,
-            'deskripsi' => $this->request->getPost('deskripsi'),
+            'deskripsi' => $desk,
+        ]);
+        $riwayat->save([
+            'id_user' => $userID,
+            'nama' => $nama,
+            'aktivitas' => 'Mengubah',
+            'aksi' => 'Mengubah Privacy & Policy',
+            'created_at' => date('Y-m-d H:i:s')
         ]);
         session()->setFlashdata('sweetalert', "
                 <script>
@@ -59,9 +81,24 @@ class Home extends BaseController
     {
         $pp = new TermsCond();
         $id = $this->request->getPost('id');
+        $session = session();
+        $userID = $session->get('id');
+        $nama = $session->get('nama');
+        $riwayat = new Riwayat();
+        $desk = $this->request->getPost('deskripsi');
+
+        $datasebelumnya = $pp->find($id);
+        $desksebelumnya = $datasebelumnya['deskripsi'];
         $pp->save([
             'id' => $id,
-            'deskripsi' => $this->request->getPost('deskripsi'),
+            'deskripsi' => $desk,
+        ]);
+        $riwayat->save([
+            'id_user' => $userID,
+            'nama' => $nama,
+            'aktivitas' => 'Mengubah',
+            'aksi' => 'Mengubah Terms & Conditions',
+            'created_at' => date('Y-m-d H:i:s')
         ]);
         session()->setFlashdata('sweetalert', "
                 <script>
@@ -82,7 +119,7 @@ class Home extends BaseController
     {
         $pp = new Privacy();
         $data = [
-            'pp'=> $pp->findAll()
+            'pp' => $pp->findAll()
         ];
         return view('content/other/privacy', $data);
     }
@@ -90,7 +127,7 @@ class Home extends BaseController
     {
         $tc = new TermsCond();
         $data = [
-            'tc'=> $tc->findAll()
+            'tc' => $tc->findAll()
         ];
         return view('content/other/termsCond', $data);
     }
@@ -100,6 +137,11 @@ class Home extends BaseController
     public function kontakuser()
     {
         return view('content/kontakuser');
+    }
+
+    public function riwayat()
+    {
+        return view('content/riwayat');
     }
 
     public function hapuskontak()
@@ -119,7 +161,7 @@ class Home extends BaseController
             'fitur' => $fitur->countAll(),
             'harga' => $harga->countAll(),
         ];
-        return view('content/home' , $data);
+        return view('content/home', $data);
     }
     public function profile()
     {
@@ -170,9 +212,11 @@ class Home extends BaseController
         helper(['form']);
         $fitur = new Fitur();
         $solusi = new Solusi();
+        $headfitur = new Headfitur();
         $data = [
             'fitur' => $fitur->findAll(),
-            'solusi' => $solusi->findAll()
+            'solusi' => $solusi->findAll(),
+            'head' => $headfitur->findAll()
         ];
 
         return view('content/fitur', $data,);

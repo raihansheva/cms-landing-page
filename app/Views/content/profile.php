@@ -134,7 +134,7 @@
                                     <h1 class="modal-title fs-5" id="exampleModalToggleLabel2">Ubah Password</h1>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
-                                <form id="form-ubah-password">
+                                <form action="/ubahpassword" method="post" id="form-ubah-password">
                                     <div class="modal-body">
                                         <?php
                                         $modal = session()->getFlashdata('modal');
@@ -165,7 +165,7 @@
                                     </div>
                                     <div class="modal-footer border-top ">
                                         <button class="btn btn-primary" type="button" data-bs-target="#exampleModaleditprofile" data-bs-toggle="modal">Kembali</button>
-                                        <button class="btn" type="button" style="background-color: #03C988; color:white;" id="btn-ubah">Ubah</button>
+                                        <button class="btn" type="submit" style="background-color: #03C988; color:white;" id="btn-ubah">Ubah</button>
                                     </div>
                                 </form>
                             </div>
@@ -187,47 +187,43 @@
     $(document).ready(function() {
         // Cek jika ada flashdata error atau success, lalu tampilkan modal
         // 
-        $('#btn-ubah').click(function() {
-            const formdata = new FormData($("#form-ubah-password")[0]);
-            const overlay = document.getElementsByClassName('.overlay');
-            console.log(formdata);
-            $.ajax({
-                type: 'post',
-                headers: {
-                    'X-Requested-With': 'XMLHttpRequest'  
-                },
-                url: '/ubahpassword',
-                data: formdata,
-                dataType: "json",
-                contentType: false,
-                processData: false,
-                success: function(res) {
-                    // if (res.status) {
-                    //     alert('anda berhasil menyimpan data');
-                    // }
-                },
-                beforeSend: function(res) {
-                    
-                },
-                complete: function(res) {
-                    if (res.status == true) {
-                        alert('anda berhasil menyimpan data');
-                    }else{
-                        alert('anda gagal menyimpan data');
-                    }
-                },
-                error: function(res) {
+        // $('#btn-ubah').click(function() {
+        //     const formdata = new FormData($("#form-ubah-password")[0]);
+        //     const overlay = document.getElementsByClassName('.overlay');
+        //     console.log(formdata);
+        //     $.ajax({
+        //         type: 'post',
+        //         headers: {
+        //             'X-Requested-With': 'XMLHttpRequest'
+        //         },
+        //         url: '/ubahpassword',
+        //         data: formdata,
+        //         dataType: "json",
+        //         contentType: false,
+        //         processData: false,
+        //         success: function(res) {
+        //             // if (res.status) {
+        //             //     alert('anda berhasil menyimpan data');
+        //             // }
+        //         },
+        //         beforeSend: function(res) {
 
-                },
-                fail: function(res) {
+        //         },
+        //         complete: function(res) {
+        //             
+        //         },
+        //         error: function(res) {
 
-                },
-            })
-        });
+        //         },
+        //         fail: function(res) {
+
+        //         },
+        //     })
+        // });
         var modalData = <?php echo json_encode(session()->getFlashdata('modal')); ?>;
-        if (modalData) {
-            $('#' + modalData.name).modal('show');
-        }
+                    if (modalData) {
+                        $('#' + modalData.name).modal('show');
+                    }
     });
 </script>
 <!-- -->

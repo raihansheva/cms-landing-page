@@ -30,6 +30,11 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
     $routes->post('/ubahprofile', 'Aksilogin::editprofile');
     $routes->post('/ubahpassword', 'Aksilogin::editpassword');
     // ----------->
+    
+
+    $routes->get('/riwayat', 'Home::riwayat');
+    $routes->get('/home/getdatariwayat', 'Home::get_data_riwayat');
+    
 
     // kontak dari user
     $routes->get('/kontakuser', 'Home::kontakuser');
@@ -65,6 +70,7 @@ $routes->group('', ['filter' => 'auth'], function ($routes) {
     $routes->get('/fitur', 'Home::fitur');
     $routes->post('/tambahfitur', 'FiturController::tambahfitur');
     $routes->post('/ubahfitur', 'FiturController::ubahfitur');
+    $routes->post('/ubahheaderfitur', 'FiturController::ubahheaderfitur');
     $routes->post('/hapusfitur', 'FiturController::hapusfitur');
     $routes->get('/fitur/getdatafitur', 'FiturController::get_data_fitur');
     // ----------->

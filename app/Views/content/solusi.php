@@ -148,8 +148,8 @@
                                                     <label class="fs-2" for="">* <span>Format file : .jpg |
                                                             .png</span></label>
                                                     <div class="col-12 mt-2 text-end">
-                                                        <i class="ti ti-x d-none" type="button" id="hapusGambarUbah" style="font-size: 24px"></i>
-                                                        <img src="#" alt="Pratinjau Gambar" id="previewUbah" class="preview-image d-none image-fluid col-12" width="100%">
+                                                        <i class="ti ti-x d-none" type="button" id="hapusGambarUbah<?= $key + 1 ?>" style="font-size: 24px"></i>
+                                                        <img src="#" alt="Pratinjau Gambar" id="previewUbah<?= $key + 1 ?>" class="preview-image d-none image-fluid col-12" width="100%">
                                                     </div>
                                                 </div>
                                             </div>
@@ -239,34 +239,37 @@
     });
 
     // ubah gambar
-    // const inputGambarubah = document.getElementById('gambarUbah');
-    // const pratinjauGambarubah = document.getElementById('previewUbah');
-    // const tombolHapusGambarubah = document.getElementById('hapusGambarUbah');
+    // function preview(gambar, Pubah, hapusgambar) {
+        // const inputGambarubah = document.getElementById('gambar2');
+        // const pratinjauGambarubah = document.getElementById('previewUbah');
+        // const tombolHapusGambarubah = document.getElementById('hapusGambarUbah');
 
-    // inputGambarubah.addEventListener('change', function() {
-    //     const file = this.files[0];
+        // inputGambarubah.addEventListener('change', function() {
+        //     const file = this.files[0];
 
-    //     if (file) {
-    //         const reader = new FileReader();
-    //         reader.addEventListener('load', function() {
-    //             pratinjauGambarubah.src = this.result;
-    //             pratinjauGambarubah.classList.remove('d-none');
-    //             tombolHapusGambarubah.classList.remove('d-none');
-    //         });
-    //         reader.readAsDataURL(file);
-    //     } else {
-    //         pratinjauGambarubah.src = "#";
-    //         pratinjauGambarubah.classList.add('d-none');
-    //         tombolHapusGambarubah.classList.add('d-none');
-    //     }
-    // });
+        //     if (file) {
+        //         const reader = new FileReader();
+        //         reader.addEventListener('load', function() {
+        //             pratinjauGambarubah.src = this.result;
+        //             pratinjauGambarubah.classList.remove('d-none');
+        //             tombolHapusGambarubah.classList.remove('d-none');
+        //         });
+        //         reader.readAsDataURL(file);
+        //     } else {
+        //         pratinjauGambarubah.src = "#";
+        //         pratinjauGambarubah.classList.add('d-none');
+        //         tombolHapusGambarubah.classList.add('d-none');
+        //     }
+        // });
 
-    // tombolHapusGambarubah.addEventListener('click', function() {
-    //     pratinjauGambarubah.src = "#";
-    //     pratinjauGambarubah.classList.add('d-none');
-    //     tombolHapusGambarubah.classList.add('d-none');
-    //     inputGambarubah.value = ""; // Menghapus file dari input file
-    // });
+        // tombolHapusGambarubah.addEventListener('click', function() {
+        //     pratinjauGambarubah.src = "#";
+        //     pratinjauGambarubah.classList.add('d-none');
+        //     tombolHapusGambarubah.classList.add('d-none');
+        //     inputGambarubah.value = ""; // Menghapus file dari input file
+        // });
+    // }
+
 
     // validasi foto
     function validateFile() {
@@ -390,12 +393,15 @@
 
         InputTextEdit1.addEventListener("input", function() {
             const textlengthEdit1 = InputTextEdit1.value.length;
-
+            console.log(textlengthEdit1 , maxlimit);
             if (textlengthEdit1 > maxlimit) {
+                console.log('tes');
+                LimitS.classList.add("warning");
                 LimittEdit1.textContent = "Input tidak boleh lebih dari 45 karakter.";
                 InputTextEdit1.value = InputTextEdit1.value.substring(0, maxlimit);
             } else {
-                LimittEdit1.textContent = "";
+                LimitS.classList.remove("warning");
+                // LimittEdit1.textContent = "";
             }
 
             LimitEdit1.textContent = InputTextEdit1.value.length + "/" + maxlimit;

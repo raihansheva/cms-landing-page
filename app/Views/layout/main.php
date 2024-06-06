@@ -166,7 +166,7 @@
                       <i class="ti ti-terminal-2 fs-6"></i>
                       <p class="mb-0 fs-3">Terms & Conditions</p>
                     </a>
-                    <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                    <a href="/riwayat" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-history fs-6"></i>
                       <p class="mb-0 fs-3">Riwayat</p>
                     </a>

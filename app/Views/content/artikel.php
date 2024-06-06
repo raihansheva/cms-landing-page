@@ -109,7 +109,7 @@
             <?php foreach ($artikel as $key => $value) { ?>
                 <div class="card col" style="padding: 24px; height: fit-content; width: 100%; flex: 1 0 500px;">
                     <div class="card-kanan-atas">
-                        <i class="ti ti-pencil" style="font-size: 30px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaleditartikel<?php echo $value['id'] ?>" onclick="limitTextUbah('inputUnamaA<?= $key + 1 ?>' , 'limitUNA<?= $key + 1 ?>' , 'limit2UNA<?= $key + 1 ?>')"></i>
+                        <i class="ti ti-pencil" id="btn-ubah-art" style="font-size: 30px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaleditartikel<?php echo $value['id'] ?>" onclick="limitTextUbah('inputUnamaA<?= $key + 1 ?>' , 'limitUNA<?= $key + 1 ?>' , 'limit2UNA<?= $key + 1 ?>')"></i>
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModaleditartikel<?php echo $value['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -131,7 +131,9 @@
                                             <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
                                                 <label for="exampleFormControlTextarea1" class="form-label">Deskripsi
                                                     :</label>
-                                                <textarea class="form-control" id="deskripsiU" rows="8.5" name="deskripsi"><?php echo $value['deskripsi'] ?></textarea>
+                                                    <div class="edit">
+                                                        <textarea class="form-control" id="deskripsiU<?= $key + 1 ?>" rows="8.5" name="deskripsi"><?php echo $value['deskripsi'] ?></textarea>
+                                                    </div>
                                             </div>
                                         </div>
                                         <div class="modal-footer border-top pe-4">
@@ -186,21 +188,36 @@
 <?= session()->getFlashdata('sweetalert'); ?>
 <script>
     $(document).ready(function() {
-        let editor;
-        ClassicEditor.create(document.querySelector('#deskripsi'))
-            .then(newEditor => {
-                editor = newEditor
-            })
-            .catch(error => {
-                console.error(error);
-            })
-        // let editor2;
-        ClassicEditor.create(document.querySelector('#deskripsiU')).catch(error => {
-            console.error(error);
-        })
-        ClassicEditor.create(document.querySelector('#deskA')).catch(error => {
-            console.error(error);
-        })
+        // let editor;
+        // ClassicEditor.create(document.querySelector('#deskripsi'))
+        //     .then(newEditor => {
+        //         editor = newEditor
+        //     })
+        //     .catch(error => {
+        //         console.error(error);
+        //     })
+        // // let editor2;
+
+        // // ClassicEditor.create(document.querySelector('#deskripsiU' . I)).catch(error => {
+        // //     console.error(error);
+        // // })
+        // let counter = 0;
+        // function createEditor() {
+        //     counter++;
+        //     const editorId = 'deskripsiU' + counter;
+        //     const editorElement = document.createElement('div');
+        //     editorElement.id = editorId;
+        //     document.getElementById('edit').appendChild(editorElement);
+
+        //     ClassicEditor.create(document.querySelector('#' + editorId))
+        //         .catch(error => {
+        //             console.error(error);
+        //         });
+        // }
+        // document.getElementById('btn-ubah-art').addEventListener('click', createEditor);
+        // ClassicEditor.create(document.querySelector('#deskA')).catch(error => {
+        //     console.error(error);
+        // })
     });
     const InputTextJudulA = document.getElementById("inputjudulA");
     const LimitJudulA = document.getElementById("limitA");
