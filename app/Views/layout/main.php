@@ -6,20 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CMS</title>
   <link rel="stylesheet" href="../assets/css/styles.min.css" />
-<link href="assets/bootsrap/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="assets/poppins/font.css">
-<style>
-  * {
-    font-family: 'poppins', sans-serif;
-  }
-</style>
+  <link href="assets/bootsrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="assets/poppins/font.css">
+  <style>
+    * {
+      font-family: 'poppins', sans-serif;
+    }
+  </style>
   <!-- <link rel="stylesheet" href="../assets/style-bootstrap/css/boostrap.min.css"> -->
 </head>
 
-<body id="style-3" style="background-color: #F5F5F5F5; "> 
+<body id="style-3" style="background-color: #F5F5F5F5; ">
   <!--  Body Wrapper -->
-  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-    data-sidebar-position="fixed" data-header-position="fixed" id="style-3">
+  <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed" id="style-3">
     <!-- Sidebar Start -->
     <aside class="left-sidebar">
       <!-- Sidebar scroll-->
@@ -143,13 +142,12 @@
       <header class="app-header">
         <nav class="navbar navbar-light">
           <ul class="navbar-nav">
-            
+
           </ul>
           <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
             <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
               <li class="nav-item dropdown">
-                <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
-                  aria-expanded="false">
+                <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
                   <img src="../assets/images/profile/user-1.jpg" alt="" width="35" height="35" class="rounded-circle">
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
@@ -170,7 +168,7 @@
                       <i class="ti ti-history fs-6"></i>
                       <p class="mb-0 fs-3">Riwayat</p>
                     </a>
-                    <a href="/logout" class="btn btn-outline-danger mx-3 mt-2 d-block">Logout</a>
+                    <a  class="btn btn-outline-danger mx-3 mt-2 d-block" type="button" data-bs-toggle="modal" data-bs-target="#exampleModallogout">Logout</a>
                   </div>
                 </div>
               </li>
@@ -178,11 +176,33 @@
           </div>
         </nav>
       </header>
+      <div class="modal fade" id="exampleModallogout" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" style="width: 250px;">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Logout</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/hapusharga" method="post" id="form-data-hapus">
+              <?= csrf_field(); ?>
+              <div class="modal-body">
+                <p class="text-center">Apakah anda yakin ingin logout?</p>
+                <input type="text" value="" name="id" id="idPH" hidden>
+              </div>
+              <div class="modal-footer d-flex justify-content-center">
+                <a href="/logout" class="btn btn-danger d-flex btn-delete" type="submit"><i class="ti ti-logout pe-2 fs-6 align-middle p-1" id="btn-delete"></i>
+                  <p class="m-0 p-1 align-middle">Logout</p>
+                </a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
       <!--  Header End -->
-      <div class="container-fluid" id="style-3" >
+      <div class="container-fluid" id="style-3">
         <!-- konten disini -->
         <?php $this->renderSection('content') ?>
-        <!-- akhir konten --> 
+        <!-- akhir konten -->
         <!-- ----------- -->
         <!-- footet -->
         <!-- <div class="py-6 px-6 text-center">
@@ -193,7 +213,7 @@
     </div>
   </div>
   <!-- <script src="../node_modules/datatables.net-jqui/js/dataTables.jqueryui.min.js"></script> -->
-<!-- <script src="../node_modules/datatables.net/js/dataTables.min.js"></script> -->
+  <!-- <script src="../node_modules/datatables.net/js/dataTables.min.js"></script> -->
   <!-- <script src="../node_modules/jquery/dist/jquery.min.js"></script>
   <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"

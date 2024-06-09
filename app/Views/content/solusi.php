@@ -15,7 +15,7 @@
                 <button class="btn d-flex" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaljudulsolusi" style="background-color: #03C988; color:white; height: 45px;"><i class="ti ti-layout-navbar pe-2 fs-6 align-middle p-1 "></i>
                     <span class="m-0 p-1 " style="width: 130px;">Ubah judul solusi</span>
                 </button>
-                <button class="btn d-flex" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaltambahsolusi" style="background-color: #03C988; color:white; height: 45px;"><i class="ti ti-plus pe-2 fs-6 align-middle p-1 "></i>
+                <button class="btn d-flex me-3" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaltambahsolusi" style="background-color: #03C988; color:white; height: 45px;"><i class="ti ti-plus pe-2 fs-6 align-middle p-1 "></i>
                     <span class="m-0 p-1 " style="width: 115px;">Tambah solusi</span>
                 </button>
             </div>
@@ -33,12 +33,13 @@
                                 <div class="mb-3 p-2 pt-0" style="text-align: left;">
                                     <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
                                         Judul Solusi : <p class="p-0 m-0" id="limitS"></p></label>
-                                    <input type="text" class="form-control m-0" id="inputjudulS" placeholder="Masukan Judul Solusi" name="judul_solusi" value="<?= $head[0]['judul_solusi'] ?>">
+                                    <input type="text" class="form-control m-0" id="inputjudulS" placeholder="Masukan Judul Solusi" name="judul_solusi" value="<?= $head[0]['judul_solusi'] ?>" required>
                                     <span class="text-danger" id="limit2S"></span>
+                                    
                                 </div>
                                 <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
                                     <label for="exampleFormControlTextarea1" class="form-label">Deskripsi :</label>
-                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="8.5" name="deskripsi"><?= $head[0]['deskripsi'] ?></textarea>
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="8.5" name="deskripsi" required><?= $head[0]['deskripsi'] ?></textarea>
                                 </div>
                             </div>
                             <div class="modal-footer border-top pe-4">
@@ -62,11 +63,14 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
-                                <div class="mb-3 p-2 pt-0" style="text-align: left;">
+                                <div class="mb-3 p-2 pt-0 has-validation" style="text-align: left;">
                                     <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
                                         Nama Solusi : <p class="p-0 m-0" id="limit"></p></label>
-                                    <input type="text" class="form-control m-0" id="inputjudul" placeholder="Masukan Nama Solusi" name="nama_solusi">
+                                    <input type="text" class="form-control m-0" id="inputjudul" placeholder="Masukan Nama Solusi" name="nama_solusi" required>
                                     <span class="text-danger" id="limit2"></span>
+                                    <div class="invalid-feedback">
+                                        Masukan nama
+                                    </div>
                                     <!-- <label for="exampleFormControlInput1" class="form-label">Nama Solusi :</label>
                                     <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan Nama Solusi" name="nama_solusi"> -->
                                 </div>
@@ -74,12 +78,12 @@
                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                         <label for="exampleFormControlTextarea1" class="form-label">Deskripsi
                                             Solusi:</label>
-                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="8.5" name="deskripsi"></textarea>
+                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="8.5" name="deskripsi" required></textarea>
                                     </div>
                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                         <label for="exampleFormControlInput1" class="form-label">Gambar / Icon
                                             :</label>
-                                        <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar" name="gambar" onchange="validateFile()">
+                                        <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar" name="gambar" onchange="validateFile()" required>
                                         <small id="fileErrorTambah" class="text-danger"></small>
                                         <label class="fs-2" for="">* <span>Format file : .jpg | .png</span></label>
                                         <div class="col-12 mt-2 text-end">
@@ -113,9 +117,9 @@
 
         <div class="col-12 d-flex flex-wrap gap-2" style="border: 1px black; height: 100%; display: flex; flex-wrap: wrap;">
             <?php foreach ($solusi as $key => $value) { ?>
-                <div class="card" style="padding: 24px; height: 310px; width: 352px;">
+                <div class="card" style="padding: 24px; height: 310px; width: 347px;">
                     <div class="card-kanan-atas">
-                        <i class="ti ti-pencil" style="font-size: 30px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaleditsolusi<?= $value['id'] ?>" onclick="limitText('inputjuduledit1<?= $key + 1 ?>' , 'limitedit1<?= $key + 1 ?>' , 'limitedit2<?= $key + 1 ?>')"></i>
+                        <i class="ti ti-pencil" style="font-size: 30px;" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaleditsolusi<?= $value['id'] ?>" onclick="limitText('inputjuduledit1<?= $key + 1 ?>' , 'limitedit1<?= $key + 1 ?>' , 'limitedit2<?= $key + 1 ?>' , 'gambar2<?= $key + 1 ?>' , 'previewUbah<?= $key + 1 ?>' , 'hapusGambarUbah<?= $key + 1 ?>')"></i>
                         <!-- Modal -->
                         <div class="modal fade" id="exampleModaleditsolusi<?= $value['id'] ?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg modal-dialog-scrollable">
@@ -131,19 +135,19 @@
                                             <div class="mb-3 p-2 pt-0" style="text-align: left;">
                                                 <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
                                                     Nama Solusi : <p class="p-0 m-0" id="limitedit1<?= $key + 1 ?>"></p></label>
-                                                <input type="text" class="form-control m-0" id="inputjuduledit1<?= $key + 1 ?>" placeholder="Masukan Judul" name="nama_solusi" value="<?= $value['nama_solusi'] ?>" oninput="limitText('inputjuduledit1<?= $key + 1 ?>' , 'limitedit1<?= $key + 1 ?>' , 'limitedit2<?= $key + 1 ?>')">
+                                                <input type="text" class="form-control m-0" id="inputjuduledit1<?= $key + 1 ?>" placeholder="Masukan Judul" name="nama_solusi" value="<?= $value['nama_solusi'] ?>" oninput="limitText('inputjuduledit1<?= $key + 1 ?>' , 'limitedit1<?= $key + 1 ?>' , 'limitedit2<?= $key + 1 ?>')" required>
                                                 <span class="text-danger" id="limitedit2<?= $key + 1 ?>"></span>
                                             </div>
                                             <div class="col-12 d-flex">
                                                 <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                                     <label for="exampleFormControlTextarea1" class="form-label">Deskripsi
                                                         Solusi:</label>
-                                                    <textarea class="form-control" id="deskripsi" rows="8.5" name="deskripsi"><?= $value['deskripsi'] ?></textarea>
+                                                    <textarea class="form-control" id="deskripsi" rows="8.5" name="deskripsi" required><?= $value['deskripsi'] ?></textarea>
                                                 </div>
                                                 <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                                     <label for="exampleFormControlInput1" class="form-label">Gambar / Icon
                                                         :</label>
-                                                    <input type="file" class="form-control" id="gambar2<?= $key + 1 ?>" placeholder="Pilih Gambar" name="gambar" onchange="validateFileEdit('gambar2<?= $key + 1 ?>' , 'fileErrorEdit<?= $key + 1 ?>')">
+                                                    <input type="file" class="form-control" id="gambar2<?= $key + 1 ?>" placeholder="Pilih Gambar" name="gambar" onchange="validateFileEdit('gambar2<?= $key + 1 ?>' , 'fileErrorEdit<?= $key + 1 ?>')" required>
                                                     <small id="fileErrorEdit<?= $key + 1 ?>" class="text-danger"></small>
                                                     <label class="fs-2" for="">* <span>Format file : .jpg |
                                                             .png</span></label>
@@ -208,6 +212,23 @@
 <script src="../assets/sweetalert2/dist/sweetalert2.all.min.js"></script>
 <?= session()->getFlashdata('sweetalert'); ?>
 <script>
+    $(document).ready(function() {
+
+        var modalData = <?php echo json_encode(session()->getFlashdata('modaltambah')); ?>;
+        if (modalData) {
+            $('#' + modalData.name).modal('show');
+        }
+        var id = 0;
+        id++;
+        var modalData = <?php echo json_encode(session()->getFlashdata('modalubah')); ?>;
+        if (modalData) {
+            $('#' + modalData.name + id).modal('show');
+        }
+        var modalData = <?php echo json_encode(session()->getFlashdata('modalubahhead')); ?>;
+        if (modalData) {
+            $('#' + modalData.name).modal('show');
+        }
+    });
     // tambah gambar
     const inputGambar = document.getElementById('gambar');
     const pratinjauGambar = document.getElementById('preview');
@@ -238,37 +259,9 @@
         inputGambar.value = ""; // Menghapus file dari input file
     });
 
-    // ubah gambar
-    // function preview(gambar, Pubah, hapusgambar) {
-    // const inputGambarubah = document.getElementById('gambar2');
-    // const pratinjauGambarubah = document.getElementById('previewUbah');
-    // const tombolHapusGambarubah = document.getElementById('hapusGambarUbah');
+    function preview(gambar, Pubah, hapusgambar) {
 
-    // inputGambarubah.addEventListener('change', function() {
-    //     const file = this.files[0];
-
-    //     if (file) {
-    //         const reader = new FileReader();
-    //         reader.addEventListener('load', function() {
-    //             pratinjauGambarubah.src = this.result;
-    //             pratinjauGambarubah.classList.remove('d-none');
-    //             tombolHapusGambarubah.classList.remove('d-none');
-    //         });
-    //         reader.readAsDataURL(file);
-    //     } else {
-    //         pratinjauGambarubah.src = "#";
-    //         pratinjauGambarubah.classList.add('d-none');
-    //         tombolHapusGambarubah.classList.add('d-none');
-    //     }
-    // });
-
-    // tombolHapusGambarubah.addEventListener('click', function() {
-    //     pratinjauGambarubah.src = "#";
-    //     pratinjauGambarubah.classList.add('d-none');
-    //     tombolHapusGambarubah.classList.add('d-none');
-    //     inputGambarubah.value = ""; // Menghapus file dari input file
-    // });
-    // }
+    }
 
 
     // validasi foto
@@ -346,7 +339,8 @@
     const LimittS = document.getElementById("limit2S");
     const limitS = 30;
 
-    LimitS.textContent = "0/" + limitS;
+    const textlengthS1 = InputTextS.value.length;
+    LimitS.textContent = textlengthS1 + "/" + limitS;
 
     InputTextS.addEventListener("input", function() {
         const textlengthS = InputTextS.value.length;
@@ -358,20 +352,21 @@
             InputTextS.value = InputTextS.value.substring(0, limitS);
             LimitS.textContent = limitS + "/" + limitS;
             LimittS.innerText = "Input tidak boleh lebih dari 30 karakter.";
-            
+
         } else {
             LimitS.classList.remove("warning");
             LimittS.innerText = "";
         }
     });
     // edit solusi
-    function limitText(input, limit1, limit2) {
+    function limitText(input, limit1, limit2, gambar, preview, btnhapus) {
         const InputTextEdit1 = document.getElementById(input);
         const LimitEdit1 = document.getElementById(limit1);
         const LimittEdit1 = document.getElementById(limit2);
         const maxlimit = 45;
+        const textlengthEdit12 = InputTextEdit1.value.length;
 
-        LimitEdit1.textContent = "0/" + maxlimit;
+        LimitEdit1.textContent = textlengthEdit12 + "/" + maxlimit;
 
         InputTextEdit1.addEventListener("input", function() {
             const textlengthEdit1 = InputTextEdit1.value.length;
@@ -379,13 +374,13 @@
 
             if (textlengthEdit1 > maxlimit) {
                 // setTimeout(function() {
-                    LimitEdit1.classList.add("warning");
-                    // alert("Input tidak boleh lebih dari 45 karakter.");
-                    // console.log(textlengthEdit1);
-                    InputTextEdit1.value = InputTextEdit1.value.substring(0, maxlimit);
-                    LimitEdit1.textContent = maxlimit + "/" + maxlimit;
-                    LimittEdit1.textContent = "Input tidak boleh lebih dari 45 karakter.";
-                    // InputTextEdit1.style.border = "1px red solid";
+                LimitEdit1.classList.add("warning");
+                // alert("Input tidak boleh lebih dari 45 karakter.");
+                // console.log(textlengthEdit1);
+                InputTextEdit1.value = InputTextEdit1.value.substring(0, maxlimit);
+                LimitEdit1.textContent = maxlimit + "/" + maxlimit;
+                LimittEdit1.textContent = "Input tidak boleh lebih dari 45 karakter.";
+                // InputTextEdit1.style.border = "1px red solid";
                 // }, 500); //
                 // console.log(LimittEdit1);
             } else {
@@ -396,24 +391,35 @@
                 }, 5000); //
             }
         });
-        // LimitEdit1.textContent = "0/" + maxlimit;
 
-        // InputTextEdit1.addEventListener("input", function() {
-        //     const textlengthEdit1 = InputTextEdit1.value.length;
-        //     console.log(textlengthEdit1 , maxlimit);
-        //     if (textlengthEdit1 > maxlimit) {
-        //         console.log('tes');
-        //         LimitS.classList.add("warning");
-        //         InputTextEdit1.value = InputTextEdit1.value.substring(0, maxlimit);
-        //         LimittEdit1.textContent = "Input tidak boleh lebih dari 45 karakter.";
-        //     } else {
-        //         LimitS.classList.remove("warning");
-        //         // LimittEdit1.textContent = "";
-        //     }
+        const inputGambarubah = document.getElementById(gambar);
+        const pratinjauGambarubah = document.getElementById(preview);
+        const tombolHapusGambarubah = document.getElementById(btnhapus);
 
-        //     LimitEdit1.textContent = InputTextEdit1.value.length + "/" + maxlimit;
-        // });
+        inputGambarubah.addEventListener('change', function() {
+            const file = this.files[0];
 
+            if (file) {
+                const reader = new FileReader();
+                reader.addEventListener('load', function() {
+                    pratinjauGambarubah.src = this.result;
+                    pratinjauGambarubah.classList.remove('d-none');
+                    tombolHapusGambarubah.classList.remove('d-none');
+                });
+                reader.readAsDataURL(file);
+            } else {
+                pratinjauGambarubah.src = "#";
+                pratinjauGambarubah.classList.add('d-none');
+                tombolHapusGambarubah.classList.add('d-none');
+            }
+        });
+
+        tombolHapusGambarubah.addEventListener('click', function() {
+            pratinjauGambarubah.src = "#";
+            pratinjauGambarubah.classList.add('d-none');
+            tombolHapusGambarubah.classList.add('d-none');
+            inputGambarubah.value = ""; // Menghapus file dari input file
+        });
     }
 </script>
 <?php $this->endsection() ?>

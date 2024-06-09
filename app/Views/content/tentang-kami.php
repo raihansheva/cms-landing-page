@@ -42,12 +42,12 @@
                                     <input type="text" value="<?= $head[0]['id'] ?>" name="id" id="id" hidden>
                                     <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
                                         Judul : <p class="p-0 m-0" id="limitTK"></p></label>
-                                    <input type="text" class="form-control m-0" id="inputjudulTK" placeholder="Masukan Judul" name="judul_banner" value="<?= $head[0]['judul_banner'] ?>">
+                                    <input type="text" class="form-control m-0" id="inputjudulTK" placeholder="Masukan Judul" name="judul_banner" value="<?= $head[0]['judul_banner'] ?>" required>
                                     <span class="text-danger" id="limit2TK"></span>
                                 </div>
                                 <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
                                     <label for="exampleFormControlTextarea1" class="form-label">Deskripsi :</label>
-                                    <textarea class="form-control" id="deskripsi" rows="8.5" name="deskripsi"><?= $head[0]['deskripsi'] ?></textarea>
+                                    <textarea class="form-control" id="deskripsi" rows="8.5" name="deskripsi" required><?= $head[0]['deskripsi'] ?></textarea>
                                 </div>
                                 <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
                                     <label for="exampleFormControlTextarea1" class="form-label">Gambar :</label>

@@ -20,7 +20,6 @@ InputText.addEventListener("input", function () {
     Limitt.innerText = "";
   }
 });
-
 const InputTextEdit1 = document.getElementById("nama_paket_ubah");
 const LimitEdit1 = document.getElementById("limitedit1");
 const LimittEdit1 = document.getElementById("limit2edit1");
@@ -43,6 +42,54 @@ InputTextEdit1.addEventListener("input", function () {
     LimittEdit1.innerText = "";
   }
 });
+
+function formatEdit() {
+  var input = document.getElementById("harga_ubah");
+  var nilai = input.value;
+
+  // Menambah spasi di antara setiap karakter
+  var nilaiDenganSpasi = nilai.split("").join(" ");
+
+  // Memperbarui nilai input dengan nilai yang sudah diformat
+  input.value = nilaiDenganSpasi;
+}
+
+function formatRupiah(input) {
+  // Menghapus semua karakter kecuali angka
+  var value = input.value.replace(/\D/g, "");
+
+  // Memeriksa panjang angka
+  if (value.length > 3) {
+    // Memformat angka menjadi Rupiah
+    value = value.replace(/^0+/, ""); // Menghapus nol di depan angka
+    value = "Rp " + new Intl.NumberFormat("id-ID").format(value);
+  }
+
+  // Mengupdate nilai input
+  input.value = value;
+
+  // Mengupdate nilai numerik untuk dikirim ke database
+  document.getElementById("hargaNumeric").value = value.replace(/\D/g, "");
+}
+
+function formatRupiahEdit() {
+  // Menghapus semua karakter kecuali angka
+  var input = document.getElementById("harga_ubah");
+  var value = input.value.replace(/\D/g, "");
+
+  // Memeriksa panjang angka
+  if (value.length > 3) {
+    // Memformat angka menjadi Rupiah
+    value = value.replace(/^0+/, ""); // Menghapus nol di depan angka
+    value = "Rp " + new Intl.NumberFormat("id-ID").format(value);
+  }
+
+  // Mengupdate nilai input
+  input.value = value;
+
+  // Mengupdate nilai numerik untuk dikirim ke database
+  document.getElementById("hargaNumericUbah").value = value.replace(/\D/g, "");
+}
 $(document).ready(function () {
   const formatter = new Intl.NumberFormat("id-ID", {
     style: "currency",
@@ -52,13 +99,30 @@ $(document).ready(function () {
   });
 
   $("#tabelharga").DataTable({
-    "order": [[0, "desc"]],
+    order: [[0, "desc"]],
     pageLength: 5,
     processing: true,
     serverSide: true,
     ajax: {
       url: "/harga/getdataharga",
     },
+    language: {
+      "sEmptyTable": "Tidak ada data yang tersedia di tabel",
+      "sInfo": "",
+      "sInfoEmpty": "",
+      "sInfoFiltered": "(disaring dari MAX total entri)",
+      "sInfoPostFix": "",
+      "sInfoThousands": ",",
+      "sLengthMenu": "",
+      "sLoadingRecords": "Memuat...",
+      "sProcessing": "",
+      "sSearch": "Cari:",
+      "sZeroRecords": "Tidak ada data yang cocok ditemukan",
+      "oAria": {
+          "sSortAscending": ": aktifkan untuk mengurutkan kolom secara meningkat",
+          "sSortDescending": ": aktifkan untuk mengurutkan kolom secara menurun"
+      }
+  },
     columns: [
       {
         data: "nama_paket",
@@ -87,7 +151,7 @@ $(document).ready(function () {
           return (
             '<div class="d-flex gap-2"><a class="btn btn-primary d-flex btn-sm" href="/benefit/' +
             data +
-            '"><i class="ti ti-list-details pe-2 fs-6 align-middle p-1 "></i><p class="m-0 p-1 align-middle">Benefit</p></a><button type="button" class="btn d-flex btn-sm btn-edit-harga" style="background-color: #03C988; color:white;" data-id="' +
+            '"><i class="ti ti-list-details pe-2 fs-6 align-middle p-1 "></i><p class="m-0 p-1 align-middle">Benefit</p></a><button type="button" class="btn d-flex btn-sm btn-edit-harga"  style="background-color: #03C988; color:white;" onclick="formatEdit()" data-id="' +
             data +
             '" data-nama_paket="' +
             row.nama_paket +
@@ -115,7 +179,8 @@ $(document).ready(function () {
     let nama = $(this).data("nama_paket");
     let kat = $(this).data("kategori");
     let desk = $(this).data("deskripsi");
-    let harga = formatter.format($(this).data("harga"));
+    // let harga = formatter.format($(this).data("harga"));
+    let harga = $(this).data("harga");
     let solusi = $(this).data("id_solusi");
     // alert(id);
     $("#id").val(id);

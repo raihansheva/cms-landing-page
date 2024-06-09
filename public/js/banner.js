@@ -1,4 +1,6 @@
 // function limit() {
+
+
 const InputText = document.getElementById("inputjudul");
 const Limit = document.getElementById("limit");
 const Limitt = document.getElementById("limit2");
@@ -22,7 +24,7 @@ InputText.addEventListener("input", function () {
   }
 });
 // }
-function limitA(limit1) {
+function limitA(limit1, gambar, preview, btnhapus) {
   const InputTextEdit1A = document.getElementById("inputjuduleditA");
   const LimitEdit1A = document.getElementById(limit1);
   const LimittEdit1A = document.getElementById("limit2editA");
@@ -47,9 +49,38 @@ function limitA(limit1) {
       }, 5000); //
     }
   });
+  // preview gambar layout A
+  const inputGambar = document.getElementById(gambar);
+  const pratinjauGambar = document.getElementById(preview);
+  const tombolHapusGambar = document.getElementById(btnhapus);
+
+  inputGambar.addEventListener("change", function () {
+    const file = this.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+      reader.addEventListener("load", function () {
+        pratinjauGambar.src = this.result;
+        pratinjauGambar.classList.remove("d-none");
+        tombolHapusGambar.classList.remove("d-none");
+      });
+      reader.readAsDataURL(file);
+    } else {
+      pratinjauGambar.src = "#";
+      pratinjauGambar.classList.add("d-none");
+      tombolHapusGambar.classList.add("d-none");
+    }
+  });
+
+  tombolHapusGambar.addEventListener("click", function () {
+    pratinjauGambar.src = "#";
+    pratinjauGambar.classList.add("d-none");
+    tombolHapusGambar.classList.add("d-none");
+    inputGambar.value = ""; // Menghapus file dari input file
+  });
 }
 
-function limitB(limit1) {
+function limitB(limit1, gambar, preview, btnhapus) {
   const InputTextEdit1B = document.getElementById("inputjuduleditB");
   const LimitEdit1B = document.getElementById(limit1);
   const LimittEdit1B = document.getElementById("limit2editB");
@@ -74,34 +105,95 @@ function limitB(limit1) {
       }, 5000); //
     }
   });
+  // preview gambar layout B
+  const inputGambar = document.getElementById(gambar);
+  const pratinjauGambar = document.getElementById(preview);
+  const tombolHapusGambar = document.getElementById(btnhapus);
+
+  inputGambar.addEventListener("change", function () {
+    const file = this.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+      reader.addEventListener("load", function () {
+        pratinjauGambar.src = this.result;
+        pratinjauGambar.classList.remove("d-none");
+        tombolHapusGambar.classList.remove("d-none");
+      });
+      reader.readAsDataURL(file);
+    } else {
+      pratinjauGambar.src = "#";
+      pratinjauGambar.classList.add("d-none");
+      tombolHapusGambar.classList.add("d-none");
+    }
+  });
+
+  tombolHapusGambar.addEventListener("click", function () {
+    pratinjauGambar.src = "#";
+    pratinjauGambar.classList.add("d-none");
+    tombolHapusGambar.classList.add("d-none");
+    inputGambar.value = ""; // Menghapus file dari input file
+  });
+}
+function limitC(limit1, gambar, preview, btnhapus) {
+  const InputTextEdit1C = document.getElementById("inputjuduleditC");
+  const LimitEdit1C = document.getElementById(limit1);
+  const LimittEdit1C = document.getElementById("limit2editC");
+  const limitEdit1C = 45;
+
+  LimitEdit1C.textContent = "0/" + limitEdit1C;
+
+  InputTextEdit1C.addEventListener("input", function () {
+    const textlengthEdit1C = InputTextEdit1C.value.length;
+    LimitEdit1C.textContent = textlengthEdit1C + "/" + limitEdit1C;
+
+    if (textlengthEdit1C >= limitEdit1C) {
+      LimitEdit1C.classList.add("warning");
+      // alert("Input tidak boleh lebih dari 45 karakter.");
+      InputTextEdit1C.value = InputTextEdit1C.value.substring(0, limitEdit1C);
+      LimitEdit1C.textContent = limitEdit1C + "/" + limitEdit1C;
+      LimittEdit1C.innerText = "Input tidak boleh lebih dari 45 karakter.";
+    } else {
+      setTimeout(function () {
+        LimitEdit1C.classList.remove("warning");
+        LimittEdit1C.innerText = "";
+      }, 5000); //
+    }
+  });
+    // preview gambar layout C
+    const inputGambar = document.getElementById(gambar);
+    const pratinjauGambar = document.getElementById(preview);
+    const tombolHapusGambar = document.getElementById(btnhapus);
+  
+    inputGambar.addEventListener("change", function () {
+      const file = this.files[0];
+  
+      if (file) {
+        const reader = new FileReader();
+        reader.addEventListener("load", function () {
+          pratinjauGambar.src = this.result;
+          pratinjauGambar.classList.remove("d-none");
+          tombolHapusGambar.classList.remove("d-none");
+        });
+        reader.readAsDataURL(file);
+      } else {
+        pratinjauGambar.src = "#";
+        pratinjauGambar.classList.add("d-none");
+        tombolHapusGambar.classList.add("d-none");
+      }
+    });
+  
+    tombolHapusGambar.addEventListener("click", function () {
+      pratinjauGambar.src = "#";
+      pratinjauGambar.classList.add("d-none");
+      tombolHapusGambar.classList.add("d-none");
+      inputGambar.value = ""; // Menghapus file dari input file
+    });
 }
 
-const InputTextEdit1C = document.getElementById("inputjuduleditC");
-const LimitEdit1C = document.getElementById("limiteditC");
-const LimittEdit1C = document.getElementById("limit2editC");
-const limitEdit1C = 45;
+// image preview input gambar
 
-LimitEdit1C.textContent = "0/" + limitEdit1C;
-
-InputTextEdit1C.addEventListener("input", function () {
-  const textlengthEdit1C = InputTextEdit1C.value.length;
-  LimitEdit1C.textContent = textlengthEdit1C + "/" + limitEdit1C;
-
-  if (textlengthEdit1C >= limitEdit1C) {
-    LimitEdit1C.classList.add("warning");
-    // alert("Input tidak boleh lebih dari 45 karakter.");
-    InputTextEdit1C.value = InputTextEdit1C.value.substring(0, limitEdit1C);
-    LimitEdit1C.textContent = limitEdit1C + "/" + limitEdit1C;
-    LimittEdit1C.innerText = "Input tidak boleh lebih dari 45 karakter.";
-  } else {
-    setTimeout(function () {
-      LimitEdit1C.classList.remove("warning");
-      LimittEdit1C.innerText = "";
-    }, 5000); //
-  }
-});
-
-// image preview
+// image preview edit layout 1
 const inputGambar = document.getElementById("gambar");
 const pratinjauGambar = document.getElementById("preview");
 const tombolHapusGambar = document.getElementById("hapusGambar");

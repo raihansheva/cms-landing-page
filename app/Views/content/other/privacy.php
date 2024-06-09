@@ -2,6 +2,7 @@
 <?php $this->section('content') ?>
 <!-- <link rel="stylesheet" href="css/style-konten.css"> -->
 <link href="assets/bootsrap/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="<?php base_url('../assets/sweetalert2/dist/sweetalert2.min.css') ?>">
 <style>
     .ck-editor__editable_inline {
         min-height: 250px !important;
@@ -91,6 +92,8 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 <script src="assets/libs/jquery/dist/jquery.min.js"></script>
 <script src="<?= base_url('assets/ckeditor5/build/ckeditor.js') ?>"></script>
+<script src="../assets/sweetalert2/dist/sweetalert2.all.min.js"></script>
+<?= session()->getFlashdata('sweetalert'); ?>
 <script>
     $(document).ready(function() {
         let editor;

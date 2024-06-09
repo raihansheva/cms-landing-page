@@ -71,7 +71,8 @@ class FiturController extends BaseController
             ->select('detail_fitur.id as idD, detail_fitur.judul_detail , detail_fitur.deskripsi as deskripsiDF, detail_fitur.gambar, fitur.nama_fitur , layout.nama_layout')
             ->join('fitur', 'fitur.id = detail_fitur.id_fitur', 'INNER JOIN')
             ->join('layout', 'layout.id = detail_fitur.layout', 'INNER JOIN')
-            ->where(['id_fitur' => $id])->make();
+            ->where(['id_fitur' => $id])
+            ->make();
         // return $data;
     }
 
@@ -137,6 +138,11 @@ class FiturController extends BaseController
                 ");
             return redirect()->back();
         } else {
+            session()->setFlashdata('modal', [
+                'name' => 'exampleModaltambahfitur',
+                // 'type' => 'error',
+                // 'message' => 'Password lama tidak cocok'
+            ]);
             session()->setFlashdata('sweetalert', "
                     <script>
                         Swal.fire({
@@ -244,6 +250,11 @@ class FiturController extends BaseController
                 ");
             return redirect()->back()->to('/fitur');
         } else {
+            session()->setFlashdata('modal', [
+                'name' => 'exampleModaleditfitur',
+                // 'type' => 'error',
+                // 'message' => 'Password lama tidak cocok'
+            ]);
             session()->setFlashdata('sweetalert', "
             <script>
                 Swal.fire({
@@ -357,6 +368,11 @@ class FiturController extends BaseController
             ");
             return redirect()->back();
         } else {
+            session()->setFlashdata('modal', [
+                'name' => 'exampleModaltambahfitur',
+                // 'type' => 'error',
+                // 'message' => 'Password lama tidak cocok'
+            ]);
             session()->setFlashdata('sweetalert', "
                 <script>
                     Swal.fire({
@@ -433,6 +449,11 @@ class FiturController extends BaseController
         ");
             return redirect()->back()->to('/fitur');
         } else {
+            session()->setFlashdata('modal', [
+                'name' => 'exampleModaljudulfitur',
+                // 'type' => 'error',
+                // 'message' => 'Password lama tidak cocok'
+            ]);
             session()->setFlashdata('sweetalert', "
             <script>
                 Swal.fire({
@@ -471,6 +492,7 @@ class FiturController extends BaseController
         $idFSebelumnya = $dataSebelumnya['id_fitur'];
         $layoutSebelumnya = $dataSebelumnya['layout'];
 
+        // dd($layout);
         $rules = [
             // 'judul_detail' => 'required',
             // 'deskripsi' => 'required',
@@ -538,6 +560,11 @@ class FiturController extends BaseController
             return redirect()->back();
             // return $this->response->setJSON(['status' => true]);
         } else {
+            session()->setFlashdata('modal', [
+                'name' => 'exampleModaleditdetailfitur',
+                // 'type' => 'error',
+                // 'message' => 'Password lama tidak cocok'
+            ]);
             session()->setFlashdata('sweetalert', "
                     <script>
                         Swal.fire({

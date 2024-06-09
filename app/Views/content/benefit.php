@@ -24,14 +24,14 @@
                 <h3 class="pt-1">Benefit / <?= $namaP ?></h3>
             </div>
             <div class="col-4 d-flex gap-2 justify-content-end">
-                <button class="btn d-flex" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaltambahfitur" style="background-color: #03C988; color:white;"><i class="ti ti-plus pe-2 fs-6 align-middle p-1 "></i>
+                <button class="btn d-flex" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaltambahbenefit  " style="background-color: #03C988; color:white;"><i class="ti ti-plus pe-2 fs-6 align-middle p-1 "></i>
                     <p class="m-0 p-1 align-middle">Tambah benefit</p>
                 </button>
             </div>
 
 
             <!-- Modal Tambah fitur -->
-            <div class="modal fade" id="exampleModaltambahfitur" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModaltambahbenefit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-scrollable">
                     <form action="/tambahbenefit" method="post">
                         <div class="modal-content">
@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
                                     <label for="exampleFormControlTextarea1" class="form-label">Benefit :</label>
-                                    <textarea class="form-control" id="nama_benefit" rows="8.5" name="nama_benefit"></textarea>
+                                    <textarea class="form-control" id="nama_benefit" rows="8.5" name="nama_benefit" required></textarea>
                                 </div>
                             </div>
                             <div class="modal-footer border-top pe-4">
@@ -65,7 +65,7 @@
         <br>
         <!-- <div class="card col-4" style="height: 200px; border:1px solid rgb(229, 234, 239);"> -->
         <div class="col-12 " style="height: 100%;">
-            <table id="tabelbenefit" class="table col-12 " style="height: auto; background-color: white; border-radius: 10px;">
+            <table id="tabelbenefit" class="table col-12 " style="height: auto; background-color: white; border-radius: 15px;">
                 <thead class="">
                     <tr class="p-2">
                         <!-- <th scope="col" class="d-none">Id Paket</th> -->
@@ -99,7 +99,7 @@
                     </div>
                     <div class="col-12 mb-3 p-2 pt-0" style="text-align: left;">
                         <label for="exampleFormControlTextarea1" class="form-label">Benefit :</label>
-                        <textarea class="form-control" id="nama_benefit_ubah" rows="8.5" name="nama_benefit"></textarea>
+                        <textarea class="form-control" id="nama_benefit_ubah" rows="8.5" name="nama_benefit" ></textarea>
                     </div>
                 </div>
                 <div class="modal-footer border-top pe-4">
@@ -156,22 +156,22 @@
 
             },
             language: {
-                "sEmptyTable": "Tidak ada data yang tersedia di tabel",
-                "sInfo": "Menampilkan START hingga END dari TOTAL entri",
-                "sInfoEmpty": "Menampilkan 0 hingga 0 dari 0 entri",
-                "sInfoFiltered": "(disaring dari MAX total entri)",
-                "sInfoPostFix": "",
-                "sInfoThousands": ",",
-                "sLengthMenu": "Tampilkan MENU",
-                "sLoadingRecords": "Memuat...",
-                "sProcessing": "Memproses...",
-                "sSearch": "Cari:",
-                "sZeroRecords": "Tidak ada data yang cocok ditemukan",
-                "oAria": {
-                    "sSortAscending": ": aktifkan untuk mengurutkan kolom secara meningkat",
-                    "sSortDescending": ": aktifkan untuk mengurutkan kolom secara menurun"
-                }
-            },
+            "sEmptyTable": "Tidak ada data yang tersedia di tabel",
+            "sInfo": "",
+            "sInfoEmpty": "",
+            "sInfoFiltered": "(disaring dari MAX total entri)",
+            "sInfoPostFix": "",
+            "sInfoThousands": ",",
+            "sLengthMenu": "",
+            "sLoadingRecords": "Memuat...",
+            "sProcessing": "",
+            "sSearch": "Cari:",
+            "sZeroRecords": "Tidak ada data yang cocok ditemukan",
+            "oAria": {
+                "sSortAscending": ": aktifkan untuk mengurutkan kolom secara meningkat",
+                "sSortDescending": ": aktifkan untuk mengurutkan kolom secara menurun"
+            }
+        },
             columns: [{
                     data: 'nama_paket',
                 },
@@ -205,6 +205,14 @@
             // alert(id);
             $('#exampleModalhapusbenefit').modal('show')
         });
+    });
+
+    $(document).ready(function() {
+
+        var modalData = <?php echo json_encode(session()->getFlashdata('modal')); ?>;
+        if (modalData) {
+            $('#' + modalData.name).modal('show');
+        }
     });
     // });
 </script>

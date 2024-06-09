@@ -67,6 +67,11 @@ class BannerController extends BaseController
             ");
             return redirect()->back()->to('/konten');
         } else {
+            session()->setFlashdata('modal1', [
+                'name' => 'exampleModaltambahbanner',
+                // 'type' => 'error',
+                // 'message' => 'Password lama tidak cocok'
+            ]);
             session()->setFlashdata('sweetalert', "
                 <script>
                     Swal.fire({
@@ -169,6 +174,11 @@ class BannerController extends BaseController
         ");
             return redirect()->back()->to('/konten');
         } else {
+            session()->setFlashdata('modal2', [
+                'name' => 'exampleModaleditbanner',
+                // 'type' => 'error',
+                // 'message' => 'Password lama tidak cocok'
+            ]);
             session()->setFlashdata('sweetalert', "
             <script>
                 Swal.fire({
@@ -235,7 +245,7 @@ class BannerController extends BaseController
         $copyrightbaru = $this->request->getPost('hak_cipta');
         $linkWAbaru = $this->request->getPost('link_whatsapp');
         $linkIGbaru = $this->request->getPost('link_instagram');
-
+        // dd($linkIGbaru);
 
         $dataSebelumnya = $footer->find($id);
         $nama_lengkapSebelumnya = $dataSebelumnya['nama_lengkap'];
@@ -312,7 +322,6 @@ class BannerController extends BaseController
                 }
                 
             // }
-
             session()->setFlashdata('sweetalert', "
                 <script>
                     Swal.fire({
@@ -325,6 +334,11 @@ class BannerController extends BaseController
             ");
             return redirect()->back()->to('/konten');;
         } else {
+            session()->setFlashdata('modal3', [
+                'name' => 'exampleModaleditfooter',
+                // 'type' => 'error',
+                // 'message' => 'Password lama tidak cocok'
+            ]);
             session()->setFlashdata('sweetalert', "
                 <script>
                     Swal.fire({

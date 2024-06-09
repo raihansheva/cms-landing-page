@@ -117,6 +117,11 @@ class HargaController extends BaseController
                 ");
             return redirect()->back()->to('/paketharga');
         } else {
+            session()->setFlashdata('modal', [
+                'name' => 'exampleModaltambahfitur',
+                // 'type' => 'error',
+                // 'message' => 'Password lama tidak cocok'
+            ]);
             session()->setFlashdata('sweetalert', "
                     <script>
                         Swal.fire({
@@ -152,7 +157,7 @@ class HargaController extends BaseController
         $hargaP = $this->request->getPost('harga');
         $id_solusi = $this->request->getPost('id_solusi');
         $slug = $this->create_slug($nama_paket);
-
+        // dd($nama_paket , $kat ,$deskripsi , $hargaP , $id_solusi);
         $dataSebelumnya = $harga->find($id);
         $nama_paketSebelumnya = $dataSebelumnya['nama_paket'];
         $katSebelumnya = $dataSebelumnya['kategori_harga'];
@@ -183,7 +188,7 @@ class HargaController extends BaseController
             }
             if (!empty($hargaP) && $hargaP !== $hargaSebelumnya) {
                 $aksi[] = "Mengubah harga dari '$hargaSebelumnya' menjadi '$hargaP' di tabel paket harga";
-
+            }
                 if (!empty($id_solusi) && $id_solusi !== $idSSebelumnya) {
                     $aksi[] = "Mengubah id solusi telepon dari '$idSSebelumnya menjadi '$id_solusi' di tabel paket harga";
                 }
@@ -219,6 +224,11 @@ class HargaController extends BaseController
                 ");
                 return redirect()->back()->to('/paketharga');
             } else {
+                session()->setFlashdata('modal', [
+                    'name' => 'exampleModaleditharga',
+                    // 'type' => 'error',
+                    // 'message' => 'Password lama tidak cocok'
+                ]);
                 session()->setFlashdata('sweetalert', "
                     <script>
                         Swal.fire({
@@ -231,8 +241,8 @@ class HargaController extends BaseController
                 ");
                 return redirect()->back()->to('/paketharga');
             };
-        }
-
+        
+    
         // return $this->response->setJSON(['status' => true]);
     }
 
@@ -314,6 +324,11 @@ class HargaController extends BaseController
                 ");
             return redirect()->back();
         } else {
+            session()->setFlashdata('modal', [
+                'name' => 'exampleModaltambahbenefit',
+                // 'type' => 'error',
+                // 'message' => 'Password lama tidak cocok'
+            ]);
             session()->setFlashdata('sweetalert', "
             <script>
                 Swal.fire({
@@ -390,6 +405,11 @@ class HargaController extends BaseController
                 ");
             return redirect()->back();
         } else {
+            session()->setFlashdata('modal', [
+                'name' => 'exampleModalubahbenefit',
+                // 'type' => 'error',
+                // 'message' => 'Password lama tidak cocok'
+            ]);
             session()->setFlashdata('sweetalert', "
                     <script>
                         Swal.fire({

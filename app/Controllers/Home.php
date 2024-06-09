@@ -151,6 +151,16 @@ class Home extends BaseController
         $id = $this->request->getPost('id');
         $kontak = new KontakClient();
         $delete = $kontak->where('id', $id)->delete();
+        session()->setFlashdata('sweetalert', "
+        <script>
+            Swal.fire({
+                title: 'Berhasil',
+                text: 'Anda menghapus kontak',
+                icon: 'success',
+                confirmButtonText: 'Ok'
+            });
+        </script>
+    ");
         return redirect()->back()->to('/kontakuser');
     }
     public function index(): string

@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="css/style-konten.css">
 <link rel="stylesheet" href="../assets/css/styles.min.css" />
 <!-- <link href="https://cdn.datatables.net/v/ju/dt-2.0.7/datatables.min.css" rel="stylesheet"> -->
- 
+
 <link href="assets/bootsrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="<?php base_url('DataTables/datatables.min.css') ?>" rel="stylesheet">
 <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-2.0.6/b-3.0.2/b-colvis-3.0.2/b-html5-3.0.2/b-print-3.0.2/r-3.0.2/datatables.min.css" rel="stylesheet">
@@ -16,7 +16,7 @@
 
             <h2>Fitur</h2>
             <div class="col-5 d-flex gap-2 justify-content-end">
-            <button class="btn d-flex" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaljudulfitur" style="background-color: #03C988; color:white; height: 45px;"><i class="ti ti-layout-navbar pe-2 fs-6 align-middle p-1 "></i>
+                <button class="btn d-flex" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaljudulfitur" style="background-color: #03C988; color:white; height: 45px;"><i class="ti ti-layout-navbar pe-2 fs-6 align-middle p-1 "></i>
                     <span class="m-0 p-1 " style="width: 130px;">Ubah judul fitur</span>
                 </button>
                 <button class="btn d-flex" type="button" data-bs-toggle="modal" data-bs-target="#exampleModaltambahfitur" style="background-color: #03C988; color:white;"><i class="ti ti-plus pe-2 fs-6 align-middle p-1 "></i>
@@ -70,20 +70,20 @@
                                 <div class="mb-3 p-2 pt-0" style="text-align: left;">
                                     <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
                                         Nama Fitur : <p class="p-0 m-0" id="limit"></p></label>
-                                    <input type="text" class="form-control m-0" id="inputjudul" placeholder="Masukan Nama Fitur" name="nama_fitur">
+                                    <input type="text" class="form-control m-0" id="inputjudul" placeholder="Masukan Nama Fitur" name="nama_fitur" required>
                                     <span class="text-danger" id="limit2"></span>
                                     <!-- <label for="exampleFormControlInput1" class="form-label">Nama Fitur :</label>
                                     <input type="text" class="form-control" id="nama_fitur" placeholder="Masukan Nama Solusi" name="nama_fitur"> -->
-                                    
+
                                 </div>
                                 <div class="col-12 d-flex">
                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                         <label for="exampleFormControlTextarea1" class="form-label">Deskripsi:</label>
-                                        <textarea class="form-control" rows="7.5" id="deskripsi" cols="80" name="deskripsi"></textarea>
+                                        <textarea class="form-control" rows="7.5" id="deskripsi" cols="80" name="deskripsi" required></textarea>
                                     </div>
                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                         <label for="exampleFormControlInput1" class="form-label">Icon :</label>
-                                        <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar" name="icon" onchange="validateFile()">
+                                        <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar" name="icon" onchange="validateFile()" required>
                                         <small id="fileErrorTambah" class="text-danger"></small>
                                         <label class="fs-2" for="">* <span>Format file : .jpg | .png</span></label>
                                         <div class="col-12 mt-2 ">
@@ -97,7 +97,7 @@
                                 <div class="mb-3 p-2 pt-0" style="text-align: left;">
                                     <label for="exampleFormControlInput1" class="form-label">Nama Solusi :</label>
 
-                                    <select name="id_solusi" id="id_solusi" class="form-select">
+                                    <select name="id_solusi" id="id_solusi" class="form-select" required>
                                         <?php foreach ($solusi as $key => $value) { ?>
                                             <option value="<?= $value['id'] ?>"><?= $value['nama_solusi'] ?></option>
                                         <?php } ?>
@@ -127,9 +127,9 @@
         </div>
         <!-- <div class="card col-4" style="height: 200px; border:1px solid rgb(229, 234, 239);"> -->
         <div class="col-12 " style="height: 100%;">
-            <table id="tabelfitur" class="table col-12" style="height: auto; background-color: white; border-radius: 10px; ">
-                <thead class="">
-                    <tr class="p-2">
+            <table id="tabelfitur" class="table col-12" style="height: auto; background-color: white; border-radius: 15px; ">
+                <thead class="rounded">
+                    <tr class="p-2 rounded">
                         <!-- <th scope="col">No</th> -->
                         <th scope="col">Nama Fitur</th>
                         <th scope="col">Deskripsi</th>
@@ -156,18 +156,18 @@
                     <div class="mb-3 p-2 pt-0" style="text-align: left;">
                         <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
                             Nama Fitur : <p class="p-0 m-0" id="limitedit1"></p></label>
-                        <input type="text" class="form-control m-0" id="nama_fitur_ubah" placeholder="Masukan Nama Fitur" name="nama_fitur">
+                        <input type="text" class="form-control m-0" id="nama_fitur_ubah" placeholder="Masukan Nama Fitur" name="nama_fitur" value="" required>
                         <span class="text-danger" id="limit2edit1"></span>
                     </div>
                     <div class="col-12 d-flex">
                         <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                             <label for="exampleFormControlTextarea1" class="form-label">Deskripsi:</label>
-                            <textarea class="form-control" rows="7.5" id="deskripsi_ubah" cols="80" name="deskripsi"></textarea>
+                            <textarea class="form-control" rows="7.5" id="deskripsi_ubah" cols="80" name="deskripsi" required></textarea>
                         </div>
                         <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                             <label for="exampleFormControlInput1" class="form-label">Icon
                                 :</label>
-                            <input type="file" class="form-control" id="gambarUbah" placeholder="Pilih Gambar" name="icon" onchange="validateFileEdit()">
+                            <input type="file" class="form-control" id="gambarUbah" placeholder="Pilih Gambar" name="icon" onchange="validateFileEdit()" required>
                             <small id="fileErrorEdit" class="text-danger"></small>
                             <label class="fs-2" for="">* <span>Format file : .jpg | .png</span></label>
                             <div class="col-12 mt-2 ">
@@ -182,7 +182,7 @@
                         <label for="exampleFormControlInput1" class="form-label">Nama Solusi
                             :</label>
 
-                        <select name="id_solusi" id="id_solusi_ubah" class="form-select">
+                        <select name="id_solusi" id="id_solusi_ubah" class="form-select" required>
                             <option value="">nama solusi
                             </option>
                             <?php foreach ($solusi as $key => $value) { ?>
@@ -233,4 +233,13 @@
 <script src="js/fitur.js"></script>
 <script src="../assets/sweetalert2/dist/sweetalert2.all.min.js"></script>
 <?= session()->getFlashdata('sweetalert'); ?>
+<script>
+    $(document).ready(function() {
+
+        var modalData = <?php echo json_encode(session()->getFlashdata('modal')); ?>;
+        if (modalData) {
+            $('#' + modalData.name).modal('show');
+        }
+    });
+</script>
 <?php $this->endsection() ?>

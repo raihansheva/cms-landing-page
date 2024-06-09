@@ -12,7 +12,7 @@ class Footer extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['id' , 'nama_lengkap' , 'nama' , 'email' , 'alamat' , 'nomor_telepon' , 'hak_cipta' , 'link_whatsapp' , 'linkinstagram'];
+    protected $allowedFields    = ['id' , 'nama_lengkap' , 'nama' , 'email' , 'alamat' , 'nomor_telepon' , 'hak_cipta' , 'link_whatsapp' , 'link_instagram'];
 
     protected bool $allowEmptyInserts = false;
     protected bool $updateOnlyChanged = true;

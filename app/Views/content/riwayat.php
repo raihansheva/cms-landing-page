@@ -22,7 +22,7 @@
                 <thead class="">
                     <tr class="p-2">
                         <!-- <th scope="col">No</th> -->
-                        <!-- <th scope="col">Id_User</th> -->
+                        <th scope="col">Id_User</th>
                         <th scope="col">Nama</th>
                         <th scope="col">Aktivitas</th>
                         <th scope="col">Aksi</th>
@@ -87,14 +87,36 @@
 <script>
     $(document).ready(function() {
         $('#tabelriwayat').DataTable({
-            "order": [[0, "desc"]],
+            "order": [
+                [0, "desc"]
+            ],
             "pageLength": 5,
             processing: true,
             serverSide: true,
             ajax: {
                 url: '/home/getdatariwayat',
             },
-            columns: [
+            language: {
+                "sEmptyTable": "Tidak ada data yang tersedia di tabel",
+                "sInfo": "",
+                "sInfoEmpty": "",
+                "sInfoFiltered": "(disaring dari MAX total entri)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ",",
+                "sLengthMenu": "",
+                "sLoadingRecords": "Memuat...",
+                "sProcessing": "",
+                "sSearch": "Cari:",
+                "sZeroRecords": "Tidak ada data yang cocok ditemukan",
+                "oAria": {
+                    "sSortAscending": ": aktifkan untuk mengurutkan kolom secara meningkat",
+                    "sSortDescending": ": aktifkan untuk mengurutkan kolom secara menurun"
+                }
+            },
+            columns: [{
+                    data: 'id_user',
+                    // name: 'email'
+                },
                 {
                     data: 'nama',
                     // name: 'email'
@@ -111,15 +133,15 @@
                     data: 'created_at',
                     // name: 'pesan'
                 },
-                {
-                    data: 'id',
-                    name: 'id',
-                    render: function(data, type, row) {
-                        console.log(row);
-                        return '<div class="d-flex gap-2"><button type="button" class="btn btn-danger d-flex btn-sm btn-hapus-kontak" data-id="' + data + '"><i class="ti ti-trash pe-2 fs-6 align-middle p-1 "></button></div>'
-                    },
-                    orderable: false
-                },
+                // {
+                //     data: 'id',
+                //     name: 'id',
+                //     render: function(data, type, row) {
+                //         console.log(row);
+                //         return '<div class="d-flex gap-2"><button type="button" class="btn btn-danger d-flex btn-sm btn-hapus-kontak" data-id="' + data + '"><i class="ti ti-trash pe-2 fs-6 align-middle p-1 "></button></div>'
+                //     },
+                //     orderable: false
+                // },
             ]
         });
         // $('#tabelkontak').DataTable();

@@ -102,6 +102,11 @@ class SolusiController extends BaseController
             ");
             return redirect()->back()->to('/solusi');
         } else {
+            session()->setFlashdata('modaltambah', [
+                'name' => 'exampleModaltambahsolusi',
+                // 'type' => 'error',
+                // 'message' => 'Password lama tidak cocok'
+            ]);
             session()->setFlashdata('sweetalert', "
             <script>
                 Swal.fire({
@@ -198,6 +203,11 @@ class SolusiController extends BaseController
 
             return redirect()->back()->to('/solusi');
         } else {
+            session()->setFlashdata('modalubah', [
+                'name' => 'exampleModaleditsolusi',
+                // 'type' => 'error',
+                // 'message' => 'Password lama tidak cocok'
+            ]);
             session()->setFlashdata('sweetalert', "
                 <script>
                     Swal.fire({
@@ -273,6 +283,11 @@ class SolusiController extends BaseController
         ");
             return redirect()->back()->to('/solusi');
         } else {
+            session()->setFlashdata('modalubahhead', [
+                'name' => 'exampleModaljudulsolusi',
+                // 'type' => 'error',
+                // 'message' => 'Password lama tidak cocok'
+            ]);
             session()->setFlashdata('sweetalert', "
             <script>
                 Swal.fire({

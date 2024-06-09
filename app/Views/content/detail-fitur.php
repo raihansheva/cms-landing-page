@@ -65,7 +65,7 @@
                                                 </div>
                                                 <br>
                                                 <div class="form-check  col-12 d-flex justify-content-center gap-1">
-                                                    <input class="form-check-input" type="radio" name="layout" value="<?= $value['id'] ?>" id="layout">
+                                                    <input class="form-check-input" type="radio" name="layout" value="<?= $value['id'] ?>" id="layout" required>
                                                     <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between"><?= $value['nama_layout'] ?></label>
                                                 </div>
                                             </div>
@@ -74,21 +74,19 @@
                                 </div>
                                 <div class="mb-3 p-2 pt-0" style="text-align: left;">
                                     <label for="exampleFormControlInput1" class="form-label">Judul Detail :</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan judul detail" name="judul_detail">
+                                    <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Masukan judul detail" name="judul_detail" required>
                                 </div>
                                 <div class="col-12 d-flex">
                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                         <label for="exampleFormControlTextarea1" class="form-label">Deskripsi:</label>
-                                        <textarea class="form-control" id="editor" rows="7.5" name="deskripsi"></textarea>
+                                        <textarea class="form-control" id="editor" rows="7.5" name="deskripsi" required></textarea>
                                     </div>
                                     <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                                         <label for="exampleFormControlInput1" class="form-label">Gambar :</label>
-                                        <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar" name="gambar" onchange="validateFile()">
+                                        <input type="file" class="form-control" id="gambar" placeholder="Pilih Gambar" name="gambar" onchange="validateFile()" required>
                                         <small id="fileErrorTambah" class="text-danger"></small>
                                         <label class="fs-2" for="">* <span>Format file : .jpg | .png</span></label>
                                         <div class="col-12 mt-2 text-end">
-                                            <!-- !-- <button type="button" id="hapusGambar" class="btn btn-danger d-none">Hapus
-                                                Gambar</button> -->
                                             <i class="ti ti-x d-none" type="button" id="hapusGambar" style="font-size: 24px"></i>
                                             <img src="#" alt="Pratinjau Gambar" id="preview" class="preview-image d-none image-fluid col-12" width="100%">
                                         </div>
@@ -113,7 +111,7 @@
         <br>
         <!-- <div class="card col-4" style="height: 200px; border:1px solid rgb(229, 234, 239);"> -->
         <div class="col-12 " style="height: 100%;">
-            <table id="tabelfitur" class="table col-12 " style="height: auto; background-color: white; border-radius: 10px;">
+            <table id="tabelfitur" class="table col-12 " style="height: auto; background-color: white; border-radius: 15px;">
                 <thead class="">
                     <tr class="p-2">
                         <!-- <th scope="col">No</th> -->
@@ -160,9 +158,10 @@
                                     </div>
                                     <br>
                                     <div class="form-check col-12 d-flex justify-content-center gap-1">
-                                        <input class="form-check-input" type="radio" name="layout" value="<?= $value['id'] ?>" id="layout_ubah">
+                                        <input class="form-check-input" type="radio" name="layout" value="<?= $value['id'] ?>" id="layout_ubah" required>
                                         <label for="exampleFormControlInput1" class="form-label d-flex justify-content-between">
                                             <?= $value['nama_layout'] ?></label>
+                                        <!-- <input type="text" name="layout" value="1"> -->
                                     </div>
                                 </div>
                             <?php } ?>
@@ -170,16 +169,16 @@
                     </div>
                     <div class="mb-3 p-2 pt-0" style="text-align: left;">
                         <label for="exampleFormControlInput1" class="form-label">Judul Detail :</label>
-                        <input type="text" class="form-control" id="judul_detail_ubah" placeholder="Masukan judul detail" name="judul_detail">
+                        <input type="text" class="form-control" id="judul_detail_ubah" placeholder="Masukan judul detail" name="judul_detail" required>
                     </div>
                     <div class="col-12 d-flex">
                         <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                             <label for="exampleFormControlTextarea1" class="form-label">Deskripsi:</label>
-                            <textarea class="form-control" id="deskripsi_ubah" rows="7.5" name="deskripsi" style="height: 500px;"></textarea>
+                            <textarea class="form-control" id="deskripsi_ubah" rows="7.5" name="deskripsi" style="height: 500px;" required></textarea>
                         </div>
                         <div class="col-6 mb-3 p-2 pt-0" style="text-align: left;">
                             <label for="exampleFormControlInput1" class="form-label">Gambar :</label>
-                            <input type="file" class="form-control" id="gambar2" placeholder="Pilih Gambar" name="gambar" onchange="validateFileEdit()">
+                            <input type="file" class="form-control" id="gambar2" placeholder="Pilih Gambar" name="gambar" onchange="validateFileEdit()" required>
                             <small id="fileErrorEdit" class="text-danger"></small>
                             <label class="fs-2" for="">* <span>Format file : .jpg | .png</span></label>
                             <div class="col-12 mt-2 text-end">
@@ -232,6 +231,13 @@
 
 <?= session()->getFlashdata('sweetalert'); ?>
 <script>
+    $(document).ready(function() {
+
+        var modalData = <?php echo json_encode(session()->getFlashdata('modal')); ?>;
+        if (modalData) {
+            $('#' + modalData.name).modal('show');
+        }
+    });
     // validasi foto
     function validateFile() {
         const fileInput = document.getElementById('gambar');
@@ -295,12 +301,31 @@
             })
 
         $('#tabelfitur').DataTable({
-            // "order": [[0, "desc"]],
+            "order": [
+                [0, "asc"]
+            ],
             "pageLength": 5,
             processing: true,
             serverSide: true,
             ajax: {
                 url: '/fitur/getdatadetailfitur/' + '<?= $idF ?>',
+            },
+            language: {
+                "sEmptyTable": "Tidak ada data yang tersedia di tabel",
+                "sInfo": "",
+                "sInfoEmpty": "",
+                "sInfoFiltered": "(disaring dari MAX total entri)",
+                "sInfoPostFix": "",
+                "sInfoThousands": ",",
+                "sLengthMenu": "",
+                "sLoadingRecords": "Memuat...",
+                "sProcessing": "",
+                "sSearch": "Cari:",
+                "sZeroRecords": "Tidak ada data yang cocok ditemukan",
+                "oAria": {
+                    "sSortAscending": ": aktifkan untuk mengurutkan kolom secara meningkat",
+                    "sSortDescending": ": aktifkan untuk mengurutkan kolom secara menurun"
+                }
             },
             columns: [{
                     data: 'judul_detail',
@@ -330,7 +355,7 @@
                     orderable: false
                 },
             ],
-            "order": [[0, "desc"]]
+
         });
         //$('#tabelfitur').DataTable();
         $('#tabelfitur').on("click", '.btn-edit-detail', function() {
@@ -345,7 +370,7 @@
             $('#judul_detail_ubah').val(judul)
             $('#deskripsi_ubah').html(desk)
             $('#gambar_ubah').val(gambar)
-            $('#layout_ubah').val(layout)
+            // $('#layout_ubah').val(layout)
             // $('#layout_ubah').prop('checked', true);
             $('#id_fitur_ubah').val(idF)
             $('#exampleModaleditdetailfitur').modal('show')

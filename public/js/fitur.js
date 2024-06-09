@@ -129,7 +129,8 @@ const LimitS = document.getElementById("limitS");
 const LimittS = document.getElementById("limit2S");
 const limitS = 30;
 
-LimitS.textContent = "0/" + limitS;
+const textlengthS1 = InputTextS.value.length;
+LimitS.textContent = textlengthS1 + "/" + limitS;
 
 InputTextS.addEventListener("input", function() {
     const textlengthS = InputTextS.value.length;
@@ -152,10 +153,14 @@ const LimitEdit1 = document.getElementById("limitedit1");
 const LimittEdit1 = document.getElementById("limit2edit1");
 const limitEdit1 = 30;
 
-LimitEdit1.textContent = "0/" + limitEdit1;
+
+const textlengthEdit12 = InputTextEdit1.value.length;
+// console.log(textlengthEdit12);
+LimitEdit1.textContent = textlengthEdit12 + "/" + limitEdit1;
 
 InputTextEdit1.addEventListener("input", function () {
   const textlengthEdit1 = InputTextEdit1.value.length;
+  console.log(textlengthEdit1);
   LimitEdit1.textContent = textlengthEdit1 + "/" + limitEdit1;
 
   if (textlengthEdit1 > limitEdit1) {
@@ -163,7 +168,7 @@ InputTextEdit1.addEventListener("input", function () {
     // alert("Input tidak boleh lebih dari 45 karakter.");
     InputTextEdit1.value = InputTextEdit1.value.substring(0, limitEdit1);
     LimitEdit1.textContent = limitEdit1 + "/" + limitEdit1;
-    LimittEdit1.innerText ="Input tidak boleh lebih dari 45 karakter.";
+    LimittEdit1.innerText ="Input tidak boleh lebih dari 30 karakter.";
 } else {
     LimitEdit1.classList.remove("warning");
     LimittEdit1.innerText ="";
@@ -181,14 +186,14 @@ $(document).ready(function () {
         },
         language: {
             "sEmptyTable": "Tidak ada data yang tersedia di tabel",
-            "sInfo": "Menampilkan START hingga END dari TOTAL entri",
-            "sInfoEmpty": "Menampilkan 0 hingga 0 dari 0 entri",
+            "sInfo": "",
+            "sInfoEmpty": "",
             "sInfoFiltered": "(disaring dari MAX total entri)",
             "sInfoPostFix": "",
             "sInfoThousands": ",",
-            "sLengthMenu": "Tampilkan MENU",
+            "sLengthMenu": "",
             "sLoadingRecords": "Memuat...",
-            "sProcessing": "Memproses...",
+            "sProcessing": "",
             "sSearch": "Cari:",
             "sZeroRecords": "Tidak ada data yang cocok ditemukan",
             "oAria": {
